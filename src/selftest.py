@@ -12,7 +12,10 @@ from pathlib import Path
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--work", default=".")
+    ap.add_argument("--work", default=".", help="setup.sh layout; overridden by the paths below")
+    ap.add_argument("--base_model", default=None)
+    ap.add_argument("--adapter", default=None)
+    ap.add_argument("--librispeech", default=None, help="a split directory, e.g. .../test-clean")
     ap.add_argument("--n_utts", type=int, default=5)
     ap.add_argument("--n_candidates", type=int, default=15)
     ap.add_argument("--device", default=None)
@@ -42,12 +45,12 @@ def main() -> int:
     wf_compat.assert_no_cuda_ext()
     print("[1/5] compat shims OK")
 
-    base = work / "ckpt/mdm_safetensors/mdm-170M-100e18-rsl-0.01.safetensors"
-    adapter = work / "ckpt/whisfusion_stage2_decoder.pt"
-    ls = work / "data/LibriSpeech/test-clean"
+    base = Path(args.base_model or work / "ckpt/mdm_safetensors/mdm-170M-100e18-rsl-0.01.safetensors")
+    adapter = Path(args.adapter or work / "ckpt/whisfusion_stage2_decoder.pt")
+    ls = Path(args.librispeech or work / "data/LibriSpeech/test-clean")
     for p in (base, adapter, ls):
         if not p.exists():
-            print(f"MISSING: {p}  -> run setup.sh or attach the data")
+            print(f"MISSING: {p}  -> run setup.sh, or pass --base_model/--adapter/--librispeech")
             return 1
 
     wf = wf_model.load(str(base), str(adapter), device=args.device, dtype=args.dtype)
