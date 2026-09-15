@@ -11,6 +11,32 @@ from dataclasses import asdict, dataclass, field
 import torch
 
 DEFAULT_SCHEDULE = [1.0, 0.9, 0.85, 0.8]
+WORD_START = "\u2581"  # SentencePiece word boundary
+
+
+def _word_confidences(tokenizer, ids, confs, text) -> list[float] | None:
+    """Mean confidence per normalised word, or None if it will not line up."""
+    from scorers import normalize
+
+    special = set(tokenizer.all_special_ids)
+    pairs = [(i, c) for i, c in zip(ids, confs) if i not in special]
+    if not pairs:
+        return None
+    keep_ids, keep_conf = zip(*pairs)
+    pieces = tokenizer.convert_ids_to_tokens(list(keep_ids))
+
+    words, buf, cur = [], [], []
+    for piece, c in zip(pieces, keep_conf):
+        if piece.startswith(WORD_START) and buf:
+            words.append(("".join(buf), cur))
+            buf, cur = [], []
+        buf.append(piece.lstrip(WORD_START))
+        cur.append(float(c))
+    if buf:
+        words.append(("".join(buf), cur))
+
+    out = [sum(cs) / len(cs) for w, cs in words if normalize(w)]
+    return out if len(out) == len(normalize(text).split()) else None
 
 
 @dataclass
@@ -22,6 +48,7 @@ class Candidate:
     mean_logprob: float
     mean_entropy: float
     n_tokens: int
+    word_conf: list[float] | None = field(default=None)
     tokens: list[int] | None = field(default=None)
 
 
@@ -113,6 +140,7 @@ def pdd_decode(
         if int(v.sum()) == 0:
             v = torch.ones_like(v)
         c = conf[i][v]
+        ids = toks[i][v].tolist()
         cands.append(
             Candidate(
                 text=texts[i],
@@ -122,7 +150,8 @@ def pdd_decode(
                 mean_logprob=float(logprob[i][v].mean()),
                 mean_entropy=float(entropy[i][v].mean()),
                 n_tokens=int(v.sum()),
-                tokens=toks[i][v].tolist() if save_tokens else None,
+                word_conf=_word_confidences(wf.tokenizer, ids, c.tolist(), texts[i]),
+                tokens=ids if save_tokens else None,
             )
         )
 
@@ -135,6 +164,7 @@ def pdd_decode(
 
 def candidate_to_dict(c: Candidate) -> dict:
     d = asdict(c)
-    if d["tokens"] is None:
-        d.pop("tokens")
+    for key in ("tokens", "word_conf"):
+        if d[key] is None:
+            d.pop(key)
     return d

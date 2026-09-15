@@ -11,7 +11,8 @@ bf16 + FlashAttention). Reproduction matches the paper: 8.24 vs 8.3 mean-utteran
 |---|---|---|---|---|
 | `mean_conf`, upstream v1 | 9.10 | 8.24 | 69.7 | 2.49 |
 | `mbr_wer` | 8.30 | 7.70 | 76.8 | 1.95 |
-| `conf + 0.5·mbr` | 8.29 | **7.61** | 77.6 | 1.86 |
+| `conf + 0.5·mbr` | 8.29 | 7.61 | 77.6 | 1.86 |
+| ROVER, word-level vote | **6.76** | **6.91** | — | — |
 | oracle over whole candidates | 6.66 | 5.75 | 100.0 | — |
 | oracle over word-level combinations | **3.27** | **3.40** | — | — |
 
@@ -25,7 +26,9 @@ Three things not in the paper:
 - Sampling in step 0 raises pairwise distance from 14.3 to 16.7 %, but the oracle gets worse
   (5.21 → 5.31 on a matched subset). Mask ratios of 0.8–1.0 overwrite injected differences.
 - Picking the best word at each aligned position beats the best whole candidate on 34 % of
-  utterances. The per-word oracle is loose, but the candidate set holds more than any member.
+  utterances, and voting over those positions gets there without a reference: ROVER reaches
+  6.76 against a 6.66 whole-candidate oracle. Replacing the alternatives with unrelated words
+  leaves only 0.37 of the 3.40 points of headroom, so the gain is information, not free choice.
 
 ```bash
 bash setup.sh /work
