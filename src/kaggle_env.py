@@ -61,6 +61,7 @@ class Env:
     base_model: Path
     adapter: Path
     librispeech: Path
+    ood: Path | None
     results: Path
     pythonpath: str
 
@@ -79,6 +80,8 @@ def prepare(commit: str = "") -> Env:
     base = _find("**/mdm-170M-*.safetensors", "base SMDM weights")
     adapter = _find("**/whisfusion_stage2_decoder.pt", "Whisfusion checkpoint")
     librispeech = _find("**/LibriSpeech/test-clean", "LibriSpeech").parent
+    ood_hits = sorted(glob.glob("/kaggle/input/**/ood", recursive=True))
+    ood = Path(ood_hits[0]) if ood_hits else None
 
     hf = sorted(glob.glob("/kaggle/input/**/hf", recursive=True))
     if hf:
@@ -91,6 +94,7 @@ def prepare(commit: str = "") -> Env:
         base_model=base,
         adapter=adapter,
         librispeech=librispeech,
+        ood=ood,
         results=RESULTS,
         pythonpath=f"{CODE / 'src'}:{UPSTREAM / 'src'}",
     )
@@ -99,6 +103,8 @@ def prepare(commit: str = "") -> Env:
     print(f"base model  {base}")
     print(f"adapter     {adapter}")
     print(f"librispeech {librispeech}  {env.splits()}")
+    if ood:
+        print(f"ood         {ood}  {sorted(p.name for p in ood.iterdir() if p.is_dir())}")
     return env
 
 
