@@ -1,0 +1,14 @@
+__pycache__/
+*.pyc
+.DS_Store
+
+# IDE
+.idea/
+.vscode/
+
+# fetched or generated, never committed
+ckpt/
+data/
+Whisfusion/
+results/*.jsonl
+results/*.json

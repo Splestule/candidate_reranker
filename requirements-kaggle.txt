@@ -1,0 +1,12 @@
+# Do NOT install flash-attn: it needs Ampere+, Kaggle serves Turing (T4) or Pascal (P100).
+# src/wf_compat.py replaces it. torch and transformers are preinstalled on Kaggle.
+
+lightning>=2.1            # lit_gpt/__init__.py checks pip metadata for this
+lightning-utilities
+safetensors>=0.3.1
+soundfile
+librosa
+jiwer>=3.0.0
+einops
+sentencepiece
+tqdm
