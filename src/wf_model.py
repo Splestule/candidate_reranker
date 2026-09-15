@@ -29,7 +29,8 @@ def pick_dtype(device: str, requested: str = "auto") -> torch.dtype:
         return {"fp16": torch.float16, "bf16": torch.bfloat16, "fp32": torch.float32}[requested]
     if device != "cuda":
         return torch.float32
-    return torch.bfloat16 if torch.cuda.is_bf16_supported() else torch.float16
+    # Not is_bf16_supported(): since torch 2.6 it counts emulation, so it says yes on a T4.
+    return torch.bfloat16 if torch.cuda.get_device_capability()[0] >= 8 else torch.float16
 
 
 @dataclass

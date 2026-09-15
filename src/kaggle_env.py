@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import glob
 import os
+import shutil
 import subprocess
 import sys
 from dataclasses import dataclass
@@ -83,9 +84,14 @@ def prepare(commit: str = "") -> Env:
     ood_hits = sorted(glob.glob("/kaggle/input/**/ood", recursive=True))
     ood = Path(ood_hits[0]) if ood_hits else None
 
+    # /kaggle/input is read-only and huggingface_hub writes locks into its cache,
+    # so the prepared cache is copied into the writable working directory.
+    cache = WORK / "hf"
     hf = sorted(glob.glob("/kaggle/input/**/hf", recursive=True))
-    if hf:
-        os.environ["HF_HOME"] = hf[0]
+    if hf and not cache.exists():
+        shutil.copytree(hf[0], cache)
+    os.environ["HF_HUB_CACHE"] = str(cache)
+    os.environ["HF_HOME"] = str(WORK / "hf_home")
 
     RESULTS.mkdir(parents=True, exist_ok=True)
 
@@ -103,6 +109,7 @@ def prepare(commit: str = "") -> Env:
     print(f"base model  {base}")
     print(f"adapter     {adapter}")
     print(f"librispeech {librispeech}  {env.splits()}")
+    print(f"hf cache    {cache}  {'prepared' if hf else 'empty, will download'}")
     if ood:
         print(f"ood         {ood}  {sorted(p.name for p in ood.iterdir() if p.is_dir())}")
     return env
