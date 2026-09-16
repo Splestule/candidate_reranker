@@ -115,6 +115,34 @@ def prepare(commit: str = "") -> Env:
     return env
 
 
+def prepare_cpu(commit: str = "") -> Env:
+    """For re-analysing existing dumps: no model, no audio, no accelerator."""
+    subprocess.run([sys.executable, "-m", "pip", "install", "-q", "rapidfuzz"], check=True)
+    RESULTS.mkdir(parents=True, exist_ok=True)
+    env = Env(commit=commit, base_model=Path(), adapter=Path(), librispeech=Path(),
+              ood=None, results=RESULTS, pythonpath=str(CODE / "src"))
+    print(f"commit   {commit or '(unknown)'}")
+    return env
+
+
+def find_dumps() -> dict[str, Path]:
+    """Candidate dumps from an attached run, keyed by their tag."""
+    out: dict[str, Path] = {}
+    for hit in sorted(glob.glob("/kaggle/input/**/results/*.jsonl", recursive=True)):
+        p = Path(hit)
+        if p.name.startswith("dialects.jsonl"):        # the manifest, not a dump
+            continue
+        out.setdefault(p.stem.rsplit("-", 1)[0], p)
+    for tag, p in out.items():
+        print(f"{tag:<12} {p}")
+    if not out:
+        raise FileNotFoundError(
+            "no dumps under /kaggle/input. "
+            "Add Input -> Your Work -> Notebook Output -> the run notebook"
+        )
+    return out
+
+
 def run(env: Env, script: str, *args: str) -> int:
     """Run a script from src/ and stream its output into the notebook."""
     cmd = [sys.executable, str(CODE / "src" / script), *map(str, args)]

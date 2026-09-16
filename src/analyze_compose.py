@@ -16,6 +16,7 @@ from pathlib import Path
 
 from rapidfuzz.distance import Levenshtein
 
+import bootstrap
 import compose
 import scorers as S
 
@@ -32,6 +33,10 @@ def main() -> int:
     ap.add_argument("--alpha", type=float, default=1.0,
                     help="ROVER: 1.0 is pure vote frequency, lower mixes in confidence")
     ap.add_argument("--eps_conf", type=float, default=0.5)
+    ap.add_argument("--gamma", type=float, default=1.0,
+                    help="cluster vote weighting: 1.0 one vote each, 0.0 one vote per cluster")
+    ap.add_argument("--cluster_threshold", type=float, default=0.0)
+    ap.add_argument("--n_boot", type=int, default=4000)
     ap.add_argument("--seed", type=int, default=0)
     args = ap.parse_args()
 
@@ -45,8 +50,11 @@ def main() -> int:
             for w in S.normalize(r["candidates"][0]["text"]).split()]
 
     tot_ref = 0
-    edits = {k: 0 for k in ["baseline", "mbr", "rover", "oracle_cand", "oracle_comp", "control"]}
-    per_utt = {k: [] for k in edits}
+    keys = ["baseline", "mbr", "rover", "oracle_cand", "oracle_comp", "control"]
+    edits = {k: 0 for k in keys}
+    per_utt = {k: [] for k in keys}
+    raw = {k: [] for k in keys}
+    ref_lens: list[int] = []
     beats_best = 0
     have_conf = 0
 
@@ -67,8 +75,9 @@ def main() -> int:
         }
 
         backbone = compose.central_index(cands)
-        slots = compose.confusion_network(cands, backbone, confs)
-        picks["rover"] = compose.rover(slots, k, args.alpha, args.eps_conf)
+        weights = compose.cluster_weights(cands, args.gamma, args.cluster_threshold)
+        slots = compose.confusion_network(cands, backbone, confs, weights)
+        picks["rover"] = compose.rover(slots, sum(weights), args.alpha, args.eps_conf)
 
         best_single = min(wers)
         comp = min(compose.oracle_path(slots, ref), best_single)
@@ -77,12 +86,15 @@ def main() -> int:
         beats_best += comp < best_single
 
         tot_ref += len(ref)
+        ref_lens.append(len(ref))
         for key, hyp in picks.items():
             e = Levenshtein.distance(ref, hyp)
             edits[key] += e
+            raw[key].append(e)
             per_utt[key].append(100.0 * e / max(len(ref), 1))
         for key, e in [("oracle_comp", comp), ("control", ctrl)]:
             edits[key] += e
+            raw[key].append(e)
             per_utt[key].append(100.0 * e / max(len(ref), 1))
 
     print("=" * 70)
@@ -90,7 +102,7 @@ def main() -> int:
     print("=" * 70)
     print(f"utterances: {len(rows)}   per-word confidences: "
           f"{'yes' if have_conf == len(rows) else 'no, ROVER votes by frequency only'}")
-    print(f"ROVER alpha {args.alpha}\n")
+    print(f"ROVER alpha {args.alpha}  eps_conf {args.eps_conf}  gamma {args.gamma}\n")
 
     print(f"{'':<34}{'corpus WER':>12}{'mean-utt':>11}")
     labels = [
@@ -101,7 +113,8 @@ def main() -> int:
         ("oracle_comp", "oracle over word combinations"),
         ("control", "  same, unrelated alternatives"),
     ]
-    out = {"dump": args.dump, "n_utts": len(rows), "alpha": args.alpha, "methods": {}}
+    out = {"dump": args.dump, "n_utts": len(rows), "alpha": args.alpha,
+           "eps_conf": args.eps_conf, "gamma": args.gamma, "methods": {}}
     for key, label in labels:
         cw = 100.0 * edits[key] / tot_ref
         mu = statistics.fmean(per_utt[key])
@@ -123,6 +136,19 @@ def main() -> int:
     if luck > 0:
         print(f"signal-to-luck ratio: {real / luck:.1f}x")
     print(f"ROVER vs baseline: {out['rover_gain']:+.2f} points")
+
+    print(f"\n{'-' * 74}\nPAIRED BOOTSTRAP  ·  {args.n_boot} resamples, positive favours the "
+          f"second system\n{'-' * 74}")
+    out["bootstrap"] = {}
+    for a_key, b_key, label in [("baseline", "rover", "ROVER over pick by confidence"),
+                                ("mbr", "rover", "ROVER over conf + 0.5*mbr"),
+                                ("baseline", "mbr", "conf + 0.5*mbr over confidence")]:
+        s = bootstrap.paired_bootstrap(raw[a_key], raw[b_key], ref_lens,
+                                       n_boot=args.n_boot, seed=args.seed)
+        out["bootstrap"][f"{b_key}_vs_{a_key}"] = s
+        print(bootstrap.format_row(label, s))
+        if s and s["ci_low"] <= 0 <= s["ci_high"]:
+            print(f"{'':<34}interval spans zero: not distinguishable")
 
     if args.json:
         Path(args.json).parent.mkdir(parents=True, exist_ok=True)

@@ -29,25 +29,64 @@ def central_index(cands: list[list[str]]) -> int:
     return best_i
 
 
+def cluster_weights(cands: list[list[str]], gamma: float = 1.0,
+                    threshold: float = 0.0) -> list[float]:
+    """Vote weight per candidate, so a cluster of m near-identical candidates counts m**gamma.
+
+    gamma=1 is one vote each, which is what ROVER does and assumes the candidates are
+    independent. They are not: the decoder repeats itself. gamma=0 collapses each cluster
+    to a single vote.
+    """
+    n = len(cands)
+    parent = list(range(n))
+
+    def find(i):
+        while parent[i] != i:
+            parent[i] = parent[parent[i]]
+            i = parent[i]
+        return i
+
+    for i in range(n):
+        for j in range(i + 1, n):
+            if cands[i] == cands[j]:
+                close = True
+            elif threshold > 0:
+                span = max(len(cands[i]), len(cands[j]), 1)
+                close = Levenshtein.distance(cands[i], cands[j]) / span <= threshold
+            else:
+                close = False
+            if close:
+                a, b = find(i), find(j)
+                if a != b:
+                    parent[b] = a
+
+    size: dict[int, int] = defaultdict(int)
+    for i in range(n):
+        size[find(i)] += 1
+    return [float(size[find(i)]) ** (gamma - 1.0) for i in range(n)]
+
+
 def confusion_network(cands: list[list[str]], backbone: int,
-                      confs: list[list[float]] | None = None) -> list[dict]:
+                      confs: list[list[float]] | None = None,
+                      weights: list[float] | None = None) -> list[dict]:
     """Align every candidate to the backbone. Returns one dict per slot mapping
-    word -> [vote count, summed confidence]."""
+    word -> [summed vote weight, summed weighted confidence]."""
     bb = cands[backbone]
     n = len(bb)
-    k = len(cands)
-    sub: list[dict] = [defaultdict(lambda: [0, 0.0]) for _ in range(n)]
-    ins: list[dict] = [defaultdict(lambda: [0, 0.0]) for _ in range(n + 1)]
+    w = weights if weights is not None else [1.0] * len(cands)
+    k = sum(w)
+    sub: list[dict] = [defaultdict(lambda: [0.0, 0.0]) for _ in range(n)]
+    ins: list[dict] = [defaultdict(lambda: [0.0, 0.0]) for _ in range(n + 1)]
     ins_voters: list[set] = [set() for _ in range(n + 1)]
 
     def add(slot, word, cand_i, pos):
         e = slot[word]
-        e[0] += 1
+        e[0] += w[cand_i]
         if confs is not None and word != EPS and pos is not None:
             c = confs[cand_i]
-            e[1] += c[pos] if pos < len(c) else 1.0
+            e[1] += (c[pos] if pos < len(c) else 1.0) * w[cand_i]
         else:
-            e[1] += 1.0
+            e[1] += w[cand_i]
 
     for ci, c in enumerate(cands):
         for tag, i1, i2, j1, j2 in Levenshtein.opcodes(bb, c):
@@ -75,7 +114,7 @@ def confusion_network(cands: list[list[str]], backbone: int,
     # Candidates that inserted nothing at a point still vote there, for epsilon.
     for i in range(n + 1):
         if ins[i]:
-            ins[i][EPS] = [k - len(ins_voters[i]), 0.0]
+            ins[i][EPS] = [k - sum(w[c] for c in ins_voters[i]), 0.0]
 
     slots = []
     for i in range(n):
@@ -86,7 +125,7 @@ def confusion_network(cands: list[list[str]], backbone: int,
         slots.append(dict(ins[n]))
 
     for s in slots:
-        s.setdefault(EPS, [0, 0.0])
+        s.setdefault(EPS, [0.0, 0.0])
     return slots
 
 
@@ -113,15 +152,18 @@ def oracle_path(slots: list[dict], ref: list[str]) -> int:
     return cur[R]
 
 
-def rover(slots: list[dict], k: int, alpha: float = 1.0,
+def rover(slots: list[dict], total: float, alpha: float = 1.0,
           eps_conf: float = 0.5) -> list[str]:
-    """Vote per slot. alpha=1 is pure frequency; below that, confidence weighs in."""
+    """Vote per slot. alpha=1 is pure frequency; below that, confidence weighs in.
+
+    total is the summed vote weight of all candidates, so frequencies stay in [0, 1].
+    """
     out = []
     for slot in slots:
         best, best_w = None, EPS
         for w, (votes, conf_sum) in slot.items():
-            freq = votes / k
-            conf = eps_conf if w == EPS else (conf_sum / max(votes, 1))
+            freq = votes / total if total else 0.0
+            conf = eps_conf if w == EPS else (conf_sum / votes if votes > 0 else 0.0)
             score = alpha * freq + (1.0 - alpha) * conf
             if best is None or score > best:
                 best, best_w = score, w
