@@ -209,7 +209,7 @@ def main() -> int:
     print(f"{'k':<6}{'baseline':>11}{'oracle':>10}{'gap':>9}")
     print("-" * 74)
     k_out = {}
-    for k in [1, 3, 5, 10, K]:
+    for k in sorted({min(x, K) for x in [1, 3, 5, 10, 15, 20, 25, 30, K]}):
         if k > K:
             continue
         bi, oi = [], []

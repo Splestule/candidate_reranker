@@ -36,6 +36,8 @@ def main() -> int:
     ap.add_argument("--gamma", type=float, default=1.0,
                     help="cluster vote weighting: 1.0 one vote each, 0.0 one vote per cluster")
     ap.add_argument("--cluster_threshold", type=float, default=0.0)
+    ap.add_argument("--max_k", type=int, default=None,
+                    help="use only the first k candidates, for a k ladder from one dump")
     ap.add_argument("--n_boot", type=int, default=4000)
     ap.add_argument("--seed", type=int, default=0)
     args = ap.parse_args()
@@ -44,6 +46,9 @@ def main() -> int:
     if not rows:
         print("empty dump")
         return 1
+    if args.max_k:
+        for r in rows:
+            r["candidates"] = r["candidates"][:args.max_k]
 
     rng = random.Random(args.seed)
     pool = [w for r in rows[: min(200, len(rows))]
@@ -136,6 +141,27 @@ def main() -> int:
     if luck > 0:
         print(f"signal-to-luck ratio: {real / luck:.1f}x")
     print(f"ROVER vs baseline: {out['rover_gain']:+.2f} points")
+
+    print(f"\n{'-' * 74}\nBY REFERENCE LENGTH  ·  corpus WER weights long utterances by their "
+          f"word count\n{'-' * 74}")
+    print(f"{'words':<10}{'n':>6}{'baseline':>10}{'ROVER':>9}{'gain':>8}"
+          f"{'  ':>4}{'baseline':>10}{'ROVER':>9}{'gain':>8}")
+    print(f"{'':<10}{'':>6}{'-- corpus WER --':>27}{'  ':>4}{'-- mean-utt WER --':>27}")
+    edges = [(0, 5, "1-5"), (6, 10, "6-10"), (11, 20, "11-20"), (21, 10 ** 9, "21+")]
+    out["by_length"] = {}
+    for lo, hi, label in edges:
+        sel = [i for i, n in enumerate(ref_lens) if lo <= n <= hi]
+        if not sel:
+            continue
+        words = sum(ref_lens[i] for i in sel)
+        cb = 100.0 * sum(raw["baseline"][i] for i in sel) / words
+        cr = 100.0 * sum(raw["rover"][i] for i in sel) / words
+        mb = statistics.fmean(per_utt["baseline"][i] for i in sel)
+        mr = statistics.fmean(per_utt["rover"][i] for i in sel)
+        out["by_length"][label] = {"n": len(sel), "corpus_baseline": cb, "corpus_rover": cr,
+                                   "mean_utt_baseline": mb, "mean_utt_rover": mr}
+        print(f"{label:<10}{len(sel):>6}{cb:>10.2f}{cr:>9.2f}{cb - cr:>+8.2f}"
+              f"{'  ':>4}{mb:>10.2f}{mr:>9.2f}{mb - mr:>+8.2f}")
 
     print(f"\n{'-' * 74}\nPAIRED BOOTSTRAP  ·  {args.n_boot} resamples, positive favours the "
           f"second system\n{'-' * 74}")
