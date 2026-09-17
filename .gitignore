@@ -1,14 +1,15 @@
 __pycache__/
 *.pyc
-.DS_Store
-
-# IDE
-.idea/
-.vscode/
-
-# fetched or generated, never committed
 ckpt/
 data/
 Whisfusion/
+.DS_Store
+.kaggle/
+kaggle/kernel-metadata.json.local
+
+results/*
+!results/.gitkeep
+!results/*.json
 results/*.jsonl
-results/*.json
+results/*.log
+results/_to_delete/
