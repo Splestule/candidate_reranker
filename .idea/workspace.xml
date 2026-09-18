@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ec4b20f5-aa4e-423a-a25f-e3d22fa98819" name="Changes" comment="benchmark performance of decoder on various Ks" />
+    <list default="true" id="ec4b20f5-aa4e-423a-a25f-e3d22fa98819" name="Changes" comment="benchmark k=3">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -32,61 +36,61 @@
 }</component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.8676550555835" />
-      <entry key="MS500" value="3.9102387011685953" />
-      <entry key="S2" value="5.313905673204812" />
-      <entry key="S5" value="5.7087465969467965" />
-      <entry key="S10" value="5.851401200200431" />
-      <entry key="S30" value="5.949790052354976" />
-      <entry key="S60" value="5.974809343176449" />
-      <entry key="M2" value="5.9873831807899975" />
-      <entry key="M5" value="5.998259232572388" />
-      <entry key="M10" value="6.240761124561666" />
-      <entry key="M15" value="7.054057450144389" />
-      <entry key="M30" value="10.812190634928816" />
-      <entry key="H1" value="16.595019180861648" />
-      <entry key="H2" value="21.887448217917363" />
-      <entry key="H4" value="25.91144856279284" />
-      <entry key="D1" value="47.406029944575444" />
-      <entry key="W1" value="64.8643529037316" />
+      <entry key="MS100" value="1.0001263753624399" />
+      <entry key="MS500" value="1.1843388300956263" />
+      <entry key="S2" value="2.250961296282899" />
+      <entry key="S5" value="3.0806397614440004" />
+      <entry key="S10" value="3.491909102078447" />
+      <entry key="S30" value="3.8184648131346943" />
+      <entry key="S60" value="3.907613520934604" />
+      <entry key="M2" value="3.9555257301194615" />
+      <entry key="M5" value="4.23166507508139" />
+      <entry key="M10" value="5.265725146845529" />
+      <entry key="M15" value="6.440807869563256" />
+      <entry key="M30" value="10.365077574150515" />
+      <entry key="H1" value="16.73433245531359" />
+      <entry key="H2" value="23.173584604371023" />
+      <entry key="H4" value="28.25200458262336" />
+      <entry key="D1" value="50.88603159315718" />
+      <entry key="W1" value="68.76223261109763" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="4.545618630038121E-49" />
-      <entry key="MS500" value="2.1454509957663341E-10" />
-      <entry key="S2" value="0.0038271867094661323" />
-      <entry key="S5" value="0.10793240639335691" />
-      <entry key="S10" value="0.3285306780094621" />
-      <entry key="S30" value="0.6900151771565095" />
-      <entry key="S60" value="0.8306715218162404" />
-      <entry key="M2" value="0.9114118288766283" />
-      <entry key="M5" value="0.9635757558072" />
-      <entry key="M10" value="0.9816189463367138" />
-      <entry key="M15" value="0.9877081138666135" />
-      <entry key="M30" value="0.9938350536515673" />
-      <entry key="H1" value="0.9969127781459303" />
-      <entry key="H2" value="0.9985849623445695" />
-      <entry key="H4" value="1.010619174536289" />
-      <entry key="D1" value="1.474221528911783" />
-      <entry key="W1" value="1.898916950023362" />
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="4.744973159010603E-210" />
+      <entry key="S5" value="1.8642042941856307E-84" />
+      <entry key="S10" value="1.3653586686968477E-42" />
+      <entry key="S30" value="1.109384900856045E-14" />
+      <entry key="S60" value="1.0532734216982996E-7" />
+      <entry key="M2" value="3.2454174179884763E-4" />
+      <entry key="M5" value="0.040226127431952405" />
+      <entry key="M10" value="0.2005645218675337" />
+      <entry key="M15" value="0.34263843284464557" />
+      <entry key="M30" value="0.5853532547484859" />
+      <entry key="H1" value="0.7650838349658362" />
+      <entry key="H2" value="0.87480438932467" />
+      <entry key="H4" value="0.9459114874794567" />
+      <entry key="D1" value="1.4580527739417217" />
+      <entry key="W1" value="1.8959276311034823" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.7518478813951657" />
-      <entry key="MS500" value="3.850108272736557" />
-      <entry key="S2" value="5.297499397023149" />
-      <entry key="S5" value="5.802140958140177" />
-      <entry key="S10" value="6.166140953946989" />
-      <entry key="S30" value="6.631633099044665" />
-      <entry key="S60" value="6.800696736871395" />
-      <entry key="M2" value="6.896202321548915" />
-      <entry key="M5" value="6.960745883391487" />
-      <entry key="M10" value="7.221820877135079" />
-      <entry key="M15" value="8.041377950356852" />
-      <entry key="M30" value="11.805802591197022" />
-      <entry key="H1" value="17.59179974543879" />
-      <entry key="H2" value="22.88595811264897" />
-      <entry key="H4" value="26.92202662027681" />
-      <entry key="D1" value="48.88023983760835" />
-      <entry key="W1" value="66.76326761272163" />
+      <entry key="MS100" value="0.9727770179581401" />
+      <entry key="MS500" value="1.1774627376422884" />
+      <entry key="S2" value="2.2469368133118257" />
+      <entry key="S5" value="3.0782826498835454" />
+      <entry key="S10" value="3.4905446430096196" />
+      <entry key="S30" value="3.817960766275054" />
+      <entry key="S60" value="3.9073548826857074" />
+      <entry key="M2" value="3.955718251823623" />
+      <entry key="M5" value="4.271792877197384" />
+      <entry key="M10" value="5.466148914280772" />
+      <entry key="M15" value="6.783294155960445" />
+      <entry key="M30" value="10.95029057903105" />
+      <entry key="H1" value="17.49931039608995" />
+      <entry key="H2" value="24.04832101743394" />
+      <entry key="H4" value="29.197876478696433" />
+      <entry key="D1" value="52.34407267432341" />
+      <entry key="W1" value="70.658157978336" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -115,6 +119,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
     "to.speed.mode.migration.done": "true"
   }
 }]]></component>
@@ -324,7 +329,7 @@
       <workItem from="1789488964420" duration="4707000" />
       <workItem from="1789497666463" duration="4312000" />
       <workItem from="1789662460736" duration="724000" />
-      <workItem from="1789665765802" duration="4091000" />
+      <workItem from="1789665765802" duration="5176000" />
     </task>
     <task id="LOCAL-00001" summary="implement ROVER method for word picking">
       <option name="closed" value="true" />
@@ -390,7 +395,15 @@
       <option name="project" value="LOCAL" />
       <updated>1789667160568</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="benchmark k=3">
+      <option name="closed" value="true" />
+      <created>1789672129187</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1789672129187</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -408,6 +421,9 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/results/_to_delete/candidate_reranker" />
+    </ignored-roots>
     <MESSAGE value="implement ROVER method for word picking" />
     <MESSAGE value="test recordings with dialects" />
     <MESSAGE value="manifest for SLR83 dataset" />
@@ -416,6 +432,7 @@
     <MESSAGE value="gamma dial" />
     <MESSAGE value="k = 30 testing nb" />
     <MESSAGE value="benchmark performance of decoder on various Ks" />
-    <option name="LAST_COMMIT_MESSAGE" value="benchmark performance of decoder on various Ks" />
+    <MESSAGE value="benchmark k=3" />
+    <option name="LAST_COMMIT_MESSAGE" value="benchmark k=3" />
   </component>
 </project>

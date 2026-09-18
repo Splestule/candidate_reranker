@@ -13,3 +13,6 @@ results/*
 results/*.jsonl
 results/*.log
 results/_to_delete/
+
+# soukromy vyzkumny denik, nepatri na GitHub
+research-log.md
