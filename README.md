@@ -30,18 +30,20 @@ Three things not in the paper:
   6.76 against a 6.66 whole-candidate oracle. Replacing the alternatives with unrelated words
   leaves only 0.37 of the 3.40 points of headroom, so the gain is information, not free choice.
 
-## The campaign: two model families, 21 datasets
+## The campaign: four decoder families, 21 datasets
 
-An 11-hour Kaggle T4 x2 session extends all of the above to a second model family and far more
-data: 18,400 utterance decodes, about 447,000 candidate transcripts, zero failed jobs. Design,
-outputs and how to rerun: [docs/campaign.md](docs/campaign.md). Findings, tables and the
+Two Kaggle T4 x2 sessions (11 h + 3.3 h) extend all of the above to more models and far more
+data: 146 jobs, 28,900 utterance decodes, ~695,000 candidate transcripts, zero failed jobs.
+Design, outputs and how to rerun: [docs/campaign.md](docs/campaign.md). Findings, tables and the
 per-utterance data: [results/campaign-2026-09-20](results/campaign-2026-09-20)
 ([REPORT.md](results/campaign-2026-09-20/REPORT.md)).
 
-Models: Whisfusion (masked diffusion, K = 32) and Drax (discrete flow matching, K = 16 at
-T = 1.3, plus its own T = 0.1 decode). Data: LibriSpeech dev/test, the Open ASR Leaderboard test
-sets (AMI, Earnings22, VoxPopuli, GigaSpeech, SPGISpeech, Common Voice), FLEURS in six
-languages, SLR83 accents, and a babble/white-noise ladder on test-clean.
+Models: Whisfusion (masked diffusion, K = 32), Drax (discrete flow matching, K = 16 at T = 1.3
+and at its dev-tuned T = 0.4, plus its own T = 0.1 decode), and as controls Whisper-small and
+Whisper-large-v3-turbo (autoregressive: greedy, beam-8 n-best, 16 samples) and Parakeet-CTC-1.1B
+(32 sampled frame paths). Data: LibriSpeech dev/test, the Open ASR Leaderboard test sets (AMI,
+Earnings22, VoxPopuli, GigaSpeech, SPGISpeech, Common Voice), FLEURS in six languages, SLR83
+accents, and a babble/white-noise ladder on test-clean.
 
 Pooled over datasets (random-effects, WER points, positive favours ROVER):
 
@@ -52,11 +54,18 @@ Pooled over datasets (random-effects, WER points, positive favours ROVER):
 | ROVER vs one sample | +11.98 [10.63, 13.33] | +6.00 [5.17, 6.82] |
 
 Against Whisfusion's own upstream decoding (K = 15, mean confidence) ROVER wins on 16 of 16
-datasets, mean +4.9 points. Against Drax's standard decode it averages only +0.34: better on
-10 of 21 sets, worse on 2. Composition beats *selection* everywhere; beating a strong model's
-default decode is a narrower claim.
+datasets, mean +4.9 points. Drax at its dev-tuned T = 0.4 beats its own standard decode by
++0.69 (better on 12 of 19 sets, worse on none) — but there MBR selection does just as well.
 
-Four things the scale buys:
+**The controls decide the framing.** The same composition over autoregressive and CTC pools
+does nothing: Whisper-turbo 16 samples +0.15, Whisper-small +0.09 worse, Parakeet-CTC 32
+sampled paths −0.01, and voting over a beam n-best list is actively harmful (−4.4 for
+Whisper-small). Lining up all seven decoder configurations, the gain follows one variable —
+**how much the pool disagrees** — across four decoder families. Composition is variance
+reduction; iterative parallel decoders matter because they produce that disagreement at usable
+quality, not because of how they are trained.
+
+Five things the scale buys:
 
 - **It pays when candidates disagree.** Across 37 model x dataset cells the gain tracks
   candidate diversity at r = 0.87. The noise ladder is the controlled version: Whisfusion's
@@ -70,6 +79,9 @@ Four things the scale buys:
   utterance. At matched compute, more candidates roughly ties with more denoising steps, but
   composition at half the compute beats selection at full compute
   ([figure](results/campaign-2026-09-20/figures/fig_cost_quality.png)).
+- **Cheap pools are not useful pools.** 16 Whisper samples cost 1.27x a greedy decode and 32
+  CTC paths cost 4 % of one forward pass, yet neither pool carries much a single decode lacks;
+  Whisfusion's pool costs K x but disagrees three times as much at comparable relative quality.
 
 ```bash
 bash setup.sh /work

@@ -68,4 +68,15 @@ PYTHONPATH=src python -m campaign.aggregate --root results/campaign/campaign   #
 ```
 
 Variants: `cpu` (no accelerator, tiny, every code path; free), `smoke` (T4 x2, ~50 min, every model and
-job kind on a few utterances, Drax temperature calibration and an fp16/bf16 check), `full`.
+job kind on a few utterances, Drax temperature calibration and an fp16/bf16 check), `full`, and `round2`
+(the controls, Drax at its dev-tuned temperature, and the Whisfusion K=64 job).
+
+Sessions are poolable: shard k of a set is the same utterances in every session, so
+
+```bash
+python tools/merge_campaigns.py out/run1/campaign out/run2/campaign --out out/merged --aggregate
+python tools/paper_tables.py out/merged
+python tools/fig_cost_quality.py out/merged
+```
+
+rebuilds every table and figure over both runs at once.
