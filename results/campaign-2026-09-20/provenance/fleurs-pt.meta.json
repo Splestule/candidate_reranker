@@ -1,0 +1,19 @@
+{
+  "source": "google/fleurs",
+  "code": "pt_br",
+  "n_total": 919,
+  "set": "fleurs-pt",
+  "kind": "fleurs",
+  "lang": "pt",
+  "role": "test",
+  "domain": "read, Portuguese",
+  "filter": {
+    "min_dur": 0.8,
+    "max_dur": 28.0,
+    "max_ref_words": 75
+  },
+  "prep_s": 24.4,
+  "n_selected": 800,
+  "audio_min": 166.72,
+  "n_clusters": 344
+}

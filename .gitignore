@@ -14,5 +14,11 @@ results/*.jsonl
 results/*.log
 results/_to_delete/
 
+# campaign findings are kept: summaries, per-utterance tables, figures, provenance.
+# The candidate dumps themselves stay out (hundreds of MB); they come from the Kaggle
+# notebook output, see docs/campaign.md.
+!results/campaign-*/
+!results/campaign-*/**
+
 # soukromy vyzkumny denik, nepatri na GitHub
 research-log.md

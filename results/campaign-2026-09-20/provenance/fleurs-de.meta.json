@@ -1,0 +1,19 @@
+{
+  "source": "google/fleurs",
+  "code": "de_de",
+  "n_total": 862,
+  "set": "fleurs-de",
+  "kind": "fleurs",
+  "lang": "de",
+  "role": "test",
+  "domain": "read, German",
+  "filter": {
+    "min_dur": 0.8,
+    "max_dur": 28.0,
+    "max_ref_words": 75
+  },
+  "prep_s": 24.8,
+  "n_selected": 800,
+  "audio_min": 166.37,
+  "n_clusters": 339
+}

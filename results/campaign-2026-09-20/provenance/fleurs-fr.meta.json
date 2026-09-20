@@ -1,0 +1,19 @@
+{
+  "source": "google/fleurs",
+  "code": "fr_fr",
+  "n_total": 676,
+  "set": "fleurs-fr",
+  "kind": "fleurs",
+  "lang": "fr",
+  "role": "test",
+  "domain": "read, French",
+  "filter": {
+    "min_dur": 0.8,
+    "max_dur": 28.0,
+    "max_ref_words": 75
+  },
+  "prep_s": 17.6,
+  "n_selected": 674,
+  "audio_min": 116.03,
+  "n_clusters": 332
+}

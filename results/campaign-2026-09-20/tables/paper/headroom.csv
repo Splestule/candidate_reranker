@@ -1,0 +1,3 @@
+model,arm,n,oracle_cand,oracle_comp,control,real_headroom,luck,signal_to_luck,beats_best_pct
+drax,main,11269,8.202,5.028,7.396,3.174,0.806,3.939,30.402
+whisfusion,main,6296,19.459,11.151,17.473,8.308,1.986,4.184,55.94

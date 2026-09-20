@@ -1,0 +1,27 @@
+{
+  "source": "hf-audio/open-asr-leaderboard",
+  "files": [
+    "test-00000-of-00003.parquet",
+    "test-00002-of-00003.parquet"
+  ],
+  "n_total": 10889,
+  "n_passing_filter": 10883,
+  "shards_used": [
+    0,
+    2
+  ],
+  "set": "common_voice",
+  "kind": "esb",
+  "lang": "en",
+  "role": "test",
+  "domain": "crowdsourced, many accents",
+  "filter": {
+    "min_dur": 0.8,
+    "max_dur": 28.0,
+    "max_ref_words": 75
+  },
+  "prep_s": 69.6,
+  "n_selected": 1600,
+  "audio_min": 147.86,
+  "n_clusters": 1234
+}

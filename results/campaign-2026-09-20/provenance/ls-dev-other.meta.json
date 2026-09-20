@@ -1,0 +1,22 @@
+{
+  "source": "openslr/librispeech_asr",
+  "files": [
+    "0000.parquet"
+  ],
+  "n_total": 2864,
+  "n_passing_filter": 2849,
+  "set": "ls-dev-other",
+  "kind": "hf_parquet",
+  "lang": "en",
+  "role": "dev",
+  "domain": "read audiobook, harder",
+  "filter": {
+    "min_dur": 0.8,
+    "max_dur": 28.0,
+    "max_ref_words": 75
+  },
+  "prep_s": 17.5,
+  "n_selected": 1000,
+  "audio_min": 106.32,
+  "n_clusters": 33
+}

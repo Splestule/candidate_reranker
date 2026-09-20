@@ -1,0 +1,27 @@
+{
+  "source": "hf-audio/open-asr-leaderboard",
+  "files": [
+    "test-00009-of-00038.parquet",
+    "test-00028-of-00038.parquet"
+  ],
+  "n_total": 2071,
+  "n_passing_filter": 2071,
+  "shards_used": [
+    9,
+    28
+  ],
+  "set": "spgispeech",
+  "kind": "esb",
+  "lang": "en",
+  "role": "test",
+  "domain": "financial calls, formatted text",
+  "filter": {
+    "min_dur": 0.8,
+    "max_dur": 28.0,
+    "max_ref_words": 75
+  },
+  "prep_s": 26.8,
+  "n_selected": 1600,
+  "audio_min": 240.46,
+  "n_clusters": 728
+}
