@@ -414,3 +414,25 @@ def write_json(path: Path, obj) -> None:
     with open(tmp, "w", encoding="utf-8") as f:
         json.dump(obj, f, indent=2, ensure_ascii=False)
     tmp.replace(path)
+
+
+def build_plan_sweep(cfg: dict) -> list[dict]:
+    """Third session: the temperature ladder on more than one dataset.
+
+    Round 1 swept Drax's temperature on ls-dev-other only; the same job on ami sat at tier 4 and
+    no worker reached it. One dataset cannot carry a claim about how composition scales with
+    candidate disagreement. This plan runs nothing but the ladder, and puts two extra points
+    between T=1.0 and T=1.6, where the whole transition happens and round 1 has no measurement.
+    """
+    sets = sets_for(cfg)
+    for name, s in sets.items():
+        s["name"] = name
+    jobs: list[dict] = []
+    for i, name in enumerate(cfg.get("sweep_sets", ["ami"])):
+        if name not in sets or sets[name]["lang"] not in MODELS["drax"]["langs"]:
+            continue
+        jobs.append(dict(id=f"drax__{name}__s00__sweepT", model="drax",
+                         family=MODELS["drax"]["family"], set=name, lang=sets[name]["lang"],
+                         shard=0, shard_size=cfg["shard_size"], kind="sweepT",
+                         arms=arms_drax_sweep(cfg), tier=0, order=i))
+    return jobs

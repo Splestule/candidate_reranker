@@ -36,6 +36,12 @@ VARIANTS = {
     # and the Whisfusion K=64 scaling job
     "round2": dict(MODE="full", RUN_HOURS=3.5, CONFIG={"plan": "round2", "tail_minutes": 15,
                                                        "drax_low_T": 0.4}),
+    # third session: the Drax temperature ladder on several datasets, dense where it bends
+    "sweep": dict(MODE="full", RUN_HOURS=6.5, CONFIG={
+        "plan": "sweep", "tail_minutes": 15, "models": ["drax"],
+        "sweep_sets": ["ami", "earnings22", "ls-test-other"],
+        "drax_sweep_T": [0.1, 0.4, 0.7, 1.0, 1.15, 1.3, 1.45, 1.6],
+    }),
     # GPU smoke: every model, every job kind, a few utterances each; also calibrates Drax
     "smoke": dict(MODE="smoke", RUN_HOURS=0.9, CONFIG={
         "tail_minutes": 6, "shard_size": 12,

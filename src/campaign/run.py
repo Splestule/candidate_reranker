@@ -181,7 +181,8 @@ def main() -> int:
     cfg["t_start_unix"], cfg["t_end_unix"], cfg["gpu_deadline_unix"] = T_START, t_end, gpu_deadline
     C.write_json(root / "run_config.json", cfg)
 
-    plan = C.build_plan_round2(cfg) if cfg.get("plan") == "round2" else C.build_plan(cfg)
+    _plans = {"round2": C.build_plan_round2, "sweep": C.build_plan_sweep}
+    plan = _plans.get(cfg.get("plan"), C.build_plan)(cfg)
     C.write_json(root / "plan.json", plan)
     info = env_info()
     C.write_json(root / "env.json", info)
