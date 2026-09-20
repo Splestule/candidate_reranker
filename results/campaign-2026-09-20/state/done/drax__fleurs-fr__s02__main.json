@@ -1,0 +1,19 @@
+{
+  "n_ok": 68,
+  "n_err": 0,
+  "audio_s": 664.74,
+  "encode_s": 13.9384605884552,
+  "decode_s": {
+    "main": 257.08339285850525,
+    "ref": 67.20557069778442
+  },
+  "started": 1789894892.6424062,
+  "status": "partial",
+  "wall_s": 338.36770272254944,
+  "n_in_shard": 200,
+  "n_resumed": 0,
+  "peak_mem_mb": 4335.87890625,
+  "job": "drax__fleurs-fr__s02__main",
+  "model": "drax",
+  "lane": 0
+}

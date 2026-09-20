@@ -42,6 +42,15 @@ SET = "ls-test-other"
 MARK_K = (1, 2, 4, 8, 16, 32, 64)
 
 
+def resolve(root: Path, default_out: str) -> tuple[Path, Path]:
+    """Accept a campaign root as the orchestrator leaves it, with everything under
+    <root>/results/, or as the results directory is checked into the repo, with the parquet at
+    the top and the derived files beside it."""
+    if (root / "results" / "per_utt_k.parquet").exists():
+        return root / "results" / "per_utt_k.parquet", root / "results" / default_out
+    return root / "per_utt_k.parquet", root / default_out
+
+
 def ladder(df: pd.DataFrame, model: str, kind: str, arm: str, enc: float, per: float) -> pd.DataFrame:
     g = df[(df["set"] == SET) & (df["model"] == model) & (df["kind"] == kind) & (df["arm"] == arm)]
     rows = []
@@ -79,11 +88,11 @@ def main() -> int:
     ap.add_argument("root")
     ap.add_argument("--out", default=None)
     args = ap.parse_args()
-    root = Path(args.root)
-    out = Path(args.out) if args.out else root / "results" / "paper" / "fig_cost_quality"
+    src, default_out = resolve(Path(args.root), "figures")
+    out = Path(args.out) if args.out else default_out / "fig_cost_quality"
     out.parent.mkdir(parents=True, exist_ok=True)
 
-    df = pd.read_parquet(root / "results" / "per_utt_k.parquet")
+    df = pd.read_parquet(src)
 
     fig, ax = plt.subplots(figsize=(7.6, 5.0), dpi=220)
     fig.patch.set_facecolor(SURFACE)

@@ -1,0 +1,19 @@
+{
+  "n_ok": 200,
+  "n_err": 0,
+  "audio_s": 1950.9799999999993,
+  "encode_s": 61.82289695739746,
+  "decode_s": {
+    "greedy": 0.2347257137298584,
+    "sample": 4.761624813079834
+  },
+  "started": 1789898357.3757749,
+  "status": "done",
+  "wall_s": 67.25523376464844,
+  "n_in_shard": 200,
+  "n_resumed": 0,
+  "peak_mem_mb": 2160.333984375,
+  "job": "parakeet-ctc__fleurs-en__s00__main",
+  "model": "parakeet-ctc",
+  "lane": 1
+}

@@ -1,0 +1,20 @@
+{
+  "n_ok": 200,
+  "n_err": 0,
+  "audio_s": 1299.4600000000007,
+  "encode_s": 8.88880443572998,
+  "decode_s": {
+    "base16": 226.23385953903198,
+    "steps8": 449.61757493019104,
+    "fss_T1": 232.60500359535217
+  },
+  "started": 1789870976.4396062,
+  "status": "done",
+  "wall_s": 918.3844203948975,
+  "n_in_shard": 200,
+  "n_resumed": 0,
+  "peak_mem_mb": 2454.1171875,
+  "job": "whisfusion__ls-dev-other__s00__ablation",
+  "model": "whisfusion",
+  "lane": 1
+}

@@ -1,0 +1,20 @@
+{
+  "n_ok": 200,
+  "n_err": 0,
+  "audio_s": 1950.9799999999993,
+  "encode_s": 3.5850889682769775,
+  "decode_s": {
+    "greedy": 78.6652942577362,
+    "beam": 126.78826343383794,
+    "sample": 93.61537084503173
+  },
+  "started": 1789899763.8686302,
+  "status": "done",
+  "wall_s": 343.44713401794434,
+  "n_in_shard": 200,
+  "n_resumed": 0,
+  "peak_mem_mb": 1514.20458984375,
+  "job": "whisper-small__fleurs-en__s00__main",
+  "model": "whisper-small",
+  "lane": 1
+}

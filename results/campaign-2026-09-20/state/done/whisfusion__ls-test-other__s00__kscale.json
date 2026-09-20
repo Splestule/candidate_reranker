@@ -1,0 +1,18 @@
+{
+  "n_ok": 200,
+  "n_err": 0,
+  "audio_s": 1304.725000000001,
+  "encode_s": 6.4015724658966064,
+  "decode_s": {
+    "K64": 783.2063634395599
+  },
+  "started": 1789900476.5281672,
+  "status": "done",
+  "wall_s": 790.8208639621735,
+  "n_in_shard": 200,
+  "n_resumed": 0,
+  "peak_mem_mb": 7705.478515625,
+  "job": "whisfusion__ls-test-other__s00__kscale",
+  "model": "whisfusion",
+  "lane": 1
+}

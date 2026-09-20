@@ -1,0 +1,18 @@
+{
+  "n_ok": 200,
+  "n_err": 0,
+  "audio_s": 1253.4199999999996,
+  "encode_s": 7.892223596572876,
+  "decode_s": {
+    "main": 486.72777915000916
+  },
+  "started": 1789868254.9476452,
+  "status": "done",
+  "wall_s": 495.24087023735046,
+  "n_in_shard": 200,
+  "n_resumed": 0,
+  "peak_mem_mb": 4204.26171875,
+  "job": "whisfusion__earnings22__s00__main",
+  "model": "whisfusion",
+  "lane": 0
+}

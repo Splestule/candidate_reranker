@@ -1,0 +1,19 @@
+{
+  "n_ok": 200,
+  "n_err": 0,
+  "audio_s": 1326.5799999999995,
+  "encode_s": 37.846763134002686,
+  "decode_s": {
+    "main": 696.7966046333313,
+    "ref": 183.39076972007751
+  },
+  "started": 1789889011.5999663,
+  "status": "done",
+  "wall_s": 918.3980588912964,
+  "n_in_shard": 200,
+  "n_resumed": 0,
+  "peak_mem_mb": 4335.87890625,
+  "job": "drax__earnings22__s02__main",
+  "model": "drax",
+  "lane": 1
+}

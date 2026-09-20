@@ -62,17 +62,23 @@ recomputed without a GPU and every claim traced back to the run that produced it
 | `grid.parquet` | the ROVER and conf + lambda*MBR grids at the main k | 1.5 MB |
 | `manifests/<set>.jsonl.gz` | which utterances were used, in order, with cluster ids | 1.9 MB |
 | `logs/round{1,2}/` | the Kaggle console log, both lane logs, the prep log and one log per worker | 0.6 MB |
-| `provenance/jobs.jsonl` | one line per job that ran: wall time, encode and decode seconds, peak memory, status | 146 lines |
+| `provenance/jobs.jsonl` | one line per job that ran: wall time, encode and decode seconds, peak memory, status, session | 146 lines |
 | `provenance/` | the plan, config, environment and dataset metadata of each session | |
+| `plan.json`, `run_config.json`, `state/done/` | the merged plan and the done markers, so the directory is itself a campaign root the tooling can read | 0.4 MB |
 | `tables/`, `figures/`, `REPORT.md`, `campaign_summary.json` | the analysis | 2 MB |
 
+The whole chain reruns on a CPU, from the candidate transcripts up:
+
 ```bash
-PYTHONPATH=src python tools/paper_tables.py .          # from the campaign directory
-PYTHONPATH=src python tools/fig_cost_quality.py .
+PYTHONPATH=src python -m campaign.analysis --root results/campaign-2026-09-20 --redo   # dumps -> analysis/
+PYTHONPATH=src python -m campaign.aggregate --root results/campaign-2026-09-20         # -> per_utt_k, tables
+PYTHONPATH=src python tools/paper_tables.py results/campaign-2026-09-20                # -> tables/paper/
+PYTHONPATH=src python tools/fig_cost_quality.py results/campaign-2026-09-20            # -> figures/
 ```
 
-Both read `per_utt_k.parquet` only. To go further back, the dumps are self-contained: each line is
-one utterance with its K candidates, so `campaign.analysis` can be rerun end to end on CPU.
+The last two read `per_utt_k.parquet` only and reproduce the checked-in CSVs byte for byte. The
+first is the expensive one, a few seconds per job on one core, and is the reason the dumps are
+here: it is where a different composition rule would be tried without decoding anything again.
 
 Methods in the tables: `first` (one decode, no selection), `conf`/`minconf`/`logprob` (model score),
 `mbr`, `cm05`/`cm15` (conf + lambda*MBR), `rover_freq` (one vote each), `rover_c` (vote share mixed

@@ -1,0 +1,20 @@
+{
+  "n_ok": 107,
+  "n_err": 0,
+  "audio_s": 629.4799999999999,
+  "encode_s": 1.376053810119629,
+  "decode_s": {
+    "greedy": 30.611851715087887,
+    "beam": 47.277334990310685,
+    "sample": 41.73750132560732
+  },
+  "started": 1789908821.0087197,
+  "status": "partial",
+  "wall_s": 188.50479221343994,
+  "n_in_shard": 200,
+  "n_resumed": 0,
+  "peak_mem_mb": 2200.27978515625,
+  "job": "whisper-turbo__earnings22__s01__main",
+  "model": "whisper-turbo",
+  "lane": 0
+}

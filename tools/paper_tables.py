@@ -20,6 +20,15 @@ NOISE = {"ls-test-clean": ("clean", 99), "ls-tc-babble10": ("babble 10 dB", 10),
 MULTI = ["fleurs-de", "fleurs-fr", "fleurs-es", "fleurs-it", "fleurs-pt"]
 
 
+def resolve(root: Path, default_out: str) -> tuple[Path, Path]:
+    """Accept a campaign root as the orchestrator leaves it, with everything under
+    <root>/results/, or as the results directory is checked into the repo, with the parquet at
+    the top and the derived files beside it."""
+    if (root / "results" / "per_utt_k.parquet").exists():
+        return root / "results" / "per_utt_k.parquet", root / "results" / default_out
+    return root / "per_utt_k.parquet", root / default_out
+
+
 def wer(g: pd.DataFrame, col: str) -> float:
     return 100.0 * g[col].sum() / max(g["ref_len"].sum(), 1)
 
@@ -131,11 +140,11 @@ def main() -> int:
     ap.add_argument("root")
     ap.add_argument("--out", default=None)
     args = ap.parse_args()
-    root = Path(args.root)
-    out = Path(args.out) if args.out else root / "results" / "paper"
+    src, default_out = resolve(Path(args.root), "tables/paper")
+    out = Path(args.out) if args.out else default_out
     out.mkdir(parents=True, exist_ok=True)
 
-    df = pd.read_parquet(root / "results" / "per_utt_k.parquet")
+    df = pd.read_parquet(src)
     m = main_arms(df)
     tables = {"noise_ladder": t_noise(m), "cells": t_cells(m), "by_length": t_length(m),
               "headroom": t_headroom(m), "k_scaling": t_kscale(df), "temperature_sweep": t_sweep(df)}
