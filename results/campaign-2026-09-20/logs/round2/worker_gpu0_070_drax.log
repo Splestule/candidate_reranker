@@ -1,0 +1,60 @@
+[10:37:26] [lane0 drax] host 2af9ea10db47  cuda=True  device=Tesla T4
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[drax] decoder 580M (fp16 blocks), encoder 637M, canvas 128, vocab 51866
+[10:38:42] [lane0 drax] model loaded in 76 s
+[10:38:42] [lane0 drax] job drax__ls-test-clean__s00__lowT: 200 utts, 0 already done, arms ['lowT']
+[10:41:35] [lane0 drax]   drax__ls-test-clean__s00__lowT: 50/200  3.45 s/utt
+[10:44:36] [lane0 drax]   drax__ls-test-clean__s00__lowT: 100/200  3.54 s/utt
+[10:47:39] [lane0 drax]   drax__ls-test-clean__s00__lowT: 150/200  3.58 s/utt
+[10:50:49] [lane0 drax]   drax__ls-test-clean__s00__lowT: 200/200  3.63 s/utt
+[10:50:49] [lane0 drax] done drax__ls-test-clean__s00__lowT [done] 200 utts in 12.1 min (3.63 s/utt, RTF 0.511)
+[10:50:49] [lane0 drax] job drax__ami__s00__lowT: 200 utts, 0 already done, arms ['lowT']
+[10:53:53] [lane0 drax]   drax__ami__s00__lowT: 50/200  3.68 s/utt
+[10:56:57] [lane0 drax]   drax__ami__s00__lowT: 100/200  3.68 s/utt
+[11:00:00] [lane0 drax]   drax__ami__s00__lowT: 150/200  3.68 s/utt
+[11:03:04] [lane0 drax]   drax__ami__s00__lowT: 200/200  3.67 s/utt
+[11:03:04] [lane0 drax] done drax__ami__s00__lowT [done] 200 utts in 12.3 min (3.68 s/utt, RTF 1.193)
+[11:03:04] [lane0 drax] job drax__voxpopuli__s00__lowT: 200 utts, 0 already done, arms ['lowT']
+[11:06:08] [lane0 drax]   drax__voxpopuli__s00__lowT: 50/200  3.67 s/utt
+[11:09:12] [lane0 drax]   drax__voxpopuli__s00__lowT: 100/200  3.68 s/utt
+[11:12:16] [lane0 drax]   drax__voxpopuli__s00__lowT: 150/200  3.68 s/utt
+[11:15:20] [lane0 drax]   drax__voxpopuli__s00__lowT: 200/200  3.68 s/utt
+[11:15:20] [lane0 drax] done drax__voxpopuli__s00__lowT [done] 200 utts in 12.3 min (3.68 s/utt, RTF 0.539)
+[11:15:20] [lane0 drax] job drax__spgispeech__s00__lowT: 200 utts, 0 already done, arms ['lowT']
+[11:18:24] [lane0 drax]   drax__spgispeech__s00__lowT: 50/200  3.69 s/utt
+[11:21:29] [lane0 drax]   drax__spgispeech__s00__lowT: 100/200  3.69 s/utt
+[11:24:33] [lane0 drax]   drax__spgispeech__s00__lowT: 150/200  3.69 s/utt
+[11:27:37] [lane0 drax]   drax__spgispeech__s00__lowT: 200/200  3.69 s/utt
+[11:27:37] [lane0 drax] done drax__spgispeech__s00__lowT [done] 200 utts in 12.3 min (3.69 s/utt, RTF 0.404)
+[11:27:37] [lane0 drax] job drax__fleurs-en__s00__lowT: 200 utts, 0 already done, arms ['lowT']
+[11:30:41] [lane0 drax]   drax__fleurs-en__s00__lowT: 50/200  3.68 s/utt
+[11:33:46] [lane0 drax]   drax__fleurs-en__s00__lowT: 100/200  3.69 s/utt
+[11:36:50] [lane0 drax]   drax__fleurs-en__s00__lowT: 150/200  3.68 s/utt
+[11:39:54] [lane0 drax]   drax__fleurs-en__s00__lowT: 200/200  3.69 s/utt
+[11:39:54] [lane0 drax] done drax__fleurs-en__s00__lowT [done] 200 utts in 12.3 min (3.69 s/utt, RTF 0.378)
+[11:39:54] [lane0 drax] job drax__ls-tc-babble10__s00__lowT: 200 utts, 0 already done, arms ['lowT']
+[11:42:58] [lane0 drax]   drax__ls-tc-babble10__s00__lowT: 50/200  3.68 s/utt
+[11:46:02] [lane0 drax]   drax__ls-tc-babble10__s00__lowT: 100/200  3.68 s/utt
+[11:49:06] [lane0 drax]   drax__ls-tc-babble10__s00__lowT: 150/200  3.68 s/utt
+[11:52:10] [lane0 drax]   drax__ls-tc-babble10__s00__lowT: 200/200  3.68 s/utt
+[11:52:10] [lane0 drax] done drax__ls-tc-babble10__s00__lowT [done] 200 utts in 12.3 min (3.68 s/utt, RTF 0.517)
+[11:52:10] [lane0 drax] job drax__ls-tc-babble0__s00__lowT: 200 utts, 0 already done, arms ['lowT']
+[11:55:14] [lane0 drax]   drax__ls-tc-babble0__s00__lowT: 50/200  3.68 s/utt
+[11:58:18] [lane0 drax]   drax__ls-tc-babble0__s00__lowT: 100/200  3.68 s/utt
+[12:01:22] [lane0 drax]   drax__ls-tc-babble0__s00__lowT: 150/200  3.68 s/utt
+[12:04:26] [lane0 drax]   drax__ls-tc-babble0__s00__lowT: 200/200  3.68 s/utt
+[12:04:26] [lane0 drax] done drax__ls-tc-babble0__s00__lowT [done] 200 utts in 12.3 min (3.68 s/utt, RTF 0.518)
+[12:04:26] [lane0 drax] job drax__fleurs-de__s00__lowT: 200 utts, 0 already done, arms ['lowT']
+[12:07:31] [lane0 drax]   drax__fleurs-de__s00__lowT: 50/200  3.70 s/utt
+[12:10:36] [lane0 drax]   drax__fleurs-de__s00__lowT: 100/200  3.70 s/utt
+[12:13:41] [lane0 drax]   drax__fleurs-de__s00__lowT: 150/200  3.70 s/utt
+[12:16:46] [lane0 drax]   drax__fleurs-de__s00__lowT: 200/200  3.70 s/utt
+[12:16:46] [lane0 drax] done drax__fleurs-de__s00__lowT [done] 200 utts in 12.3 min (3.70 s/utt, RTF 0.292)
+[12:16:46] [lane0 drax] job drax__fleurs-it__s00__lowT: 200 utts, 0 already done, arms ['lowT']
+[12:19:51] [lane0 drax]   drax__fleurs-it__s00__lowT: 50/200  3.70 s/utt
+[12:22:56] [lane0 drax]   drax__fleurs-it__s00__lowT: 100/200  3.70 s/utt
+[12:26:00] [lane0 drax]   drax__fleurs-it__s00__lowT: 150/200  3.70 s/utt
+[12:29:06] [lane0 drax]   drax__fleurs-it__s00__lowT: 200/200  3.70 s/utt
+[12:29:06] [lane0 drax] done drax__fleurs-it__s00__lowT [done] 200 utts in 12.3 min (3.70 s/utt, RTF 0.252)
+[12:29:06] [lane0 drax] yielding: another model has lower-tier work waiting
+[12:29:06] [lane0 drax] exiting after 9 jobs

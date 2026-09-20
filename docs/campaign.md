@@ -50,6 +50,30 @@ for Drax too.
 | `results/campaign_summary.json`, `results/REPORT.md` | everything above in one file, and readable |
 | `manifests.tar`, `state.tar`, `logs.tar`, `analysis.tar` | provenance |
 
+## What is checked in
+
+`results/campaign-2026-09-20/` is the whole of both sessions, merged, so every number can be
+recomputed without a GPU and every claim traced back to the run that produced it.
+
+| path | what | size |
+|---|---|---|
+| `dumps/<job>/<arm>.jsonl.gz` | the raw data: every one of the ~695,000 candidate transcripts, with per-token confidences, timings and the reference | 41 MB |
+| `per_utt_k.parquet` | one row per (model, set, arm, utterance, k); the input to every table below | 6.3 MB |
+| `grid.parquet` | the ROVER and conf + lambda*MBR grids at the main k | 1.5 MB |
+| `manifests/<set>.jsonl.gz` | which utterances were used, in order, with cluster ids | 1.9 MB |
+| `logs/round{1,2}/` | the Kaggle console log, both lane logs, the prep log and one log per worker | 0.6 MB |
+| `provenance/jobs.jsonl` | one line per job that ran: wall time, encode and decode seconds, peak memory, status | 146 lines |
+| `provenance/` | the plan, config, environment and dataset metadata of each session | |
+| `tables/`, `figures/`, `REPORT.md`, `campaign_summary.json` | the analysis | 2 MB |
+
+```bash
+PYTHONPATH=src python tools/paper_tables.py .          # from the campaign directory
+PYTHONPATH=src python tools/fig_cost_quality.py .
+```
+
+Both read `per_utt_k.parquet` only. To go further back, the dumps are self-contained: each line is
+one utterance with its K candidates, so `campaign.analysis` can be rerun end to end on CPU.
+
 Methods in the tables: `first` (one decode, no selection), `conf`/`minconf`/`logprob` (model score),
 `mbr`, `cm05`/`cm15` (conf + lambda*MBR), `rover_freq` (one vote each), `rover_c` (vote share mixed
 with word confidence, alpha 0.5, eps 0.7), `rover_cg` (the same with near-duplicates sharing a vote,

@@ -34,8 +34,10 @@ Three things not in the paper:
 
 Two Kaggle T4 x2 sessions (11 h + 3.3 h) extend all of the above to more models and far more
 data: 146 jobs, 28,900 utterance decodes, ~695,000 candidate transcripts, zero failed jobs.
-Design, outputs and how to rerun: [docs/campaign.md](docs/campaign.md). Findings, tables and the
-per-utterance data: [results/campaign-2026-09-20](results/campaign-2026-09-20)
+Design, outputs and how to rerun: [docs/campaign.md](docs/campaign.md). Everything both sessions
+produced is in [results/campaign-2026-09-20](results/campaign-2026-09-20) — the raw candidate
+dumps, the per-utterance table, the dataset manifests, the Kaggle and per-worker logs, a record of
+every job, and the tables and figures derived from them
 ([REPORT.md](results/campaign-2026-09-20/REPORT.md)).
 
 Models: Whisfusion (masked diffusion, K = 32), Drax (discrete flow matching, K = 16 at T = 1.3

@@ -1,0 +1,836 @@
+[{"stream_name":"stderr","time":6.691198922,"data":"/usr/local/lib/python3.12/dist-packages/nbformat/__init__.py:96: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.\n"}
+,{"stream_name":"stderr","time":6.691257673,"data":"  validate(nb)\n"}
+,{"stream_name":"stderr","time":7.600612942,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":7.600638861,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":7.600643955,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":7.600647889,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":8.220064707,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":8.220092974,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":8.220099135,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":8.220103273,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":9.392470115,"data":"Writing /kaggle/working/code/src/scorers.py\n"}
+,{"stream_name":"stdout","time":9.41411728,"data":"Writing /kaggle/working/code/src/compose.py\n"}
+,{"stream_name":"stdout","time":9.433131991,"data":"Writing /kaggle/working/code/src/bootstrap.py\n"}
+,{"stream_name":"stdout","time":9.454380158,"data":"Writing /kaggle/working/code/src/decode.py\n"}
+,{"stream_name":"stdout","time":9.474529114,"data":"Writing /kaggle/working/code/src/wf_model.py\n"}
+,{"stream_name":"stdout","time":9.495206986,"data":"Writing /kaggle/working/code/src/wf_compat.py\n"}
+,{"stream_name":"stdout","time":9.514637301,"data":"Writing /kaggle/working/code/src/data.py\n"}
+,{"stream_name":"stdout","time":9.533718257,"data":"Writing /kaggle/working/code/src/campaign/__init__.py\n"}
+,{"stream_name":"stdout","time":9.561692462,"data":"Writing /kaggle/working/code/src/campaign/config.py\n"}
+,{"stream_name":"stdout","time":9.586229909,"data":"Writing /kaggle/working/code/src/campaign/state.py\n"}
+,{"stream_name":"stdout","time":9.607259359,"data":"Writing /kaggle/working/code/src/campaign/tokwords.py\n"}
+,{"stream_name":"stdout","time":9.63464923,"data":"Writing /kaggle/working/code/src/campaign/prep_data.py\n"}
+,{"stream_name":"stdout","time":9.658211324,"data":"Writing /kaggle/working/code/src/campaign/drax_fast.py\n"}
+,{"stream_name":"stdout","time":9.682409959,"data":"Writing /kaggle/working/code/src/campaign/families.py\n"}
+,{"stream_name":"stdout","time":9.707356951,"data":"Writing /kaggle/working/code/src/campaign/worker.py\n"}
+,{"stream_name":"stdout","time":9.732921898,"data":"Writing /kaggle/working/code/src/campaign/analysis.py\n"}
+,{"stream_name":"stdout","time":9.76638647,"data":"Writing /kaggle/working/code/src/campaign/aggregate.py\n"}
+,{"stream_name":"stdout","time":9.792203064,"data":"Writing /kaggle/working/code/src/campaign/run.py\n"}
+,{"stream_name":"stdout","time":20.124793085,"data":"upstream: {'Whisfusion': 'aa9afe3688ccd15ebf096ec9845d67925d1a3aea', 'drax': 'ffab757b1c88d9c6cdf9912d543032f98fc085e3'}\n"}
+,{"stream_name":"stdout","time":24.67627015,"data":"torch 2.10.0+cu128 gpus ['Tesla T4', 'Tesla T4']\n"}
+,{"stream_name":"stdout","time":24.676349133,"data":"setup 15 s\n"}
+,{"stream_name":"stdout","time":24.877784845,"data":"campaign budget 3.50 h\n"}
+,{"stream_name":"stdout","time":43.877843399,"data":"[09:42:22 +   0.3m] env: {\"python\": \"3.12.13\", \"host\": \"2af9ea10db47\", \"torch\": \"2.10.0+cu128\", \"cuda\": \"12.8\", \"n_gpus\": 2, \"gpus\": [\"Tesla T4\", \"Tesla T4\"], \"transformers\": \"5.0.0\", \"huggingface_hub\": \"1.11.0\", \"numpy\": \"2.0.2\", \"pandas\": \"2.3.3\", \"rapidfuzz\": \"3.14.6\", \"soundfile\": \"0.13.1\", \"librosa\": \"0.11.0\", \"nvidia_smi\": \"Tesla T4, 15360 MiB, 580.159.04\\nTesla T4, 15360 MiB, 580.159.04\", \"tmp_free_gb\": 1100.2, \"cpu_count\": 4}\n"}
+,{"stream_name":"stdout","time":43.878471908,"data":"[09:42:22 +   0.3m] plan: 135 jobs, per tier {0: 24, 1: 20, 2: 24, 3: 19, 4: 48}; GPU work until +3.25 h, results by +3.50 h\n"}
+,{"stream_name":"stdout","time":63.909000983,"data":"[09:42:42 +   0.7m] progress: jobs {'waiting': 135}; tiers {0: '0/24', 1: '0/20', 2: '0/24', 3: '0/19', 4: '0/48'}; analysed 0/0\n"}
+,{"stream_name":"stdout","time":103.953037504,"data":"[09:43:22 +   1.3m] lane 0: starting whisper-turbo\n"}
+,{"stream_name":"stdout","time":103.954674234,"data":"[09:43:22 +   1.3m] lane 1: starting whisper-small\n"}
+,{"stream_name":"stdout","time":494.127489329,"data":"[09:49:52 +   7.8m] lane 1: whisper-small exited rc=0, 1 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":494.128537025,"data":"[09:49:52 +   7.8m]     done whisper-small__ls-dev-other__s00__main [done] 200 utts in 6.0 min (1.79 s/utt, RTF 0.276)\n"}
+,{"stream_name":"stdout","time":494.149170666,"data":"[09:49:52 +   7.8m] lane 1: starting parakeet-ctc\n"}
+,{"stream_name":"stdout","time":551.164882143,"data":"[09:50:49 +   8.8m] lane 0: whisper-turbo exited rc=0, 1 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":551.166034022,"data":"[09:50:49 +   8.8m]     done whisper-turbo__ls-dev-other__s00__main [done] 200 utts in 6.4 min (1.93 s/utt, RTF 0.297)\n"}
+,{"stream_name":"stdout","time":551.167119454,"data":"[09:50:49 +   8.8m] lane 0: starting whisper-turbo\n"}
+,{"stream_name":"stdout","time":554.138232734,"data":"[09:50:52 +   8.8m] lane 0: whisper-turbo exited rc=0, 0 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":554.139759884,"data":"[09:50:52 +   8.8m] lane 0: starting whisper-turbo\n"}
+,{"stream_name":"stdout","time":556.655187516,"data":"[09:50:55 +   8.9m] lane 0: whisper-turbo exited rc=0, 0 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":556.656207234,"data":"[09:50:55 +   8.9m] lane 0: starting whisper-turbo\n"}
+,{"stream_name":"stdout","time":560.109395016,"data":"[09:50:58 +   8.9m] lane 0: whisper-turbo exited rc=0, 0 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":560.111095233,"data":"[09:50:58 +   8.9m] lane 0: starting whisper-turbo\n"}
+,{"stream_name":"stdout","time":563.028809204,"data":"[09:51:01 +   9.0m] lane 0: whisper-turbo exited rc=0, 0 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":563.029219747,"data":"[09:51:01 +   9.0m] lane 0: starting whisper-turbo\n"}
+,{"stream_name":"stdout","time":566.199371905,"data":"[09:51:04 +   9.0m] lane 0: whisper-turbo exited rc=0, 0 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":566.201623949,"data":"[09:51:04 +   9.0m] lane 0: starting whisper-turbo\n"}
+,{"stream_name":"stdout","time":569.564819039,"data":"[09:51:08 +   9.1m] lane 0: whisper-turbo exited rc=0, 0 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":569.56783814,"data":"[09:51:08 +   9.1m] lane 0: starting whisper-turbo\n"}
+,{"stream_name":"stdout","time":572.991366458,"data":"[09:51:11 +   9.1m] lane 0: whisper-turbo exited rc=0, 0 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":572.992397788,"data":"[09:51:11 +   9.1m] lane 0: starting whisper-turbo\n"}
+,{"stream_name":"stdout","time":576.154033902,"data":"[09:51:14 +   9.2m] lane 0: whisper-turbo exited rc=0, 0 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":576.15548388,"data":"[09:51:14 +   9.2m] lane 0: starting whisper-turbo\n"}
+,{"stream_name":"stdout","time":579.10955805,"data":"[09:51:17 +   9.2m] lane 0: whisper-turbo exited rc=0, 0 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":579.110715213,"data":"[09:51:17 +   9.2m] lane 0: starting whisper-turbo\n"}
+,{"stream_name":"stdout","time":581.979789638,"data":"[09:51:20 +   9.3m] lane 0: whisper-turbo exited rc=0, 0 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":581.980508154,"data":"[09:51:20 +   9.3m] lane 0: starting whisper-turbo\n"}
+,{"stream_name":"stdout","time":584.547163551,"data":"[09:51:23 +   9.3m] lane 0: whisper-turbo exited rc=0, 0 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":584.548558049,"data":"[09:51:23 +   9.3m] lane 0: starting whisper-turbo\n"}
+,{"stream_name":"stdout","time":586.991827166,"data":"[09:51:25 +   9.4m] lane 0: whisper-turbo exited rc=0, 0 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":586.993401577,"data":"[09:51:25 +   9.4m] lane 0: starting whisper-turbo\n"}
+,{"stream_name":"stdout","time":589.518929936,"data":"[09:51:28 +   9.4m] lane 0: whisper-turbo exited rc=0, 0 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":589.520723035,"data":"[09:51:28 +   9.4m] lane 0: starting whisper-turbo\n"}
+,{"stream_name":"stdout","time":592.272786359,"data":"[09:51:30 +   9.5m] lane 0: whisper-turbo exited rc=0, 0 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":592.273060507,"data":"[09:51:30 +   9.5m] lane 0: starting whisper-turbo\n"}
+,{"stream_name":"stdout","time":595.335823137,"data":"[09:51:33 +   9.5m] lane 0: whisper-turbo exited rc=0, 0 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":595.337739424,"data":"[09:51:33 +   9.5m] lane 0: starting whisper-turbo\n"}
+,{"stream_name":"stdout","time":598.003824521,"data":"[09:51:36 +   9.6m] lane 0: whisper-turbo exited rc=0, 0 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":598.005633327,"data":"[09:51:36 +   9.6m] lane 0: starting whisper-turbo\n"}
+,{"stream_name":"stdout","time":600.978517608,"data":"[09:51:39 +   9.6m] lane 0: whisper-turbo exited rc=0, 0 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":600.980857999,"data":"[09:51:39 +   9.6m] lane 0: starting whisper-turbo\n"}
+,{"stream_name":"stdout","time":604.096597481,"data":"[09:51:42 +   9.7m] lane 0: whisper-turbo exited rc=0, 0 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":604.097570633,"data":"[09:51:42 +   9.7m] lane 0: starting whisper-turbo\n"}
+,{"stream_name":"stdout","time":607.49304969,"data":"[09:51:46 +   9.7m] lane 0: whisper-turbo exited rc=0, 0 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":607.493086594,"data":"[09:51:46 +   9.7m] lane 0: starting whisper-turbo\n"}
+,{"stream_name":"stdout","time":610.090434899,"data":"[09:51:48 +   9.8m] lane 0: whisper-turbo exited rc=0, 0 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":610.091616868,"data":"[09:51:48 +   9.8m] lane 0: starting whisper-turbo\n"}
+,{"stream_name":"stdout","time":612.634992237,"data":"[09:51:51 +   9.8m] lane 0: whisper-turbo exited rc=0, 0 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":612.635921878,"data":"[09:51:51 +   9.8m] lane 0: starting whisper-turbo\n"}
+,{"stream_name":"stdout","time":615.242689482,"data":"[09:51:53 +   9.8m] lane 0: whisper-turbo exited rc=0, 0 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":615.244548937,"data":"[09:51:53 +   9.8m] lane 0: starting whisper-turbo\n"}
+,{"stream_name":"stdout","time":618.011629325,"data":"[09:51:56 +   9.9m] lane 0: whisper-turbo exited rc=0, 0 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":618.01314224,"data":"[09:51:56 +   9.9m] lane 0: starting whisper-turbo\n"}
+,{"stream_name":"stdout","time":620.637375424,"data":"[09:51:59 +   9.9m] lane 0: whisper-turbo exited rc=0, 0 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":620.638418361,"data":"[09:51:59 +   9.9m] lane 0: starting whisper-turbo\n"}
+,{"stream_name":"stdout","time":623.292386066,"data":"[09:52:01 +  10.0m] lane 0: whisper-turbo exited rc=0, 0 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":623.293736225,"data":"[09:52:01 +  10.0m] lane 0: starting whisper-turbo\n"}
+,{"stream_name":"stdout","time":625.841293658,"data":"[09:52:04 +  10.0m] lane 0: whisper-turbo exited rc=0, 0 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":625.843037846,"data":"[09:52:04 +  10.0m] lane 0: starting whisper-turbo\n"}
+,{"stream_name":"stdout","time":628.728154307,"data":"[09:52:07 +  10.1m] lane 0: whisper-turbo exited rc=0, 0 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":628.729799764,"data":"[09:52:07 +  10.1m] lane 0: starting whisper-turbo\n"}
+,{"stream_name":"stdout","time":631.588435195,"data":"[09:52:10 +  10.1m] lane 0: whisper-turbo exited rc=0, 0 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":631.590627278,"data":"[09:52:10 +  10.1m] lane 0: starting whisper-turbo\n"}
+,{"stream_name":"stdout","time":634.136445564,"data":"[09:52:12 +  10.2m] lane 0: whisper-turbo exited rc=0, 0 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":634.138778499,"data":"[09:52:12 +  10.2m] lane 0: starting whisper-turbo\n"}
+,{"stream_name":"stdout","time":636.546400358,"data":"[09:52:15 +  10.2m] lane 0: whisper-turbo exited rc=0, 0 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":636.54871212,"data":"[09:52:15 +  10.2m] lane 0: starting whisper-turbo\n"}
+,{"stream_name":"stdout","time":638.881851612,"data":"[09:52:17 +  10.2m] lane 0: whisper-turbo exited rc=0, 0 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":638.883708377,"data":"[09:52:17 +  10.2m] lane 0: starting whisper-turbo\n"}
+,{"stream_name":"stdout","time":641.764243324,"data":"[09:52:20 +  10.3m] lane 0: whisper-turbo exited rc=0, 0 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":641.765190632,"data":"[09:52:20 +  10.3m] lane 0: starting whisper-turbo\n"}
+,{"stream_name":"stdout","time":644.516592299,"data":"[09:52:23 +  10.3m] lane 0: whisper-turbo exited rc=0, 0 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":644.516634782,"data":"[09:52:23 +  10.3m] lane 0: starting whisper-turbo\n"}
+,{"stream_name":"stdout","time":647.164319265,"data":"[09:52:25 +  10.4m] lane 0: whisper-turbo exited rc=0, 0 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":647.166099254,"data":"[09:52:25 +  10.4m] lane 0: starting whisper-turbo\n"}
+,{"stream_name":"stdout","time":650.08117464,"data":"[09:52:28 +  10.4m] lane 0: whisper-turbo exited rc=0, 0 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":650.082588283,"data":"[09:52:28 +  10.4m] lane 0: starting whisper-turbo\n"}
+,{"stream_name":"stdout","time":653.200575948,"data":"[09:52:31 +  10.5m] lane 0: whisper-turbo exited rc=0, 0 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":653.201732922,"data":"[09:52:31 +  10.5m] lane 0: starting whisper-turbo\n"}
+,{"stream_name":"stdout","time":655.973724177,"data":"[09:52:34 +  10.5m] lane 0: whisper-turbo exited rc=0, 0 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":655.975884936,"data":"[09:52:34 +  10.5m] lane 0: starting whisper-turbo\n"}
+,{"stream_name":"stdout","time":658.608142412,"data":"[09:52:37 +  10.6m] lane 0: whisper-turbo exited rc=0, 0 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":658.609730995,"data":"[09:52:37 +  10.6m] lane 0: starting whisper-turbo\n"}
+,{"stream_name":"stdout","time":661.234701389,"data":"[09:52:39 +  10.6m] lane 0: whisper-turbo exited rc=0, 0 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":661.23703153,"data":"[09:52:39 +  10.6m] lane 0: starting whisper-turbo\n"}
+,{"stream_name":"stdout","time":663.979468859,"data":"[09:52:42 +  10.7m] lane 0: whisper-turbo exited rc=0, 0 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":663.995755126,"data":"[09:52:42 +  10.7m] lane 0: starting whisper-turbo\n"}
+,{"stream_name":"stdout","time":664.091560417,"data":"[09:52:42 +  10.7m] progress: jobs {'done': 2, 'claimed': 1, 'ready': 117, 'waiting': 12, 'dead': 3}; tiers {0: '2/24', 1: '0/20', 2: '0/24', 3: '0/19', 4: '0/48'}; analysed 2/2\n"}
+,{"stream_name":"stdout","time":664.092383942,"data":"[09:52:42 +  10.7m]     whisper-small       1 jobs    200 utts   0.36 h audio   0.10 GPU-h\n"}
+,{"stream_name":"stdout","time":664.093539008,"data":"[09:52:42 +  10.7m]     whisper-turbo       1 jobs    200 utts   0.36 h audio   0.11 GPU-h\n"}
+,{"stream_name":"stdout","time":666.920535673,"data":"[09:52:45 +  10.7m] lane 0: whisper-turbo exited rc=0, 0 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":666.922581601,"data":"[09:52:45 +  10.7m] lane 0: starting whisper-turbo\n"}
+,{"stream_name":"stdout","time":669.720101062,"data":"[09:52:48 +  10.7m] lane 0: whisper-turbo exited rc=0, 0 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":669.721193675,"data":"[09:52:48 +  10.7m] lane 0: starting whisper-turbo\n"}
+,{"stream_name":"stdout","time":672.338248021,"data":"[09:52:50 +  10.8m] lane 0: whisper-turbo exited rc=0, 0 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":672.339413832,"data":"[09:52:50 +  10.8m] lane 0: starting whisper-turbo\n"}
+,{"stream_name":"stdout","time":675.132837625,"data":"[09:52:53 +  10.8m] lane 0: whisper-turbo exited rc=0, 0 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":675.134103508,"data":"[09:52:53 +  10.8m] lane 0: starting whisper-turbo\n"}
+,{"stream_name":"stdout","time":677.883863858,"data":"[09:52:56 +  10.9m] lane 0: whisper-turbo exited rc=0, 0 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":677.885227332,"data":"[09:52:56 +  10.9m] lane 0: starting whisper-turbo\n"}
+,{"stream_name":"stdout","time":680.825630414,"data":"[09:52:59 +  10.9m] lane 0: whisper-turbo exited rc=0, 0 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":680.82725461,"data":"[09:52:59 +  10.9m] lane 0: starting whisper-turbo\n"}
+,{"stream_name":"stdout","time":683.346708083,"data":"[09:53:01 +  11.0m] lane 0: whisper-turbo exited rc=0, 0 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":683.347658331,"data":"[09:53:01 +  11.0m] lane 0: starting whisper-turbo\n"}
+,{"stream_name":"stdout","time":685.893782814,"data":"[09:53:04 +  11.0m] lane 0: whisper-turbo exited rc=0, 0 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":685.895005876,"data":"[09:53:04 +  11.0m] lane 0: starting whisper-turbo\n"}
+,{"stream_name":"stdout","time":688.78008353,"data":"[09:53:07 +  11.1m] lane 0: whisper-turbo exited rc=0, 0 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":688.782376406,"data":"[09:53:07 +  11.1m] lane 0: starting whisper-turbo\n"}
+,{"stream_name":"stdout","time":691.487878072,"data":"[09:53:10 +  11.1m] lane 0: whisper-turbo exited rc=0, 0 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":691.489343816,"data":"[09:53:10 +  11.1m] lane 0: starting whisper-turbo\n"}
+,{"stream_name":"stdout","time":694.324243222,"data":"[09:53:12 +  11.2m] lane 0: whisper-turbo exited rc=0, 0 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":694.324308805,"data":"[09:53:12 +  11.2m] lane 0: starting whisper-turbo\n"}
+,{"stream_name":"stdout","time":697.288404357,"data":"[09:53:15 +  11.2m] lane 0: whisper-turbo exited rc=0, 0 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":697.29078357,"data":"[09:53:15 +  11.2m] lane 0: starting whisper-turbo\n"}
+,{"stream_name":"stdout","time":700.285382337,"data":"[09:53:18 +  11.3m] lane 0: whisper-turbo exited rc=0, 0 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":700.286749249,"data":"[09:53:18 +  11.3m] lane 0: starting whisper-turbo\n"}
+,{"stream_name":"stdout","time":703.381614678,"data":"[09:53:21 +  11.3m] lane 0: whisper-turbo exited rc=0, 0 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":703.384855711,"data":"[09:53:21 +  11.3m] lane 0: starting whisper-turbo\n"}
+,{"stream_name":"stdout","time":706.375552734,"data":"[09:53:24 +  11.4m] lane 0: whisper-turbo exited rc=0, 0 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":706.377113605,"data":"[09:53:24 +  11.4m] lane 0: starting whisper-turbo\n"}
+,{"stream_name":"stdout","time":709.376594134,"data":"[09:53:27 +  11.4m] lane 0: whisper-turbo exited rc=0, 0 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":709.378273194,"data":"[09:53:27 +  11.4m] lane 0: starting whisper-turbo\n"}
+,{"stream_name":"stdout","time":712.106754993,"data":"[09:53:30 +  11.5m] lane 0: whisper-turbo exited rc=0, 0 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":712.109784554,"data":"[09:53:30 +  11.5m] lane 0: starting whisper-turbo\n"}
+,{"stream_name":"stdout","time":714.989341503,"data":"[09:53:33 +  11.5m] lane 0: whisper-turbo exited rc=0, 0 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":714.991577943,"data":"[09:53:33 +  11.5m] lane 0: starting whisper-turbo\n"}
+,{"stream_name":"stdout","time":717.623354824,"data":"[09:53:36 +  11.5m] lane 0: whisper-turbo exited rc=0, 0 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":717.62593499,"data":"[09:53:36 +  11.5m] lane 0: starting whisper-turbo\n"}
+,{"stream_name":"stdout","time":720.801856277,"data":"[09:53:39 +  11.6m] lane 0: whisper-turbo exited rc=0, 0 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":720.803216824,"data":"[09:53:39 +  11.6m] lane 0: starting whisper-turbo\n"}
+,{"stream_name":"stdout","time":723.845897109,"data":"[09:53:42 +  11.7m] lane 0: whisper-turbo exited rc=0, 0 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":723.848602494,"data":"[09:53:42 +  11.7m] lane 0: starting whisper-turbo\n"}
+,{"stream_name":"stdout","time":726.873028179,"data":"[09:53:45 +  11.7m] lane 0: whisper-turbo exited rc=0, 0 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":726.874499194,"data":"[09:53:45 +  11.7m] lane 0: starting whisper-turbo\n"}
+,{"stream_name":"stdout","time":729.785724684,"data":"[09:53:48 +  11.7m] lane 0: whisper-turbo exited rc=0, 0 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":729.788398661,"data":"[09:53:48 +  11.7m] lane 0: starting whisper-turbo\n"}
+,{"stream_name":"stdout","time":732.610344981,"data":"[09:53:51 +  11.8m] lane 0: whisper-turbo exited rc=0, 0 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":732.611768477,"data":"[09:53:51 +  11.8m] lane 0: starting whisper-turbo\n"}
+,{"stream_name":"stdout","time":735.442186428,"data":"[09:53:54 +  11.8m] lane 0: whisper-turbo exited rc=0, 0 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":735.444147419,"data":"[09:53:54 +  11.8m] lane 0: starting whisper-turbo\n"}
+,{"stream_name":"stdout","time":738.137829667,"data":"[09:53:56 +  11.9m] lane 0: whisper-turbo exited rc=0, 0 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":738.13907497,"data":"[09:53:56 +  11.9m] lane 0: starting whisper-turbo\n"}
+,{"stream_name":"stdout","time":740.680132505,"data":"[09:53:59 +  11.9m] lane 0: whisper-turbo exited rc=0, 0 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":740.683278105,"data":"[09:53:59 +  11.9m] lane 0: starting whisper-turbo\n"}
+,{"stream_name":"stdout","time":844.121690529,"data":"[09:55:42 +  13.7m] data prep finished rc=0; failed sets: []\n"}
+,{"stream_name":"stdout","time":1148.289021668,"data":"[10:00:46 +  18.7m] lane 1: parakeet-ctc exited rc=0, 8 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":1148.28990153,"data":"[10:00:46 +  18.7m]     done parakeet-ctc__ls-test-other__s00__main [done] 200 utts in 1.2 min (0.36 s/utt, RTF 0.055)\n"}
+,{"stream_name":"stdout","time":1148.291457333,"data":"[10:00:46 +  18.7m]     done parakeet-ctc__ami__s00__main [done] 200 utts in 0.6 min (0.18 s/utt, RTF 0.057)\n"}
+,{"stream_name":"stdout","time":1148.292717838,"data":"[10:00:46 +  18.7m]     done parakeet-ctc__earnings22__s00__main [done] 200 utts in 0.8 min (0.25 s/utt, RTF 0.040)\n"}
+,{"stream_name":"stdout","time":1148.29390466,"data":"[10:00:46 +  18.7m]     done parakeet-ctc__common_voice__s00__main [done] 200 utts in 0.5 min (0.15 s/utt, RTF 0.027)\n"}
+,{"stream_name":"stdout","time":1148.295177673,"data":"[10:00:46 +  18.7m]     done parakeet-ctc__fleurs-en__s00__main [done] 200 utts in 1.1 min (0.34 s/utt, RTF 0.034)\n"}
+,{"stream_name":"stdout","time":1148.296513852,"data":"[10:00:46 +  18.7m]     done parakeet-ctc__ls-tc-babble5__s00__main [done] 200 utts in 0.3 min (0.10 s/utt, RTF 0.014)\n"}
+,{"stream_name":"stdout","time":1148.297803902,"data":"[10:00:46 +  18.7m] lane 1: starting whisper-small\n"}
+,{"stream_name":"stdout","time":1264.205616637,"data":"[10:02:42 +  20.7m] progress: jobs {'done': 11, 'claimed': 2, 'ready': 119, 'dead': 3}; tiers {0: '11/24', 1: '0/20', 2: '0/24', 3: '0/19', 4: '0/48'}; analysed 11/11\n"}
+,{"stream_name":"stdout","time":1264.206772103,"data":"[10:02:42 +  20.7m]     parakeet-ctc        8 jobs   1600 utts   2.88 h audio   0.17 GPU-h\n"}
+,{"stream_name":"stdout","time":1264.207761575,"data":"[10:02:42 +  20.7m]     whisper-small       1 jobs    200 utts   0.36 h audio   0.10 GPU-h\n"}
+,{"stream_name":"stdout","time":1264.208743353,"data":"[10:02:42 +  20.7m]     whisper-turbo       2 jobs    400 utts   0.76 h audio   0.22 GPU-h\n"}
+,{"stream_name":"stdout","time":1864.237807377,"data":"[10:12:42 +  30.7m] progress: jobs {'done': 15, 'claimed': 2, 'ready': 115, 'dead': 3}; tiers {0: '15/24', 1: '0/20', 2: '0/24', 3: '0/19', 4: '0/48'}; analysed 14/15\n"}
+,{"stream_name":"stdout","time":1864.237864925,"data":"[10:12:42 +  30.7m]     parakeet-ctc        8 jobs   1600 utts   2.88 h audio   0.17 GPU-h\n"}
+,{"stream_name":"stdout","time":1864.23787408,"data":"[10:12:42 +  30.7m]     whisper-small       3 jobs    600 utts   1.12 h audio   0.27 GPU-h\n"}
+,{"stream_name":"stdout","time":1864.237879517,"data":"[10:12:42 +  30.7m]     whisper-turbo       4 jobs    800 utts   1.29 h audio   0.41 GPU-h\n"}
+,{"stream_name":"stdout","time":2464.267826685,"data":"[10:22:42 +  40.7m] progress: jobs {'done': 18, 'claimed': 2, 'ready': 112, 'dead': 3}; tiers {0: '18/24', 1: '0/20', 2: '0/24', 3: '0/19', 4: '0/48'}; analysed 18/18\n"}
+,{"stream_name":"stdout","time":2464.267913882,"data":"[10:22:42 +  40.7m]     parakeet-ctc        8 jobs   1600 utts   2.88 h audio   0.17 GPU-h\n"}
+,{"stream_name":"stdout","time":2464.26792026,"data":"[10:22:42 +  40.7m]     whisper-small       5 jobs   1000 utts   1.64 h audio   0.41 GPU-h\n"}
+,{"stream_name":"stdout","time":2464.268696371,"data":"[10:22:42 +  40.7m]     whisper-turbo       5 jobs   1000 utts   1.64 h audio   0.51 GPU-h\n"}
+,{"stream_name":"stdout","time":3064.295673747,"data":"[10:32:42 +  50.7m] progress: jobs {'done': 22, 'claimed': 2, 'ready': 108, 'dead': 3}; tiers {0: '22/24', 1: '0/20', 2: '0/24', 3: '0/19', 4: '0/48'}; analysed 22/22\n"}
+,{"stream_name":"stdout","time":3064.29632923,"data":"[10:32:42 +  50.7m]     parakeet-ctc        8 jobs   1600 utts   2.88 h audio   0.17 GPU-h\n"}
+,{"stream_name":"stdout","time":3064.297383821,"data":"[10:32:42 +  50.7m]     whisper-small       7 jobs   1400 utts   2.48 h audio   0.56 GPU-h\n"}
+,{"stream_name":"stdout","time":3064.298148625,"data":"[10:32:42 +  50.7m]     whisper-turbo       7 jobs   1400 utts   2.48 h audio   0.72 GPU-h\n"}
+,{"stream_name":"stdout","time":3148.804822496,"data":"[10:34:07 +  52.1m] lane 1: whisper-small exited rc=0, 7 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":3148.805546789,"data":"[10:34:07 +  52.1m]     done whisper-small__ls-test-other__s00__main [done] 200 utts in 5.0 min (1.50 s/utt, RTF 0.230)\n"}
+,{"stream_name":"stdout","time":3148.80652057,"data":"[10:34:07 +  52.1m]     done whisper-small__ami__s00__main [done] 200 utts in 3.6 min (1.07 s/utt, RTF 0.346)\n"}
+,{"stream_name":"stdout","time":3148.807405514,"data":"[10:34:07 +  52.1m]     done whisper-small__earnings22__s00__main [done] 200 utts in 4.5 min (1.36 s/utt, RTF 0.217)\n"}
+,{"stream_name":"stdout","time":3148.808369723,"data":"[10:34:07 +  52.1m]     done whisper-small__common_voice__s00__main [done] 200 utts in 3.3 min (0.99 s/utt, RTF 0.182)\n"}
+,{"stream_name":"stdout","time":3148.809281286,"data":"[10:34:07 +  52.1m]     done whisper-small__fleurs-en__s00__main [done] 200 utts in 5.7 min (1.72 s/utt, RTF 0.176)\n"}
+,{"stream_name":"stdout","time":3148.810259308,"data":"[10:34:07 +  52.1m]     done whisper-small__ls-tc-babble5__s00__main [done] 200 utts in 5.6 min (1.69 s/utt, RTF 0.238)\n"}
+,{"stream_name":"stdout","time":3148.81121202,"data":"[10:34:07 +  52.1m] lane 1: starting whisfusion\n"}
+,{"stream_name":"stdout","time":3344.918370334,"data":"[10:37:23 +  55.3m] lane 0: whisper-turbo exited rc=0, 7 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":3344.919993194,"data":"[10:37:23 +  55.3m]     done whisper-turbo__ls-test-other__s00__main [done] 200 utts in 6.3 min (1.89 s/utt, RTF 0.289)\n"}
+,{"stream_name":"stdout","time":3344.921383152,"data":"[10:37:23 +  55.3m]     done whisper-turbo__ami__s00__main [done] 200 utts in 5.4 min (1.62 s/utt, RTF 0.527)\n"}
+,{"stream_name":"stdout","time":3344.922760774,"data":"[10:37:23 +  55.3m]     done whisper-turbo__earnings22__s00__main [done] 200 utts in 6.0 min (1.81 s/utt, RTF 0.289)\n"}
+,{"stream_name":"stdout","time":3344.923932351,"data":"[10:37:23 +  55.3m]     done whisper-turbo__common_voice__s00__main [done] 200 utts in 5.4 min (1.63 s/utt, RTF 0.298)\n"}
+,{"stream_name":"stdout","time":3344.925103804,"data":"[10:37:23 +  55.3m]     done whisper-turbo__fleurs-en__s00__main [done] 200 utts in 6.7 min (2.00 s/utt, RTF 0.206)\n"}
+,{"stream_name":"stdout","time":3344.926247735,"data":"[10:37:23 +  55.3m]     done whisper-turbo__ls-tc-babble5__s00__main [done] 200 utts in 6.5 min (1.96 s/utt, RTF 0.276)\n"}
+,{"stream_name":"stdout","time":3344.927460782,"data":"[10:37:23 +  55.3m] lane 0: starting drax\n"}
+,{"stream_name":"stdout","time":3664.326840982,"data":"[10:42:42 +  60.7m] progress: jobs {'done': 24, 'claimed': 2, 'ready': 106, 'dead': 3}; tiers {0: '24/24', 1: '0/20', 2: '0/24', 3: '0/19', 4: '0/48'}; analysed 24/24\n"}
+,{"stream_name":"stdout","time":3664.328142114,"data":"[10:42:42 +  60.7m]     parakeet-ctc        8 jobs   1600 utts   2.88 h audio   0.17 GPU-h\n"}
+,{"stream_name":"stdout","time":3664.328934867,"data":"[10:42:42 +  60.7m]     whisper-small       8 jobs   1600 utts   2.88 h audio   0.65 GPU-h\n"}
+,{"stream_name":"stdout","time":3664.329754639,"data":"[10:42:42 +  60.7m]     whisper-turbo       8 jobs   1600 utts   2.88 h audio   0.82 GPU-h\n"}
+,{"stream_name":"stdout","time":3970.131882362,"data":"[10:47:48 +  65.8m] lane 1: whisfusion exited rc=0, 1 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":3970.133727472,"data":"[10:47:48 +  65.8m]     done whisfusion__ls-test-other__s00__kscale [done] 200 utts in 13.2 min (3.95 s/utt, RTF 0.606)\n"}
+,{"stream_name":"stdout","time":3970.134825087,"data":"[10:47:48 +  65.8m] lane 1: starting drax\n"}
+,{"stream_name":"stdout","time":4264.355880879,"data":"[10:52:42 +  70.7m] progress: jobs {'done': 26, 'claimed': 2, 'ready': 104, 'dead': 3}; tiers {0: '24/24', 1: '2/20', 2: '0/24', 3: '0/19', 4: '0/48'}; analysed 26/26\n"}
+,{"stream_name":"stdout","time":4264.356841239,"data":"[10:52:42 +  70.7m]     drax                1 jobs    200 utts   0.39 h audio   0.20 GPU-h\n"}
+,{"stream_name":"stdout","time":4264.357930286,"data":"[10:52:42 +  70.7m]     parakeet-ctc        8 jobs   1600 utts   2.88 h audio   0.17 GPU-h\n"}
+,{"stream_name":"stdout","time":4264.358764962,"data":"[10:52:42 +  70.7m]     whisfusion          1 jobs    200 utts   0.36 h audio   0.22 GPU-h\n"}
+,{"stream_name":"stdout","time":4264.359582445,"data":"[10:52:42 +  70.7m]     whisper-small       8 jobs   1600 utts   2.88 h audio   0.65 GPU-h\n"}
+,{"stream_name":"stdout","time":4264.360353673,"data":"[10:52:42 +  70.7m]     whisper-turbo       8 jobs   1600 utts   2.88 h audio   0.82 GPU-h\n"}
+,{"stream_name":"stdout","time":4864.389116466,"data":"[11:02:42 +  80.7m] progress: jobs {'done': 27, 'claimed': 2, 'ready': 103, 'dead': 3}; tiers {0: '24/24', 1: '3/20', 2: '0/24', 3: '0/19', 4: '0/48'}; analysed 27/27\n"}
+,{"stream_name":"stdout","time":4864.390562373,"data":"[11:02:42 +  80.7m]     drax                2 jobs    400 utts   0.76 h audio   0.38 GPU-h\n"}
+,{"stream_name":"stdout","time":4864.391734268,"data":"[11:02:42 +  80.7m]     parakeet-ctc        8 jobs   1600 utts   2.88 h audio   0.17 GPU-h\n"}
+,{"stream_name":"stdout","time":4864.392893582,"data":"[11:02:42 +  80.7m]     whisfusion          1 jobs    200 utts   0.36 h audio   0.22 GPU-h\n"}
+,{"stream_name":"stdout","time":4864.39396375,"data":"[11:02:42 +  80.7m]     whisper-small       8 jobs   1600 utts   2.88 h audio   0.65 GPU-h\n"}
+,{"stream_name":"stdout","time":4864.394986499,"data":"[11:02:42 +  80.7m]     whisper-turbo       8 jobs   1600 utts   2.88 h audio   0.82 GPU-h\n"}
+,{"stream_name":"stdout","time":5464.419821095,"data":"[11:12:43 +  90.7m] progress: jobs {'done': 29, 'claimed': 2, 'ready': 101, 'dead': 3}; tiers {0: '24/24', 1: '5/20', 2: '0/24', 3: '0/19', 4: '0/48'}; analysed 29/29\n"}
+,{"stream_name":"stdout","time":5464.4198593,"data":"[11:12:43 +  90.7m]     drax                4 jobs    800 utts   1.28 h audio   0.77 GPU-h\n"}
+,{"stream_name":"stdout","time":5464.420720474,"data":"[11:12:43 +  90.7m]     parakeet-ctc        8 jobs   1600 utts   2.88 h audio   0.17 GPU-h\n"}
+,{"stream_name":"stdout","time":5464.421465907,"data":"[11:12:43 +  90.7m]     whisfusion          1 jobs    200 utts   0.36 h audio   0.22 GPU-h\n"}
+,{"stream_name":"stdout","time":5464.422194321,"data":"[11:12:43 +  90.7m]     whisper-small       8 jobs   1600 utts   2.88 h audio   0.65 GPU-h\n"}
+,{"stream_name":"stdout","time":5464.422990397,"data":"[11:12:43 +  90.7m]     whisper-turbo       8 jobs   1600 utts   2.88 h audio   0.82 GPU-h\n"}
+,{"stream_name":"stdout","time":6064.447470558,"data":"[11:22:43 + 100.7m] progress: jobs {'done': 31, 'claimed': 2, 'ready': 99, 'dead': 3}; tiers {0: '24/24', 1: '7/20', 2: '0/24', 3: '0/19', 4: '0/48'}; analysed 31/31\n"}
+,{"stream_name":"stdout","time":6064.44830223,"data":"[11:22:43 + 100.7m]     drax                6 jobs   1200 utts   1.99 h audio   1.16 GPU-h\n"}
+,{"stream_name":"stdout","time":6064.449028234,"data":"[11:22:43 + 100.7m]     parakeet-ctc        8 jobs   1600 utts   2.88 h audio   0.17 GPU-h\n"}
+,{"stream_name":"stdout","time":6064.449817149,"data":"[11:22:43 + 100.7m]     whisfusion          1 jobs    200 utts   0.36 h audio   0.22 GPU-h\n"}
+,{"stream_name":"stdout","time":6064.450618427,"data":"[11:22:43 + 100.7m]     whisper-small       8 jobs   1600 utts   2.88 h audio   0.65 GPU-h\n"}
+,{"stream_name":"stdout","time":6064.451385171,"data":"[11:22:43 + 100.7m]     whisper-turbo       8 jobs   1600 utts   2.88 h audio   0.82 GPU-h\n"}
+,{"stream_name":"stdout","time":6664.477300132,"data":"[11:32:43 + 110.7m] progress: jobs {'done': 33, 'claimed': 2, 'ready': 97, 'dead': 3}; tiers {0: '24/24', 1: '9/20', 2: '0/24', 3: '0/19', 4: '0/48'}; analysed 33/33\n"}
+,{"stream_name":"stdout","time":6664.478463177,"data":"[11:32:43 + 110.7m]     drax                8 jobs   1600 utts   2.80 h audio   1.55 GPU-h\n"}
+,{"stream_name":"stdout","time":6664.479536551,"data":"[11:32:43 + 110.7m]     parakeet-ctc        8 jobs   1600 utts   2.88 h audio   0.17 GPU-h\n"}
+,{"stream_name":"stdout","time":6664.48044708,"data":"[11:32:43 + 110.7m]     whisfusion          1 jobs    200 utts   0.36 h audio   0.22 GPU-h\n"}
+,{"stream_name":"stdout","time":6664.48129234,"data":"[11:32:43 + 110.7m]     whisper-small       8 jobs   1600 utts   2.88 h audio   0.65 GPU-h\n"}
+,{"stream_name":"stdout","time":6664.482192022,"data":"[11:32:43 + 110.7m]     whisper-turbo       8 jobs   1600 utts   2.88 h audio   0.82 GPU-h\n"}
+,{"stream_name":"stdout","time":7264.510801686,"data":"[11:42:43 + 120.7m] progress: jobs {'done': 34, 'claimed': 2, 'ready': 96, 'dead': 3}; tiers {0: '24/24', 1: '10/20', 2: '0/24', 3: '0/19', 4: '0/48'}; analysed 34/34\n"}
+,{"stream_name":"stdout","time":7264.511436055,"data":"[11:42:43 + 120.7m]     drax                9 jobs   1800 utts   3.34 h audio   1.75 GPU-h\n"}
+,{"stream_name":"stdout","time":7264.512308945,"data":"[11:42:43 + 120.7m]     parakeet-ctc        8 jobs   1600 utts   2.88 h audio   0.17 GPU-h\n"}
+,{"stream_name":"stdout","time":7264.513103158,"data":"[11:42:43 + 120.7m]     whisfusion          1 jobs    200 utts   0.36 h audio   0.22 GPU-h\n"}
+,{"stream_name":"stdout","time":7264.513864939,"data":"[11:42:43 + 120.7m]     whisper-small       8 jobs   1600 utts   2.88 h audio   0.65 GPU-h\n"}
+,{"stream_name":"stdout","time":7264.514622963,"data":"[11:42:43 + 120.7m]     whisper-turbo       8 jobs   1600 utts   2.88 h audio   0.82 GPU-h\n"}
+,{"stream_name":"stdout","time":7864.545799565,"data":"[11:52:43 + 130.7m] progress: jobs {'done': 36, 'claimed': 2, 'ready': 94, 'dead': 3}; tiers {0: '24/24', 1: '12/20', 2: '0/24', 3: '0/19', 4: '0/48'}; analysed 36/36\n"}
+,{"stream_name":"stdout","time":7864.545843937,"data":"[11:52:43 + 130.7m]     drax               11 jobs   2200 utts   4.12 h audio   2.14 GPU-h\n"}
+,{"stream_name":"stdout","time":7864.546352243,"data":"[11:52:43 + 130.7m]     parakeet-ctc        8 jobs   1600 utts   2.88 h audio   0.17 GPU-h\n"}
+,{"stream_name":"stdout","time":7864.547261942,"data":"[11:52:43 + 130.7m]     whisfusion          1 jobs    200 utts   0.36 h audio   0.22 GPU-h\n"}
+,{"stream_name":"stdout","time":7864.548180816,"data":"[11:52:43 + 130.7m]     whisper-small       8 jobs   1600 utts   2.88 h audio   0.65 GPU-h\n"}
+,{"stream_name":"stdout","time":7864.549170216,"data":"[11:52:43 + 130.7m]     whisper-turbo       8 jobs   1600 utts   2.88 h audio   0.82 GPU-h\n"}
+,{"stream_name":"stdout","time":8464.574729962,"data":"[12:02:43 + 140.7m] progress: jobs {'done': 37, 'claimed': 2, 'ready': 93, 'dead': 3}; tiers {0: '24/24', 1: '13/20', 2: '0/24', 3: '0/19', 4: '0/48'}; analysed 37/37\n"}
+,{"stream_name":"stdout","time":8464.575861457,"data":"[12:02:43 + 140.7m]     drax               12 jobs   2400 utts   4.52 h audio   2.32 GPU-h\n"}
+,{"stream_name":"stdout","time":8464.57683025,"data":"[12:02:43 + 140.7m]     parakeet-ctc        8 jobs   1600 utts   2.88 h audio   0.17 GPU-h\n"}
+,{"stream_name":"stdout","time":8464.577671502,"data":"[12:02:43 + 140.7m]     whisfusion          1 jobs    200 utts   0.36 h audio   0.22 GPU-h\n"}
+,{"stream_name":"stdout","time":8464.578650779,"data":"[12:02:43 + 140.7m]     whisper-small       8 jobs   1600 utts   2.88 h audio   0.65 GPU-h\n"}
+,{"stream_name":"stdout","time":8464.579678132,"data":"[12:02:43 + 140.7m]     whisper-turbo       8 jobs   1600 utts   2.88 h audio   0.82 GPU-h\n"}
+,{"stream_name":"stdout","time":9064.621012409,"data":"[12:12:43 + 150.7m] progress: jobs {'done': 39, 'claimed': 2, 'ready': 91, 'dead': 3}; tiers {0: '24/24', 1: '15/20', 2: '0/24', 3: '0/19', 4: '0/48'}; analysed 39/39\n"}
+,{"stream_name":"stdout","time":9064.622057701,"data":"[12:12:43 + 150.7m]     drax               14 jobs   2800 utts   5.31 h audio   2.71 GPU-h\n"}
+,{"stream_name":"stdout","time":9064.623064178,"data":"[12:12:43 + 150.7m]     parakeet-ctc        8 jobs   1600 utts   2.88 h audio   0.17 GPU-h\n"}
+,{"stream_name":"stdout","time":9064.624086847,"data":"[12:12:43 + 150.7m]     whisfusion          1 jobs    200 utts   0.36 h audio   0.22 GPU-h\n"}
+,{"stream_name":"stdout","time":9064.625086218,"data":"[12:12:43 + 150.7m]     whisper-small       8 jobs   1600 utts   2.88 h audio   0.65 GPU-h\n"}
+,{"stream_name":"stdout","time":9064.625977284,"data":"[12:12:43 + 150.7m]     whisper-turbo       8 jobs   1600 utts   2.88 h audio   0.82 GPU-h\n"}
+,{"stream_name":"stdout","time":9664.647450182,"data":"[12:22:43 + 160.7m] progress: jobs {'done': 41, 'claimed': 2, 'ready': 89, 'dead': 3}; tiers {0: '24/24', 1: '17/20', 2: '0/24', 3: '0/19', 4: '0/48'}; analysed 41/41\n"}
+,{"stream_name":"stdout","time":9664.648451553,"data":"[12:22:43 + 160.7m]     drax               16 jobs   3200 utts   6.58 h audio   3.10 GPU-h\n"}
+,{"stream_name":"stdout","time":9664.649531058,"data":"[12:22:43 + 160.7m]     parakeet-ctc        8 jobs   1600 utts   2.88 h audio   0.17 GPU-h\n"}
+,{"stream_name":"stdout","time":9664.650623363,"data":"[12:22:43 + 160.7m]     whisfusion          1 jobs    200 utts   0.36 h audio   0.22 GPU-h\n"}
+,{"stream_name":"stdout","time":9664.651635022,"data":"[12:22:43 + 160.7m]     whisper-small       8 jobs   1600 utts   2.88 h audio   0.65 GPU-h\n"}
+,{"stream_name":"stdout","time":9664.652634984,"data":"[12:22:43 + 160.7m]     whisper-turbo       8 jobs   1600 utts   2.88 h audio   0.82 GPU-h\n"}
+,{"stream_name":"stdout","time":10049.277844132,"data":"[12:29:07 + 167.1m] lane 0: drax exited rc=0, 9 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":10049.27834939,"data":"[12:29:07 + 167.1m]     done drax__spgispeech__s00__lowT [done] 200 utts in 12.3 min (3.69 s/utt, RTF 0.404)\n"}
+,{"stream_name":"stdout","time":10049.279343773,"data":"[12:29:07 + 167.1m]     done drax__fleurs-en__s00__lowT [done] 200 utts in 12.3 min (3.69 s/utt, RTF 0.378)\n"}
+,{"stream_name":"stdout","time":10049.280305238,"data":"[12:29:07 + 167.1m]     done drax__ls-tc-babble10__s00__lowT [done] 200 utts in 12.3 min (3.68 s/utt, RTF 0.517)\n"}
+,{"stream_name":"stdout","time":10049.281168541,"data":"[12:29:07 + 167.1m]     done drax__ls-tc-babble0__s00__lowT [done] 200 utts in 12.3 min (3.68 s/utt, RTF 0.518)\n"}
+,{"stream_name":"stdout","time":10049.282047006,"data":"[12:29:07 + 167.1m]     done drax__fleurs-de__s00__lowT [done] 200 utts in 12.3 min (3.70 s/utt, RTF 0.292)\n"}
+,{"stream_name":"stdout","time":10049.282935388,"data":"[12:29:07 + 167.1m]     done drax__fleurs-it__s00__lowT [done] 200 utts in 12.3 min (3.70 s/utt, RTF 0.252)\n"}
+,{"stream_name":"stdout","time":10049.283891118,"data":"[12:29:07 + 167.1m] lane 0: starting whisper-turbo\n"}
+,{"stream_name":"stdout","time":10264.679969736,"data":"[12:32:43 + 170.7m] progress: jobs {'done': 43, 'claimed': 2, 'ready': 87, 'dead': 3}; tiers {0: '24/24', 1: '19/20', 2: '0/24', 3: '0/19', 4: '0/48'}; analysed 43/43\n"}
+,{"stream_name":"stdout","time":10264.680465377,"data":"[12:32:43 + 170.7m]     drax               18 jobs   3600 utts   8.06 h audio   3.49 GPU-h\n"}
+,{"stream_name":"stdout","time":10264.681572365,"data":"[12:32:43 + 170.7m]     parakeet-ctc        8 jobs   1600 utts   2.88 h audio   0.17 GPU-h\n"}
+,{"stream_name":"stdout","time":10264.68251591,"data":"[12:32:43 + 170.7m]     whisfusion          1 jobs    200 utts   0.36 h audio   0.22 GPU-h\n"}
+,{"stream_name":"stdout","time":10264.683407628,"data":"[12:32:43 + 170.7m]     whisper-small       8 jobs   1600 utts   2.88 h audio   0.65 GPU-h\n"}
+,{"stream_name":"stdout","time":10264.684330543,"data":"[12:32:43 + 170.7m]     whisper-turbo       8 jobs   1600 utts   2.88 h audio   0.82 GPU-h\n"}
+,{"stream_name":"stdout","time":10588.058088271,"data":"[12:38:06 + 176.1m] lane 1: drax exited rc=0, 10 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":10588.059360062,"data":"[12:38:06 + 176.1m]     done drax__slr83__s00__lowT [done] 200 utts in 11.0 min (3.29 s/utt, RTF 0.477)\n"}
+,{"stream_name":"stdout","time":10588.060646457,"data":"[12:38:06 + 176.1m]     done drax__ls-tc-babble5__s00__lowT [done] 200 utts in 11.0 min (3.29 s/utt, RTF 0.463)\n"}
+,{"stream_name":"stdout","time":10588.061632425,"data":"[12:38:06 + 176.1m]     done drax__ls-tc-white5__s00__lowT [done] 200 utts in 11.0 min (3.30 s/utt, RTF 0.464)\n"}
+,{"stream_name":"stdout","time":10588.062615262,"data":"[12:38:06 + 176.1m]     done drax__fleurs-fr__s00__lowT [done] 200 utts in 11.0 min (3.31 s/utt, RTF 0.322)\n"}
+,{"stream_name":"stdout","time":10588.063692969,"data":"[12:38:06 + 176.1m]     done drax__fleurs-es__s00__lowT [done] 200 utts in 11.0 min (3.31 s/utt, RTF 0.277)\n"}
+,{"stream_name":"stdout","time":10588.064767607,"data":"[12:38:06 + 176.1m]     done drax__fleurs-pt__s00__lowT [done] 200 utts in 11.0 min (3.31 s/utt, RTF 0.260)\n"}
+,{"stream_name":"stdout","time":10588.06586028,"data":"[12:38:06 + 176.1m] lane 1: starting whisper-small\n"}
+,{"stream_name":"stdout","time":10864.714150348,"data":"[12:42:43 + 180.7m] progress: jobs {'done': 46, 'claimed': 2, 'ready': 84, 'dead': 3}; tiers {0: '24/24', 1: '20/20', 2: '2/24', 3: '0/19', 4: '0/48'}; analysed 46/46\n"}
+,{"stream_name":"stdout","time":10864.715211799,"data":"[12:42:43 + 180.7m]     drax               19 jobs   3800 utts   8.77 h audio   3.67 GPU-h\n"}
+,{"stream_name":"stdout","time":10864.716161647,"data":"[12:42:43 + 180.7m]     parakeet-ctc        8 jobs   1600 utts   2.88 h audio   0.17 GPU-h\n"}
+,{"stream_name":"stdout","time":10864.717044156,"data":"[12:42:43 + 180.7m]     whisfusion          1 jobs    200 utts   0.36 h audio   0.22 GPU-h\n"}
+,{"stream_name":"stdout","time":10864.717808286,"data":"[12:42:43 + 180.7m]     whisper-small       8 jobs   1600 utts   2.88 h audio   0.65 GPU-h\n"}
+,{"stream_name":"stdout","time":10864.718560297,"data":"[12:42:43 + 180.7m]     whisper-turbo      10 jobs   2000 utts   3.66 h audio   1.03 GPU-h\n"}
+,{"stream_name":"stdout","time":11464.751875424,"data":"[12:52:43 + 190.7m] progress: jobs {'done': 49, 'ready': 81, 'claimed': 2, 'dead': 3}; tiers {0: '24/24', 1: '20/20', 2: '5/24', 3: '0/19', 4: '0/48'}; analysed 49/49\n"}
+,{"stream_name":"stdout","time":11464.752772126,"data":"[12:52:43 + 190.7m]     drax               19 jobs   3800 utts   8.77 h audio   3.67 GPU-h\n"}
+,{"stream_name":"stdout","time":11464.753728457,"data":"[12:52:43 + 190.7m]     parakeet-ctc        8 jobs   1600 utts   2.88 h audio   0.17 GPU-h\n"}
+,{"stream_name":"stdout","time":11464.754584708,"data":"[12:52:43 + 190.7m]     whisfusion          1 jobs    200 utts   0.36 h audio   0.22 GPU-h\n"}
+,{"stream_name":"stdout","time":11464.756342553,"data":"[12:52:43 + 190.7m]     whisper-small      10 jobs   2000 utts   3.66 h audio   0.83 GPU-h\n"}
+,{"stream_name":"stdout","time":11464.75658964,"data":"[12:52:43 + 190.7m]     whisper-turbo      11 jobs   2200 utts   4.02 h audio   1.14 GPU-h\n"}
+,{"stream_name":"stdout","time":11711.57336252,"data":"[12:56:50 + 194.8m] lane 1: whisper-small exited rc=0, 4 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":11711.574528072,"data":"[12:56:50 + 194.8m]     done whisper-small__ls-dev-other__s01__main [done] 200 utts in 5.1 min (1.54 s/utt, RTF 0.241)\n"}
+,{"stream_name":"stdout","time":11711.575385822,"data":"[12:56:50 + 194.8m]     done whisper-small__ls-test-clean__s01__main [done] 200 utts in 5.6 min (1.69 s/utt, RTF 0.221)\n"}
+,{"stream_name":"stdout","time":11711.576271613,"data":"[12:56:50 + 194.8m]     done whisper-small__ls-test-other__s01__main [done] 200 utts in 5.0 min (1.50 s/utt, RTF 0.232)\n"}
+,{"stream_name":"stdout","time":11711.577180967,"data":"[12:56:50 + 194.8m]     done whisper-small__ami__s01__main [partial] 152 utts in 2.7 min (1.08 s/utt, RTF 0.346)\n"}
+,{"stream_name":"stdout","time":11711.578084976,"data":"[12:56:50 + 194.8m] lane 1: finished (6 worker launches, idle 1.0 min)\n"}
+,{"stream_name":"stdout","time":11712.119528704,"data":"[12:56:50 + 194.8m] lane 0: whisper-turbo exited rc=0, 5 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":11712.120556789,"data":"[12:56:50 + 194.8m]     done whisper-turbo__ls-dev-other__s01__main [done] 200 utts in 6.1 min (1.83 s/utt, RTF 0.285)\n"}
+,{"stream_name":"stdout","time":11712.121510789,"data":"[12:56:50 + 194.8m]     done whisper-turbo__ls-test-clean__s01__main [done] 200 utts in 6.5 min (1.95 s/utt, RTF 0.255)\n"}
+,{"stream_name":"stdout","time":11712.122353634,"data":"[12:56:50 + 194.8m]     done whisper-turbo__ls-test-other__s01__main [done] 200 utts in 6.2 min (1.86 s/utt, RTF 0.288)\n"}
+,{"stream_name":"stdout","time":11712.123111595,"data":"[12:56:50 + 194.8m]     done whisper-turbo__ami__s01__main [done] 200 utts in 5.6 min (1.67 s/utt, RTF 0.519)\n"}
+,{"stream_name":"stdout","time":11712.123833274,"data":"[12:56:50 + 194.8m]     done whisper-turbo__earnings22__s01__main [partial] 107 utts in 3.1 min (1.76 s/utt, RTF 0.299)\n"}
+,{"stream_name":"stdout","time":11712.124508986,"data":"[12:56:50 + 194.8m] lane 0: finished (71 worker launches, idle 1.0 min)\n"}
+,{"stream_name":"stdout","time":11724.731098581,"data":"[12:57:03 + 195.0m] GPU phase over; finishing analysis\n"}
+,{"stream_name":"stdout","time":11726.935915842,"data":"[12:57:05 + 195.0m] aggregating\n"}
+,{"stream_name":"stdout","time":11729.076087219,"data":"/kaggle/working/code/src/campaign/aggregate.py:122: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.\n"}
+,{"stream_name":"stdout","time":11729.077040824,"data":"  per_df = pd.concat(per, ignore_index=True) if per else pd.DataFrame()\n"}
+,{"stream_name":"stdout","time":11729.661648106,"data":"/kaggle/working/code/src/campaign/aggregate.py:123: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.\n"}
+,{"stream_name":"stdout","time":11729.662521494,"data":"  grid_df = pd.concat(grid, ignore_index=True) if grid else pd.DataFrame()\n"}
+,{"stream_name":"stdout","time":11742.470336057,"data":"[aggregate] cells 649 (15 s)\n"}
+,{"stream_name":"stdout","time":11758.805034222,"data":"[aggregate] contrasts 1674 (31 s)\n"}
+,{"stream_name":"stdout","time":11763.649875266,"data":"[aggregate] done in 36 s -\u003e /kaggle/working/campaign/results\n"}
+,{"stream_name":"stdout","time":11763.919401185,"data":"[12:57:42 + 195.7m] aggregate rc=0\n"}
+,{"stream_name":"stdout","time":11763.973105375,"data":"[12:57:42 + 195.7m] packed dumps.tar (11 MB)\n"}
+,{"stream_name":"stdout","time":11764.029098835,"data":"[12:57:42 + 195.7m] packed analysis.tar (10 MB)\n"}
+,{"stream_name":"stdout","time":11764.049382425,"data":"[12:57:42 + 195.7m] packed state.tar (0 MB)\n"}
+,{"stream_name":"stdout","time":11764.08019182,"data":"[12:57:42 + 195.7m] packed logs.tar (0 MB)\n"}
+,{"stream_name":"stdout","time":11764.099135406,"data":"[12:57:42 + 195.7m] packed manifests.tar (9 MB)\n"}
+,{"stream_name":"stdout","time":11764.099914079,"data":"[12:57:42 + 195.7m] done in 3.26 h\n"}
+,{"stream_name":"stdout","time":11764.751276884,"data":"campaign exit code 0\n"}
+,{"stream_name":"stdout","time":11764.800577142,"data":"# Campaign report\n"}
+,{"stream_name":"stdout","time":11764.800619899,"data":"\n"}
+,{"stream_name":"stdout","time":11764.800626572,"data":"generated 2026-09-20 12:57 UTC\n"}
+,{"stream_name":"stdout","time":11764.800631736,"data":"\n"}
+,{"stream_name":"stdout","time":11764.800636845,"data":"utterance decodes analysed: 157929; cells: 649\n"}
+,{"stream_name":"stdout","time":11764.800641748,"data":"\n"}
+,{"stream_name":"stdout","time":11764.800646344,"data":"\n"}
+,{"stream_name":"stdout","time":11764.80065155,"data":"## Main arm at the largest K, corpus WER (legacy normalisation)\n"}
+,{"stream_name":"stdout","time":11764.80065659,"data":"\n"}
+,{"stream_name":"stdout","time":11764.800692714,"data":"| model | set | n | K | first | conf | MBR | ROVER | ROVER-cg | oracle | oracle-comp | control | pairwise % |\n"}
+,{"stream_name":"stdout","time":11764.800700568,"data":"|---|---|---|---|---|---|---|---|---|---|---|---|---|\n"}
+,{"stream_name":"stdout","time":11764.80070551,"data":"| parakeet-ctc/greedy | ami | 200 | 1 | 16.60 | 16.60 | 16.60 | 16.60 | 16.60 | 16.60 |  |  | 0.0 |\n"}
+,{"stream_name":"stdout","time":11764.800711012,"data":"| parakeet-ctc/sample | ami | 200 | 32 | 23.01 | 21.84 | 17.10 | 17.27 | 17.33 | 11.53 | 7.52 | 10.75 | 23.6 |\n"}
+,{"stream_name":"stdout","time":11764.800717137,"data":"| parakeet-ctc/greedy | common_voice | 147 | 1 | 11.80 | 11.80 | 11.80 | 11.80 | 11.80 | 11.80 |  |  | 0.0 |\n"}
+,{"stream_name":"stdout","time":11764.800722333,"data":"| parakeet-ctc/sample | common_voice | 147 | 32 | 13.73 | 12.84 | 11.88 | 11.28 | 11.21 | 8.39 | 6.83 | 8.09 | 9.5 |\n"}
+,{"stream_name":"stdout","time":11764.80072866,"data":"| parakeet-ctc/greedy | earnings22 | 200 | 1 | 23.70 | 23.70 | 23.70 | 23.70 | 23.70 | 23.70 |  |  | 0.0 |\n"}
+,{"stream_name":"stdout","time":11764.800733587,"data":"| parakeet-ctc/sample | earnings22 | 200 | 32 | 28.73 | 25.36 | 24.41 | 23.61 | 23.64 | 19.84 | 12.63 | 16.10 | 19.4 |\n"}
+,{"stream_name":"stdout","time":11764.800738208,"data":"| parakeet-ctc/greedy | fleurs-en | 200 | 1 | 10.09 | 10.09 | 10.09 | 10.09 | 10.09 | 10.09 |  |  | 0.0 |\n"}
+,{"stream_name":"stdout","time":11764.800743258,"data":"| parakeet-ctc/sample | fleurs-en | 200 | 32 | 11.73 | 11.02 | 10.30 | 10.02 | 10.02 | 8.11 | 4.39 | 5.73 | 5.9 |\n"}
+,{"stream_name":"stdout","time":11764.80074798,"data":"| parakeet-ctc/greedy | ls-dev-other | 200 | 1 | 3.85 | 3.85 | 3.85 | 3.85 | 3.85 | 3.85 |  |  | 0.0 |\n"}
+,{"stream_name":"stdout","time":11764.800752702,"data":"| parakeet-ctc/sample | ls-dev-other | 200 | 32 | 5.42 | 4.25 | 4.22 | 3.99 | 3.94 | 2.63 | 1.76 | 2.46 | 4.9 |\n"}
+,{"stream_name":"stdout","time":11764.800757745,"data":"| parakeet-ctc/greedy | ls-tc-babble5 | 200 | 1 | 11.66 | 11.66 | 11.66 | 11.66 | 11.66 | 11.66 |  |  | 0.0 |\n"}
+,{"stream_name":"stdout","time":11764.800774442,"data":"| parakeet-ctc/sample | ls-tc-babble5 | 200 | 32 | 15.22 | 13.00 | 12.20 | 11.76 | 11.73 | 9.54 | 6.93 | 8.81 | 16.7 |\n"}
+,{"stream_name":"stdout","time":11764.800778746,"data":"| parakeet-ctc/greedy | ls-test-clean | 200 | 1 | 1.99 | 1.99 | 1.99 | 1.99 | 1.99 | 1.99 |  |  | 0.0 |\n"}
+,{"stream_name":"stdout","time":11764.800782944,"data":"| parakeet-ctc/sample | ls-test-clean | 200 | 32 | 3.20 | 2.58 | 1.89 | 1.86 | 1.86 | 1.09 | 0.72 | 1.01 | 3.3 |\n"}
+,{"stream_name":"stdout","time":11764.800787438,"data":"| parakeet-ctc/greedy | ls-test-other | 200 | 1 | 3.50 | 3.50 | 3.50 | 3.50 | 3.50 | 3.50 |  |  | 0.0 |\n"}
+,{"stream_name":"stdout","time":11764.800794514,"data":"| parakeet-ctc/sample | ls-test-other | 200 | 32 | 4.79 | 3.98 | 3.56 | 3.53 | 3.56 | 2.04 | 1.60 | 1.96 | 5.0 |\n"}
+,{"stream_name":"stdout","time":11764.800799122,"data":"| whisper-small/beam | ami | 352 | 8 | 50.39 | 50.52 | 46.79 | 46.73 | 47.36 | 39.62 | 11.17 | 11.92 | 21.6 |\n"}
+,{"stream_name":"stdout","time":11764.800803084,"data":"| whisper-small/greedy | ami | 352 | 1 | 19.94 | 19.94 | 19.94 | 19.94 | 19.94 | 19.94 |  |  | 0.0 |\n"}
+,{"stream_name":"stdout","time":11764.800807004,"data":"| whisper-small/sample | ami | 352 | 16 | 20.72 | 25.23 | 19.62 | 19.50 | 19.81 | 12.02 | 10.80 | 11.64 | 17.1 |\n"}
+,{"stream_name":"stdout","time":11764.800810984,"data":"| whisper-small/beam | common_voice | 147 | 8 | 14.92 | 14.70 | 15.07 | 15.29 | 15.37 | 10.32 | 8.17 | 8.61 | 12.3 |\n"}
+,{"stream_name":"stdout","time":11764.800814516,"data":"| whisper-small/greedy | common_voice | 147 | 1 | 16.18 | 16.18 | 16.18 | 16.18 | 16.18 | 16.18 |  |  | 0.0 |\n"}
+,{"stream_name":"stdout","time":11764.800818374,"data":"| whisper-small/sample | common_voice | 147 | 16 | 17.45 | 15.00 | 15.81 | 14.77 | 14.92 | 9.43 | 7.57 | 8.83 | 11.8 |\n"}
+,{"stream_name":"stdout","time":11764.800822341,"data":"| whisper-small/beam | earnings22 | 200 | 8 | 17.26 | 17.51 | 17.26 | 16.90 | 16.93 | 12.08 | 9.72 | 10.58 | 11.6 |\n"}
+,{"stream_name":"stdout","time":11764.800826329,"data":"| whisper-small/greedy | earnings22 | 200 | 1 | 18.49 | 18.49 | 18.49 | 18.49 | 18.49 | 18.49 |  |  | 0.0 |\n"}
+,{"stream_name":"stdout","time":11764.800830315,"data":"| whisper-small/sample | earnings22 | 200 | 16 | 23.70 | 17.17 | 21.99 | 21.22 | 21.16 | 11.81 | 8.95 | 10.89 | 15.9 |\n"}
+,{"stream_name":"stdout","time":11764.800834246,"data":"| whisper-small/beam | fleurs-en | 200 | 8 | 6.88 | 6.95 | 6.95 | 7.04 | 7.02 | 4.90 | 3.86 | 4.27 | 5.0 |\n"}
+,{"stream_name":"stdout","time":11764.800838245,"data":"| whisper-small/greedy | fleurs-en | 200 | 1 | 7.71 | 7.71 | 7.71 | 7.71 | 7.71 | 7.71 |  |  | 0.0 |\n"}
+,{"stream_name":"stdout","time":11764.800841677,"data":"| whisper-small/sample | fleurs-en | 200 | 16 | 8.24 | 7.53 | 8.24 | 7.83 | 8.06 | 4.80 | 3.51 | 4.23 | 5.3 |\n"}
+,{"stream_name":"stdout","time":11764.800845426,"data":"| whisper-small/beam | ls-dev-other | 400 | 8 | 7.52 | 7.68 | 7.74 | 7.68 | 7.82 | 5.46 | 4.73 | 5.00 | 6.6 |\n"}
+,{"stream_name":"stdout","time":11764.800849092,"data":"| whisper-small/greedy | ls-dev-other | 400 | 1 | 8.12 | 8.12 | 8.12 | 8.12 | 8.12 | 8.12 |  |  | 0.0 |\n"}
+,{"stream_name":"stdout","time":11764.800852915,"data":"| whisper-small/sample | ls-dev-other | 400 | 16 | 9.44 | 8.40 | 8.00 | 7.68 | 7.76 | 5.06 | 3.99 | 4.84 | 7.0 |\n"}
+,{"stream_name":"stdout","time":11764.800856519,"data":"| whisper-small/beam | ls-tc-babble5 | 200 | 8 | 28.17 | 28.84 | 27.60 | 27.60 | 27.58 | 23.83 | 9.33 | 9.77 | 9.7 |\n"}
+,{"stream_name":"stdout","time":11764.800860152,"data":"| whisper-small/greedy | ls-tc-babble5 | 200 | 1 | 15.74 | 15.74 | 15.74 | 15.74 | 15.74 | 15.74 |  |  | 0.0 |\n"}
+,{"stream_name":"stdout","time":11764.800863874,"data":"| whisper-small/sample | ls-tc-babble5 | 200 | 16 | 16.75 | 18.64 | 15.46 | 15.12 | 15.12 | 9.87 | 7.19 | 9.38 | 16.9 |\n"}
+,{"stream_name":"stdout","time":11764.800873686,"data":"| whisper-small/beam | ls-test-clean | 400 | 8 | 3.95 | 4.09 | 4.04 | 4.09 | 4.06 | 2.50 | 2.35 | 2.44 | 4.4 |\n"}
+,{"stream_name":"stdout","time":11764.800877599,"data":"| whisper-small/greedy | ls-test-clean | 400 | 1 | 3.96 | 3.96 | 3.96 | 3.96 | 3.96 | 3.96 |  |  | 0.0 |\n"}
+,{"stream_name":"stdout","time":11764.800881202,"data":"| whisper-small/sample | ls-test-clean | 400 | 16 | 4.55 | 5.36 | 4.29 | 4.06 | 4.11 | 2.41 | 2.16 | 2.37 | 3.6 |\n"}
+,{"stream_name":"stdout","time":11764.800884905,"data":"| whisper-small/beam | ls-test-other | 400 | 8 | 8.18 | 8.26 | 8.21 | 8.24 | 8.24 | 5.73 | 4.80 | 5.27 | 6.7 |\n"}
+,{"stream_name":"stdout","time":11764.800888793,"data":"| whisper-small/greedy | ls-test-other | 400 | 1 | 8.82 | 8.82 | 8.82 | 8.82 | 8.82 | 8.82 |  |  | 0.0 |\n"}
+,{"stream_name":"stdout","time":11764.800892376,"data":"| whisper-small/sample | ls-test-other | 400 | 16 | 9.71 | 8.88 | 8.65 | 8.52 | 8.77 | 5.31 | 4.01 | 5.04 | 7.4 |\n"}
+,{"stream_name":"stdout","time":11764.800896266,"data":"| whisper-turbo/beam | ami | 400 | 8 | 27.95 | 28.00 | 25.28 | 25.90 | 26.46 | 19.23 | 10.33 | 10.90 | 21.2 |\n"}
+,{"stream_name":"stdout","time":11764.800899968,"data":"| whisper-turbo/greedy | ami | 400 | 1 | 17.56 | 17.56 | 17.56 | 17.56 | 17.56 | 17.56 |  |  | 0.0 |\n"}
+,{"stream_name":"stdout","time":11764.800903733,"data":"| whisper-turbo/sample | ami | 400 | 16 | 18.69 | 17.24 | 17.83 | 17.94 | 17.94 | 11.71 | 10.60 | 11.06 | 12.0 |\n"}
+,{"stream_name":"stdout","time":11764.800907378,"data":"| whisper-turbo/beam | common_voice | 147 | 8 | 11.66 | 11.73 | 11.58 | 11.95 | 12.40 | 8.24 | 6.76 | 6.90 | 9.7 |\n"}
+,{"stream_name":"stdout","time":11764.800911158,"data":"| whisper-turbo/greedy | common_voice | 147 | 1 | 11.80 | 11.80 | 11.80 | 11.80 | 11.80 | 11.80 |  |  | 0.0 |\n"}
+,{"stream_name":"stdout","time":11764.800915052,"data":"| whisper-turbo/sample | common_voice | 147 | 16 | 13.36 | 12.62 | 12.03 | 11.28 | 11.28 | 8.24 | 6.31 | 7.20 | 6.8 |\n"}
+,{"stream_name":"stdout","time":11764.80091893,"data":"| whisper-turbo/beam | earnings22 | 307 | 8 | 16.70 | 16.40 | 16.66 | 16.50 | 16.48 | 12.45 | 10.19 | 10.64 | 10.0 |\n"}
+,{"stream_name":"stdout","time":11764.800922346,"data":"| whisper-turbo/greedy | earnings22 | 307 | 1 | 16.77 | 16.77 | 16.77 | 16.77 | 16.77 | 16.77 |  |  | 0.0 |\n"}
+,{"stream_name":"stdout","time":11764.800926112,"data":"| whisper-turbo/sample | earnings22 | 307 | 16 | 17.44 | 16.46 | 16.72 | 16.50 | 16.52 | 12.78 | 10.50 | 11.12 | 7.1 |\n"}
+,{"stream_name":"stdout","time":11764.800930015,"data":"| whisper-turbo/beam | fleurs-en | 200 | 8 | 5.38 | 5.29 | 5.36 | 5.36 | 5.40 | 3.44 | 2.79 | 3.05 | 4.5 |\n"}
+,{"stream_name":"stdout","time":11764.800934086,"data":"| whisper-turbo/greedy | fleurs-en | 200 | 1 | 5.50 | 5.50 | 5.50 | 5.50 | 5.50 | 5.50 |  |  | 0.0 |\n"}
+,{"stream_name":"stdout","time":11764.800937782,"data":"| whisper-turbo/sample | fleurs-en | 200 | 16 | 5.91 | 5.29 | 5.59 | 5.57 | 5.57 | 3.70 | 3.03 | 3.26 | 3.2 |\n"}
+,{"stream_name":"stdout","time":11764.800943034,"data":"| whisper-turbo/beam | ls-dev-other | 400 | 8 | 5.47 | 5.53 | 5.39 | 5.31 | 5.31 | 3.08 | 2.54 | 2.93 | 5.2 |\n"}
+,{"stream_name":"stdout","time":11764.800947181,"data":"| whisper-turbo/greedy | ls-dev-other | 400 | 1 | 5.61 | 5.61 | 5.61 | 5.61 | 5.61 | 5.61 |  |  | 0.0 |\n"}
+,{"stream_name":"stdout","time":11764.800951062,"data":"| whisper-turbo/sample | ls-dev-other | 400 | 16 | 5.75 | 5.47 | 5.43 | 5.29 | 5.32 | 3.36 | 2.72 | 3.14 | 3.2 |\n"}
+,{"stream_name":"stdout","time":11764.800955029,"data":"| whisper-turbo/beam | ls-tc-babble5 | 200 | 8 | 7.68 | 7.55 | 7.44 | 7.31 | 7.39 | 4.81 | 4.19 | 4.50 | 7.2 |\n"}
+,{"stream_name":"stdout","time":11764.800959186,"data":"| whisper-turbo/greedy | ls-tc-babble5 | 200 | 1 | 7.62 | 7.62 | 7.62 | 7.62 | 7.62 | 7.62 |  |  | 0.0 |\n"}
+,{"stream_name":"stdout","time":11764.800967382,"data":"| whisper-turbo/sample | ls-tc-babble5 | 200 | 16 | 9.25 | 7.44 | 7.57 | 7.44 | 7.39 | 4.88 | 4.11 | 4.57 | 6.9 |\n"}
+,{"stream_name":"stdout","time":11764.800971456,"data":"| whisper-turbo/beam | ls-test-clean | 400 | 8 | 3.28 | 3.24 | 3.34 | 3.27 | 3.23 | 1.60 | 1.54 | 1.57 | 4.3 |\n"}
+,{"stream_name":"stdout","time":11764.800975362,"data":"| whisper-turbo/greedy | ls-test-clean | 400 | 1 | 3.14 | 3.14 | 3.14 | 3.14 | 3.14 | 3.14 |  |  | 0.0 |\n"}
+,{"stream_name":"stdout","time":11764.80097927,"data":"| whisper-turbo/sample | ls-test-clean | 400 | 16 | 3.22 | 3.82 | 3.06 | 3.01 | 3.03 | 1.91 | 1.75 | 1.85 | 2.2 |\n"}
+,{"stream_name":"stdout","time":11764.800982906,"data":"| whisper-turbo/beam | ls-test-other | 400 | 8 | 4.90 | 5.10 | 4.96 | 4.97 | 4.98 | 2.59 | 2.18 | 2.39 | 6.3 |\n"}
+,{"stream_name":"stdout","time":11764.800994946,"data":"| whisper-turbo/greedy | ls-test-other | 400 | 1 | 5.07 | 5.07 | 5.07 | 5.07 | 5.07 | 5.07 |  |  | 0.0 |\n"}
+,{"stream_name":"stdout","time":11764.800998737,"data":"| whisper-turbo/sample | ls-test-other | 400 | 16 | 5.56 | 5.00 | 5.04 | 5.01 | 4.84 | 3.03 | 2.52 | 2.82 | 3.4 |\n"}
+,{"stream_name":"stdout","time":11764.801002561,"data":"\n"}
+,{"stream_name":"stdout","time":11764.801006097,"data":"## ROVER-cg against the best selection, paired bootstrap (main arm, largest K)\n"}
+,{"stream_name":"stdout","time":11764.80100999,"data":"\n"}
+,{"stream_name":"stdout","time":11764.801013458,"data":"| model | set | vs | delta | 95% CI | cluster CI | Wilcoxon p | better/worse/tied |\n"}
+,{"stream_name":"stdout","time":11764.801017043,"data":"|---|---|---|---|---|---|---|---|\n"}
+,{"stream_name":"stdout","time":11764.801020682,"data":"| parakeet-ctc/greedy | ami | conf | +0.00 | [+0.00, +0.00] | [0.00, 0.00] | 1.0000 | 0/0/200 |\n"}
+,{"stream_name":"stdout","time":11764.801024514,"data":"| parakeet-ctc/greedy | ami | mbr | +0.00 | [+0.00, +0.00] | [0.00, 0.00] | 1.0000 | 0/0/200 |\n"}
+,{"stream_name":"stdout","time":11764.801028376,"data":"| parakeet-ctc/sample | ami | conf | +4.51 | [+3.60, +5.51] | [3.66, 5.38] | 0.0000 | 71/7/122 |\n"}
+,{"stream_name":"stdout","time":11764.801032051,"data":"| parakeet-ctc/sample | ami | mbr | -0.22 | [-0.82, +0.40] | [-0.90, 0.35] | 0.4863 | 8/13/179 |\n"}
+,{"stream_name":"stdout","time":11764.801035866,"data":"| parakeet-ctc/greedy | common_voice | conf | +0.00 | [+0.00, +0.00] | [, ] | 1.0000 | 0/0/147 |\n"}
+,{"stream_name":"stdout","time":11764.801259169,"data":"| parakeet-ctc/greedy | common_voice | mbr | +0.00 | [+0.00, +0.00] | [, ] | 1.0000 | 0/0/147 |\n"}
+,{"stream_name":"stdout","time":11764.801270957,"data":"| parakeet-ctc/sample | common_voice | conf | +1.63 | [+0.80, +2.54] | [, ] | 0.0004 | 26/6/115 |\n"}
+,{"stream_name":"stdout","time":11764.801274815,"data":"| parakeet-ctc/sample | common_voice | mbr | +0.67 | [+0.08, +1.22] | [, ] | 0.0201 | 12/3/132 |\n"}
+,{"stream_name":"stdout","time":11764.801278447,"data":"| parakeet-ctc/greedy | earnings22 | conf | +0.00 | [+0.00, +0.00] | [0.00, 0.00] | 1.0000 | 0/0/200 |\n"}
+,{"stream_name":"stdout","time":11764.801282123,"data":"| parakeet-ctc/greedy | earnings22 | mbr | +0.00 | [+0.00, +0.00] | [0.00, 0.00] | 1.0000 | 0/0/200 |\n"}
+,{"stream_name":"stdout","time":11764.801285694,"data":"| parakeet-ctc/sample | earnings22 | conf | +1.72 | [+1.02, +2.45] | [1.19, 2.62] | 0.0000 | 69/26/105 |\n"}
+,{"stream_name":"stdout","time":11764.801289737,"data":"| parakeet-ctc/sample | earnings22 | mbr | +0.77 | [+0.28, +1.26] | [0.57, 1.17] | 0.0023 | 34/13/153 |\n"}
+,{"stream_name":"stdout","time":11764.801293416,"data":"| parakeet-ctc/greedy | fleurs-en | conf | +0.00 | [+0.00, +0.00] | [0.00, 0.00] | 1.0000 | 0/0/200 |\n"}
+,{"stream_name":"stdout","time":11764.801304758,"data":"| parakeet-ctc/greedy | fleurs-en | mbr | +0.00 | [+0.00, +0.00] | [0.00, 0.00] | 1.0000 | 0/0/200 |\n"}
+,{"stream_name":"stdout","time":11764.801308347,"data":"| parakeet-ctc/sample | fleurs-en | conf | +0.99 | [+0.59, +1.41] | [0.60, 1.43] | 0.0000 | 39/8/153 |\n"}
+,{"stream_name":"stdout","time":11764.801311864,"data":"| parakeet-ctc/sample | fleurs-en | mbr | +0.28 | [+0.05, +0.53] | [0.05, 0.53] | 0.0318 | 14/4/182 |\n"}
+,{"stream_name":"stdout","time":11764.801315369,"data":"| parakeet-ctc/greedy | ls-dev-other | conf | +0.00 | [+0.00, +0.00] | [0.00, 0.00] | 1.0000 | 0/0/200 |\n"}
+,{"stream_name":"stdout","time":11764.80131895,"data":"| parakeet-ctc/greedy | ls-dev-other | mbr | +0.00 | [+0.00, +0.00] | [0.00, 0.00] | 1.0000 | 0/0/200 |\n"}
+,{"stream_name":"stdout","time":11764.801322235,"data":"| parakeet-ctc/sample | ls-dev-other | conf | +0.31 | [-0.09, +0.70] | [-0.11, 0.77] | 0.1505 | 21/10/169 |\n"}
+,{"stream_name":"stdout","time":11764.801325907,"data":"| parakeet-ctc/sample | ls-dev-other | mbr | +0.28 | [+0.08, +0.50] | [0.09, 0.47] | 0.0124 | 11/2/187 |\n"}
+,{"stream_name":"stdout","time":11764.801329415,"data":"| parakeet-ctc/greedy | ls-tc-babble5 | conf | +0.00 | [+0.00, +0.00] | [0.00, 0.00] | 1.0000 | 0/0/200 |\n"}
+,{"stream_name":"stdout","time":11764.801332585,"data":"| parakeet-ctc/greedy | ls-tc-babble5 | mbr | +0.00 | [+0.00, +0.00] | [0.00, 0.00] | 1.0000 | 0/0/200 |\n"}
+,{"stream_name":"stdout","time":11764.801336047,"data":"| parakeet-ctc/sample | ls-tc-babble5 | conf | +1.27 | [+0.80, +1.76] | [0.75, 1.82] | 0.0000 | 49/11/140 |\n"}
+,{"stream_name":"stdout","time":11764.801339357,"data":"| parakeet-ctc/sample | ls-tc-babble5 | mbr | +0.47 | [+0.22, +0.73] | [0.23, 0.73] | 0.0011 | 18/3/179 |\n"}
+,{"stream_name":"stdout","time":11764.80134277,"data":"| parakeet-ctc/greedy | ls-test-clean | conf | +0.00 | [+0.00, +0.00] | [0.00, 0.00] | 1.0000 | 0/0/200 |\n"}
+,{"stream_name":"stdout","time":11764.801346743,"data":"| parakeet-ctc/greedy | ls-test-clean | mbr | +0.00 | [+0.00, +0.00] | [0.00, 0.00] | 1.0000 | 0/0/200 |\n"}
+,{"stream_name":"stdout","time":11764.801350262,"data":"| parakeet-ctc/sample | ls-test-clean | conf | +0.72 | [+0.42, +1.02] | [0.42, 1.03] | 0.0000 | 26/3/171 |\n"}
+,{"stream_name":"stdout","time":11764.801354122,"data":"| parakeet-ctc/sample | ls-test-clean | mbr | +0.03 | [-0.12, +0.18] | [-0.11, 0.17] | 0.7389 | 3/3/194 |\n"}
+,{"stream_name":"stdout","time":11764.80135753,"data":"| parakeet-ctc/greedy | ls-test-other | conf | +0.00 | [+0.00, +0.00] | [0.00, 0.00] | 1.0000 | 0/0/200 |\n"}
+,{"stream_name":"stdout","time":11764.801360932,"data":"| parakeet-ctc/greedy | ls-test-other | mbr | +0.00 | [+0.00, +0.00] | [0.00, 0.00] | 1.0000 | 0/0/200 |\n"}
+,{"stream_name":"stdout","time":11764.801364396,"data":"| parakeet-ctc/sample | ls-test-other | conf | +0.42 | [+0.03, +0.81] | [-0.05, 0.86] | 0.0250 | 28/13/159 |\n"}
+,{"stream_name":"stdout","time":11764.801368006,"data":"| parakeet-ctc/sample | ls-test-other | mbr | +0.00 | [-0.17, +0.19] | [-0.18, 0.17] | 1.0000 | 3/4/193 |\n"}
+,{"stream_name":"stdout","time":11764.801371542,"data":"| whisper-small/beam | ami | conf | +3.16 | [-0.59, +10.19] | [-0.60, 10.22] | 0.7756 | 48/54/250 |\n"}
+,{"stream_name":"stdout","time":11764.801375037,"data":"| whisper-small/beam | ami | mbr | -0.56 | [-1.13, -0.06] | [-0.94, -0.21] | 0.0289 | 24/42/286 |\n"}
+,{"stream_name":"stdout","time":11764.801378595,"data":"| whisper-small/greedy | ami | conf | +0.00 | [+0.00, +0.00] | [0.00, 0.00] | 1.0000 | 0/0/352 |\n"}
+,{"stream_name":"stdout","time":11764.801382333,"data":"| whisper-small/greedy | ami | mbr | +0.00 | [+0.00, +0.00] | [0.00, 0.00] | 1.0000 | 0/0/352 |\n"}
+,{"stream_name":"stdout","time":11764.801386112,"data":"| whisper-small/sample | ami | conf | +5.41 | [-0.55, +19.98] | [-0.93, 17.60] | 0.2360 | 45/37/270 |\n"}
+,{"stream_name":"stdout","time":11764.801394334,"data":"| whisper-small/sample | ami | mbr | -0.19 | [-0.68, +0.31] | [-0.67, 0.26] | 0.4595 | 21/29/302 |\n"}
+,{"stream_name":"stdout","time":11764.801397798,"data":"| whisper-small/beam | common_voice | conf | -0.67 | [-1.81, +0.44] | [, ] | 0.1854 | 15/24/108 |\n"}
+,{"stream_name":"stdout","time":11764.801401389,"data":"| whisper-small/beam | common_voice | mbr | -0.30 | [-1.03, +0.45] | [, ] | 0.4328 | 11/15/121 |\n"}
+,{"stream_name":"stdout","time":11764.801404854,"data":"| whisper-small/greedy | common_voice | conf | +0.00 | [+0.00, +0.00] | [, ] | 1.0000 | 0/0/147 |\n"}
+,{"stream_name":"stdout","time":11764.801408195,"data":"| whisper-small/greedy | common_voice | mbr | +0.00 | [+0.00, +0.00] | [, ] | 1.0000 | 0/0/147 |\n"}
+,{"stream_name":"stdout","time":11764.801411616,"data":"| whisper-small/sample | common_voice | conf | +0.07 | [-1.72, +2.15] | [, ] | 0.4939 | 19/24/104 |\n"}
+,{"stream_name":"stdout","time":11764.801415226,"data":"| whisper-small/sample | common_voice | mbr | +0.89 | [+0.00, +1.87] | [, ] | 0.0679 | 18/9/120 |\n"}
+,{"stream_name":"stdout","time":11764.801418414,"data":"| whisper-small/beam | earnings22 | conf | +0.58 | [-0.31, +1.51] | [0.03, 1.18] | 0.3754 | 39/34/127 |\n"}
+,{"stream_name":"stdout","time":11764.801421695,"data":"| whisper-small/beam | earnings22 | mbr | +0.34 | [-0.18, +0.83] | [-0.30, 0.96] | 0.1574 | 27/17/156 |\n"}
+,{"stream_name":"stdout","time":11764.801425707,"data":"| whisper-small/greedy | earnings22 | conf | +0.00 | [+0.00, +0.00] | [0.00, 0.00] | 1.0000 | 0/0/200 |\n"}
+,{"stream_name":"stdout","time":11764.801429856,"data":"| whisper-small/greedy | earnings22 | mbr | +0.00 | [+0.00, +0.00] | [0.00, 0.00] | 1.0000 | 0/0/200 |\n"}
+,{"stream_name":"stdout","time":11764.801433805,"data":"| whisper-small/sample | earnings22 | conf | -3.99 | [-6.89, -1.21] | [-6.81, -1.08] | 0.2492 | 38/42/120 |\n"}
+,{"stream_name":"stdout","time":11764.801439986,"data":"| whisper-small/sample | earnings22 | mbr | +0.83 | [+0.29, +1.41] | [0.10, 1.52] | 0.0051 | 40/21/139 |\n"}
+,{"stream_name":"stdout","time":11764.801444309,"data":"| whisper-small/beam | fleurs-en | conf | -0.07 | [-0.44, +0.32] | [-0.47, 0.32] | 0.6043 | 17/18/165 |\n"}
+,{"stream_name":"stdout","time":11764.801448135,"data":"| whisper-small/beam | fleurs-en | mbr | -0.07 | [-0.34, +0.20] | [-0.33, 0.18] | 0.5566 | 12/11/177 |\n"}
+,{"stream_name":"stdout","time":11764.801451642,"data":"| whisper-small/greedy | fleurs-en | conf | +0.00 | [+0.00, +0.00] | [0.00, 0.00] | 1.0000 | 0/0/200 |\n"}
+,{"stream_name":"stdout","time":11764.801455202,"data":"| whisper-small/greedy | fleurs-en | mbr | +0.00 | [+0.00, +0.00] | [0.00, 0.00] | 1.0000 | 0/0/200 |\n"}
+,{"stream_name":"stdout","time":11764.801458765,"data":"| whisper-small/sample | fleurs-en | conf | -0.53 | [-2.23, +0.83] | [-2.07, 0.83] | 0.8897 | 22/24/154 |\n"}
+,{"stream_name":"stdout","time":11764.80146223,"data":"| whisper-small/sample | fleurs-en | mbr | +0.18 | [-0.11, +0.48] | [-0.15, 0.49] | 0.1703 | 21/11/168 |\n"}
+,{"stream_name":"stdout","time":11764.801465587,"data":"| whisper-small/beam | ls-dev-other | conf | -0.14 | [-0.47, +0.27] | [-0.52, 0.27] | 0.0979 | 25/38/337 |\n"}
+,{"stream_name":"stdout","time":11764.801469173,"data":"| whisper-small/beam | ls-dev-other | mbr | -0.08 | [-0.31, +0.13] | [-0.30, 0.13] | 0.4487 | 22/25/353 |\n"}
+,{"stream_name":"stdout","time":11764.801472703,"data":"| whisper-small/greedy | ls-dev-other | conf | +0.00 | [+0.00, +0.00] | [0.00, 0.00] | 1.0000 | 0/0/400 |\n"}
+,{"stream_name":"stdout","time":11764.801476496,"data":"| whisper-small/greedy | ls-dev-other | mbr | +0.00 | [+0.00, +0.00] | [0.00, 0.00] | 1.0000 | 0/0/400 |\n"}
+,{"stream_name":"stdout","time":11764.801484197,"data":"| whisper-small/sample | ls-dev-other | conf | +0.64 | [+0.08, +1.30] | [0.11, 1.21] | 0.0981 | 42/41/317 |\n"}
+,{"stream_name":"stdout","time":11764.801487717,"data":"| whisper-small/sample | ls-dev-other | mbr | +0.23 | [+0.03, +0.45] | [-0.03, 0.53] | 0.0348 | 37/22/341 |\n"}
+,{"stream_name":"stdout","time":11764.801491138,"data":"| whisper-small/beam | ls-tc-babble5 | conf | +1.27 | [-0.03, +3.21] | [0.10, 3.11] | 0.1408 | 40/27/133 |\n"}
+,{"stream_name":"stdout","time":11764.801494599,"data":"| whisper-small/beam | ls-tc-babble5 | mbr | +0.03 | [-0.38, +0.42] | [-0.32, 0.39] | 0.8384 | 22/18/160 |\n"}
+,{"stream_name":"stdout","time":11764.801498154,"data":"| whisper-small/greedy | ls-tc-babble5 | conf | +0.00 | [+0.00, +0.00] | [0.00, 0.00] | 1.0000 | 0/0/200 |\n"}
+,{"stream_name":"stdout","time":11764.801503412,"data":"| whisper-small/greedy | ls-tc-babble5 | mbr | +0.00 | [+0.00, +0.00] | [0.00, 0.00] | 1.0000 | 0/0/200 |\n"}
+,{"stream_name":"stdout","time":11764.801506858,"data":"| whisper-small/sample | ls-tc-babble5 | conf | +3.52 | [-1.20, +11.61] | [-1.21, 12.02] | 0.3403 | 41/28/131 |\n"}
+,{"stream_name":"stdout","time":11764.80151062,"data":"| whisper-small/sample | ls-tc-babble5 | mbr | +0.34 | [-0.21, +0.91] | [-0.36, 0.97] | 0.1949 | 42/26/132 |\n"}
+,{"stream_name":"stdout","time":11764.801513895,"data":"| whisper-small/beam | ls-test-clean | conf | +0.02 | [-0.17, +0.24] | [-0.21, 0.27] | 0.9738 | 18/19/363 |\n"}
+,{"stream_name":"stdout","time":11764.801517429,"data":"| whisper-small/beam | ls-test-clean | mbr | -0.02 | [-0.19, +0.14] | [-0.20, 0.18] | 0.7580 | 17/18/365 |\n"}
+,{"stream_name":"stdout","time":11764.801521042,"data":"| whisper-small/greedy | ls-test-clean | conf | +0.00 | [+0.00, +0.00] | [0.00, 0.00] | 1.0000 | 0/0/400 |\n"}
+,{"stream_name":"stdout","time":11764.801524513,"data":"| whisper-small/greedy | ls-test-clean | mbr | +0.00 | [+0.00, +0.00] | [0.00, 0.00] | 1.0000 | 0/0/400 |\n"}
+,{"stream_name":"stdout","time":11764.801528078,"data":"| whisper-small/sample | ls-test-clean | conf | +1.24 | [-0.10, +3.81] | [-0.14, 3.93] | 0.4353 | 24/23/353 |\n"}
+,{"stream_name":"stdout","time":11764.801531519,"data":"| whisper-small/sample | ls-test-clean | mbr | +0.17 | [+0.01, +0.36] | [0.02, 0.34] | 0.0513 | 23/13/364 |\n"}
+,{"stream_name":"stdout","time":11764.801534887,"data":"| whisper-small/beam | ls-test-other | conf | +0.01 | [-0.34, +0.37] | [-0.34, 0.32] | 0.9552 | 40/43/317 |\n"}
+,{"stream_name":"stdout","time":11764.801538644,"data":"| whisper-small/beam | ls-test-other | mbr | -0.03 | [-0.24, +0.19] | [-0.26, 0.21] | 0.8136 | 23/27/350 |\n"}
+,{"stream_name":"stdout","time":11764.801542187,"data":"| whisper-small/greedy | ls-test-other | conf | +0.00 | [+0.00, +0.00] | [0.00, 0.00] | 1.0000 | 0/0/400 |\n"}
+,{"stream_name":"stdout","time":11764.801546014,"data":"| whisper-small/greedy | ls-test-other | mbr | +0.00 | [+0.00, +0.00] | [0.00, 0.00] | 1.0000 | 0/0/400 |\n"}
+,{"stream_name":"stdout","time":11764.801549733,"data":"| whisper-small/sample | ls-test-other | conf | +0.11 | [-0.76, +0.91] | [-1.03, 1.04] | 0.2907 | 38/43/319 |\n"}
+,{"stream_name":"stdout","time":11764.801553331,"data":"| whisper-small/sample | ls-test-other | mbr | -0.11 | [-0.35, +0.13] | [-0.36, 0.13] | 0.3647 | 23/34/343 |\n"}
+,{"stream_name":"stdout","time":11764.801556894,"data":"| whisper-turbo/beam | ami | conf | +1.54 | [-1.77, +7.36] | [-1.44, 6.28] | 0.0124 | 39/77/284 |\n"}
+,{"stream_name":"stdout","time":11764.801560332,"data":"| whisper-turbo/beam | ami | mbr | -1.19 | [-1.75, -0.67] | [-1.89, -0.63] | 0.0000 | 19/65/316 |\n"}
+,{"stream_name":"stdout","time":11764.801563922,"data":"| whisper-turbo/greedy | ami | conf | +0.00 | [+0.00, +0.00] | [0.00, 0.00] | 1.0000 | 0/0/400 |\n"}
+,{"stream_name":"stdout","time":11764.801567445,"data":"| whisper-turbo/greedy | ami | mbr | +0.00 | [+0.00, +0.00] | [0.00, 0.00] | 1.0000 | 0/0/400 |\n"}
+,{"stream_name":"stdout","time":11764.801575242,"data":"| whisper-turbo/sample | ami | conf | -0.70 | [-1.55, +0.13] | [-1.39, -0.05] | 0.0876 | 34/45/321 |\n"}
+,{"stream_name":"stdout","time":11764.801578947,"data":"| whisper-turbo/sample | ami | mbr | -0.11 | [-0.49, +0.29] | [-0.46, 0.23] | 0.5868 | 22/26/352 |\n"}
+,{"stream_name":"stdout","time":11764.801582634,"data":"| whisper-turbo/beam | common_voice | conf | -0.67 | [-1.35, +0.00] | [, ] | 0.0495 | 6/15/126 |\n"}
+,{"stream_name":"stdout","time":11764.80158635,"data":"| whisper-turbo/beam | common_voice | mbr | -0.82 | [-1.61, -0.15] | [, ] | 0.0276 | 5/14/128 |\n"}
+,{"stream_name":"stdout","time":11764.801589982,"data":"| whisper-turbo/greedy | common_voice | conf | +0.00 | [+0.00, +0.00] | [, ] | 1.0000 | 0/0/147 |\n"}
+,{"stream_name":"stdout","time":11764.801593738,"data":"| whisper-turbo/greedy | common_voice | mbr | +0.00 | [+0.00, +0.00] | [, ] | 1.0000 | 0/0/147 |\n"}
+,{"stream_name":"stdout","time":11764.801597367,"data":"| whisper-turbo/sample | common_voice | conf | +1.34 | [-1.11, +5.70] | [, ] | 0.2345 | 6/12/129 |\n"}
+,{"stream_name":"stdout","time":11764.801601103,"data":"| whisper-turbo/sample | common_voice | mbr | +0.74 | [+0.07, +1.71] | [, ] | 0.0522 | 8/2/137 |\n"}
+,{"stream_name":"stdout","time":11764.801604728,"data":"| whisper-turbo/beam | earnings22 | conf | -0.08 | [-0.55, +0.40] | [-0.50, 0.34] | 0.7488 | 32/34/241 |\n"}
+,{"stream_name":"stdout","time":11764.801608363,"data":"| whisper-turbo/beam | earnings22 | mbr | +0.18 | [-0.13, +0.49] | [-0.22, 0.40] | 0.2853 | 27/14/266 |\n"}
+,{"stream_name":"stdout","time":11764.801611932,"data":"| whisper-turbo/greedy | earnings22 | conf | +0.00 | [+0.00, +0.00] | [0.00, 0.00] | 1.0000 | 0/0/307 |\n"}
+,{"stream_name":"stdout","time":11764.801615345,"data":"| whisper-turbo/greedy | earnings22 | mbr | +0.00 | [+0.00, +0.00] | [0.00, 0.00] | 1.0000 | 0/0/307 |\n"}
+,{"stream_name":"stdout","time":11764.801618606,"data":"| whisper-turbo/sample | earnings22 | conf | -0.06 | [-0.53, +0.40] | [-0.41, 0.49] | 0.6325 | 33/35/239 |\n"}
+,{"stream_name":"stdout","time":11764.801622198,"data":"| whisper-turbo/sample | earnings22 | mbr | +0.21 | [-0.08, +0.47] | [-0.03, 0.49] | 0.1489 | 27/18/262 |\n"}
+,{"stream_name":"stdout","time":11764.801625732,"data":"| whisper-turbo/beam | fleurs-en | conf | -0.12 | [-0.39, +0.12] | [-0.37, 0.12] | 0.4497 | 11/14/175 |\n"}
+,{"stream_name":"stdout","time":11764.801629644,"data":"| whisper-turbo/beam | fleurs-en | mbr | -0.05 | [-0.29, +0.18] | [-0.30, 0.19] | 0.8165 | 9/8/183 |\n"}
+,{"stream_name":"stdout","time":11764.801633295,"data":"| whisper-turbo/greedy | fleurs-en | conf | +0.00 | [+0.00, +0.00] | [0.00, 0.00] | 1.0000 | 0/0/200 |\n"}
+,{"stream_name":"stdout","time":11764.801636828,"data":"| whisper-turbo/greedy | fleurs-en | mbr | +0.00 | [+0.00, +0.00] | [0.00, 0.00] | 1.0000 | 0/0/200 |\n"}
+,{"stream_name":"stdout","time":11764.801640492,"data":"| whisper-turbo/sample | fleurs-en | conf | -0.28 | [-1.02, +0.24] | [-1.07, 0.24] | 0.9723 | 11/11/178 |\n"}
+,{"stream_name":"stdout","time":11764.801644296,"data":"| whisper-turbo/sample | fleurs-en | mbr | +0.02 | [-0.21, +0.26] | [-0.21, 0.24] | 0.8684 | 9/7/184 |\n"}
+,{"stream_name":"stdout","time":11764.801648187,"data":"| whisper-turbo/beam | ls-dev-other | conf | +0.22 | [-0.01, +0.48] | [-0.04, 0.48] | 0.0533 | 29/15/356 |\n"}
+,{"stream_name":"stdout","time":11764.801651786,"data":"| whisper-turbo/beam | ls-dev-other | mbr | +0.08 | [-0.05, +0.21] | [-0.07, 0.26] | 0.2393 | 14/9/377 |\n"}
+,{"stream_name":"stdout","time":11764.801655498,"data":"| whisper-turbo/greedy | ls-dev-other | conf | +0.00 | [+0.00, +0.00] | [0.00, 0.00] | 1.0000 | 0/0/400 |\n"}
+,{"stream_name":"stdout","time":11764.801679788,"data":"| whisper-turbo/greedy | ls-dev-other | mbr | +0.00 | [+0.00, +0.00] | [0.00, 0.00] | 1.0000 | 0/0/400 |\n"}
+,{"stream_name":"stdout","time":11764.801688907,"data":"| whisper-turbo/sample | ls-dev-other | conf | +0.15 | [-0.06, +0.38] | [-0.06, 0.38] | 0.1447 | 26/15/359 |\n"}
+,{"stream_name":"stdout","time":11764.801692513,"data":"| whisper-turbo/sample | ls-dev-other | mbr | +0.11 | [-0.04, +0.25] | [0.00, 0.25] | 0.1465 | 16/8/376 |\n"}
+,{"stream_name":"stdout","time":11764.801696313,"data":"| whisper-turbo/beam | ls-tc-babble5 | conf | +0.16 | [-0.26, +0.62] | [-0.27, 0.61] | 0.6252 | 18/19/163 |\n"}
+,{"stream_name":"stdout","time":11764.801700327,"data":"| whisper-turbo/beam | ls-tc-babble5 | mbr | +0.05 | [-0.25, +0.38] | [-0.23, 0.35] | 0.7232 | 14/14/172 |\n"}
+,{"stream_name":"stdout","time":11764.80170411,"data":"| whisper-turbo/greedy | ls-tc-babble5 | conf | +0.00 | [+0.00, +0.00] | [0.00, 0.00] | 1.0000 | 0/0/200 |\n"}
+,{"stream_name":"stdout","time":11764.801707531,"data":"| whisper-turbo/greedy | ls-tc-babble5 | mbr | +0.00 | [+0.00, +0.00] | [0.00, 0.00] | 1.0000 | 0/0/200 |\n"}
+,{"stream_name":"stdout","time":11764.801710983,"data":"| whisper-turbo/sample | ls-tc-babble5 | conf | +0.05 | [-0.45, +0.50] | [-0.43, 0.48] | 0.5464 | 22/19/159 |\n"}
+,{"stream_name":"stdout","time":11764.801714628,"data":"| whisper-turbo/sample | ls-tc-babble5 | mbr | +0.18 | [-0.11, +0.47] | [-0.05, 0.44] | 0.2997 | 17/11/172 |\n"}
+,{"stream_name":"stdout","time":11764.80171813,"data":"| whisper-turbo/beam | ls-test-clean | conf | +0.01 | [-0.20, +0.23] | [-0.20, 0.21] | 0.9957 | 25/24/351 |\n"}
+,{"stream_name":"stdout","time":11764.801721697,"data":"| whisper-turbo/beam | ls-test-clean | mbr | +0.11 | [-0.10, +0.32] | [-0.10, 0.34] | 0.3110 | 23/18/359 |\n"}
+,{"stream_name":"stdout","time":11764.801725328,"data":"| whisper-turbo/greedy | ls-test-clean | conf | +0.00 | [+0.00, +0.00] | [0.00, 0.00] | 1.0000 | 0/0/400 |\n"}
+,{"stream_name":"stdout","time":11764.801728927,"data":"| whisper-turbo/greedy | ls-test-clean | mbr | +0.00 | [+0.00, +0.00] | [0.00, 0.00] | 1.0000 | 0/0/400 |\n"}
+,{"stream_name":"stdout","time":11764.801732621,"data":"| whisper-turbo/sample | ls-test-clean | conf | +0.78 | [-0.01, +2.31] | [-0.03, 2.26] | 0.1759 | 19/13/368 |\n"}
+,{"stream_name":"stdout","time":11764.801736247,"data":"| whisper-turbo/sample | ls-test-clean | mbr | +0.02 | [-0.12, +0.17] | [-0.10, 0.16] | 0.7232 | 14/14/372 |\n"}
+,{"stream_name":"stdout","time":11764.801739755,"data":"| whisper-turbo/beam | ls-test-other | conf | +0.11 | [-0.14, +0.34] | [-0.17, 0.38] | 0.3774 | 34/24/342 |\n"}
+,{"stream_name":"stdout","time":11764.801743237,"data":"| whisper-turbo/beam | ls-test-other | mbr | -0.03 | [-0.22, +0.15] | [-0.24, 0.19] | 0.7719 | 16/18/366 |\n"}
+,{"stream_name":"stdout","time":11764.801747285,"data":"| whisper-turbo/greedy | ls-test-other | conf | +0.00 | [+0.00, +0.00] | [0.00, 0.00] | 1.0000 | 0/0/400 |\n"}
+,{"stream_name":"stdout","time":11764.801751183,"data":"| whisper-turbo/greedy | ls-test-other | mbr | +0.00 | [+0.00, +0.00] | [0.00, 0.00] | 1.0000 | 0/0/400 |\n"}
+,{"stream_name":"stdout","time":11764.801754456,"data":"| whisper-turbo/sample | ls-test-other | conf | +0.16 | [-0.07, +0.39] | [-0.10, 0.42] | 0.2600 | 28/19/353 |\n"}
+,{"stream_name":"stdout","time":11764.801758004,"data":"| whisper-turbo/sample | ls-test-other | mbr | +0.20 | [+0.03, +0.40] | [0.04, 0.36] | 0.0340 | 23/12/365 |\n"}
+,{"stream_name":"stdout","time":11764.801761672,"data":"\n"}
+,{"stream_name":"stdout","time":11764.801765022,"data":"## Pooled over test sets (random effects)\n"}
+,{"stream_name":"stdout","time":11764.801768522,"data":"\n"}
+,{"stream_name":"stdout","time":11764.801771873,"data":"| model | arm | norm | a -\u003e b | sets | pooled delta | 95% CI | I2 | sets sig + / - |\n"}
+,{"stream_name":"stdout","time":11764.801780095,"data":"|---|---|---|---|---|---|---|---|---|\n"}
+,{"stream_name":"stdout","time":11764.801783635,"data":"| parakeet-ctc | greedy | whisper | cm05 -\u003e rover_cg | 7 | -2.66 | [-3.57, -1.75] | 0.89 | 0 / 7 |\n"}
+,{"stream_name":"stdout","time":11764.801787396,"data":"| parakeet-ctc | greedy | whisper | conf -\u003e rover_c | 7 | -2.66 | [-3.57, -1.75] | 0.89 | 0 / 7 |\n"}
+,{"stream_name":"stdout","time":11764.801877307,"data":"| parakeet-ctc | greedy | whisper | conf -\u003e rover_cg | 7 | -2.66 | [-3.57, -1.75] | 0.89 | 0 / 7 |\n"}
+,{"stream_name":"stdout","time":11764.80188409,"data":"| parakeet-ctc | greedy | whisper | conf -\u003e rover_freq | 7 | -2.66 | [-3.57, -1.75] | 0.89 | 0 / 7 |\n"}
+,{"stream_name":"stdout","time":11764.801888151,"data":"| parakeet-ctc | greedy | whisper | first -\u003e rover_cg | 7 | -2.66 | [-3.57, -1.75] | 0.89 | 0 / 7 |\n"}
+,{"stream_name":"stdout","time":11764.801891905,"data":"| parakeet-ctc | greedy | whisper | mbr -\u003e rover_cg | 7 | -2.66 | [-3.57, -1.75] | 0.89 | 0 / 7 |\n"}
+,{"stream_name":"stdout","time":11764.801895379,"data":"| parakeet-ctc | sample | legacy | cm05 -\u003e rover_cg | 7 | +0.35 | [+0.14, +0.57] | 0.64 | 5 / 0 |\n"}
+,{"stream_name":"stdout","time":11764.801902382,"data":"| parakeet-ctc | sample | legacy | conf -\u003e mbr | 7 | +1.17 | [+0.60, +1.74] | 0.89 | 6 / 0 |\n"}
+,{"stream_name":"stdout","time":11764.80190611,"data":"| parakeet-ctc | sample | legacy | conf -\u003e rover_c | 7 | +1.49 | [+0.86, +2.12] | 0.91 | 7 / 0 |\n"}
+,{"stream_name":"stdout","time":11764.801909603,"data":"| parakeet-ctc | sample | legacy | conf -\u003e rover_cg | 7 | +1.50 | [+0.86, +2.14] | 0.91 | 7 / 0 |\n"}
+,{"stream_name":"stdout","time":11764.801912969,"data":"| parakeet-ctc | sample | legacy | conf -\u003e rover_freq | 7 | +1.50 | [+0.85, +2.15] | 0.91 | 7 / 0 |\n"}
+,{"stream_name":"stdout","time":11764.801916497,"data":"| parakeet-ctc | sample | legacy | first -\u003e conf | 7 | +1.34 | [+0.68, +1.99] | 0.80 | 5 / 0 |\n"}
+,{"stream_name":"stdout","time":11764.801920115,"data":"| parakeet-ctc | sample | legacy | first -\u003e rover_cg | 7 | +2.85 | [+1.85, +3.85] | 0.92 | 7 / 0 |\n"}
+,{"stream_name":"stdout","time":11764.801923525,"data":"| parakeet-ctc | sample | legacy | mbr -\u003e rover_cg | 7 | +0.25 | [+0.04, +0.45] | 0.73 | 4 / 0 |\n"}
+,{"stream_name":"stdout","time":11764.801927991,"data":"| parakeet-ctc | sample | legacy | rover_freq -\u003e rover_cg | 7 | -0.02 | [-0.10, +0.07] | 0.09 | 0 / 0 |\n"}
+,{"stream_name":"stdout","time":11764.801931648,"data":"| parakeet-ctc | sample | whisper | cm05 -\u003e rover_cg | 7 | -2.06 | [-2.90, -1.23] | 0.85 | 0 / 7 |\n"}
+,{"stream_name":"stdout","time":11764.801951723,"data":"| parakeet-ctc | sample | whisper | conf -\u003e mbr | 7 | +1.20 | [+0.60, +1.79] | 0.89 | 6 / 0 |\n"}
+,{"stream_name":"stdout","time":11764.80195572,"data":"| parakeet-ctc | sample | whisper | conf -\u003e rover_c | 7 | -0.96 | [-1.60, -0.33] | 0.70 | 0 / 3 |\n"}
+,{"stream_name":"stdout","time":11764.801959689,"data":"| parakeet-ctc | sample | whisper | conf -\u003e rover_cg | 7 | -0.95 | [-1.62, -0.29] | 0.73 | 0 / 3 |\n"}
+,{"stream_name":"stdout","time":11764.801963639,"data":"| parakeet-ctc | sample | whisper | conf -\u003e rover_freq | 7 | -0.95 | [-1.52, -0.37] | 0.62 | 0 / 2 |\n"}
+,{"stream_name":"stdout","time":11764.801967413,"data":"| parakeet-ctc | sample | whisper | first -\u003e conf | 7 | +1.36 | [+0.69, +2.03] | 0.80 | 4 / 0 |\n"}
+,{"stream_name":"stdout","time":11764.801971484,"data":"| parakeet-ctc | sample | whisper | first -\u003e rover_cg | 7 | +0.41 | [-0.76, +1.58] | 0.88 | 3 / 1 |\n"}
+,{"stream_name":"stdout","time":11764.80197545,"data":"| parakeet-ctc | sample | whisper | mbr -\u003e rover_cg | 7 | -2.27 | [-3.28, -1.26] | 0.90 | 0 / 7 |\n"}
+,{"stream_name":"stdout","time":11764.802028146,"data":"| parakeet-ctc | sample | whisper | rover_freq -\u003e rover_cg | 7 | +0.00 | [-0.11, +0.11] | 0.30 | 0 / 1 |\n"}
+,{"stream_name":"stdout","time":11764.802033143,"data":"| whisper-small | beam | legacy | cm05 -\u003e rover_cg | 7 | -0.06 | [-0.25, +0.14] | 0.49 | 0 / 1 |\n"}
+,{"stream_name":"stdout","time":11764.80203716,"data":"| whisper-small | beam | legacy | conf -\u003e mbr | 7 | +0.05 | [-0.12, +0.22] | 0.00 | 0 / 0 |\n"}
+,{"stream_name":"stdout","time":11764.802041071,"data":"| whisper-small | beam | legacy | conf -\u003e rover_c | 7 | +0.00 | [-0.18, +0.19] | 0.11 | 1 / 0 |\n"}
+,{"stream_name":"stdout","time":11764.802045263,"data":"| whisper-small | beam | legacy | conf -\u003e rover_cg | 7 | +0.02 | [-0.14, +0.19] | 0.05 | 0 / 0 |\n"}
+,{"stream_name":"stdout","time":11764.802049514,"data":"| whisper-small | beam | legacy | conf -\u003e rover_freq | 7 | +0.07 | [-0.08, +0.22] | 0.00 | 1 / 0 |\n"}
+,{"stream_name":"stdout","time":11764.802053757,"data":"| whisper-small | beam | legacy | first -\u003e conf | 7 | -0.12 | [-0.22, -0.02] | 0.00 | 0 / 1 |\n"}
+,{"stream_name":"stdout","time":11764.802057891,"data":"| whisper-small | beam | legacy | first -\u003e rover_cg | 7 | -0.04 | [-0.22, +0.13] | 0.18 | 0 / 0 |\n"}
+,{"stream_name":"stdout","time":11764.80206215,"data":"| whisper-small | beam | legacy | mbr -\u003e rover_cg | 7 | -0.04 | [-0.15, +0.07] | 0.05 | 0 / 1 |\n"}
+,{"stream_name":"stdout","time":11764.802066344,"data":"| whisper-small | beam | legacy | rover_freq -\u003e rover_cg | 7 | -0.06 | [-0.22, +0.10] | 0.46 | 0 / 1 |\n"}
+,{"stream_name":"stdout","time":11764.80207068,"data":"| whisper-small | beam | whisper | cm05 -\u003e rover_cg | 7 | -2.65 | [-3.40, -1.89] | 0.79 | 0 / 6 |\n"}
+,{"stream_name":"stdout","time":11764.802075455,"data":"| whisper-small | beam | whisper | conf -\u003e mbr | 7 | +0.02 | [-0.15, +0.18] | 0.00 | 0 / 0 |\n"}
+,{"stream_name":"stdout","time":11764.802091722,"data":"| whisper-small | beam | whisper | conf -\u003e rover_c | 7 | -2.41 | [-3.06, -1.77] | 0.64 | 0 / 5 |\n"}
+,{"stream_name":"stdout","time":11764.80209597,"data":"| whisper-small | beam | whisper | conf -\u003e rover_cg | 7 | -2.42 | [-3.09, -1.76] | 0.66 | 0 / 5 |\n"}
+,{"stream_name":"stdout","time":11764.802099876,"data":"| whisper-small | beam | whisper | conf -\u003e rover_freq | 7 | -2.41 | [-3.10, -1.73] | 0.68 | 0 / 5 |\n"}
+,{"stream_name":"stdout","time":11764.802103802,"data":"| whisper-small | beam | whisper | first -\u003e conf | 7 | -0.04 | [-0.14, +0.07] | 0.00 | 0 / 0 |\n"}
+,{"stream_name":"stdout","time":11764.802107807,"data":"| whisper-small | beam | whisper | first -\u003e rover_cg | 7 | -2.38 | [-2.99, -1.77] | 0.63 | 0 / 5 |\n"}
+,{"stream_name":"stdout","time":11764.802111617,"data":"| whisper-small | beam | whisper | mbr -\u003e rover_cg | 7 | -2.58 | [-3.27, -1.90] | 0.76 | 0 / 7 |\n"}
+,{"stream_name":"stdout","time":11764.802115602,"data":"| whisper-small | beam | whisper | rover_freq -\u003e rover_cg | 7 | -0.04 | [-0.17, +0.08] | 0.24 | 0 / 1 |\n"}
+,{"stream_name":"stdout","time":11764.802119708,"data":"| whisper-small | greedy | whisper | cm05 -\u003e rover_cg | 7 | -3.07 | [-4.15, -1.99] | 0.94 | 0 / 7 |\n"}
+,{"stream_name":"stdout","time":11764.802123357,"data":"| whisper-small | greedy | whisper | conf -\u003e rover_c | 7 | -3.07 | [-4.15, -1.99] | 0.94 | 0 / 7 |\n"}
+,{"stream_name":"stdout","time":11764.802127405,"data":"| whisper-small | greedy | whisper | conf -\u003e rover_cg | 7 | -3.07 | [-4.15, -1.99] | 0.94 | 0 / 7 |\n"}
+,{"stream_name":"stdout","time":11764.802131526,"data":"| whisper-small | greedy | whisper | conf -\u003e rover_freq | 7 | -3.07 | [-4.15, -1.99] | 0.94 | 0 / 7 |\n"}
+,{"stream_name":"stdout","time":11764.802135639,"data":"| whisper-small | greedy | whisper | first -\u003e rover_cg | 7 | -3.07 | [-4.15, -1.99] | 0.94 | 0 / 7 |\n"}
+,{"stream_name":"stdout","time":11764.802153807,"data":"| whisper-small | greedy | whisper | mbr -\u003e rover_cg | 7 | -3.07 | [-4.15, -1.99] | 0.94 | 0 / 7 |\n"}
+,{"stream_name":"stdout","time":11764.802158112,"data":"| whisper-small | sample | legacy | cm05 -\u003e rover_cg | 7 | -0.06 | [-0.19, +0.07] | 0.00 | 0 / 0 |\n"}
+,{"stream_name":"stdout","time":11764.802162001,"data":"| whisper-small | sample | legacy | conf -\u003e mbr | 7 | -0.44 | [-1.67, +0.79] | 0.55 | 0 / 1 |\n"}
+,{"stream_name":"stdout","time":11764.802166167,"data":"| whisper-small | sample | legacy | conf -\u003e rover_c | 7 | -0.01 | [-1.14, +1.12] | 0.47 | 0 / 1 |\n"}
+,{"stream_name":"stdout","time":11764.802170357,"data":"| whisper-small | sample | legacy | conf -\u003e rover_cg | 7 | -0.17 | [-1.27, +0.93] | 0.44 | 0 / 1 |\n"}
+,{"stream_name":"stdout","time":11764.802174426,"data":"| whisper-small | sample | legacy | conf -\u003e rover_freq | 7 | -0.27 | [-1.38, +0.84] | 0.50 | 1 / 1 |\n"}
+,{"stream_name":"stdout","time":11764.802178961,"data":"| whisper-small | sample | legacy | first -\u003e conf | 7 | +1.32 | [-0.02, +2.67] | 0.67 | 3 / 0 |\n"}
+,{"stream_name":"stdout","time":11764.802183165,"data":"| whisper-small | sample | legacy | first -\u003e rover_cg | 7 | +0.99 | [+0.38, +1.61] | 0.55 | 2 / 0 |\n"}
+,{"stream_name":"stdout","time":11764.802187484,"data":"| whisper-small | sample | legacy | mbr -\u003e rover_cg | 7 | +0.19 | [-0.03, +0.41] | 0.61 | 2 / 0 |\n"}
+,{"stream_name":"stdout","time":11764.80219308,"data":"| whisper-small | sample | legacy | rover_freq -\u003e rover_cg | 7 | -0.01 | [-0.20, +0.17] | 0.55 | 0 / 1 |\n"}
+,{"stream_name":"stdout","time":11764.802197387,"data":"| whisper-small | sample | whisper | cm05 -\u003e rover_cg | 7 | -3.30 | [-4.46, -2.13] | 0.92 | 0 / 7 |\n"}
+,{"stream_name":"stdout","time":11764.80220165,"data":"| whisper-small | sample | whisper | conf -\u003e mbr | 7 | -0.59 | [-1.87, +0.68] | 0.55 | 0 / 1 |\n"}
+,{"stream_name":"stdout","time":11764.802205547,"data":"| whisper-small | sample | whisper | conf -\u003e rover_c | 7 | -2.65 | [-4.29, -1.01] | 0.69 | 0 / 4 |\n"}
+,{"stream_name":"stdout","time":11764.802209781,"data":"| whisper-small | sample | whisper | conf -\u003e rover_cg | 7 | -2.82 | [-4.42, -1.21] | 0.67 | 0 / 4 |\n"}
+,{"stream_name":"stdout","time":11764.802214137,"data":"| whisper-small | sample | whisper | conf -\u003e rover_freq | 7 | -2.85 | [-4.44, -1.26] | 0.67 | 0 / 4 |\n"}
+,{"stream_name":"stdout","time":11764.802218638,"data":"| whisper-small | sample | whisper | first -\u003e conf | 7 | +1.39 | [+0.04, +2.75] | 0.67 | 3 / 0 |\n"}
+,{"stream_name":"stdout","time":11764.802222604,"data":"| whisper-small | sample | whisper | first -\u003e rover_cg | 7 | -1.79 | [-2.86, -0.71] | 0.78 | 0 / 4 |\n"}
+,{"stream_name":"stdout","time":11764.802226418,"data":"| whisper-small | sample | whisper | mbr -\u003e rover_cg | 7 | -2.71 | [-3.80, -1.63] | 0.92 | 0 / 7 |\n"}
+,{"stream_name":"stdout","time":11764.80223038,"data":"| whisper-small | sample | whisper | rover_freq -\u003e rover_cg | 7 | -0.01 | [-0.16, +0.14] | 0.38 | 0 / 1 |\n"}
+,{"stream_name":"stdout","time":11764.802263242,"data":"| whisper-turbo | beam | legacy | cm05 -\u003e rover_cg | 7 | -0.16 | [-0.38, +0.06] | 0.74 | 0 / 2 |\n"}
+,{"stream_name":"stdout","time":11764.802267571,"data":"| whisper-turbo | beam | legacy | conf -\u003e mbr | 7 | +0.01 | [-0.12, +0.13] | 0.00 | 0 / 0 |\n"}
+,{"stream_name":"stdout","time":11764.802271668,"data":"| whisper-turbo | beam | legacy | conf -\u003e rover_c | 7 | +0.01 | [-0.11, +0.13] | 0.00 | 0 / 0 |\n"}
+,{"stream_name":"stdout","time":11764.802275828,"data":"| whisper-turbo | beam | legacy | conf -\u003e rover_cg | 7 | -0.01 | [-0.14, +0.12] | 0.05 | 0 / 0 |\n"}
+,{"stream_name":"stdout","time":11764.802279947,"data":"| whisper-turbo | beam | legacy | conf -\u003e rover_freq | 7 | -0.03 | [-0.19, +0.13] | 0.33 | 0 / 1 |\n"}
+,{"stream_name":"stdout","time":11764.802289458,"data":"| whisper-turbo | beam | legacy | first -\u003e conf | 7 | +0.01 | [-0.12, +0.13] | 0.34 | 0 / 1 |\n"}
+,{"stream_name":"stdout","time":11764.802293872,"data":"| whisper-turbo | beam | legacy | first -\u003e rover_cg | 7 | +0.00 | [-0.16, +0.16] | 0.37 | 0 / 1 |\n"}
+,{"stream_name":"stdout","time":11764.802298067,"data":"| whisper-turbo | beam | legacy | mbr -\u003e rover_cg | 7 | -0.13 | [-0.37, +0.10] | 0.77 | 0 / 2 |\n"}
+,{"stream_name":"stdout","time":11764.802302121,"data":"| whisper-turbo | beam | legacy | rover_freq -\u003e rover_cg | 7 | -0.07 | [-0.28, +0.14] | 0.78 | 1 / 1 |\n"}
+,{"stream_name":"stdout","time":11764.802306326,"data":"| whisper-turbo | beam | whisper | cm05 -\u003e rover_cg | 7 | -3.77 | [-5.13, -2.41] | 0.95 | 0 / 7 |\n"}
+,{"stream_name":"stdout","time":11764.80231032,"data":"| whisper-turbo | beam | whisper | conf -\u003e mbr | 7 | +0.00 | [-0.24, +0.25] | 0.69 | 1 / 1 |\n"}
+,{"stream_name":"stdout","time":11764.802315025,"data":"| whisper-turbo | beam | whisper | conf -\u003e rover_c | 7 | -2.89 | [-3.70, -2.08] | 0.83 | 0 / 7 |\n"}
+,{"stream_name":"stdout","time":11764.802319034,"data":"| whisper-turbo | beam | whisper | conf -\u003e rover_cg | 7 | -2.90 | [-3.69, -2.12] | 0.82 | 0 / 7 |\n"}
+,{"stream_name":"stdout","time":11764.802323113,"data":"| whisper-turbo | beam | whisper | conf -\u003e rover_freq | 7 | -3.03 | [-3.91, -2.15] | 0.85 | 0 / 7 |\n"}
+,{"stream_name":"stdout","time":11764.802327152,"data":"| whisper-turbo | beam | whisper | first -\u003e conf | 7 | +0.01 | [-0.15, +0.18] | 0.64 | 1 / 2 |\n"}
+,{"stream_name":"stdout","time":11764.802331286,"data":"| whisper-turbo | beam | whisper | first -\u003e rover_cg | 7 | -2.86 | [-3.61, -2.11] | 0.81 | 0 / 7 |\n"}
+,{"stream_name":"stdout","time":11764.802335414,"data":"| whisper-turbo | beam | whisper | mbr -\u003e rover_cg | 7 | -3.70 | [-5.03, -2.37] | 0.95 | 0 / 7 |\n"}
+,{"stream_name":"stdout","time":11764.802339661,"data":"| whisper-turbo | beam | whisper | rover_freq -\u003e rover_cg | 7 | +0.03 | [-0.16, +0.21] | 0.75 | 1 / 1 |\n"}
+,{"stream_name":"stdout","time":11764.802343783,"data":"| whisper-turbo | greedy | whisper | cm05 -\u003e rover_cg | 7 | -3.40 | [-4.56, -2.24] | 0.94 | 0 / 7 |\n"}
+,{"stream_name":"stdout","time":11764.802348039,"data":"| whisper-turbo | greedy | whisper | conf -\u003e rover_c | 7 | -3.40 | [-4.56, -2.24] | 0.94 | 0 / 7 |\n"}
+,{"stream_name":"stdout","time":11764.802352296,"data":"| whisper-turbo | greedy | whisper | conf -\u003e rover_cg | 7 | -3.40 | [-4.56, -2.24] | 0.94 | 0 / 7 |\n"}
+,{"stream_name":"stdout","time":11764.802356202,"data":"| whisper-turbo | greedy | whisper | conf -\u003e rover_freq | 7 | -3.40 | [-4.56, -2.24] | 0.94 | 0 / 7 |\n"}
+,{"stream_name":"stdout","time":11764.802360275,"data":"| whisper-turbo | greedy | whisper | first -\u003e rover_cg | 7 | -3.40 | [-4.56, -2.24] | 0.94 | 0 / 7 |\n"}
+,{"stream_name":"stdout","time":11764.802363997,"data":"| whisper-turbo | greedy | whisper | mbr -\u003e rover_cg | 7 | -3.40 | [-4.56, -2.24] | 0.94 | 0 / 7 |\n"}
+,{"stream_name":"stdout","time":11764.802367969,"data":"| whisper-turbo | sample | legacy | cm05 -\u003e rover_cg | 7 | +0.03 | [-0.06, +0.11] | 0.00 | 0 / 0 |\n"}
+,{"stream_name":"stdout","time":11764.802372189,"data":"| whisper-turbo | sample | legacy | conf -\u003e mbr | 7 | -0.12 | [-0.32, +0.07] | 0.00 | 0 / 0 |\n"}
+,{"stream_name":"stdout","time":11764.802376259,"data":"| whisper-turbo | sample | legacy | conf -\u003e rover_c | 7 | -0.05 | [-0.23, +0.13] | 0.00 | 1 / 0 |\n"}
+,{"stream_name":"stdout","time":11764.802380432,"data":"| whisper-turbo | sample | legacy | conf -\u003e rover_cg | 7 | +0.03 | [-0.18, +0.24] | 0.11 | 0 / 0 |\n"}
+,{"stream_name":"stdout","time":11764.802388874,"data":"| whisper-turbo | sample | legacy | conf -\u003e rover_freq | 7 | -0.13 | [-0.31, +0.06] | 0.00 | 0 / 0 |\n"}
+,{"stream_name":"stdout","time":11764.802393319,"data":"| whisper-turbo | sample | legacy | first -\u003e conf | 7 | +0.84 | [+0.38, +1.30] | 0.55 | 5 / 0 |\n"}
+,{"stream_name":"stdout","time":11764.802397598,"data":"| whisper-turbo | sample | legacy | first -\u003e rover_cg | 7 | +0.88 | [+0.40, +1.36] | 0.78 | 4 / 0 |\n"}
+,{"stream_name":"stdout","time":11764.802401737,"data":"| whisper-turbo | sample | legacy | mbr -\u003e rover_cg | 7 | +0.10 | [+0.00, +0.20] | 0.10 | 2 / 0 |\n"}
+,{"stream_name":"stdout","time":11764.802407245,"data":"| whisper-turbo | sample | legacy | rover_freq -\u003e rover_cg | 7 | +0.08 | [-0.08, +0.25] | 0.65 | 1 / 1 |\n"}
+,{"stream_name":"stdout","time":11764.802411663,"data":"| whisper-turbo | sample | whisper | cm05 -\u003e rover_cg | 7 | -3.40 | [-4.62, -2.19] | 0.94 | 0 / 7 |\n"}
+,{"stream_name":"stdout","time":11764.802415728,"data":"| whisper-turbo | sample | whisper | conf -\u003e mbr | 7 | -0.14 | [-0.34, +0.06] | 0.00 | 0 / 0 |\n"}
+,{"stream_name":"stdout","time":11764.802419872,"data":"| whisper-turbo | sample | whisper | conf -\u003e rover_c | 7 | -3.47 | [-5.01, -1.92] | 0.93 | 0 / 5 |\n"}
+,{"stream_name":"stdout","time":11764.802424004,"data":"| whisper-turbo | sample | whisper | conf -\u003e rover_cg | 7 | -3.43 | [-4.99, -1.87] | 0.93 | 0 / 6 |\n"}
+,{"stream_name":"stdout","time":11764.802427937,"data":"| whisper-turbo | sample | whisper | conf -\u003e rover_freq | 7 | -3.51 | [-4.97, -2.06] | 0.92 | 0 / 6 |\n"}
+,{"stream_name":"stdout","time":11764.80243196,"data":"| whisper-turbo | sample | whisper | first -\u003e conf | 7 | +0.85 | [+0.37, +1.34] | 0.62 | 5 / 0 |\n"}
+,{"stream_name":"stdout","time":11764.802436042,"data":"| whisper-turbo | sample | whisper | first -\u003e rover_cg | 7 | -2.43 | [-3.53, -1.33] | 0.90 | 0 / 5 |\n"}
+,{"stream_name":"stdout","time":11764.802440254,"data":"| whisper-turbo | sample | whisper | mbr -\u003e rover_cg | 7 | -3.22 | [-4.45, -2.00] | 0.94 | 0 / 7 |\n"}
+,{"stream_name":"stdout","time":11764.802444467,"data":"| whisper-turbo | sample | whisper | rover_freq -\u003e rover_cg | 7 | +0.09 | [-0.07, +0.24] | 0.66 | 1 / 1 |\n"}
+,{"stream_name":"stdout","time":11764.802448746,"data":"\n"}
+,{"stream_name":"stdout","time":11764.802452633,"data":"## Against each model's standard decoding\n"}
+,{"stream_name":"stdout","time":11764.802456584,"data":"\n"}
+,{"stream_name":"stdout","time":11764.802460199,"data":"| model | set | comparison | WER a | WER b | delta | 95% CI |\n"}
+,{"stream_name":"stdout","time":11764.802464228,"data":"|---|---|---|---|---|---|---|\n"}
+,{"stream_name":"stdout","time":11764.802468113,"data":"| drax | ami | MBR vs ROVER, both @T=0.4 | 11.14 | 11.31 | -0.17 | [-0.55, +0.18] |\n"}
+,{"stream_name":"stdout","time":11764.802472227,"data":"| drax | common_voice | MBR vs ROVER, both @T=0.4 | 13.21 | 13.44 | -0.22 | [-0.56, +0.07] |\n"}
+,{"stream_name":"stdout","time":11764.802476317,"data":"| drax | earnings22 | MBR vs ROVER, both @T=0.4 | 20.85 | 20.91 | -0.06 | [-0.46, +0.34] |\n"}
+,{"stream_name":"stdout","time":11764.802480351,"data":"| drax | fleurs-de | MBR vs ROVER, both @T=0.4 | 8.07 | 7.88 | +0.19 | [-0.07, +0.47] |\n"}
+,{"stream_name":"stdout","time":11764.802484492,"data":"| drax | fleurs-en | MBR vs ROVER, both @T=0.4 | 9.98 | 10.25 | -0.28 | [-0.51, -0.05] |\n"}
+,{"stream_name":"stdout","time":11764.802488567,"data":"| drax | fleurs-es | MBR vs ROVER, both @T=0.4 | 5.99 | 5.95 | +0.04 | [-0.12, +0.20] |\n"}
+,{"stream_name":"stdout","time":11764.802492625,"data":"| drax | fleurs-fr | MBR vs ROVER, both @T=0.4 | 11.83 | 11.77 | +0.06 | [-0.19, +0.31] |\n"}
+,{"stream_name":"stdout","time":11764.802501123,"data":"| drax | fleurs-it | MBR vs ROVER, both @T=0.4 | 5.58 | 5.64 | -0.06 | [-0.26, +0.13] |\n"}
+,{"stream_name":"stdout","time":11764.802505412,"data":"| drax | fleurs-pt | MBR vs ROVER, both @T=0.4 | 11.57 | 11.63 | -0.06 | [-0.37, +0.24] |\n"}
+,{"stream_name":"stdout","time":11764.802509462,"data":"| drax | gigaspeech | MBR vs ROVER, both @T=0.4 | 12.90 | 13.09 | -0.19 | [-0.50, +0.11] |\n"}
+,{"stream_name":"stdout","time":11764.802514171,"data":"| drax | ls-tc-babble0 | MBR vs ROVER, both @T=0.4 | 41.30 | 40.24 | +1.06 | [+0.53, +1.58] |\n"}
+,{"stream_name":"stdout","time":11764.802518431,"data":"| drax | ls-tc-babble10 | MBR vs ROVER, both @T=0.4 | 4.37 | 4.26 | +0.10 | [-0.03, +0.25] |\n"}
+,{"stream_name":"stdout","time":11764.802522813,"data":"| drax | ls-tc-babble5 | MBR vs ROVER, both @T=0.4 | 9.49 | 9.49 | +0.00 | [-0.25, +0.28] |\n"}
+,{"stream_name":"stdout","time":11764.802526965,"data":"| drax | ls-tc-white5 | MBR vs ROVER, both @T=0.4 | 7.26 | 7.19 | +0.08 | [-0.15, +0.30] |\n"}
+,{"stream_name":"stdout","time":11764.8025337,"data":"| drax | ls-test-clean | MBR vs ROVER, both @T=0.4 | 2.61 | 2.53 | +0.08 | [-0.08, +0.24] |\n"}
+,{"stream_name":"stdout","time":11764.802537984,"data":"| drax | ls-test-other | MBR vs ROVER, both @T=0.4 | 4.82 | 4.87 | -0.06 | [-0.26, +0.16] |\n"}
+,{"stream_name":"stdout","time":11764.802541965,"data":"| drax | slr83 | MBR vs ROVER, both @T=0.4 | 8.57 | 8.42 | +0.14 | [-0.19, +0.51] |\n"}
+,{"stream_name":"stdout","time":11764.802546046,"data":"| drax | spgispeech | MBR vs ROVER, both @T=0.4 | 7.24 | 7.50 | -0.27 | [-0.50, -0.06] |\n"}
+,{"stream_name":"stdout","time":11764.802550115,"data":"| drax | voxpopuli | MBR vs ROVER, both @T=0.4 | 7.07 | 7.15 | -0.08 | [-0.27, +0.13] |\n"}
+,{"stream_name":"stdout","time":11764.802554363,"data":"| whisper-small | ami | greedy vs ROVER over samples | 19.94 | 19.81 | +0.13 | [-0.69, +1.03] |\n"}
+,{"stream_name":"stdout","time":11764.802558662,"data":"| whisper-small | common_voice | greedy vs ROVER over samples | 16.18 | 14.92 | +1.26 | [-0.14, +2.84] |\n"}
+,{"stream_name":"stdout","time":11764.802562804,"data":"| whisper-small | earnings22 | greedy vs ROVER over samples | 18.49 | 21.16 | -2.67 | [-5.41, +0.00] |\n"}
+,{"stream_name":"stdout","time":11764.802567178,"data":"| whisper-small | fleurs-en | greedy vs ROVER over samples | 7.71 | 8.06 | -0.35 | [-1.59, +0.47] |\n"}
+,{"stream_name":"stdout","time":11764.802571385,"data":"| whisper-small | ls-dev-other | greedy vs ROVER over samples | 8.12 | 7.76 | +0.36 | [+0.07, +0.67] |\n"}
+,{"stream_name":"stdout","time":11764.802575717,"data":"| whisper-small | ls-tc-babble5 | greedy vs ROVER over samples | 15.74 | 15.12 | +0.62 | [-1.67, +3.18] |\n"}
+,{"stream_name":"stdout","time":11764.802579914,"data":"| whisper-small | ls-test-clean | greedy vs ROVER over samples | 3.96 | 4.11 | -0.15 | [-0.38, +0.07] |\n"}
+,{"stream_name":"stdout","time":11764.802584176,"data":"| whisper-small | ls-test-other | greedy vs ROVER over samples | 8.82 | 8.77 | +0.06 | [-0.25, +0.38] |\n"}
+,{"stream_name":"stdout","time":11764.802588342,"data":"| whisper-small | ami | greedy vs ROVER over beam n-best | 19.94 | 47.36 | -27.42 | [-48.00, -10.55] |\n"}
+,{"stream_name":"stdout","time":11764.802592512,"data":"| whisper-small | common_voice | greedy vs ROVER over beam n-best | 16.18 | 15.37 | +0.82 | [-0.44, +2.05] |\n"}
+,{"stream_name":"stdout","time":11764.802596647,"data":"| whisper-small | earnings22 | greedy vs ROVER over beam n-best | 18.49 | 16.93 | +1.56 | [+0.37, +2.99] |\n"}
+,{"stream_name":"stdout","time":11764.802600846,"data":"| whisper-small | fleurs-en | greedy vs ROVER over beam n-best | 7.71 | 7.02 | +0.69 | [+0.02, +1.73] |\n"}
+,{"stream_name":"stdout","time":11764.802605501,"data":"| whisper-small | ls-dev-other | greedy vs ROVER over beam n-best | 8.12 | 7.82 | +0.30 | [-0.03, +0.65] |\n"}
+,{"stream_name":"stdout","time":11764.802613978,"data":"| whisper-small | ls-tc-babble5 | greedy vs ROVER over beam n-best | 15.74 | 27.58 | -11.84 | [-28.05, -0.24] |\n"}
+,{"stream_name":"stdout","time":11764.80261833,"data":"| whisper-small | ls-test-clean | greedy vs ROVER over beam n-best | 3.96 | 4.06 | -0.10 | [-0.35, +0.12] |\n"}
+,{"stream_name":"stdout","time":11764.802622737,"data":"| whisper-small | ls-test-other | greedy vs ROVER over beam n-best | 8.82 | 8.24 | +0.58 | [-0.04, +1.45] |\n"}
+,{"stream_name":"stdout","time":11764.802627049,"data":"| whisper-small | ami | top beam vs ROVER over n-best | 50.39 | 47.36 | +3.04 | [-0.64, +9.94] |\n"}
+,{"stream_name":"stdout","time":11764.802631332,"data":"| whisper-small | common_voice | top beam vs ROVER over n-best | 14.92 | 15.37 | -0.45 | [-1.41, +0.47] |\n"}
+,{"stream_name":"stdout","time":11764.802635601,"data":"| whisper-small | earnings22 | top beam vs ROVER over n-best | 17.26 | 16.93 | +0.34 | [-0.41, +1.09] |\n"}
+,{"stream_name":"stdout","time":11764.802639793,"data":"| whisper-small | fleurs-en | top beam vs ROVER over n-best | 6.88 | 7.02 | -0.14 | [-0.44, +0.16] |\n"}
+,{"stream_name":"stdout","time":11764.802643893,"data":"| whisper-small | ls-dev-other | top beam vs ROVER over n-best | 7.52 | 7.82 | -0.30 | [-0.59, -0.01] |\n"}
+,{"stream_name":"stdout","time":11764.802648159,"data":"| whisper-small | ls-tc-babble5 | top beam vs ROVER over n-best | 28.17 | 27.58 | +0.59 | [+0.00, +1.24] |\n"}
+,{"stream_name":"stdout","time":11764.802652307,"data":"| whisper-small | ls-test-clean | top beam vs ROVER over n-best | 3.95 | 4.06 | -0.11 | [-0.33, +0.11] |\n"}
+,{"stream_name":"stdout","time":11764.802656564,"data":"| whisper-small | ls-test-other | top beam vs ROVER over n-best | 8.18 | 8.24 | -0.06 | [-0.34, +0.24] |\n"}
+,{"stream_name":"stdout","time":11764.802678156,"data":"| whisper-small | ami | greedy vs MBR over samples | 19.94 | 19.62 | +0.31 | [-0.54, +1.22] |\n"}
+,{"stream_name":"stdout","time":11764.802688092,"data":"| whisper-small | common_voice | greedy vs MBR over samples | 16.18 | 15.81 | +0.37 | [-0.58, +1.42] |\n"}
+,{"stream_name":"stdout","time":11764.802692374,"data":"| whisper-small | earnings22 | greedy vs MBR over samples | 18.49 | 21.99 | -3.50 | [-6.48, -0.70] |\n"}
+,{"stream_name":"stdout","time":11764.802696785,"data":"| whisper-small | fleurs-en | greedy vs MBR over samples | 7.71 | 8.24 | -0.53 | [-1.79, +0.21] |\n"}
+,{"stream_name":"stdout","time":11764.802700948,"data":"| whisper-small | ls-dev-other | greedy vs MBR over samples | 8.12 | 8.00 | +0.12 | [-0.17, +0.42] |\n"}
+,{"stream_name":"stdout","time":11764.802705058,"data":"| whisper-small | ls-tc-babble5 | greedy vs MBR over samples | 15.74 | 15.46 | +0.28 | [-2.09, +2.75] |\n"}
+,{"stream_name":"stdout","time":11764.802709806,"data":"| whisper-small | ls-test-clean | greedy vs MBR over samples | 3.96 | 4.29 | -0.32 | [-0.58, -0.11] |\n"}
+,{"stream_name":"stdout","time":11764.802714682,"data":"| whisper-small | ls-test-other | greedy vs MBR over samples | 8.82 | 8.65 | +0.17 | [-0.11, +0.43] |\n"}
+,{"stream_name":"stdout","time":11764.802719375,"data":"| whisper-turbo | ami | greedy vs ROVER over samples | 17.56 | 17.94 | -0.38 | [-1.01, +0.22] |\n"}
+,{"stream_name":"stdout","time":11764.802723394,"data":"| whisper-turbo | common_voice | greedy vs ROVER over samples | 11.80 | 11.28 | +0.52 | [-0.22, +1.44] |\n"}
+,{"stream_name":"stdout","time":11764.802727609,"data":"| whisper-turbo | earnings22 | greedy vs ROVER over samples | 16.77 | 16.52 | +0.25 | [-0.12, +0.62] |\n"}
+,{"stream_name":"stdout","time":11764.80273171,"data":"| whisper-turbo | fleurs-en | greedy vs ROVER over samples | 5.50 | 5.57 | -0.07 | [-0.82, +0.46] |\n"}
+,{"stream_name":"stdout","time":11764.802735983,"data":"| whisper-turbo | ls-dev-other | greedy vs ROVER over samples | 5.61 | 5.32 | +0.29 | [+0.11, +0.46] |\n"}
+,{"stream_name":"stdout","time":11764.802745249,"data":"| whisper-turbo | ls-tc-babble5 | greedy vs ROVER over samples | 7.62 | 7.39 | +0.23 | [-0.18, +0.63] |\n"}
+,{"stream_name":"stdout","time":11764.802749477,"data":"| whisper-turbo | ls-test-clean | greedy vs ROVER over samples | 3.14 | 3.03 | +0.11 | [-0.05, +0.28] |\n"}
+,{"stream_name":"stdout","time":11764.80275352,"data":"| whisper-turbo | ls-test-other | greedy vs ROVER over samples | 5.07 | 4.84 | +0.23 | [+0.03, +0.45] |\n"}
+,{"stream_name":"stdout","time":11764.802757486,"data":"| whisper-turbo | ami | greedy vs ROVER over beam n-best | 17.56 | 26.46 | -8.90 | [-19.25, -0.88] |\n"}
+,{"stream_name":"stdout","time":11764.802761735,"data":"| whisper-turbo | common_voice | greedy vs ROVER over beam n-best | 11.80 | 12.40 | -0.59 | [-1.59, +0.31] |\n"}
+,{"stream_name":"stdout","time":11764.802765888,"data":"| whisper-turbo | earnings22 | greedy vs ROVER over beam n-best | 16.77 | 16.48 | +0.29 | [-0.12, +0.69] |\n"}
+,{"stream_name":"stdout","time":11764.802770057,"data":"| whisper-turbo | fleurs-en | greedy vs ROVER over beam n-best | 5.50 | 5.40 | +0.09 | [-0.20, +0.37] |\n"}
+,{"stream_name":"stdout","time":11764.802774324,"data":"| whisper-turbo | ls-dev-other | greedy vs ROVER over beam n-best | 5.61 | 5.31 | +0.30 | [+0.09, +0.51] |\n"}
+,{"stream_name":"stdout","time":11764.802778499,"data":"| whisper-turbo | ls-tc-babble5 | greedy vs ROVER over beam n-best | 7.62 | 7.39 | +0.23 | [-0.21, +0.70] |\n"}
+,{"stream_name":"stdout","time":11764.802782754,"data":"| whisper-turbo | ls-test-clean | greedy vs ROVER over beam n-best | 3.14 | 3.23 | -0.09 | [-0.29, +0.11] |\n"}
+,{"stream_name":"stdout","time":11764.80278703,"data":"| whisper-turbo | ls-test-other | greedy vs ROVER over beam n-best | 5.07 | 4.98 | +0.08 | [-0.13, +0.31] |\n"}
+,{"stream_name":"stdout","time":11764.802791137,"data":"| whisper-turbo | ami | top beam vs ROVER over n-best | 27.95 | 26.46 | +1.48 | [-1.74, +7.27] |\n"}
+,{"stream_name":"stdout","time":11764.802795462,"data":"| whisper-turbo | common_voice | top beam vs ROVER over n-best | 11.66 | 12.40 | -0.74 | [-1.41, -0.15] |\n"}
+,{"stream_name":"stdout","time":11764.802799634,"data":"| whisper-turbo | earnings22 | top beam vs ROVER over n-best | 16.70 | 16.48 | +0.23 | [-0.17, +0.64] |\n"}
+,{"stream_name":"stdout","time":11764.80280422,"data":"| whisper-turbo | fleurs-en | top beam vs ROVER over n-best | 5.38 | 5.40 | -0.02 | [-0.28, +0.23] |\n"}
+,{"stream_name":"stdout","time":11764.802825989,"data":"| whisper-turbo | ls-dev-other | top beam vs ROVER over n-best | 5.47 | 5.31 | +0.17 | [+0.00, +0.34] |\n"}
+,{"stream_name":"stdout","time":11764.802830325,"data":"| whisper-turbo | ls-tc-babble5 | top beam vs ROVER over n-best | 7.68 | 7.39 | +0.28 | [-0.11, +0.72] |\n"}
+,{"stream_name":"stdout","time":11764.802834734,"data":"| whisper-turbo | ls-test-clean | top beam vs ROVER over n-best | 3.28 | 3.23 | +0.05 | [-0.18, +0.31] |\n"}
+,{"stream_name":"stdout","time":11764.802839132,"data":"| whisper-turbo | ls-test-other | top beam vs ROVER over n-best | 4.90 | 4.98 | -0.08 | [-0.28, +0.10] |\n"}
+,{"stream_name":"stdout","time":11764.80284354,"data":"| whisper-turbo | ami | greedy vs MBR over samples | 17.56 | 17.83 | -0.27 | [-0.94, +0.33] |\n"}
+,{"stream_name":"stdout","time":11764.802847977,"data":"| whisper-turbo | common_voice | greedy vs MBR over samples | 11.80 | 12.03 | -0.22 | [-0.76, +0.37] |\n"}
+,{"stream_name":"stdout","time":11764.802852625,"data":"| whisper-turbo | earnings22 | greedy vs MBR over samples | 16.77 | 16.72 | +0.04 | [-0.32, +0.40] |\n"}
+,{"stream_name":"stdout","time":11764.802857249,"data":"| whisper-turbo | fleurs-en | greedy vs MBR over samples | 5.50 | 5.59 | -0.09 | [-0.91, +0.48] |\n"}
+,{"stream_name":"stdout","time":11764.802865473,"data":"| whisper-turbo | ls-dev-other | greedy vs MBR over samples | 5.61 | 5.43 | +0.18 | [+0.03, +0.33] |\n"}
+,{"stream_name":"stdout","time":11764.802869803,"data":"| whisper-turbo | ls-tc-babble5 | greedy vs MBR over samples | 7.62 | 7.57 | +0.05 | [-0.39, +0.44] |\n"}
+,{"stream_name":"stdout","time":11764.802874144,"data":"| whisper-turbo | ls-test-clean | greedy vs MBR over samples | 3.14 | 3.06 | +0.09 | [-0.06, +0.26] |\n"}
+,{"stream_name":"stdout","time":11764.802878503,"data":"| whisper-turbo | ls-test-other | greedy vs MBR over samples | 5.07 | 5.04 | +0.03 | [-0.14, +0.21] |\n"}
+,{"stream_name":"stdout","time":11764.802882794,"data":"| parakeet-ctc | ami | greedy vs ROVER over sampled CTC paths | 16.60 | 17.33 | -0.72 | [-1.42, -0.06] |\n"}
+,{"stream_name":"stdout","time":11764.802887142,"data":"| parakeet-ctc | common_voice | greedy vs ROVER over sampled CTC paths | 11.80 | 11.21 | +0.59 | [+0.07, +1.21] |\n"}
+,{"stream_name":"stdout","time":11764.802891484,"data":"| parakeet-ctc | earnings22 | greedy vs ROVER over sampled CTC paths | 23.70 | 23.64 | +0.06 | [-0.51, +0.62] |\n"}
+,{"stream_name":"stdout","time":11764.802895924,"data":"| parakeet-ctc | fleurs-en | greedy vs ROVER over sampled CTC paths | 10.09 | 10.02 | +0.07 | [-0.16, +0.31] |\n"}
+,{"stream_name":"stdout","time":11764.802900372,"data":"| parakeet-ctc | ls-dev-other | greedy vs ROVER over sampled CTC paths | 3.85 | 3.94 | -0.08 | [-0.36, +0.18] |\n"}
+,{"stream_name":"stdout","time":11764.802904766,"data":"| parakeet-ctc | ls-tc-babble5 | greedy vs ROVER over sampled CTC paths | 11.66 | 11.73 | -0.08 | [-0.44, +0.27] |\n"}
+,{"stream_name":"stdout","time":11764.802909694,"data":"| parakeet-ctc | ls-test-clean | greedy vs ROVER over sampled CTC paths | 1.99 | 1.86 | +0.13 | [+0.00, +0.29] |\n"}
+,{"stream_name":"stdout","time":11764.802914074,"data":"| parakeet-ctc | ls-test-other | greedy vs ROVER over sampled CTC paths | 3.50 | 3.56 | -0.06 | [-0.26, +0.12] |\n"}
+,{"stream_name":"stdout","time":11764.802918579,"data":"\n"}
+,{"stream_name":"stdout","time":11764.802922627,"data":"## Tuned on dev (ls-dev-clean + ls-dev-other), reported on test\n"}
+,{"stream_name":"stdout","time":11764.802927011,"data":"\n"}
+,{"stream_name":"stdout","time":11764.802930911,"data":"- **whisper-small**: alpha=0.5, eps=0.7, gamma=1.0, lambda=0.75 (dev: select 7.70, ROVER 7.68, n=400)\n"}
+,{"stream_name":"stdout","time":11764.802935286,"data":"- **whisper-turbo**: alpha=0.5, eps=0.7, gamma=1.0, lambda=0.25 (dev: select 5.43, ROVER 5.29, n=400)\n"}
+,{"stream_name":"stdout","time":11764.802939689,"data":"- **parakeet-ctc**: alpha=0.5, eps=0.7, gamma=0.5, lambda=0.5 (dev: select 3.91, ROVER 3.94, n=200)\n"}
+,{"stream_name":"stdout","time":11764.802944106,"data":"\n"}
+,{"stream_name":"stdout","time":11764.80294797,"data":"| model | set | tuned select | tuned ROVER | delta | 95% CI |\n"}
+,{"stream_name":"stdout","time":11764.802952269,"data":"|---|---|---|---|---|---|\n"}
+,{"stream_name":"stdout","time":11764.802956419,"data":"| whisper-small | ami | 19.87 | 19.50 | +0.38 | [-0.03, +0.83] |\n"}
+,{"stream_name":"stdout","time":11764.802960774,"data":"| whisper-small | common_voice | 40.23 | 40.07 | +0.16 | [-0.57, +0.99] |\n"}
+,{"stream_name":"stdout","time":11764.802965039,"data":"| whisper-small | earnings22 | 20.55 | 21.22 | -0.67 | [-2.25, +0.47] |\n"}
+,{"stream_name":"stdout","time":11764.802969258,"data":"| whisper-small | fleurs-en | 8.08 | 7.83 | +0.25 | [-0.02, +0.54] |\n"}
+,{"stream_name":"stdout","time":11764.802973414,"data":"| whisper-small | ls-tc-babble5 | 14.99 | 15.12 | -0.13 | [-0.76, +0.49] |\n"}
+,{"stream_name":"stdout","time":11764.802977678,"data":"| whisper-small | ls-test-clean | 4.11 | 4.06 | +0.05 | [-0.09, +0.19] |\n"}
+,{"stream_name":"stdout","time":11764.80299376,"data":"| whisper-small | ls-test-other | 8.61 | 8.52 | +0.08 | [-0.21, +0.36] |\n"}
+,{"stream_name":"stdout","time":11764.802998631,"data":"| whisper-turbo | ami | 17.40 | 17.94 | -0.54 | [-1.20, +0.08] |\n"}
+,{"stream_name":"stdout","time":11764.803003057,"data":"| whisper-turbo | common_voice | 37.41 | 37.36 | +0.05 | [-0.63, +1.06] |\n"}
+,{"stream_name":"stdout","time":11764.803007315,"data":"| whisper-turbo | earnings22 | 16.56 | 16.50 | +0.06 | [-0.23, +0.37] |\n"}
+,{"stream_name":"stdout","time":11764.803011623,"data":"| whisper-turbo | fleurs-en | 5.52 | 5.57 | -0.05 | [-0.25, +0.16] |\n"}
+,{"stream_name":"stdout","time":11764.803015814,"data":"| whisper-turbo | ls-tc-babble5 | 7.65 | 7.44 | +0.21 | [-0.15, +0.56] |\n"}
+,{"stream_name":"stdout","time":11764.803020063,"data":"| whisper-turbo | ls-test-clean | 3.08 | 3.01 | +0.07 | [-0.02, +0.18] |\n"}
+,{"stream_name":"stdout","time":11764.803024385,"data":"| whisper-turbo | ls-test-other | 4.90 | 5.01 | -0.11 | [-0.31, +0.08] |\n"}
+,{"stream_name":"stdout","time":11764.803028604,"data":"| parakeet-ctc | ami | 18.33 | 17.33 | +1.00 | [+0.35, +1.71] |\n"}
+,{"stream_name":"stdout","time":11764.803032876,"data":"| parakeet-ctc | common_voice | 37.73 | 37.25 | +0.48 | [+0.05, +0.91] |\n"}
+,{"stream_name":"stdout","time":11764.803037149,"data":"| parakeet-ctc | earnings22 | 24.13 | 23.64 | +0.49 | [-0.06, +1.01] |\n"}
+,{"stream_name":"stdout","time":11764.803041417,"data":"| parakeet-ctc | fleurs-en | 10.25 | 10.02 | +0.23 | [+0.02, +0.45] |\n"}
+,{"stream_name":"stdout","time":11764.803045646,"data":"| parakeet-ctc | ls-tc-babble5 | 12.38 | 11.73 | +0.65 | [+0.24, +1.05] |\n"}
+,{"stream_name":"stdout","time":11764.803049929,"data":"| parakeet-ctc | ls-test-clean | 2.07 | 1.86 | +0.21 | [+0.03, +0.40] |\n"}
+,{"stream_name":"stdout","time":11764.803066314,"data":"| parakeet-ctc | ls-test-other | 3.50 | 3.56 | -0.06 | [-0.35, +0.20] |\n"}
+,{"stream_name":"stdout","time":11764.803070557,"data":"\n"}
+,{"stream_name":"stdout","time":11764.803074354,"data":"## Cost\n"}
+,{"stream_name":"stdout","time":11764.803078282,"data":"\n"}
+,{"stream_name":"stdout","time":11764.803082127,"data":"| model | kind | arm | K | T | steps | n | s/utt | encode s | decode s | RTF | ms/candidate | ROVER ms | peak MB |\n"}
+,{"stream_name":"stdout","time":11764.803086361,"data":"|---|---|---|---|---|---|---|---|---|---|---|---|---|---|\n"}
+,{"stream_name":"stdout","time":11764.803090455,"data":"| drax | lowT | lowT | 16 | 0.40 | 16.0 | 3800 | 3.478 | 0.179 | 3.299 | 0.4184 | 206.2 | 0.68 | 4336 |\n"}
+,{"stream_name":"stdout","time":11764.803094699,"data":"| parakeet-ctc | main | greedy | 1 |  | nan | 1600 | 0.181 | 0.180 | 0.001 | 0.0279 | 1.0 | 0.14 | 2167 |\n"}
+,{"stream_name":"stdout","time":11764.803099023,"data":"| parakeet-ctc | main | sample | 32 | 1.00 | nan | 1600 | 0.198 | 0.180 | 0.018 | 0.0306 | 0.6 | 1.27 | 2167 |\n"}
+,{"stream_name":"stdout","time":11764.803103447,"data":"| whisfusion | kscale | K64 | 64 |  | 4.0 | 200 | 3.948 | 0.032 | 3.916 | 0.6052 | 61.2 | 2.74 | 7705 |\n"}
+,{"stream_name":"stdout","time":11764.8031078,"data":"| whisper-small | main | beam | 8 |  | nan | 2352 | 0.542 | 0.006 | 0.536 | 0.0853 | 67.0 | 0.31 | 2744 |\n"}
+,{"stream_name":"stdout","time":11764.803112048,"data":"| whisper-small | main | greedy | 1 |  | nan | 2352 | 0.325 | 0.006 | 0.319 | 0.0512 | 319.2 | 0.12 | 2744 |\n"}
+,{"stream_name":"stdout","time":11764.803116356,"data":"| whisper-small | main | sample | 16 | 0.60 | nan | 2352 | 0.403 | 0.006 | 0.397 | 0.0635 | 24.8 | 0.54 | 2744 |\n"}
+,{"stream_name":"stdout","time":11764.803120748,"data":"| whisper-turbo | main | beam | 8 |  | nan | 2507 | 0.484 | 0.006 | 0.479 | 0.0772 | 59.9 | 0.31 | 3811 |\n"}
+,{"stream_name":"stdout","time":11764.80312506,"data":"| whisper-turbo | main | greedy | 1 |  | nan | 2507 | 0.308 | 0.006 | 0.302 | 0.0490 | 302.0 | 0.13 | 3811 |\n"}
+,{"stream_name":"stdout","time":11764.803146107,"data":"| whisper-turbo | main | sample | 16 | 0.60 | nan | 2507 | 0.415 | 0.006 | 0.409 | 0.0661 | 25.6 | 0.55 | 3811 |\n"}
+,{"stream_name":"stdout","time":11764.80315023,"data":"\n"}
+,{"stream_name":"stdout","time":11764.803153715,"data":"\n"}
+,{"stream_name":"stdout","time":11764.803157221,"data":"output: 0.04 GB in /kaggle/working/campaign\n"}
+,{"stream_name":"stdout","time":11764.803161025,"data":"  analysis.tar                            9.5 MB\n"}
+,{"stream_name":"stdout","time":11764.803164948,"data":"  dumps.tar                              11.3 MB\n"}
+,{"stream_name":"stdout","time":11764.803168664,"data":"  env.json                                0.0 MB\n"}
+,{"stream_name":"stdout","time":11764.803172324,"data":"  logs.tar                                0.3 MB\n"}
+,{"stream_name":"stdout","time":11764.803176081,"data":"  manifests.tar                           8.6 MB\n"}
+,{"stream_name":"stdout","time":11764.803179815,"data":"  plan.json                               0.1 MB\n"}
+,{"stream_name":"stdout","time":11764.803183448,"data":"  progress.json                           0.0 MB\n"}
+,{"stream_name":"stdout","time":11764.803187239,"data":"  results                                 0.0 MB\n"}
+,{"stream_name":"stdout","time":11764.803201359,"data":"  run_config.json                         0.0 MB\n"}
+,{"stream_name":"stdout","time":11764.803204912,"data":"  state.tar                               0.2 MB\n"}
+,{"stream_name":"stderr","time":11768.01018068,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":11768.010213869,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":11768.204414103,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":11768.204448906,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":11768.8429738,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":11769.202782969,"data":"[NbConvertApp] Writing 309933 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":11771.569784478,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":11772.912295048,"data":"[NbConvertApp] Writing 1342615 bytes to __results__.html\n"}
+]

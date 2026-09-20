@@ -1,0 +1,755 @@
+[{"stream_name":"stderr","time":5.41569693,"data":"/usr/local/lib/python3.12/dist-packages/nbformat/__init__.py:96: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.\n"}
+,{"stream_name":"stderr","time":5.416273274,"data":"  validate(nb)\n"}
+,{"stream_name":"stderr","time":6.159244165,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":6.159288749,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":6.159294681,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":6.159298681,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":6.731516021,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":6.731546467,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":6.731549816,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":6.7315527280000005,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":7.807428611,"data":"Writing /kaggle/working/code/src/scorers.py\n"}
+,{"stream_name":"stdout","time":7.828241398,"data":"Writing /kaggle/working/code/src/compose.py\n"}
+,{"stream_name":"stdout","time":7.847198929,"data":"Writing /kaggle/working/code/src/bootstrap.py\n"}
+,{"stream_name":"stdout","time":7.867734351,"data":"Writing /kaggle/working/code/src/decode.py\n"}
+,{"stream_name":"stdout","time":7.88903511,"data":"Writing /kaggle/working/code/src/wf_model.py\n"}
+,{"stream_name":"stdout","time":7.90920151,"data":"Writing /kaggle/working/code/src/wf_compat.py\n"}
+,{"stream_name":"stdout","time":7.929283767,"data":"Writing /kaggle/working/code/src/data.py\n"}
+,{"stream_name":"stdout","time":7.94875832,"data":"Writing /kaggle/working/code/src/campaign/__init__.py\n"}
+,{"stream_name":"stdout","time":7.9785950450000005,"data":"Writing /kaggle/working/code/src/campaign/config.py\n"}
+,{"stream_name":"stdout","time":8.001678693,"data":"Writing /kaggle/working/code/src/campaign/state.py\n"}
+,{"stream_name":"stdout","time":8.022876502,"data":"Writing /kaggle/working/code/src/campaign/tokwords.py\n"}
+,{"stream_name":"stdout","time":8.049554857,"data":"Writing /kaggle/working/code/src/campaign/prep_data.py\n"}
+,{"stream_name":"stdout","time":8.074572699,"data":"Writing /kaggle/working/code/src/campaign/drax_fast.py\n"}
+,{"stream_name":"stdout","time":8.098825746,"data":"Writing /kaggle/working/code/src/campaign/families.py\n"}
+,{"stream_name":"stdout","time":8.123114274,"data":"Writing /kaggle/working/code/src/campaign/worker.py\n"}
+,{"stream_name":"stdout","time":8.148798471,"data":"Writing /kaggle/working/code/src/campaign/analysis.py\n"}
+,{"stream_name":"stdout","time":8.17999006,"data":"Writing /kaggle/working/code/src/campaign/aggregate.py\n"}
+,{"stream_name":"stdout","time":8.207085042,"data":"Writing /kaggle/working/code/src/campaign/run.py\n"}
+,{"stream_name":"stdout","time":17.909524881,"data":"upstream: {'Whisfusion': 'aa9afe3688ccd15ebf096ec9845d67925d1a3aea', 'drax': 'ffab757b1c88d9c6cdf9912d543032f98fc085e3'}\n"}
+,{"stream_name":"stdout","time":21.331118938,"data":"torch 2.10.0+cu128 gpus ['Tesla T4', 'Tesla T4']\n"}
+,{"stream_name":"stdout","time":21.331164007,"data":"setup 13 s\n"}
+,{"stream_name":"stdout","time":21.531330899,"data":"campaign budget 11.40 h\n"}
+,{"stream_name":"stdout","time":36.011909031,"data":"[22:08:35 +   0.2m] env: {\"python\": \"3.12.13\", \"host\": \"d165e1ad7587\", \"torch\": \"2.10.0+cu128\", \"cuda\": \"12.8\", \"n_gpus\": 2, \"gpus\": [\"Tesla T4\", \"Tesla T4\"], \"transformers\": \"5.0.0\", \"huggingface_hub\": \"1.11.0\", \"numpy\": \"2.0.2\", \"pandas\": \"2.3.3\", \"rapidfuzz\": \"3.14.6\", \"soundfile\": \"0.13.1\", \"librosa\": \"0.11.0\", \"nvidia_smi\": \"Tesla T4, 15360 MiB, 580.159.04\\nTesla T4, 15360 MiB, 580.159.04\", \"tmp_free_gb\": 1100.2, \"cpu_count\": 4}\n"}
+,{"stream_name":"stdout","time":36.012946344,"data":"[22:08:35 +   0.2m] plan: 285 jobs, per tier {0: 8, 1: 33, 2: 35, 3: 59, 4: 70, 5: 80}; GPU work until +10.98 h, results by +11.40 h\n"}
+,{"stream_name":"stdout","time":56.06370507,"data":"[22:08:55 +   0.6m] progress: jobs {'waiting': 285}; tiers {0: '0/8', 1: '0/33', 2: '0/35', 3: '0/59', 4: '0/70', 5: '0/80'}; analysed 0/0\n"}
+,{"stream_name":"stdout","time":66.075178769,"data":"[22:09:05 +   0.7m] lane 0: starting drax\n"}
+,{"stream_name":"stdout","time":66.11279242,"data":"[22:09:05 +   0.7m] lane 1: starting whisfusion\n"}
+,{"stream_name":"stdout","time":656.106123197,"data":"[22:18:55 +  10.6m] data prep finished rc=0; failed sets: []\n"}
+,{"stream_name":"stdout","time":656.334035352,"data":"[22:18:55 +  10.6m] progress: jobs {'claimed': 2, 'done': 1, 'ready': 272, 'dead': 10}; tiers {0: '1/8', 1: '0/33', 2: '0/35', 3: '0/59', 4: '0/70', 5: '0/80'}; analysed 1/1\n"}
+,{"stream_name":"stdout","time":656.335148622,"data":"[22:18:55 +  10.6m]     whisfusion          1 jobs    200 utts   0.37 h audio   0.13 GPU-h\n"}
+,{"stream_name":"stdout","time":1256.394683908,"data":"[22:28:55 +  20.6m] progress: jobs {'done': 3, 'claimed': 2, 'ready': 270, 'dead': 10}; tiers {0: '3/8', 1: '0/33', 2: '0/35', 3: '0/59', 4: '0/70', 5: '0/80'}; analysed 3/3\n"}
+,{"stream_name":"stdout","time":1256.394727617,"data":"[22:28:55 +  20.6m]     drax                1 jobs    200 utts   0.37 h audio   0.27 GPU-h\n"}
+,{"stream_name":"stdout","time":1256.395758235,"data":"[22:28:55 +  20.6m]     whisfusion          2 jobs    400 utts   0.73 h audio   0.25 GPU-h\n"}
+,{"stream_name":"stdout","time":1856.456514317,"data":"[22:38:56 +  30.6m] progress: jobs {'done': 4, 'claimed': 2, 'ready': 269, 'dead': 10}; tiers {0: '4/8', 1: '0/33', 2: '0/35', 3: '0/59', 4: '0/70', 5: '0/80'}; analysed 4/4\n"}
+,{"stream_name":"stdout","time":1856.457680868,"data":"[22:38:56 +  30.6m]     drax                1 jobs    200 utts   0.37 h audio   0.27 GPU-h\n"}
+,{"stream_name":"stdout","time":1856.458559135,"data":"[22:38:56 +  30.6m]     whisfusion          3 jobs    600 utts   1.11 h audio   0.38 GPU-h\n"}
+,{"stream_name":"stdout","time":1946.772785467,"data":"[22:40:26 +  32.1m] lane 1: whisfusion exited rc=0, 4 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":1946.773752329,"data":"[22:40:26 +  32.1m]     done whisfusion__ls-dev-clean__s00__main [done] 200 utts in 7.6 min (2.29 s/utt, RTF 0.347)\n"}
+,{"stream_name":"stdout","time":1946.774533501,"data":"[22:40:26 +  32.1m]     done whisfusion__ls-dev-other__s00__main [done] 200 utts in 7.6 min (2.29 s/utt, RTF 0.352)\n"}
+,{"stream_name":"stdout","time":1946.775272821,"data":"[22:40:26 +  32.1m]     done whisfusion__ls-dev-clean__s01__main [done] 200 utts in 7.6 min (2.29 s/utt, RTF 0.329)\n"}
+,{"stream_name":"stdout","time":1946.776030097,"data":"[22:40:26 +  32.1m]     done whisfusion__ls-dev-other__s01__main [done] 200 utts in 7.6 min (2.29 s/utt, RTF 0.357)\n"}
+,{"stream_name":"stdout","time":1946.776841627,"data":"[22:40:26 +  32.1m] lane 1: starting drax\n"}
+,{"stream_name":"stdout","time":2456.498975981,"data":"[22:48:56 +  40.6m] progress: jobs {'done': 6, 'claimed': 2, 'ready': 267, 'dead': 10}; tiers {0: '6/8', 1: '0/33', 2: '0/35', 3: '0/59', 4: '0/70', 5: '0/80'}; analysed 6/6\n"}
+,{"stream_name":"stdout","time":2456.50022078,"data":"[22:48:56 +  40.6m]     drax                2 jobs    400 utts   0.73 h audio   0.55 GPU-h\n"}
+,{"stream_name":"stdout","time":2456.501305271,"data":"[22:48:56 +  40.6m]     whisfusion          4 jobs    800 utts   1.47 h audio   0.51 GPU-h\n"}
+,{"stream_name":"stdout","time":3056.54333803,"data":"[22:58:56 +  50.6m] progress: jobs {'done': 7, 'claimed': 2, 'ready': 266, 'dead': 10}; tiers {0: '7/8', 1: '0/33', 2: '0/35', 3: '0/59', 4: '0/70', 5: '0/80'}; analysed 7/7\n"}
+,{"stream_name":"stdout","time":3056.543508047,"data":"[22:58:56 +  50.6m]     drax                3 jobs    600 utts   1.11 h audio   0.80 GPU-h\n"}
+,{"stream_name":"stdout","time":3056.544386451,"data":"[22:58:56 +  50.6m]     whisfusion          4 jobs    800 utts   1.47 h audio   0.51 GPU-h\n"}
+,{"stream_name":"stdout","time":3656.596459016,"data":"[23:08:56 +  60.6m] progress: jobs {'done': 8, 'claimed': 2, 'ready': 265, 'dead': 10}; tiers {0: '8/8', 1: '0/33', 2: '0/35', 3: '0/59', 4: '0/70', 5: '0/80'}; analysed 8/8\n"}
+,{"stream_name":"stdout","time":3656.597180918,"data":"[23:08:56 +  60.6m]     drax                4 jobs    800 utts   1.47 h audio   1.08 GPU-h\n"}
+,{"stream_name":"stdout","time":3656.598289421,"data":"[23:08:56 +  60.6m]     whisfusion          4 jobs    800 utts   1.47 h audio   0.51 GPU-h\n"}
+,{"stream_name":"stdout","time":4256.641586585,"data":"[23:18:56 +  70.6m] progress: jobs {'done': 10, 'ready': 263, 'claimed': 2, 'dead': 10}; tiers {0: '8/8', 1: '2/33', 2: '0/35', 3: '0/59', 4: '0/70', 5: '0/80'}; analysed 10/10\n"}
+,{"stream_name":"stdout","time":4256.642020149,"data":"[23:18:56 +  70.6m]     drax                6 jobs   1200 utts   2.23 h audio   1.61 GPU-h\n"}
+,{"stream_name":"stdout","time":4256.643003643,"data":"[23:18:56 +  70.6m]     whisfusion          4 jobs    800 utts   1.47 h audio   0.51 GPU-h\n"}
+,{"stream_name":"stdout","time":4856.701538566,"data":"[23:28:56 +  80.6m] progress: jobs {'done': 11, 'ready': 262, 'claimed': 2, 'dead': 10}; tiers {0: '8/8', 1: '3/33', 2: '0/35', 3: '0/59', 4: '0/70', 5: '0/80'}; analysed 11/11\n"}
+,{"stream_name":"stdout","time":4856.702708148,"data":"[23:28:56 +  80.6m]     drax                7 jobs   1400 utts   2.40 h audio   1.86 GPU-h\n"}
+,{"stream_name":"stdout","time":4856.70398085,"data":"[23:28:56 +  80.6m]     whisfusion          4 jobs    800 utts   1.47 h audio   0.51 GPU-h\n"}
+,{"stream_name":"stdout","time":5456.7565585,"data":"[23:38:56 +  90.6m] progress: jobs {'done': 12, 'ready': 261, 'claimed': 2, 'dead': 10}; tiers {0: '8/8', 1: '4/33', 2: '0/35', 3: '0/59', 4: '0/70', 5: '0/80'}; analysed 12/12\n"}
+,{"stream_name":"stdout","time":5456.757425319,"data":"[23:38:56 +  90.6m]     drax                8 jobs   1600 utts   2.75 h audio   2.14 GPU-h\n"}
+,{"stream_name":"stdout","time":5456.758658561,"data":"[23:38:56 +  90.6m]     whisfusion          4 jobs    800 utts   1.47 h audio   0.51 GPU-h\n"}
+,{"stream_name":"stdout","time":6056.798530201,"data":"[23:48:56 + 100.6m] progress: jobs {'done': 13, 'ready': 260, 'claimed': 2, 'dead': 10}; tiers {0: '8/8', 1: '5/33', 2: '0/35', 3: '0/59', 4: '0/70', 5: '0/80'}; analysed 13/13\n"}
+,{"stream_name":"stdout","time":6056.79902071,"data":"[23:48:56 + 100.6m]     drax                9 jobs   1800 utts   3.13 h audio   2.39 GPU-h\n"}
+,{"stream_name":"stdout","time":6056.799928817,"data":"[23:48:56 + 100.6m]     whisfusion          4 jobs    800 utts   1.47 h audio   0.51 GPU-h\n"}
+,{"stream_name":"stdout","time":6656.848146828,"data":"[23:58:56 + 110.6m] progress: jobs {'done': 15, 'ready': 258, 'claimed': 2, 'dead': 10}; tiers {0: '8/8', 1: '7/33', 2: '0/35', 3: '0/59', 4: '0/70', 5: '0/80'}; analysed 15/15\n"}
+,{"stream_name":"stdout","time":6656.849203385,"data":"[23:58:56 + 110.6m]     drax               11 jobs   2200 utts   3.97 h audio   2.92 GPU-h\n"}
+,{"stream_name":"stdout","time":6656.85022287,"data":"[23:58:56 + 110.6m]     whisfusion          4 jobs    800 utts   1.47 h audio   0.51 GPU-h\n"}
+,{"stream_name":"stdout","time":7256.89355377,"data":"[00:08:56 + 120.6m] progress: jobs {'done': 16, 'ready': 257, 'claimed': 2, 'dead': 10}; tiers {0: '8/8', 1: '8/33', 2: '0/35', 3: '0/59', 4: '0/70', 5: '0/80'}; analysed 16/16\n"}
+,{"stream_name":"stdout","time":7256.89457271,"data":"[00:08:56 + 120.6m]     drax               12 jobs   2400 utts   4.27 h audio   3.20 GPU-h\n"}
+,{"stream_name":"stdout","time":7256.895785712,"data":"[00:08:56 + 120.6m]     whisfusion          4 jobs    800 utts   1.47 h audio   0.51 GPU-h\n"}
+,{"stream_name":"stdout","time":7856.942516593,"data":"[00:18:56 + 130.6m] progress: jobs {'done': 17, 'ready': 256, 'claimed': 2, 'dead': 10}; tiers {0: '8/8', 1: '9/33', 2: '0/35', 3: '0/59', 4: '0/70', 5: '0/80'}; analysed 17/17\n"}
+,{"stream_name":"stdout","time":7856.942559429,"data":"[00:18:56 + 130.6m]     drax               13 jobs   2600 utts   4.81 h audio   3.45 GPU-h\n"}
+,{"stream_name":"stdout","time":7856.943101288,"data":"[00:18:56 + 130.6m]     whisfusion          4 jobs    800 utts   1.47 h audio   0.51 GPU-h\n"}
+,{"stream_name":"stdout","time":8457.001540983,"data":"[00:28:56 + 140.6m] progress: jobs {'done': 19, 'ready': 254, 'claimed': 2, 'dead': 10}; tiers {0: '8/8', 1: '11/33', 2: '0/35', 3: '0/59', 4: '0/70', 5: '0/80'}; analysed 19/19\n"}
+,{"stream_name":"stdout","time":8457.002334152,"data":"[00:28:56 + 140.6m]     drax               15 jobs   3000 utts   5.59 h audio   3.98 GPU-h\n"}
+,{"stream_name":"stdout","time":8457.003419843,"data":"[00:28:56 + 140.6m]     whisfusion          4 jobs    800 utts   1.47 h audio   0.51 GPU-h\n"}
+,{"stream_name":"stdout","time":9057.050267764,"data":"[00:38:56 + 150.6m] progress: jobs {'done': 19, 'ready': 254, 'claimed': 2, 'dead': 10}; tiers {0: '8/8', 1: '11/33', 2: '0/35', 3: '0/59', 4: '0/70', 5: '0/80'}; analysed 19/19\n"}
+,{"stream_name":"stdout","time":9057.051189926,"data":"[00:38:56 + 150.6m]     drax               15 jobs   3000 utts   5.59 h audio   3.98 GPU-h\n"}
+,{"stream_name":"stdout","time":9057.052150793,"data":"[00:38:56 + 150.6m]     whisfusion          4 jobs    800 utts   1.47 h audio   0.51 GPU-h\n"}
+,{"stream_name":"stdout","time":9657.096505325,"data":"[00:48:56 + 160.6m] progress: jobs {'done': 21, 'ready': 252, 'claimed': 2, 'dead': 10}; tiers {0: '8/8', 1: '13/33', 2: '0/35', 3: '0/59', 4: '0/70', 5: '0/80'}; analysed 21/21\n"}
+,{"stream_name":"stdout","time":9657.096794632,"data":"[00:48:56 + 160.6m]     drax               17 jobs   3400 utts   6.38 h audio   4.52 GPU-h\n"}
+,{"stream_name":"stdout","time":9657.097716232,"data":"[00:48:56 + 160.6m]     whisfusion          4 jobs    800 utts   1.47 h audio   0.51 GPU-h\n"}
+,{"stream_name":"stdout","time":10257.140890427,"data":"[00:58:56 + 170.6m] progress: jobs {'done': 23, 'ready': 250, 'claimed': 2, 'dead': 10}; tiers {0: '8/8', 1: '15/33', 2: '0/35', 3: '0/59', 4: '0/70', 5: '0/80'}; analysed 23/23\n"}
+,{"stream_name":"stdout","time":10257.141894435,"data":"[00:58:56 + 170.6m]     drax               19 jobs   3800 utts   7.48 h audio   5.05 GPU-h\n"}
+,{"stream_name":"stdout","time":10257.14281358,"data":"[00:58:56 + 170.6m]     whisfusion          4 jobs    800 utts   1.47 h audio   0.51 GPU-h\n"}
+,{"stream_name":"stdout","time":10857.200867141,"data":"[01:08:56 + 180.6m] progress: jobs {'done': 23, 'ready': 250, 'claimed': 2, 'dead': 10}; tiers {0: '8/8', 1: '15/33', 2: '0/35', 3: '0/59', 4: '0/70', 5: '0/80'}; analysed 23/23\n"}
+,{"stream_name":"stdout","time":10857.202645647,"data":"[01:08:56 + 180.6m]     drax               19 jobs   3800 utts   7.48 h audio   5.05 GPU-h\n"}
+,{"stream_name":"stdout","time":10857.203987624,"data":"[01:08:56 + 180.6m]     whisfusion          4 jobs    800 utts   1.47 h audio   0.51 GPU-h\n"}
+,{"stream_name":"stdout","time":11457.244462358,"data":"[01:18:56 + 190.6m] progress: jobs {'done': 25, 'ready': 248, 'claimed': 2, 'dead': 10}; tiers {0: '8/8', 1: '17/33', 2: '0/35', 3: '0/59', 4: '0/70', 5: '0/80'}; analysed 25/25\n"}
+,{"stream_name":"stdout","time":11457.245459431,"data":"[01:18:56 + 190.6m]     drax               21 jobs   4200 utts   8.72 h audio   5.58 GPU-h\n"}
+,{"stream_name":"stdout","time":11457.246335683,"data":"[01:18:56 + 190.6m]     whisfusion          4 jobs    800 utts   1.47 h audio   0.51 GPU-h\n"}
+,{"stream_name":"stdout","time":12048.900837154,"data":"[01:28:48 + 200.5m] lane 0: drax exited rc=0, 12 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":12048.90190538,"data":"[01:28:48 + 200.5m]     done drax__common_voice__s00__main [done] 200 utts in 16.5 min (4.96 s/utt, RTF 0.907)\n"}
+,{"stream_name":"stdout","time":12048.902818958,"data":"[01:28:48 + 200.5m]     done drax__slr83__s00__main [done] 200 utts in 16.5 min (4.96 s/utt, RTF 0.717)\n"}
+,{"stream_name":"stdout","time":12048.903656691,"data":"[01:28:48 + 200.5m]     done drax__ls-tc-babble5__s00__main [done] 200 utts in 16.5 min (4.96 s/utt, RTF 0.698)\n"}
+,{"stream_name":"stdout","time":12048.904616959,"data":"[01:28:48 + 200.5m]     done drax__ls-tc-white5__s00__main [done] 200 utts in 16.5 min (4.96 s/utt, RTF 0.697)\n"}
+,{"stream_name":"stdout","time":12048.905350296,"data":"[01:28:48 + 200.5m]     done drax__fleurs-fr__s00__main [done] 200 utts in 16.6 min (4.99 s/utt, RTF 0.485)\n"}
+,{"stream_name":"stdout","time":12048.906133572,"data":"[01:28:48 + 200.5m]     done drax__fleurs-it__s00__main [done] 200 utts in 16.6 min (4.98 s/utt, RTF 0.338)\n"}
+,{"stream_name":"stdout","time":12048.907030601,"data":"[01:28:48 + 200.5m] lane 0: starting whisfusion\n"}
+,{"stream_name":"stdout","time":12057.278566068,"data":"[01:28:56 + 200.6m] progress: jobs {'done': 26, 'claimed': 2, 'ready': 247, 'dead': 10}; tiers {0: '8/8', 1: '18/33', 2: '0/35', 3: '0/59', 4: '0/70', 5: '0/80'}; analysed 25/26\n"}
+,{"stream_name":"stdout","time":12057.278993585,"data":"[01:28:56 + 200.6m]     drax               22 jobs   4400 utts   9.53 h audio   5.86 GPU-h\n"}
+,{"stream_name":"stdout","time":12057.280760703,"data":"[01:28:56 + 200.6m]     whisfusion          4 jobs    800 utts   1.47 h audio   0.51 GPU-h\n"}
+,{"stream_name":"stdout","time":12071.380348067,"data":"[01:29:10 + 200.8m] lane 1: drax exited rc=0, 11 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":12071.382482318,"data":"[01:29:10 + 200.8m]     done drax__fleurs-en__s00__main [done] 200 utts in 15.3 min (4.59 s/utt, RTF 0.471)\n"}
+,{"stream_name":"stdout","time":12071.38541424,"data":"[01:29:10 + 200.8m]     done drax__ls-tc-babble10__s00__main [done] 200 utts in 15.3 min (4.59 s/utt, RTF 0.645)\n"}
+,{"stream_name":"stdout","time":12071.386617379,"data":"[01:29:10 + 200.8m]     done drax__ls-tc-babble0__s00__main [done] 200 utts in 15.3 min (4.58 s/utt, RTF 0.645)\n"}
+,{"stream_name":"stdout","time":12071.387503908,"data":"[01:29:10 + 200.8m]     done drax__fleurs-de__s00__main [done] 200 utts in 15.3 min (4.60 s/utt, RTF 0.363)\n"}
+,{"stream_name":"stdout","time":12071.388259229,"data":"[01:29:10 + 200.8m]     done drax__fleurs-es__s00__main [done] 200 utts in 15.3 min (4.60 s/utt, RTF 0.385)\n"}
+,{"stream_name":"stdout","time":12071.389057319,"data":"[01:29:10 + 200.8m]     done drax__fleurs-pt__s00__main [done] 200 utts in 15.3 min (4.60 s/utt, RTF 0.361)\n"}
+,{"stream_name":"stdout","time":12071.389982757,"data":"[01:29:10 + 200.8m] lane 1: starting whisfusion\n"}
+,{"stream_name":"stdout","time":12657.367576502,"data":"[01:38:56 + 210.6m] progress: jobs {'done': 29, 'claimed': 2, 'ready': 244, 'dead': 10}; tiers {0: '8/8', 1: '21/33', 2: '0/35', 3: '0/59', 4: '0/70', 5: '0/80'}; analysed 29/29\n"}
+,{"stream_name":"stdout","time":12657.369130031,"data":"[01:38:56 + 210.6m]     drax               23 jobs   4600 utts  10.24 h audio   6.11 GPU-h\n"}
+,{"stream_name":"stdout","time":12657.370742028,"data":"[01:38:56 + 210.6m]     whisfusion          6 jobs   1200 utts   2.23 h audio   0.77 GPU-h\n"}
+,{"stream_name":"stdout","time":13257.436587204,"data":"[01:48:56 + 220.6m] progress: jobs {'done': 31, 'claimed': 2, 'ready': 242, 'dead': 10}; tiers {0: '8/8', 1: '23/33', 2: '0/35', 3: '0/59', 4: '0/70', 5: '0/80'}; analysed 31/31\n"}
+,{"stream_name":"stdout","time":13257.437901491,"data":"[01:48:56 + 220.6m]     drax               23 jobs   4600 utts  10.24 h audio   6.11 GPU-h\n"}
+,{"stream_name":"stdout","time":13257.439288707,"data":"[01:48:56 + 220.6m]     whisfusion          8 jobs   1600 utts   2.75 h audio   1.04 GPU-h\n"}
+,{"stream_name":"stdout","time":13857.49152121,"data":"[01:58:57 + 230.6m] progress: jobs {'done': 33, 'claimed': 2, 'ready': 240, 'dead': 10}; tiers {0: '8/8', 1: '25/33', 2: '0/35', 3: '0/59', 4: '0/70', 5: '0/80'}; analysed 33/33\n"}
+,{"stream_name":"stdout","time":13857.491953617,"data":"[01:58:57 + 230.6m]     drax               23 jobs   4600 utts  10.24 h audio   6.11 GPU-h\n"}
+,{"stream_name":"stdout","time":13857.492946708,"data":"[01:58:57 + 230.6m]     whisfusion         10 jobs   2000 utts   3.46 h audio   1.30 GPU-h\n"}
+,{"stream_name":"stdout","time":14457.546024279,"data":"[02:08:57 + 240.6m] progress: jobs {'done': 36, 'claimed': 2, 'ready': 237, 'dead': 10}; tiers {0: '8/8', 1: '28/33', 2: '0/35', 3: '0/59', 4: '0/70', 5: '0/80'}; analysed 36/36\n"}
+,{"stream_name":"stdout","time":14457.547148677,"data":"[02:08:57 + 240.6m]     drax               23 jobs   4600 utts  10.24 h audio   6.11 GPU-h\n"}
+,{"stream_name":"stdout","time":14457.548091857,"data":"[02:08:57 + 240.6m]     whisfusion         13 jobs   2600 utts   4.81 h audio   1.69 GPU-h\n"}
+,{"stream_name":"stdout","time":15057.635048718,"data":"[02:18:57 + 250.6m] progress: jobs {'done': 39, 'claimed': 2, 'ready': 234, 'dead': 10}; tiers {0: '8/8', 1: '31/33', 2: '0/35', 3: '0/59', 4: '0/70', 5: '0/80'}; analysed 38/39\n"}
+,{"stream_name":"stdout","time":15057.637091718,"data":"[02:18:57 + 250.6m]     drax               23 jobs   4600 utts  10.24 h audio   6.11 GPU-h\n"}
+,{"stream_name":"stdout","time":15057.638798322,"data":"[02:18:57 + 250.6m]     whisfusion         16 jobs   3200 utts   5.99 h audio   2.10 GPU-h\n"}
+,{"stream_name":"stdout","time":15657.691702924,"data":"[02:28:57 + 260.6m] progress: jobs {'done': 41, 'ready': 232, 'claimed': 2, 'dead': 10}; tiers {0: '8/8', 1: '33/33', 2: '0/35', 3: '0/59', 4: '0/70', 5: '0/80'}; analysed 41/41\n"}
+,{"stream_name":"stdout","time":15657.693125126,"data":"[02:28:57 + 260.6m]     drax               23 jobs   4600 utts  10.24 h audio   6.11 GPU-h\n"}
+,{"stream_name":"stdout","time":15657.694085054,"data":"[02:28:57 + 260.6m]     whisfusion         18 jobs   3600 utts   6.78 h audio   2.36 GPU-h\n"}
+,{"stream_name":"stdout","time":16257.76954164,"data":"[02:38:57 + 270.6m] progress: jobs {'done': 43, 'ready': 230, 'claimed': 2, 'dead': 10}; tiers {0: '8/8', 1: '33/33', 2: '2/35', 3: '0/59', 4: '0/70', 5: '0/80'}; analysed 43/43\n"}
+,{"stream_name":"stdout","time":16257.769991278,"data":"[02:38:57 + 270.6m]     drax               23 jobs   4600 utts  10.24 h audio   6.11 GPU-h\n"}
+,{"stream_name":"stdout","time":16257.770945442,"data":"[02:38:57 + 270.6m]     whisfusion         20 jobs   4000 utts   7.56 h audio   2.75 GPU-h\n"}
+,{"stream_name":"stdout","time":16857.841818845,"data":"[02:48:57 + 280.6m] progress: jobs {'done': 45, 'ready': 228, 'claimed': 2, 'dead': 10}; tiers {0: '8/8', 1: '33/33', 2: '4/35', 3: '0/59', 4: '0/70', 5: '0/80'}; analysed 45/45\n"}
+,{"stream_name":"stdout","time":16857.842866901,"data":"[02:48:57 + 280.6m]     drax               23 jobs   4600 utts  10.24 h audio   6.11 GPU-h\n"}
+,{"stream_name":"stdout","time":16857.843772961,"data":"[02:48:57 + 280.6m]     whisfusion         22 jobs   4400 utts   8.10 h audio   3.02 GPU-h\n"}
+,{"stream_name":"stdout","time":17457.904531921,"data":"[02:58:57 + 290.6m] progress: jobs {'done': 47, 'ready': 226, 'claimed': 2, 'dead': 10}; tiers {0: '8/8', 1: '33/33', 2: '6/35', 3: '0/59', 4: '0/70', 5: '0/80'}; analysed 47/47\n"}
+,{"stream_name":"stdout","time":17457.90463578,"data":"[02:58:57 + 290.6m]     drax               23 jobs   4600 utts  10.24 h audio   6.11 GPU-h\n"}
+,{"stream_name":"stdout","time":17457.905500619,"data":"[02:58:57 + 290.6m]     whisfusion         24 jobs   4800 utts   8.83 h audio   3.28 GPU-h\n"}
+,{"stream_name":"stdout","time":18058.004612114,"data":"[03:08:57 + 300.6m] progress: jobs {'done': 51, 'ready': 222, 'claimed': 2, 'dead': 10}; tiers {0: '8/8', 1: '33/33', 2: '10/35', 3: '0/59', 4: '0/70', 5: '0/80'}; analysed 50/51\n"}
+,{"stream_name":"stdout","time":18058.006080095,"data":"[03:08:57 + 300.6m]     drax               23 jobs   4600 utts  10.24 h audio   6.11 GPU-h\n"}
+,{"stream_name":"stdout","time":18058.007429483,"data":"[03:08:57 + 300.6m]     whisfusion         28 jobs   5600 utts  10.52 h audio   3.81 GPU-h\n"}
+,{"stream_name":"stdout","time":18658.080210819,"data":"[03:18:57 + 310.6m] progress: jobs {'done': 53, 'ready': 220, 'claimed': 2, 'dead': 10}; tiers {0: '8/8', 1: '33/33', 2: '12/35', 3: '0/59', 4: '0/70', 5: '0/80'}; analysed 53/53\n"}
+,{"stream_name":"stdout","time":18658.081753127,"data":"[03:18:57 + 310.6m]     drax               23 jobs   4600 utts  10.24 h audio   6.11 GPU-h\n"}
+,{"stream_name":"stdout","time":18658.083200887,"data":"[03:18:57 + 310.6m]     whisfusion         30 jobs   6000 utts  11.31 h audio   4.08 GPU-h\n"}
+,{"stream_name":"stdout","time":19015.291083735,"data":"[03:24:54 + 316.6m] lane 0: whisfusion exited rc=0, 14 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":19015.292257605,"data":"[03:24:54 + 316.6m]     done whisfusion__ls-test-other__s01__main [done] 200 utts in 8.3 min (2.48 s/utt, RTF 0.384)\n"}
+,{"stream_name":"stdout","time":19015.293413233,"data":"[03:24:54 + 316.6m]     done whisfusion__earnings22__s01__main [done] 200 utts in 8.3 min (2.48 s/utt, RTF 0.398)\n"}
+,{"stream_name":"stdout","time":19015.294425509,"data":"[03:24:54 + 316.6m]     done whisfusion__gigaspeech__s01__main [done] 200 utts in 8.3 min (2.48 s/utt, RTF 0.414)\n"}
+,{"stream_name":"stdout","time":19015.295438894,"data":"[03:24:54 + 316.6m]     done whisfusion__common_voice__s01__main [done] 200 utts in 8.3 min (2.48 s/utt, RTF 0.467)\n"}
+,{"stream_name":"stdout","time":19015.296487391,"data":"[03:24:54 + 316.6m]     done whisfusion__slr83__s01__main [done] 200 utts in 8.2 min (2.47 s/utt, RTF 0.372)\n"}
+,{"stream_name":"stdout","time":19015.297533095,"data":"[03:24:54 + 316.6m]     done whisfusion__ls-tc-babble0__s01__main [done] 200 utts in 8.2 min (2.47 s/utt, RTF 0.323)\n"}
+,{"stream_name":"stdout","time":19015.298627937,"data":"[03:24:54 + 316.6m] lane 0: starting drax\n"}
+,{"stream_name":"stdout","time":19258.134835522,"data":"[03:28:57 + 320.6m] progress: jobs {'done': 55, 'claimed': 2, 'ready': 218, 'dead': 10}; tiers {0: '8/8', 1: '33/33', 2: '14/35', 3: '0/59', 4: '0/70', 5: '0/80'}; analysed 55/55\n"}
+,{"stream_name":"stdout","time":19258.136190572,"data":"[03:28:57 + 320.6m]     drax               23 jobs   4600 utts  10.24 h audio   6.11 GPU-h\n"}
+,{"stream_name":"stdout","time":19258.137414558,"data":"[03:28:57 + 320.6m]     whisfusion         32 jobs   6400 utts  12.16 h audio   4.34 GPU-h\n"}
+,{"stream_name":"stdout","time":19420.124714552,"data":"[03:31:39 + 323.3m] lane 1: whisfusion exited rc=0, 15 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":19420.125837424,"data":"[03:31:39 + 323.3m]     done whisfusion__voxpopuli__s01__main [done] 200 utts in 7.6 min (2.28 s/utt, RTF 0.329)\n"}
+,{"stream_name":"stdout","time":19420.12679927,"data":"[03:31:39 + 323.3m]     done whisfusion__spgispeech__s01__main [done] 200 utts in 7.6 min (2.28 s/utt, RTF 0.250)\n"}
+,{"stream_name":"stdout","time":19420.127699261,"data":"[03:31:39 + 323.3m]     done whisfusion__fleurs-en__s01__main [done] 200 utts in 7.6 min (2.29 s/utt, RTF 0.230)\n"}
+,{"stream_name":"stdout","time":19420.128607713,"data":"[03:31:39 + 323.3m]     done whisfusion__ls-tc-babble10__s01__main [done] 200 utts in 7.6 min (2.28 s/utt, RTF 0.298)\n"}
+,{"stream_name":"stdout","time":19420.129449929,"data":"[03:31:39 + 323.3m]     done whisfusion__ls-tc-babble5__s01__main [done] 200 utts in 7.6 min (2.28 s/utt, RTF 0.298)\n"}
+,{"stream_name":"stdout","time":19420.130244568,"data":"[03:31:39 + 323.3m]     done whisfusion__ls-tc-white5__s01__main [done] 200 utts in 7.7 min (2.31 s/utt, RTF 0.303)\n"}
+,{"stream_name":"stdout","time":19420.131096658,"data":"[03:31:39 + 323.3m] lane 1: starting drax\n"}
+,{"stream_name":"stdout","time":19858.189547045,"data":"[03:38:57 + 330.6m] progress: jobs {'done': 56, 'claimed': 2, 'ready': 217, 'dead': 10}; tiers {0: '8/8', 1: '33/33', 2: '15/35', 3: '0/59', 4: '0/70', 5: '0/80'}; analysed 56/56\n"}
+,{"stream_name":"stdout","time":19858.19034304,"data":"[03:38:57 + 330.6m]     drax               23 jobs   4600 utts  10.24 h audio   6.11 GPU-h\n"}
+,{"stream_name":"stdout","time":19858.19136996,"data":"[03:38:57 + 330.6m]     whisfusion         33 jobs   6600 utts  12.59 h audio   4.47 GPU-h\n"}
+,{"stream_name":"stdout","time":20458.251557074,"data":"[03:48:57 + 340.6m] progress: jobs {'done': 57, 'claimed': 2, 'ready': 216, 'dead': 10}; tiers {0: '8/8', 1: '33/33', 2: '16/35', 3: '0/59', 4: '0/70', 5: '0/80'}; analysed 57/57\n"}
+,{"stream_name":"stdout","time":20458.251801997,"data":"[03:48:57 + 340.6m]     drax               24 jobs   4800 utts  10.67 h audio   6.36 GPU-h\n"}
+,{"stream_name":"stdout","time":20458.252961756,"data":"[03:48:57 + 340.6m]     whisfusion         33 jobs   6600 utts  12.59 h audio   4.47 GPU-h\n"}
+,{"stream_name":"stdout","time":21058.302532037,"data":"[03:58:57 + 350.6m] progress: jobs {'done': 57, 'claimed': 2, 'ready': 216, 'dead': 10}; tiers {0: '8/8', 1: '33/33', 2: '16/35', 3: '0/59', 4: '0/70', 5: '0/80'}; analysed 57/57\n"}
+,{"stream_name":"stdout","time":21058.303747882,"data":"[03:58:57 + 350.6m]     drax               24 jobs   4800 utts  10.67 h audio   6.36 GPU-h\n"}
+,{"stream_name":"stdout","time":21058.304616539,"data":"[03:58:57 + 350.6m]     whisfusion         33 jobs   6600 utts  12.59 h audio   4.47 GPU-h\n"}
+,{"stream_name":"stdout","time":21658.360157294,"data":"[04:08:57 + 360.6m] progress: jobs {'done': 58, 'claimed': 2, 'ready': 215, 'dead': 10}; tiers {0: '8/8', 1: '33/33', 2: '17/35', 3: '0/59', 4: '0/70', 5: '0/80'}; analysed 58/58\n"}
+,{"stream_name":"stdout","time":21658.361708347,"data":"[04:08:57 + 360.6m]     drax               25 jobs   5000 utts  11.03 h audio   6.62 GPU-h\n"}
+,{"stream_name":"stdout","time":21658.362875317,"data":"[04:08:57 + 360.6m]     whisfusion         33 jobs   6600 utts  12.59 h audio   4.47 GPU-h\n"}
+,{"stream_name":"stdout","time":22258.408930678,"data":"[04:18:57 + 370.6m] progress: jobs {'done': 59, 'claimed': 2, 'ready': 214, 'dead': 10}; tiers {0: '8/8', 1: '33/33', 2: '18/35', 3: '0/59', 4: '0/70', 5: '0/80'}; analysed 59/59\n"}
+,{"stream_name":"stdout","time":22258.409799189,"data":"[04:18:57 + 370.6m]     drax               26 jobs   5200 utts  11.21 h audio   6.87 GPU-h\n"}
+,{"stream_name":"stdout","time":22258.410600088,"data":"[04:18:57 + 370.6m]     whisfusion         33 jobs   6600 utts  12.59 h audio   4.47 GPU-h\n"}
+,{"stream_name":"stdout","time":22858.470536841,"data":"[04:28:58 + 380.6m] progress: jobs {'done': 59, 'claimed': 2, 'ready': 214, 'dead': 10}; tiers {0: '8/8', 1: '33/33', 2: '18/35', 3: '0/59', 4: '0/70', 5: '0/80'}; analysed 59/59\n"}
+,{"stream_name":"stdout","time":22858.470862505,"data":"[04:28:58 + 380.6m]     drax               26 jobs   5200 utts  11.21 h audio   6.87 GPU-h\n"}
+,{"stream_name":"stdout","time":22858.472022273,"data":"[04:28:58 + 380.6m]     whisfusion         33 jobs   6600 utts  12.59 h audio   4.47 GPU-h\n"}
+,{"stream_name":"stdout","time":23458.528572575,"data":"[04:38:58 + 390.6m] progress: jobs {'done': 60, 'claimed': 2, 'ready': 213, 'dead': 10}; tiers {0: '8/8', 1: '33/33', 2: '19/35', 3: '0/59', 4: '0/70', 5: '0/80'}; analysed 60/60\n"}
+,{"stream_name":"stdout","time":23458.529460739,"data":"[04:38:58 + 390.6m]     drax               27 jobs   5400 utts  11.55 h audio   7.13 GPU-h\n"}
+,{"stream_name":"stdout","time":23458.530335765,"data":"[04:38:58 + 390.6m]     whisfusion         33 jobs   6600 utts  12.59 h audio   4.47 GPU-h\n"}
+,{"stream_name":"stdout","time":24058.582650444,"data":"[04:48:58 + 400.6m] progress: jobs {'done': 61, 'claimed': 2, 'ready': 212, 'dead': 10}; tiers {0: '8/8', 1: '33/33', 2: '20/35', 3: '0/59', 4: '0/70', 5: '0/80'}; analysed 61/61\n"}
+,{"stream_name":"stdout","time":24058.583425343,"data":"[04:48:58 + 400.6m]     drax               28 jobs   5600 utts  11.94 h audio   7.38 GPU-h\n"}
+,{"stream_name":"stdout","time":24058.584572285,"data":"[04:48:58 + 400.6m]     whisfusion         33 jobs   6600 utts  12.59 h audio   4.47 GPU-h\n"}
+,{"stream_name":"stdout","time":24658.638092568,"data":"[04:58:58 + 410.6m] progress: jobs {'done': 62, 'claimed': 2, 'ready': 211, 'dead': 10}; tiers {0: '8/8', 1: '33/33', 2: '21/35', 3: '0/59', 4: '0/70', 5: '0/80'}; analysed 62/62\n"}
+,{"stream_name":"stdout","time":24658.639101977,"data":"[04:58:58 + 410.6m]     drax               29 jobs   5800 utts  12.30 h audio   8.85 GPU-h\n"}
+,{"stream_name":"stdout","time":24658.640136746,"data":"[04:58:58 + 410.6m]     whisfusion         33 jobs   6600 utts  12.59 h audio   4.47 GPU-h\n"}
+,{"stream_name":"stdout","time":25258.696800451,"data":"[05:08:58 + 420.6m] progress: jobs {'done': 63, 'claimed': 2, 'ready': 210, 'dead': 10}; tiers {0: '8/8', 1: '33/33', 2: '22/35', 3: '0/59', 4: '0/70', 5: '0/80'}; analysed 63/63\n"}
+,{"stream_name":"stdout","time":25258.697845834,"data":"[05:08:58 + 420.6m]     drax               30 jobs   6000 utts  12.63 h audio   9.11 GPU-h\n"}
+,{"stream_name":"stdout","time":25258.698759556,"data":"[05:08:58 + 420.6m]     whisfusion         33 jobs   6600 utts  12.59 h audio   4.47 GPU-h\n"}
+,{"stream_name":"stdout","time":25858.758924822,"data":"[05:18:58 + 430.6m] progress: jobs {'done': 65, 'claimed': 2, 'ready': 208, 'dead': 10}; tiers {0: '8/8', 1: '33/33', 2: '24/35', 3: '0/59', 4: '0/70', 5: '0/80'}; analysed 64/65\n"}
+,{"stream_name":"stdout","time":25858.760408063,"data":"[05:18:58 + 430.6m]     drax               32 jobs   6400 utts  13.43 h audio   9.64 GPU-h\n"}
+,{"stream_name":"stdout","time":25858.763174411,"data":"[05:18:58 + 430.6m]     whisfusion         33 jobs   6600 utts  12.59 h audio   4.47 GPU-h\n"}
+,{"stream_name":"stdout","time":26458.822503778,"data":"[05:28:58 + 440.6m] progress: jobs {'done': 66, 'claimed': 2, 'ready': 207, 'dead': 10}; tiers {0: '8/8', 1: '33/33', 2: '25/35', 3: '0/59', 4: '0/70', 5: '0/80'}; analysed 66/66\n"}
+,{"stream_name":"stdout","time":26458.823686739,"data":"[05:28:58 + 440.6m]     drax               33 jobs   6600 utts  13.99 h audio   9.91 GPU-h\n"}
+,{"stream_name":"stdout","time":26458.824854997,"data":"[05:28:58 + 440.6m]     whisfusion         33 jobs   6600 utts  12.59 h audio   4.47 GPU-h\n"}
+,{"stream_name":"stdout","time":27058.884541452,"data":"[05:38:58 + 450.6m] progress: jobs {'done': 67, 'claimed': 2, 'ready': 206, 'dead': 10}; tiers {0: '8/8', 1: '33/33', 2: '26/35', 3: '0/59', 4: '0/70', 5: '0/80'}; analysed 67/67\n"}
+,{"stream_name":"stdout","time":27058.885857385,"data":"[05:38:58 + 450.6m]     drax               34 jobs   6800 utts  14.35 h audio  10.17 GPU-h\n"}
+,{"stream_name":"stdout","time":27058.887093984,"data":"[05:38:58 + 450.6m]     whisfusion         33 jobs   6600 utts  12.59 h audio   4.47 GPU-h\n"}
+,{"stream_name":"stdout","time":27658.935975545,"data":"[05:48:58 + 460.6m] progress: jobs {'done': 68, 'claimed': 2, 'ready': 205, 'dead': 10}; tiers {0: '8/8', 1: '33/33', 2: '27/35', 3: '0/59', 4: '0/70', 5: '0/80'}; analysed 68/68\n"}
+,{"stream_name":"stdout","time":27658.936043949,"data":"[05:48:58 + 460.6m]     drax               35 jobs   7000 utts  14.78 h audio  10.44 GPU-h\n"}
+,{"stream_name":"stdout","time":27658.936049931,"data":"[05:48:58 + 460.6m]     whisfusion         33 jobs   6600 utts  12.59 h audio   4.47 GPU-h\n"}
+,{"stream_name":"stdout","time":28258.990493762,"data":"[05:58:58 + 470.6m] progress: jobs {'done': 69, 'claimed': 2, 'ready': 204, 'dead': 10}; tiers {0: '8/8', 1: '33/33', 2: '28/35', 3: '0/59', 4: '0/70', 5: '0/80'}; analysed 69/69\n"}
+,{"stream_name":"stdout","time":28258.991316081,"data":"[05:58:58 + 470.6m]     drax               36 jobs   7200 utts  15.20 h audio  10.70 GPU-h\n"}
+,{"stream_name":"stdout","time":28258.992339322,"data":"[05:58:58 + 470.6m]     whisfusion         33 jobs   6600 utts  12.59 h audio   4.47 GPU-h\n"}
+,{"stream_name":"stdout","time":28859.049715509,"data":"[06:08:58 + 480.6m] progress: jobs {'done': 71, 'claimed': 2, 'ready': 202, 'dead': 10}; tiers {0: '8/8', 1: '33/33', 2: '30/35', 3: '0/59', 4: '0/70', 5: '0/80'}; analysed 71/71\n"}
+,{"stream_name":"stdout","time":28859.051033373,"data":"[06:08:58 + 480.6m]     drax               38 jobs   7600 utts  16.05 h audio  11.23 GPU-h\n"}
+,{"stream_name":"stdout","time":28859.052056885,"data":"[06:08:58 + 480.6m]     whisfusion         33 jobs   6600 utts  12.59 h audio   4.47 GPU-h\n"}
+,{"stream_name":"stdout","time":29459.104544063,"data":"[06:18:58 + 490.6m] progress: jobs {'done': 72, 'claimed': 2, 'ready': 201, 'dead': 10}; tiers {0: '8/8', 1: '33/33', 2: '31/35', 3: '0/59', 4: '0/70', 5: '0/80'}; analysed 72/72\n"}
+,{"stream_name":"stdout","time":29459.105968717,"data":"[06:18:58 + 490.6m]     drax               39 jobs   7800 utts  16.75 h audio  11.51 GPU-h\n"}
+,{"stream_name":"stdout","time":29459.106922736,"data":"[06:18:58 + 490.6m]     whisfusion         33 jobs   6600 utts  12.59 h audio   4.47 GPU-h\n"}
+,{"stream_name":"stdout","time":30059.156290696,"data":"[06:28:58 + 500.6m] progress: jobs {'done': 73, 'claimed': 2, 'ready': 200, 'dead': 10}; tiers {0: '8/8', 1: '33/33', 2: '32/35', 3: '0/59', 4: '0/70', 5: '0/80'}; analysed 73/73\n"}
+,{"stream_name":"stdout","time":30059.157226474,"data":"[06:28:58 + 500.6m]     drax               40 jobs   8000 utts  17.33 h audio  11.76 GPU-h\n"}
+,{"stream_name":"stdout","time":30059.158242926,"data":"[06:28:58 + 500.6m]     whisfusion         33 jobs   6600 utts  12.59 h audio   4.47 GPU-h\n"}
+,{"stream_name":"stdout","time":30659.210459357,"data":"[06:38:58 + 510.6m] progress: jobs {'done': 75, 'claimed': 2, 'ready': 198, 'dead': 10}; tiers {0: '8/8', 1: '33/33', 2: '34/35', 3: '0/59', 4: '0/70', 5: '0/80'}; analysed 75/75\n"}
+,{"stream_name":"stdout","time":30659.211047302,"data":"[06:38:58 + 510.6m]     drax               42 jobs   8400 utts  18.80 h audio  12.30 GPU-h\n"}
+,{"stream_name":"stdout","time":30659.211824397,"data":"[06:38:58 + 510.6m]     whisfusion         33 jobs   6600 utts  12.59 h audio   4.47 GPU-h\n"}
+,{"stream_name":"stdout","time":31259.260444629,"data":"[06:48:58 + 520.6m] progress: jobs {'done': 75, 'claimed': 2, 'ready': 198, 'dead': 10}; tiers {0: '8/8', 1: '33/33', 2: '34/35', 3: '0/59', 4: '0/70', 5: '0/80'}; analysed 75/75\n"}
+,{"stream_name":"stdout","time":31259.261574867,"data":"[06:48:58 + 520.6m]     drax               42 jobs   8400 utts  18.80 h audio  12.30 GPU-h\n"}
+,{"stream_name":"stdout","time":31259.262556695,"data":"[06:48:58 + 520.6m]     whisfusion         33 jobs   6600 utts  12.59 h audio   4.47 GPU-h\n"}
+,{"stream_name":"stdout","time":31859.315464107,"data":"[06:58:58 + 530.6m] progress: jobs {'done': 76, 'ready': 197, 'claimed': 2, 'dead': 10}; tiers {0: '8/8', 1: '33/33', 2: '35/35', 3: '0/59', 4: '0/70', 5: '0/80'}; analysed 76/76\n"}
+,{"stream_name":"stdout","time":31859.316031499,"data":"[06:58:58 + 530.6m]     drax               43 jobs   8600 utts  19.50 h audio  12.57 GPU-h\n"}
+,{"stream_name":"stdout","time":31859.316896287,"data":"[06:58:58 + 530.6m]     whisfusion         33 jobs   6600 utts  12.59 h audio   4.47 GPU-h\n"}
+,{"stream_name":"stdout","time":32459.372081321,"data":"[07:08:58 + 540.6m] progress: jobs {'done': 77, 'ready': 196, 'claimed': 2, 'dead': 10}; tiers {0: '8/8', 1: '33/33', 2: '35/35', 3: '1/59', 4: '0/70', 5: '0/80'}; analysed 77/77\n"}
+,{"stream_name":"stdout","time":32459.373465914,"data":"[07:08:58 + 540.6m]     drax               44 jobs   8800 utts  19.90 h audio  12.85 GPU-h\n"}
+,{"stream_name":"stdout","time":32459.374473809,"data":"[07:08:58 + 540.6m]     whisfusion         33 jobs   6600 utts  12.59 h audio   4.47 GPU-h\n"}
+,{"stream_name":"stdout","time":33059.422465115,"data":"[07:18:58 + 550.6m] progress: jobs {'done': 77, 'ready': 196, 'claimed': 2, 'dead': 10}; tiers {0: '8/8', 1: '33/33', 2: '35/35', 3: '1/59', 4: '0/70', 5: '0/80'}; analysed 77/77\n"}
+,{"stream_name":"stdout","time":33059.423106457,"data":"[07:18:58 + 550.6m]     drax               44 jobs   8800 utts  19.90 h audio  12.85 GPU-h\n"}
+,{"stream_name":"stdout","time":33059.423928243,"data":"[07:18:58 + 550.6m]     whisfusion         33 jobs   6600 utts  12.59 h audio   4.47 GPU-h\n"}
+,{"stream_name":"stdout","time":33659.480049728,"data":"[07:28:59 + 560.6m] progress: jobs {'done': 79, 'ready': 194, 'claimed': 2, 'dead': 10}; tiers {0: '8/8', 1: '33/33', 2: '35/35', 3: '3/59', 4: '0/70', 5: '0/80'}; analysed 79/79\n"}
+,{"stream_name":"stdout","time":33659.481008539,"data":"[07:28:59 + 560.6m]     drax               46 jobs   9200 utts  20.63 h audio  13.92 GPU-h\n"}
+,{"stream_name":"stdout","time":33659.48205018,"data":"[07:28:59 + 560.6m]     whisfusion         33 jobs   6600 utts  12.59 h audio   4.47 GPU-h\n"}
+,{"stream_name":"stdout","time":34259.55358454,"data":"[07:38:59 + 570.6m] progress: jobs {'done': 81, 'ready': 192, 'claimed': 2, 'dead': 10}; tiers {0: '8/8', 1: '33/33', 2: '35/35', 3: '5/59', 4: '0/70', 5: '0/80'}; analysed 79/81\n"}
+,{"stream_name":"stdout","time":34259.553671697,"data":"[07:38:59 + 570.6m]     drax               48 jobs   9600 utts  21.16 h audio  14.45 GPU-h\n"}
+,{"stream_name":"stdout","time":34259.554565511,"data":"[07:38:59 + 570.6m]     whisfusion         33 jobs   6600 utts  12.59 h audio   4.47 GPU-h\n"}
+,{"stream_name":"stdout","time":34859.594502421,"data":"[07:48:59 + 580.6m] progress: jobs {'done': 81, 'ready': 192, 'claimed': 2, 'dead': 10}; tiers {0: '8/8', 1: '33/33', 2: '35/35', 3: '5/59', 4: '0/70', 5: '0/80'}; analysed 81/81\n"}
+,{"stream_name":"stdout","time":34859.595696251,"data":"[07:48:59 + 580.6m]     drax               48 jobs   9600 utts  21.16 h audio  14.45 GPU-h\n"}
+,{"stream_name":"stdout","time":34859.596698449,"data":"[07:48:59 + 580.6m]     whisfusion         33 jobs   6600 utts  12.59 h audio   4.47 GPU-h\n"}
+,{"stream_name":"stdout","time":35459.651480767,"data":"[07:58:59 + 590.6m] progress: jobs {'done': 83, 'ready': 190, 'claimed': 2, 'dead': 10}; tiers {0: '8/8', 1: '33/33', 2: '35/35', 3: '7/59', 4: '0/70', 5: '0/80'}; analysed 83/83\n"}
+,{"stream_name":"stdout","time":35459.651527687,"data":"[07:58:59 + 590.6m]     drax               50 jobs  10000 utts  21.88 h audio  14.98 GPU-h\n"}
+,{"stream_name":"stdout","time":35459.651942399,"data":"[07:58:59 + 590.6m]     whisfusion         33 jobs   6600 utts  12.59 h audio   4.47 GPU-h\n"}
+,{"stream_name":"stdout","time":36059.702257719,"data":"[08:08:59 + 600.6m] progress: jobs {'done': 83, 'ready': 190, 'claimed': 2, 'dead': 10}; tiers {0: '8/8', 1: '33/33', 2: '35/35', 3: '7/59', 4: '0/70', 5: '0/80'}; analysed 83/83\n"}
+,{"stream_name":"stdout","time":36059.703225192,"data":"[08:08:59 + 600.6m]     drax               50 jobs  10000 utts  21.88 h audio  14.98 GPU-h\n"}
+,{"stream_name":"stdout","time":36059.704306078,"data":"[08:08:59 + 600.6m]     whisfusion         33 jobs   6600 utts  12.59 h audio   4.47 GPU-h\n"}
+,{"stream_name":"stdout","time":36659.761838752,"data":"[08:18:59 + 610.6m] progress: jobs {'done': 85, 'ready': 188, 'claimed': 2, 'dead': 10}; tiers {0: '8/8', 1: '33/33', 2: '35/35', 3: '9/59', 4: '0/70', 5: '0/80'}; analysed 85/85\n"}
+,{"stream_name":"stdout","time":36659.762855464,"data":"[08:18:59 + 610.6m]     drax               52 jobs  10400 utts  22.69 h audio  15.51 GPU-h\n"}
+,{"stream_name":"stdout","time":36659.763658515,"data":"[08:18:59 + 610.6m]     whisfusion         33 jobs   6600 utts  12.59 h audio   4.47 GPU-h\n"}
+,{"stream_name":"stdout","time":37259.819464176,"data":"[08:28:59 + 620.6m] progress: jobs {'done': 87, 'ready': 186, 'claimed': 2, 'dead': 10}; tiers {0: '8/8', 1: '33/33', 2: '35/35', 3: '11/59', 4: '0/70', 5: '0/80'}; analysed 87/87\n"}
+,{"stream_name":"stdout","time":37259.820876856,"data":"[08:28:59 + 620.6m]     drax               54 jobs  10800 utts  23.60 h audio  16.05 GPU-h\n"}
+,{"stream_name":"stdout","time":37259.82198106,"data":"[08:28:59 + 620.6m]     whisfusion         33 jobs   6600 utts  12.59 h audio   4.47 GPU-h\n"}
+,{"stream_name":"stdout","time":37859.873998108,"data":"[08:38:59 + 630.6m] progress: jobs {'done': 87, 'ready': 186, 'claimed': 2, 'dead': 10}; tiers {0: '8/8', 1: '33/33', 2: '35/35', 3: '11/59', 4: '0/70', 5: '0/80'}; analysed 87/87\n"}
+,{"stream_name":"stdout","time":37859.874883297,"data":"[08:38:59 + 630.6m]     drax               54 jobs  10800 utts  23.60 h audio  16.05 GPU-h\n"}
+,{"stream_name":"stdout","time":37859.875988356,"data":"[08:38:59 + 630.6m]     whisfusion         33 jobs   6600 utts  12.59 h audio   4.47 GPU-h\n"}
+,{"stream_name":"stdout","time":38459.930501492,"data":"[08:48:59 + 640.6m] progress: jobs {'done': 89, 'ready': 184, 'claimed': 2, 'dead': 10}; tiers {0: '8/8', 1: '33/33', 2: '35/35', 3: '13/59', 4: '0/70', 5: '0/80'}; analysed 89/89\n"}
+,{"stream_name":"stdout","time":38459.931243001,"data":"[08:48:59 + 640.6m]     drax               56 jobs  11200 utts  24.40 h audio  16.58 GPU-h\n"}
+,{"stream_name":"stdout","time":38459.932326276,"data":"[08:48:59 + 640.6m]     whisfusion         33 jobs   6600 utts  12.59 h audio   4.47 GPU-h\n"}
+,{"stream_name":"stdout","time":39059.989498701,"data":"[08:58:59 + 650.6m] progress: jobs {'done': 90, 'ready': 183, 'claimed': 2, 'dead': 10}; tiers {0: '8/8', 1: '33/33', 2: '35/35', 3: '14/59', 4: '0/70', 5: '0/80'}; analysed 90/90\n"}
+,{"stream_name":"stdout","time":39059.990457834,"data":"[08:58:59 + 650.6m]     drax               57 jobs  11400 utts  24.80 h audio  16.84 GPU-h\n"}
+,{"stream_name":"stdout","time":39059.99128255,"data":"[08:58:59 + 650.6m]     whisfusion         33 jobs   6600 utts  12.59 h audio   4.47 GPU-h\n"}
+,{"stream_name":"stdout","time":39549.6162596,"data":"[09:07:09 + 658.8m] lane 1: drax exited rc=0, 20 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":39549.617186192,"data":"[09:07:09 + 658.8m]     done drax__voxpopuli__s02__main [done] 200 utts in 15.3 min (4.59 s/utt, RTF 0.692)\n"}
+,{"stream_name":"stdout","time":39549.61795752,"data":"[09:07:09 + 658.8m]     done drax__spgispeech__s02__main [done] 200 utts in 15.4 min (4.61 s/utt, RTF 0.519)\n"}
+,{"stream_name":"stdout","time":39549.6187182,"data":"[09:07:09 + 658.8m]     done drax__fleurs-en__s02__main [done] 200 utts in 15.4 min (4.61 s/utt, RTF 0.477)\n"}
+,{"stream_name":"stdout","time":39549.61942038,"data":"[09:07:09 + 658.8m]     done drax__ls-tc-babble10__s02__main [done] 200 utts in 15.5 min (4.64 s/utt, RTF 0.647)\n"}
+,{"stream_name":"stdout","time":39549.620145761,"data":"[09:07:09 + 658.8m]     done drax__ls-tc-babble0__s02__main [done] 200 utts in 15.5 min (4.64 s/utt, RTF 0.648)\n"}
+,{"stream_name":"stdout","time":39549.620934319,"data":"[09:07:09 + 658.8m]     done drax__fleurs-de__s02__main [partial] 146 utts in 11.3 min (4.65 s/utt, RTF 0.370)\n"}
+,{"stream_name":"stdout","time":39549.621720506,"data":"[09:07:09 + 658.8m] lane 1: finished (4 worker launches, idle 0.5 min)\n"}
+,{"stream_name":"stdout","time":39552.731478286,"data":"[09:07:12 + 658.9m] lane 0: drax exited rc=0, 17 jobs, 0 error lines\n"}
+,{"stream_name":"stdout","time":39552.73250126,"data":"[09:07:12 + 658.9m]     done drax__gigaspeech__s02__main [done] 200 utts in 16.5 min (4.95 s/utt, RTF 0.792)\n"}
+,{"stream_name":"stdout","time":39552.733388584,"data":"[09:07:12 + 658.9m]     done drax__common_voice__s02__main [done] 200 utts in 16.5 min (4.96 s/utt, RTF 0.868)\n"}
+,{"stream_name":"stdout","time":39552.734284671,"data":"[09:07:12 + 658.9m]     done drax__slr83__s02__main [done] 200 utts in 16.5 min (4.95 s/utt, RTF 0.729)\n"}
+,{"stream_name":"stdout","time":39552.735058752,"data":"[09:07:12 + 658.9m]     done drax__ls-tc-babble5__s02__main [done] 200 utts in 16.5 min (4.96 s/utt, RTF 0.691)\n"}
+,{"stream_name":"stdout","time":39552.735927607,"data":"[09:07:12 + 658.9m]     done drax__ls-tc-white5__s02__main [done] 200 utts in 16.5 min (4.96 s/utt, RTF 0.691)\n"}
+,{"stream_name":"stdout","time":39552.736663865,"data":"[09:07:12 + 658.9m]     done drax__fleurs-fr__s02__main [partial] 68 utts in 5.6 min (4.98 s/utt, RTF 0.509)\n"}
+,{"stream_name":"stdout","time":39552.737404574,"data":"[09:07:12 + 658.9m] lane 0: finished (3 worker launches, idle 0.5 min)\n"}
+,{"stream_name":"stdout","time":39559.980078622,"data":"[09:07:19 + 659.0m] GPU phase over; finishing analysis\n"}
+,{"stream_name":"stdout","time":39562.269250556,"data":"[09:07:21 + 659.0m] aggregating\n"}
+,{"stream_name":"stdout","time":39565.015055888,"data":"/kaggle/working/code/src/campaign/aggregate.py:122: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.\n"}
+,{"stream_name":"stdout","time":39565.016106877,"data":"  per_df = pd.concat(per, ignore_index=True) if per else pd.DataFrame()\n"}
+,{"stream_name":"stdout","time":39565.49045195,"data":"/kaggle/working/code/src/campaign/aggregate.py:123: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.\n"}
+,{"stream_name":"stdout","time":39565.491517178,"data":"  grid_df = pd.concat(grid, ignore_index=True) if grid else pd.DataFrame()\n"}
+,{"stream_name":"stdout","time":39582.614014661,"data":"[aggregate] cells 665 (20 s)\n"}
+,{"stream_name":"stdout","time":39603.524788198,"data":"[aggregate] contrasts 1368 (41 s)\n"}
+,{"stream_name":"stdout","time":39611.22738629,"data":"[aggregate] done in 48 s -\u003e /kaggle/working/campaign/results\n"}
+,{"stream_name":"stdout","time":39611.517261722,"data":"[09:08:11 + 659.8m] aggregate rc=0\n"}
+,{"stream_name":"stdout","time":39611.600943661,"data":"[09:08:11 + 659.8m] packed dumps.tar (31 MB)\n"}
+,{"stream_name":"stdout","time":39611.672007876,"data":"[09:08:11 + 659.8m] packed analysis.tar (15 MB)\n"}
+,{"stream_name":"stdout","time":39611.705137575,"data":"[09:08:11 + 659.8m] packed state.tar (0 MB)\n"}
+,{"stream_name":"stdout","time":39611.711512334,"data":"[09:08:11 + 659.8m] packed logs.tar (0 MB)\n"}
+,{"stream_name":"stdout","time":39611.730281565,"data":"[09:08:11 + 659.8m] packed manifests.tar (9 MB)\n"}
+,{"stream_name":"stdout","time":39611.731020526,"data":"[09:08:11 + 659.8m] done in 11.00 h\n"}
+,{"stream_name":"stdout","time":39612.394716169,"data":"campaign exit code 0\n"}
+,{"stream_name":"stdout","time":39612.440008286,"data":"# Campaign report\n"}
+,{"stream_name":"stdout","time":39612.440032096,"data":"\n"}
+,{"stream_name":"stdout","time":39612.440036435,"data":"generated 2026-09-20 09:08 UTC\n"}
+,{"stream_name":"stdout","time":39612.44003996,"data":"\n"}
+,{"stream_name":"stdout","time":39612.440043055,"data":"utterance decodes analysed: 282379; cells: 665\n"}
+,{"stream_name":"stdout","time":39612.440046371,"data":"\n"}
+,{"stream_name":"stdout","time":39612.440049515,"data":"\n"}
+,{"stream_name":"stdout","time":39612.440052629,"data":"## Main arm at the largest K, corpus WER (legacy normalisation)\n"}
+,{"stream_name":"stdout","time":39612.440055895,"data":"\n"}
+,{"stream_name":"stdout","time":39612.44005912,"data":"| model | set | n | K | first | conf | MBR | ROVER | ROVER-cg | oracle | oracle-comp | control | pairwise % |\n"}
+,{"stream_name":"stdout","time":39612.440062648,"data":"|---|---|---|---|---|---|---|---|---|---|---|---|---|\n"}
+,{"stream_name":"stdout","time":39612.440065958,"data":"| drax/main | ami | 600 | 16 | 17.83 | 14.11 | 11.40 | 11.07 | 11.10 | 7.86 | 4.04 | 6.60 | 26.8 |\n"}
+,{"stream_name":"stdout","time":39612.440069336,"data":"| drax/ref | ami | 600 | 4 | 11.48 | 11.22 | 10.99 | 11.10 | 11.23 | 9.16 | 7.32 | 7.69 | 8.6 |\n"}
+,{"stream_name":"stdout","time":39612.440072809,"data":"| drax/main | common_voice | 455 | 16 | 20.94 | 14.89 | 13.36 | 13.04 | 13.09 | 9.81 | 7.46 | 9.24 | 21.5 |\n"}
+,{"stream_name":"stdout","time":39612.440076181,"data":"| drax/ref | common_voice | 455 | 4 | 13.53 | 12.81 | 12.47 | 12.42 | 12.64 | 10.78 | 9.42 | 9.84 | 7.0 |\n"}
+,{"stream_name":"stdout","time":39612.440081351,"data":"| drax/main | earnings22 | 600 | 16 | 37.74 | 25.28 | 23.21 | 22.59 | 22.74 | 18.27 | 9.90 | 14.27 | 32.9 |\n"}
+,{"stream_name":"stdout","time":39612.44008489,"data":"| drax/ref | earnings22 | 600 | 4 | 20.97 | 20.40 | 20.49 | 20.44 | 20.70 | 17.69 | 12.82 | 13.58 | 9.5 |\n"}
+,{"stream_name":"stdout","time":39612.440090045,"data":"| drax/main | fleurs-de | 546 | 16 | 12.61 | 9.74 | 8.45 | 7.95 | 7.94 | 6.18 | 4.24 | 5.97 | 13.6 |\n"}
+,{"stream_name":"stdout","time":39612.440093703,"data":"| drax/ref | fleurs-de | 546 | 4 | 9.24 | 8.70 | 8.53 | 8.41 | 8.43 | 7.00 | 6.01 | 6.63 | 5.8 |\n"}
+,{"stream_name":"stdout","time":39612.440097203,"data":"| drax/main | fleurs-en | 600 | 16 | 14.43 | 11.36 | 10.16 | 9.61 | 9.64 | 7.94 | 4.84 | 7.17 | 14.6 |\n"}
+,{"stream_name":"stdout","time":39612.440100493,"data":"| drax/ref | fleurs-en | 600 | 4 | 9.95 | 9.98 | 9.59 | 9.49 | 9.55 | 8.15 | 6.26 | 6.79 | 4.8 |\n"}
+,{"stream_name":"stdout","time":39612.440104011,"data":"| drax/main | fleurs-es | 400 | 16 | 9.52 | 6.92 | 6.16 | 6.01 | 6.00 | 4.69 | 3.08 | 4.22 | 9.1 |\n"}
+,{"stream_name":"stdout","time":39612.440107258,"data":"| drax/ref | fleurs-es | 400 | 4 | 6.69 | 6.46 | 6.25 | 6.08 | 6.09 | 5.36 | 4.14 | 4.47 | 3.0 |\n"}
+,{"stream_name":"stdout","time":39612.440121451,"data":"| drax/main | fleurs-fr | 468 | 16 | 16.11 | 12.72 | 11.76 | 11.11 | 11.17 | 9.16 | 5.56 | 8.62 | 15.8 |\n"}
+,{"stream_name":"stdout","time":39612.440125785,"data":"| drax/ref | fleurs-fr | 468 | 4 | 11.94 | 11.56 | 11.60 | 11.32 | 11.38 | 9.66 | 7.78 | 8.62 | 6.5 |\n"}
+,{"stream_name":"stdout","time":39612.440129639,"data":"| drax/main | fleurs-it | 400 | 16 | 10.48 | 7.09 | 6.36 | 5.83 | 5.87 | 4.61 | 2.95 | 4.30 | 11.7 |\n"}
+,{"stream_name":"stdout","time":39612.440133718,"data":"| drax/ref | fleurs-it | 400 | 4 | 6.96 | 6.63 | 6.41 | 6.29 | 6.33 | 5.11 | 4.14 | 4.51 | 4.0 |\n"}
+,{"stream_name":"stdout","time":39612.440139855,"data":"| drax/main | fleurs-pt | 400 | 16 | 19.34 | 14.75 | 13.20 | 12.10 | 12.07 | 10.75 | 5.21 | 9.38 | 19.2 |\n"}
+,{"stream_name":"stdout","time":39612.440144123,"data":"| drax/ref | fleurs-pt | 400 | 4 | 13.68 | 13.12 | 12.72 | 12.53 | 12.57 | 10.98 | 7.08 | 8.61 | 8.1 |\n"}
+,{"stream_name":"stdout","time":39612.44014951,"data":"| drax/main | gigaspeech | 600 | 16 | 20.39 | 15.52 | 14.45 | 13.92 | 13.91 | 11.25 | 7.34 | 10.14 | 20.9 |\n"}
+,{"stream_name":"stdout","time":39612.440153082,"data":"| drax/ref | gigaspeech | 600 | 4 | 14.50 | 14.37 | 13.96 | 13.96 | 14.11 | 12.10 | 9.78 | 10.31 | 6.7 |\n"}
+,{"stream_name":"stdout","time":39612.44015655,"data":"| drax/main | ls-dev-clean | 400 | 16 | 5.32 | 3.20 | 2.82 | 2.79 | 2.78 | 1.63 | 1.11 | 1.52 | 7.9 |\n"}
+,{"stream_name":"stdout","time":39612.440159806,"data":"| drax/ref | ls-dev-clean | 400 | 4 | 3.11 | 2.90 | 2.78 | 2.66 | 2.66 | 2.18 | 1.98 | 2.04 | 1.7 |\n"}
+,{"stream_name":"stdout","time":39612.440163278,"data":"| drax/main | ls-dev-other | 400 | 16 | 9.99 | 6.76 | 5.79 | 5.42 | 5.47 | 4.42 | 2.50 | 4.17 | 12.5 |\n"}
+,{"stream_name":"stdout","time":39612.440166685,"data":"| drax/ref | ls-dev-other | 400 | 4 | 5.83 | 5.68 | 5.60 | 5.60 | 5.61 | 4.75 | 3.97 | 4.26 | 2.8 |\n"}
+,{"stream_name":"stdout","time":39612.440170081,"data":"| drax/main | ls-tc-babble0 | 600 | 16 | 53.80 | 42.81 | 41.13 | 36.86 | 36.86 | 35.07 | 23.38 | 32.34 | 57.9 |\n"}
+,{"stream_name":"stdout","time":39612.44017352,"data":"| drax/ref | ls-tc-babble0 | 600 | 4 | 35.54 | 35.36 | 35.89 | 34.94 | 34.95 | 31.05 | 27.04 | 29.00 | 25.7 |\n"}
+,{"stream_name":"stdout","time":39612.440176928,"data":"| drax/main | ls-tc-babble10 | 600 | 16 | 8.12 | 5.30 | 4.14 | 4.07 | 4.11 | 2.74 | 1.81 | 2.67 | 11.6 |\n"}
+,{"stream_name":"stdout","time":39612.440180343,"data":"| drax/ref | ls-tc-babble10 | 600 | 4 | 4.54 | 4.35 | 4.13 | 4.08 | 4.18 | 3.39 | 2.99 | 3.18 | 2.7 |\n"}
+,{"stream_name":"stdout","time":39612.440183788,"data":"| drax/main | ls-tc-babble5 | 600 | 16 | 16.52 | 11.90 | 10.12 | 9.41 | 9.42 | 7.76 | 4.35 | 7.40 | 21.9 |\n"}
+,{"stream_name":"stdout","time":39612.440187237,"data":"| drax/ref | ls-tc-babble5 | 600 | 4 | 9.53 | 9.46 | 8.98 | 8.93 | 8.95 | 7.58 | 6.47 | 7.06 | 6.8 |\n"}
+,{"stream_name":"stdout","time":39612.440190711,"data":"| drax/main | ls-tc-white5 | 600 | 16 | 11.91 | 8.77 | 7.41 | 6.95 | 7.02 | 5.62 | 3.25 | 5.38 | 16.9 |\n"}
+,{"stream_name":"stdout","time":39612.440194249,"data":"| drax/ref | ls-tc-white5 | 600 | 4 | 7.26 | 7.04 | 6.83 | 6.78 | 6.77 | 5.68 | 4.96 | 5.39 | 4.6 |\n"}
+,{"stream_name":"stdout","time":39612.440201752,"data":"| drax/main | ls-test-clean | 600 | 16 | 5.24 | 2.81 | 2.38 | 2.30 | 2.41 | 1.38 | 0.94 | 1.33 | 7.8 |\n"}
+,{"stream_name":"stdout","time":39612.440209341,"data":"| drax/ref | ls-test-clean | 600 | 4 | 2.57 | 2.44 | 2.39 | 2.38 | 2.35 | 1.77 | 1.58 | 1.65 | 1.5 |\n"}
+,{"stream_name":"stdout","time":39612.440224887,"data":"| drax/main | ls-test-other | 600 | 16 | 10.26 | 7.15 | 5.95 | 5.64 | 5.73 | 4.03 | 2.47 | 3.90 | 14.1 |\n"}
+,{"stream_name":"stdout","time":39612.440230525,"data":"| drax/ref | ls-test-other | 600 | 4 | 6.36 | 6.07 | 5.90 | 5.76 | 5.82 | 4.88 | 4.25 | 4.55 | 3.5 |\n"}
+,{"stream_name":"stdout","time":39612.440246541,"data":"| drax/main | slr83 | 600 | 16 | 11.09 | 7.65 | 7.00 | 6.72 | 6.83 | 4.87 | 3.56 | 4.50 | 12.0 |\n"}
+,{"stream_name":"stdout","time":39612.440250561,"data":"| drax/ref | slr83 | 600 | 4 | 7.59 | 7.19 | 7.22 | 7.04 | 7.05 | 5.88 | 4.85 | 5.25 | 3.9 |\n"}
+,{"stream_name":"stdout","time":39612.440253986,"data":"| drax/main | spgispeech | 600 | 16 | 11.58 | 8.39 | 7.56 | 7.51 | 7.56 | 5.25 | 2.53 | 4.21 | 11.6 |\n"}
+,{"stream_name":"stdout","time":39612.440257486,"data":"| drax/ref | spgispeech | 600 | 4 | 7.58 | 7.56 | 7.11 | 7.41 | 7.67 | 6.03 | 3.84 | 4.14 | 3.0 |\n"}
+,{"stream_name":"stdout","time":39612.440260857,"data":"| drax/main | voxpopuli | 600 | 16 | 12.34 | 8.55 | 7.67 | 7.57 | 7.65 | 5.87 | 3.58 | 5.07 | 13.4 |\n"}
+,{"stream_name":"stdout","time":39612.440264313,"data":"| drax/ref | voxpopuli | 600 | 4 | 7.75 | 7.66 | 7.60 | 7.59 | 7.70 | 6.80 | 5.22 | 5.40 | 2.6 |\n"}
+,{"stream_name":"stdout","time":39612.44026779,"data":"| whisfusion/main | ami | 400 | 32 | 46.21 | 36.63 | 35.37 | 33.29 | 33.26 | 28.32 | 21.18 | 27.16 | 41.4 |\n"}
+,{"stream_name":"stdout","time":39612.440271241,"data":"| whisfusion/main | common_voice | 296 | 32 | 42.13 | 32.62 | 31.32 | 29.18 | 28.95 | 24.29 | 16.62 | 22.27 | 33.7 |\n"}
+,{"stream_name":"stdout","time":39612.440274709,"data":"| whisfusion/main | earnings22 | 400 | 32 | 48.05 | 39.28 | 37.25 | 34.45 | 34.40 | 31.66 | 18.27 | 28.03 | 40.0 |\n"}
+,{"stream_name":"stdout","time":39612.440278322,"data":"| whisfusion/main | fleurs-en | 400 | 32 | 34.56 | 27.96 | 25.69 | 23.47 | 23.47 | 21.96 | 11.45 | 19.37 | 30.5 |\n"}
+,{"stream_name":"stdout","time":39612.440281943,"data":"| whisfusion/main | gigaspeech | 400 | 32 | 32.08 | 24.93 | 23.68 | 21.48 | 21.48 | 19.27 | 11.54 | 18.03 | 30.9 |\n"}
+,{"stream_name":"stdout","time":39612.440285488,"data":"| whisfusion/main | ls-dev-clean | 400 | 32 | 11.95 | 7.07 | 6.14 | 5.31 | 5.32 | 4.70 | 2.42 | 4.54 | 13.4 |\n"}
+,{"stream_name":"stdout","time":39612.440288972,"data":"| whisfusion/main | ls-dev-other | 400 | 32 | 21.59 | 15.31 | 14.34 | 12.59 | 12.63 | 11.25 | 5.94 | 10.64 | 22.0 |\n"}
+,{"stream_name":"stdout","time":39612.440292417,"data":"| whisfusion/main | ls-tc-babble0 | 400 | 32 | 76.62 | 68.81 | 66.27 | 58.31 | 58.28 | 59.35 | 38.08 | 48.09 | 62.3 |\n"}
+,{"stream_name":"stdout","time":39612.440297648,"data":"| whisfusion/main | ls-tc-babble10 | 400 | 32 | 23.23 | 15.94 | 14.44 | 11.47 | 11.40 | 11.67 | 5.32 | 10.91 | 25.5 |\n"}
+,{"stream_name":"stdout","time":39612.440304551,"data":"| whisfusion/main | ls-tc-babble5 | 400 | 32 | 39.83 | 31.42 | 29.14 | 24.43 | 24.41 | 25.48 | 13.50 | 23.11 | 39.7 |\n"}
+,{"stream_name":"stdout","time":39612.440318471,"data":"| whisfusion/main | ls-tc-white5 | 400 | 32 | 30.35 | 23.69 | 21.97 | 18.94 | 18.96 | 18.58 | 10.50 | 17.51 | 30.5 |\n"}
+,{"stream_name":"stdout","time":39612.440322507,"data":"| whisfusion/main | ls-test-clean | 400 | 32 | 12.46 | 7.59 | 6.91 | 5.55 | 5.51 | 4.93 | 2.00 | 4.67 | 14.6 |\n"}
+,{"stream_name":"stdout","time":39612.440326758,"data":"| whisfusion/main | ls-test-other | 400 | 32 | 21.31 | 15.39 | 13.47 | 11.98 | 11.92 | 10.92 | 6.13 | 10.51 | 22.2 |\n"}
+,{"stream_name":"stdout","time":39612.440332035,"data":"| whisfusion/main | slr83 | 400 | 32 | 27.85 | 19.92 | 18.66 | 17.10 | 17.05 | 14.48 | 8.59 | 13.35 | 27.1 |\n"}
+,{"stream_name":"stdout","time":39612.440336214,"data":"| whisfusion/main | spgispeech | 400 | 32 | 27.06 | 19.33 | 17.20 | 14.91 | 14.88 | 14.35 | 6.14 | 13.28 | 27.6 |\n"}
+,{"stream_name":"stdout","time":39612.440339788,"data":"| whisfusion/main | voxpopuli | 400 | 32 | 28.50 | 21.11 | 20.11 | 18.11 | 18.05 | 16.62 | 9.50 | 15.40 | 24.1 |\n"}
+,{"stream_name":"stdout","time":39612.440343278,"data":"\n"}
+,{"stream_name":"stdout","time":39612.440349701,"data":"## ROVER-cg against the best selection, paired bootstrap (main arm, largest K)\n"}
+,{"stream_name":"stdout","time":39612.440353107,"data":"\n"}
+,{"stream_name":"stdout","time":39612.440356299,"data":"| model | set | vs | delta | 95% CI | cluster CI | Wilcoxon p | better/worse/tied |\n"}
+,{"stream_name":"stdout","time":39612.440378386,"data":"|---|---|---|---|---|---|---|---|\n"}
+,{"stream_name":"stdout","time":39612.440383925,"data":"| drax/main | ami | conf | +3.00 | [+2.31, +3.66] | [1.80, 4.12] | 0.0000 | 154/40/406 |\n"}
+,{"stream_name":"stdout","time":39612.440387441,"data":"| drax/main | ami | mbr | +0.30 | [-0.08, +0.66] | [-0.18, 0.77] | 0.1181 | 41/32/527 |\n"}
+,{"stream_name":"stdout","time":39612.440390811,"data":"| drax/ref | ami | conf | -0.02 | [-0.37, +0.33] | [-0.35, 0.32] | 0.9821 | 37/34/529 |\n"}
+,{"stream_name":"stdout","time":39612.440394243,"data":"| drax/ref | ami | mbr | -0.24 | [-0.53, +0.06] | [-0.51, -0.02] | 0.1009 | 23/34/543 |\n"}
+,{"stream_name":"stdout","time":39612.440397636,"data":"| drax/main | common_voice | conf | +1.81 | [+1.17, +2.46] | [, ] | 0.0000 | 84/31/340 |\n"}
+,{"stream_name":"stdout","time":39612.440401064,"data":"| drax/main | common_voice | mbr | +0.27 | [-0.15, +0.68] | [, ] | 0.1898 | 30/24/401 |\n"}
+,{"stream_name":"stdout","time":39612.440404371,"data":"| drax/ref | common_voice | conf | +0.17 | [-0.29, +0.64] | [, ] | 0.4636 | 25/23/407 |\n"}
+,{"stream_name":"stdout","time":39612.440407745,"data":"| drax/ref | common_voice | mbr | -0.17 | [-0.52, +0.18] | [, ] | 0.3204 | 17/20/418 |\n"}
+,{"stream_name":"stdout","time":39612.440411213,"data":"| drax/main | earnings22 | conf | +2.54 | [+1.30, +3.98] | [1.90, 3.31] | 0.0000 | 196/121/283 |\n"}
+,{"stream_name":"stdout","time":39612.440414631,"data":"| drax/main | earnings22 | mbr | +0.47 | [+0.11, +0.83] | [0.24, 0.84] | 0.0155 | 129/92/379 |\n"}
+,{"stream_name":"stdout","time":39612.440418045,"data":"| drax/ref | earnings22 | conf | -0.30 | [-0.70, +0.09] | [-0.53, -0.01] | 0.2503 | 91/105/404 |\n"}
+,{"stream_name":"stdout","time":39612.440421481,"data":"| drax/ref | earnings22 | mbr | -0.21 | [-0.51, +0.08] | [-0.37, -0.09] | 0.1692 | 66/87/447 |\n"}
+,{"stream_name":"stdout","time":39612.440424822,"data":"| drax/main | fleurs-de | conf | +1.80 | [+1.39, +2.22] | [1.39, 2.23] | 0.0000 | 172/57/317 |\n"}
+,{"stream_name":"stdout","time":39612.44042817,"data":"| drax/main | fleurs-de | mbr | +0.51 | [+0.27, +0.76] | [0.27, 0.77] | 0.0000 | 77/38/431 |\n"}
+,{"stream_name":"stdout","time":39612.440431535,"data":"| drax/ref | fleurs-de | conf | +0.27 | [+0.01, +0.55] | [-0.01, 0.55] | 0.0650 | 79/58/409 |\n"}
+,{"stream_name":"stdout","time":39612.440445983,"data":"| drax/ref | fleurs-de | mbr | +0.11 | [-0.10, +0.29] | [-0.09, 0.29] | 0.3322 | 42/34/470 |\n"}
+,{"stream_name":"stdout","time":39612.44046033,"data":"| drax/main | fleurs-en | conf | +1.72 | [+1.32, +2.14] | [1.30, 2.21] | 0.0000 | 185/56/359 |\n"}
+,{"stream_name":"stdout","time":39612.44046463,"data":"| drax/main | fleurs-en | mbr | +0.52 | [+0.26, +0.78] | [0.23, 0.84] | 0.0001 | 83/46/471 |\n"}
+,{"stream_name":"stdout","time":39612.440468546,"data":"| drax/ref | fleurs-en | conf | +0.42 | [+0.18, +0.68] | [0.18, 0.69] | 0.0014 | 88/59/453 |\n"}
+,{"stream_name":"stdout","time":39612.440472468,"data":"| drax/ref | fleurs-en | mbr | +0.04 | [-0.11, +0.20] | [-0.11, 0.19] | 0.6328 | 49/48/503 |\n"}
+,{"stream_name":"stdout","time":39612.440476723,"data":"| drax/main | fleurs-es | conf | +0.93 | [+0.65, +1.23] | [0.63, 1.21] | 0.0000 | 100/33/267 |\n"}
+,{"stream_name":"stdout","time":39612.440480685,"data":"| drax/main | fleurs-es | mbr | +0.17 | [+0.04, +0.31] | [0.03, 0.31] | 0.0215 | 30/16/354 |\n"}
+,{"stream_name":"stdout","time":39612.4404882,"data":"| drax/ref | fleurs-es | conf | +0.36 | [+0.17, +0.56] | [0.16, 0.55] | 0.0003 | 57/25/318 |\n"}
+,{"stream_name":"stdout","time":39612.440491912,"data":"| drax/ref | fleurs-es | mbr | +0.16 | [+0.01, +0.31] | [-0.01, 0.31] | 0.0374 | 30/18/352 |\n"}
+,{"stream_name":"stdout","time":39612.440496117,"data":"| drax/main | fleurs-fr | conf | +1.55 | [+1.16, +1.95] | [1.17, 1.99] | 0.0000 | 166/69/233 |\n"}
+,{"stream_name":"stdout","time":39612.440499724,"data":"| drax/main | fleurs-fr | mbr | +0.60 | [+0.34, +0.86] | [0.34, 0.86] | 0.0000 | 95/50/323 |\n"}
+,{"stream_name":"stdout","time":39612.440503112,"data":"| drax/ref | fleurs-fr | conf | +0.17 | [-0.15, +0.49] | [-0.15, 0.50] | 0.3859 | 75/77/316 |\n"}
+,{"stream_name":"stdout","time":39612.440506504,"data":"| drax/ref | fleurs-fr | mbr | +0.22 | [+0.00, +0.42] | [0.01, 0.43] | 0.0336 | 55/39/374 |\n"}
+,{"stream_name":"stdout","time":39612.440509947,"data":"| drax/main | fleurs-it | conf | +1.22 | [+0.89, +1.55] | [0.88, 1.57] | 0.0000 | 108/26/266 |\n"}
+,{"stream_name":"stdout","time":39612.440513278,"data":"| drax/main | fleurs-it | mbr | +0.48 | [+0.27, +0.72] | [0.27, 0.70] | 0.0000 | 55/19/326 |\n"}
+,{"stream_name":"stdout","time":39612.440516728,"data":"| drax/ref | fleurs-it | conf | +0.30 | [+0.02, +0.59] | [0.02, 0.62] | 0.0278 | 55/40/305 |\n"}
+,{"stream_name":"stdout","time":39612.440520109,"data":"| drax/ref | fleurs-it | mbr | +0.08 | [-0.11, +0.29] | [-0.12, 0.29] | 0.3649 | 32/30/338 |\n"}
+,{"stream_name":"stdout","time":39612.440523494,"data":"| drax/main | fleurs-pt | conf | +2.68 | [+2.21, +3.16] | [2.20, 3.16] | 0.0000 | 173/35/192 |\n"}
+,{"stream_name":"stdout","time":39612.440526892,"data":"| drax/main | fleurs-pt | mbr | +1.14 | [+0.83, +1.43] | [0.83, 1.45] | 0.0000 | 102/22/276 |\n"}
+,{"stream_name":"stdout","time":39612.440530237,"data":"| drax/ref | fleurs-pt | conf | +0.55 | [+0.21, +0.88] | [0.22, 0.90] | 0.0007 | 92/52/256 |\n"}
+,{"stream_name":"stdout","time":39612.440533566,"data":"| drax/ref | fleurs-pt | mbr | +0.16 | [-0.12, +0.43] | [-0.11, 0.44] | 0.2717 | 60/47/293 |\n"}
+,{"stream_name":"stdout","time":39612.440543715,"data":"| drax/main | gigaspeech | conf | +1.61 | [+1.16, +2.04] | [1.13, 2.07] | 0.0000 | 167/68/365 |\n"}
+,{"stream_name":"stdout","time":39612.440547899,"data":"| drax/main | gigaspeech | mbr | +0.54 | [+0.27, +0.81] | [0.31, 0.77] | 0.0001 | 89/44/467 |\n"}
+,{"stream_name":"stdout","time":39612.440552425,"data":"| drax/ref | gigaspeech | conf | +0.27 | [-0.07, +0.60] | [-0.12, 0.63] | 0.0571 | 85/64/451 |\n"}
+,{"stream_name":"stdout","time":39612.440556671,"data":"| drax/ref | gigaspeech | mbr | -0.14 | [-0.36, +0.06] | [-0.37, 0.09] | 0.1767 | 49/66/485 |\n"}
+,{"stream_name":"stdout","time":39612.44056081,"data":"| drax/main | ls-dev-clean | conf | +0.42 | [+0.16, +0.72] | [0.13, 0.71] | 0.0030 | 46/25/329 |\n"}
+,{"stream_name":"stdout","time":39612.440565119,"data":"| drax/main | ls-dev-clean | mbr | +0.04 | [-0.10, +0.18] | [-0.08, 0.17] | 0.5799 | 13/10/377 |\n"}
+,{"stream_name":"stdout","time":39612.440568995,"data":"| drax/ref | ls-dev-clean | conf | +0.24 | [+0.05, +0.43] | [0.07, 0.41] | 0.0117 | 25/12/363 |\n"}
+,{"stream_name":"stdout","time":39612.440571994,"data":"| drax/ref | ls-dev-clean | mbr | +0.12 | [-0.01, +0.25] | [0.01, 0.24] | 0.0719 | 15/7/378 |\n"}
+,{"stream_name":"stdout","time":39612.440575034,"data":"| drax/main | ls-dev-other | conf | +1.28 | [+0.86, +1.77] | [0.77, 1.94] | 0.0000 | 74/20/306 |\n"}
+,{"stream_name":"stdout","time":39612.440578478,"data":"| drax/main | ls-dev-other | mbr | +0.32 | [+0.06, +0.59] | [-0.01, 0.69] | 0.0229 | 32/18/350 |\n"}
+,{"stream_name":"stdout","time":39612.44058185,"data":"| drax/ref | ls-dev-other | conf | +0.07 | [-0.20, +0.34] | [-0.26, 0.35] | 0.4293 | 30/22/348 |\n"}
+,{"stream_name":"stdout","time":39612.440588836,"data":"| drax/ref | ls-dev-other | mbr | -0.01 | [-0.21, +0.19] | [-0.23, 0.19] | 0.9057 | 18/20/362 |\n"}
+,{"stream_name":"stdout","time":39612.440592334,"data":"| drax/main | ls-tc-babble0 | conf | +5.96 | [+4.96, +6.97] | [4.59, 7.15] | 0.0000 | 343/77/180 |\n"}
+,{"stream_name":"stdout","time":39612.440595414,"data":"| drax/main | ls-tc-babble0 | mbr | +4.27 | [+3.75, +4.80] | [3.62, 4.92] | 0.0000 | 278/49/273 |\n"}
+,{"stream_name":"stdout","time":39612.440598785,"data":"| drax/ref | ls-tc-babble0 | conf | +0.41 | [-0.24, +1.04] | [-0.20, 0.98] | 0.0028 | 170/112/318 |\n"}
+,{"stream_name":"stdout","time":39612.440602661,"data":"| drax/ref | ls-tc-babble0 | mbr | +0.94 | [+0.61, +1.29] | [0.57, 1.30] | 0.0000 | 147/83/370 |\n"}
+,{"stream_name":"stdout","time":39612.440606295,"data":"| drax/main | ls-tc-babble10 | conf | +1.19 | [+0.85, +1.52] | [0.84, 1.57] | 0.0000 | 122/38/440 |\n"}
+,{"stream_name":"stdout","time":39612.440609983,"data":"| drax/main | ls-tc-babble10 | mbr | +0.03 | [-0.13, +0.18] | [-0.13, 0.20] | 0.8177 | 34/33/533 |\n"}
+,{"stream_name":"stdout","time":39612.440613707,"data":"| drax/ref | ls-tc-babble10 | conf | +0.18 | [-0.01, +0.37] | [-0.03, 0.39] | 0.0845 | 43/30/527 |\n"}
+,{"stream_name":"stdout","time":39612.44061739,"data":"| drax/ref | ls-tc-babble10 | mbr | -0.05 | [-0.18, +0.09] | [-0.17, 0.08] | 0.4656 | 27/32/541 |\n"}
+,{"stream_name":"stdout","time":39612.440621082,"data":"| drax/main | ls-tc-babble5 | conf | +2.48 | [+2.01, +2.93] | [1.95, 3.03] | 0.0000 | 206/62/332 |\n"}
+,{"stream_name":"stdout","time":39612.440624822,"data":"| drax/main | ls-tc-babble5 | mbr | +0.70 | [+0.41, +0.97] | [0.39, 1.01] | 0.0000 | 111/56/433 |\n"}
+,{"stream_name":"stdout","time":39612.440628677,"data":"| drax/ref | ls-tc-babble5 | conf | +0.50 | [+0.25, +0.75] | [0.30, 0.72] | 0.0001 | 96/52/452 |\n"}
+,{"stream_name":"stdout","time":39612.440633361,"data":"| drax/ref | ls-tc-babble5 | mbr | +0.03 | [-0.13, +0.19] | [-0.14, 0.17] | 0.7508 | 43/45/512 |\n"}
+,{"stream_name":"stdout","time":39612.440637672,"data":"| drax/main | ls-tc-white5 | conf | +1.75 | [+1.38, +2.14] | [1.26, 2.24] | 0.0000 | 165/46/389 |\n"}
+,{"stream_name":"stdout","time":39612.440641896,"data":"| drax/main | ls-tc-white5 | mbr | +0.39 | [+0.18, +0.59] | [0.13, 0.64] | 0.0002 | 67/35/498 |\n"}
+,{"stream_name":"stdout","time":39612.440645574,"data":"| drax/ref | ls-tc-white5 | conf | +0.27 | [+0.05, +0.49] | [0.08, 0.44] | 0.0137 | 64/39/497 |\n"}
+,{"stream_name":"stdout","time":39612.440649367,"data":"| drax/ref | ls-tc-white5 | mbr | +0.06 | [-0.12, +0.22] | [-0.07, 0.19] | 0.4921 | 41/35/524 |\n"}
+,{"stream_name":"stdout","time":39612.440653322,"data":"| drax/main | ls-test-clean | conf | +0.40 | [+0.17, +0.65] | [0.15, 0.65] | 0.0011 | 75/39/486 |\n"}
+,{"stream_name":"stdout","time":39612.440657442,"data":"| drax/main | ls-test-clean | mbr | -0.03 | [-0.16, +0.10] | [-0.17, 0.12] | 0.6899 | 25/25/550 |\n"}
+,{"stream_name":"stdout","time":39612.440661256,"data":"| drax/ref | ls-test-clean | conf | +0.09 | [-0.05, +0.24] | [-0.05, 0.25] | 0.2550 | 24/18/558 |\n"}
+,{"stream_name":"stdout","time":39612.440665255,"data":"| drax/ref | ls-test-clean | mbr | +0.04 | [-0.07, +0.16] | [-0.07, 0.17] | 0.5271 | 17/15/568 |\n"}
+,{"stream_name":"stdout","time":39612.440668828,"data":"| drax/main | ls-test-other | conf | +1.42 | [+1.05, +1.78] | [0.97, 1.86] | 0.0000 | 136/48/416 |\n"}
+,{"stream_name":"stdout","time":39612.440672235,"data":"| drax/main | ls-test-other | mbr | +0.22 | [+0.03, +0.41] | [0.03, 0.41] | 0.0325 | 54/38/508 |\n"}
+,{"stream_name":"stdout","time":39612.440676304,"data":"| drax/ref | ls-test-other | conf | +0.24 | [+0.01, +0.46] | [0.05, 0.43] | 0.0449 | 49/33/518 |\n"}
+,{"stream_name":"stdout","time":39612.440679618,"data":"| drax/ref | ls-test-other | mbr | +0.08 | [-0.07, +0.23] | [-0.07, 0.22] | 0.2980 | 27/21/552 |\n"}
+,{"stream_name":"stdout","time":39612.440687779,"data":"| drax/main | slr83 | conf | +0.82 | [+0.47, +1.18] | [0.50, 1.14] | 0.0000 | 89/45/466 |\n"}
+,{"stream_name":"stdout","time":39612.44069188,"data":"| drax/main | slr83 | mbr | +0.17 | [-0.06, +0.40] | [-0.05, 0.40] | 0.1714 | 42/33/525 |\n"}
+,{"stream_name":"stdout","time":39612.440695957,"data":"| drax/ref | slr83 | conf | +0.15 | [-0.15, +0.44] | [-0.14, 0.40] | 0.3198 | 46/42/512 |\n"}
+,{"stream_name":"stdout","time":39612.44069942,"data":"| drax/ref | slr83 | mbr | +0.17 | [-0.04, +0.38] | [-0.03, 0.38] | 0.1042 | 34/24/542 |\n"}
+,{"stream_name":"stdout","time":39612.440703387,"data":"| drax/main | spgispeech | conf | +0.83 | [+0.51, +1.15] | [0.51, 1.15] | 0.0000 | 152/84/364 |\n"}
+,{"stream_name":"stdout","time":39612.440707448,"data":"| drax/main | spgispeech | mbr | +0.00 | [-0.20, +0.19] | [-0.18, 0.19] | 0.8331 | 54/61/485 |\n"}
+,{"stream_name":"stdout","time":39612.440711127,"data":"| drax/ref | spgispeech | conf | -0.11 | [-0.30, +0.10] | [-0.31, 0.10] | 0.1496 | 63/86/451 |\n"}
+,{"stream_name":"stdout","time":39612.44071499,"data":"| drax/ref | spgispeech | mbr | -0.56 | [-0.72, -0.40] | [-0.72, -0.41] | 0.0000 | 24/95/481 |\n"}
+,{"stream_name":"stdout","time":39612.440719125,"data":"| drax/main | voxpopuli | conf | +0.90 | [+0.54, +1.26] | [0.53, 1.35] | 0.0000 | 107/53/440 |\n"}
+,{"stream_name":"stdout","time":39612.440725089,"data":"| drax/main | voxpopuli | mbr | +0.02 | [-0.16, +0.19] | [-0.15, 0.18] | 0.9067 | 36/36/528 |\n"}
+,{"stream_name":"stdout","time":39612.440729231,"data":"| drax/ref | voxpopuli | conf | -0.04 | [-0.23, +0.15] | [-0.22, 0.14] | 0.6960 | 36/41/523 |\n"}
+,{"stream_name":"stdout","time":39612.440732826,"data":"| drax/ref | voxpopuli | mbr | -0.10 | [-0.26, +0.05] | [-0.26, 0.05] | 0.2065 | 27/39/534 |\n"}
+,{"stream_name":"stdout","time":39612.440736749,"data":"| whisfusion/main | ami | conf | +3.37 | [+2.38, +4.41] | [2.57, 4.08] | 0.0000 | 121/41/238 |\n"}
+,{"stream_name":"stdout","time":39612.440740761,"data":"| whisfusion/main | ami | mbr | +2.10 | [+1.55, +2.71] | [1.59, 2.60] | 0.0000 | 81/16/303 |\n"}
+,{"stream_name":"stdout","time":39612.440744704,"data":"| whisfusion/main | common_voice | conf | +3.67 | [+2.56, +4.86] | [, ] | 0.0000 | 94/30/172 |\n"}
+,{"stream_name":"stdout","time":39612.4407482,"data":"| whisfusion/main | common_voice | mbr | +2.37 | [+1.68, +3.11] | [, ] | 0.0000 | 65/13/218 |\n"}
+,{"stream_name":"stdout","time":39612.440752275,"data":"| whisfusion/main | earnings22 | conf | +4.88 | [+4.06, +5.70] | [3.60, 5.92] | 0.0000 | 192/51/157 |\n"}
+,{"stream_name":"stdout","time":39612.440756257,"data":"| whisfusion/main | earnings22 | mbr | +2.85 | [+2.32, +3.39] | [2.28, 3.30] | 0.0000 | 156/31/213 |\n"}
+,{"stream_name":"stdout","time":39612.440760087,"data":"| whisfusion/main | fleurs-en | conf | +4.49 | [+3.92, +5.08] | [3.87, 5.12] | 0.0000 | 226/32/142 |\n"}
+,{"stream_name":"stdout","time":39612.440764059,"data":"| whisfusion/main | fleurs-en | mbr | +2.21 | [+1.82, +2.60] | [1.81, 2.63] | 0.0000 | 155/26/219 |\n"}
+,{"stream_name":"stdout","time":39612.440768059,"data":"| whisfusion/main | gigaspeech | conf | +3.45 | [+2.73, +4.15] | [2.67, 4.22] | 0.0000 | 165/55/180 |\n"}
+,{"stream_name":"stdout","time":39612.44077165,"data":"| whisfusion/main | gigaspeech | mbr | +2.20 | [+1.70, +2.69] | [1.72, 2.70] | 0.0000 | 127/33/240 |\n"}
+,{"stream_name":"stdout","time":39612.440775599,"data":"| whisfusion/main | ls-dev-clean | conf | +1.75 | [+1.35, +2.21] | [1.25, 2.24] | 0.0000 | 104/26/270 |\n"}
+,{"stream_name":"stdout","time":39612.440779555,"data":"| whisfusion/main | ls-dev-clean | mbr | +0.82 | [+0.55, +1.11] | [0.50, 1.12] | 0.0000 | 63/15/322 |\n"}
+,{"stream_name":"stdout","time":39612.440788645,"data":"| whisfusion/main | ls-dev-other | conf | +2.68 | [+2.06, +3.35] | [2.01, 3.34] | 0.0000 | 138/48/214 |\n"}
+,{"stream_name":"stdout","time":39612.440792777,"data":"| whisfusion/main | ls-dev-other | mbr | +1.71 | [+1.28, +2.16] | [1.11, 2.41] | 0.0000 | 96/20/284 |\n"}
+,{"stream_name":"stdout","time":39612.440796729,"data":"| whisfusion/main | ls-tc-babble0 | conf | +10.53 | [+9.38, +11.74] | [9.25, 11.86] | 0.0000 | 264/40/96 |\n"}
+,{"stream_name":"stdout","time":39612.440801032,"data":"| whisfusion/main | ls-tc-babble0 | mbr | +7.99 | [+7.13, +8.88] | [7.07, 8.92] | 0.0000 | 250/16/134 |\n"}
+,{"stream_name":"stdout","time":39612.440805153,"data":"| whisfusion/main | ls-tc-babble10 | conf | +4.55 | [+3.89, +5.26] | [3.76, 5.34] | 0.0000 | 178/28/194 |\n"}
+,{"stream_name":"stdout","time":39612.440810477,"data":"| whisfusion/main | ls-tc-babble10 | mbr | +3.04 | [+2.56, +3.57] | [2.48, 3.61] | 0.0000 | 144/12/244 |\n"}
+,{"stream_name":"stdout","time":39612.440814519,"data":"| whisfusion/main | ls-tc-babble5 | conf | +7.01 | [+6.16, +7.85] | [5.87, 8.12] | 0.0000 | 231/34/135 |\n"}
+,{"stream_name":"stdout","time":39612.440818427,"data":"| whisfusion/main | ls-tc-babble5 | mbr | +4.73 | [+4.08, +5.36] | [3.95, 5.49] | 0.0000 | 183/23/194 |\n"}
+,{"stream_name":"stdout","time":39612.440822629,"data":"| whisfusion/main | ls-tc-white5 | conf | +4.72 | [+4.03, +5.41] | [3.94, 5.51] | 0.0000 | 199/29/172 |\n"}
+,{"stream_name":"stdout","time":39612.440826627,"data":"| whisfusion/main | ls-tc-white5 | mbr | +3.01 | [+2.49, +3.54] | [2.49, 3.52] | 0.0000 | 141/18/241 |\n"}
+,{"stream_name":"stdout","time":39612.440830489,"data":"| whisfusion/main | ls-test-clean | conf | +2.09 | [+1.58, +2.63] | [1.54, 2.64] | 0.0000 | 106/25/269 |\n"}
+,{"stream_name":"stdout","time":39612.440834432,"data":"| whisfusion/main | ls-test-clean | mbr | +1.40 | [+1.02, +1.82] | [1.01, 1.81] | 0.0000 | 76/13/311 |\n"}
+,{"stream_name":"stdout","time":39612.440838549,"data":"| whisfusion/main | ls-test-other | conf | +3.47 | [+2.91, +4.01] | [2.94, 4.11] | 0.0000 | 152/25/223 |\n"}
+,{"stream_name":"stdout","time":39612.440842683,"data":"| whisfusion/main | ls-test-other | mbr | +1.54 | [+1.18, +1.92] | [1.16, 1.98] | 0.0000 | 97/15/288 |\n"}
+,{"stream_name":"stdout","time":39612.440846855,"data":"| whisfusion/main | slr83 | conf | +2.87 | [+2.26, +3.55] | [2.20, 3.60] | 0.0000 | 137/32/231 |\n"}
+,{"stream_name":"stdout","time":39612.440850518,"data":"| whisfusion/main | slr83 | mbr | +1.61 | [+1.25, +2.01] | [1.23, 1.99] | 0.0000 | 88/13/299 |\n"}
+,{"stream_name":"stdout","time":39612.44085425,"data":"| whisfusion/main | spgispeech | conf | +4.45 | [+3.89, +5.01] | [3.91, 4.97] | 0.0000 | 232/39/129 |\n"}
+,{"stream_name":"stdout","time":39612.440859215,"data":"| whisfusion/main | spgispeech | mbr | +2.32 | [+1.96, +2.69] | [1.96, 2.68] | 0.0000 | 164/20/216 |\n"}
+,{"stream_name":"stdout","time":39612.440863387,"data":"| whisfusion/main | voxpopuli | conf | +3.05 | [+2.47, +3.67] | [2.46, 3.64] | 0.0000 | 160/40/200 |\n"}
+,{"stream_name":"stdout","time":39612.440867198,"data":"| whisfusion/main | voxpopuli | mbr | +2.05 | [+1.65, +2.50] | [1.65, 2.48] | 0.0000 | 118/20/262 |\n"}
+,{"stream_name":"stdout","time":39612.44087127,"data":"\n"}
+,{"stream_name":"stdout","time":39612.440874555,"data":"## Pooled over test sets (random effects)\n"}
+,{"stream_name":"stdout","time":39612.440878317,"data":"\n"}
+,{"stream_name":"stdout","time":39612.440882135,"data":"| model | arm | norm | a -\u003e b | sets | pooled delta | 95% CI | I2 | sets sig + / - |\n"}
+,{"stream_name":"stdout","time":39612.440887073,"data":"|---|---|---|---|---|---|---|---|---|\n"}
+,{"stream_name":"stdout","time":39612.440891147,"data":"| drax | main | legacy | cm05 -\u003e rover_cg | 19 | +0.71 | [+0.49, +0.93] | 0.92 | 16 / 0 |\n"}
+,{"stream_name":"stdout","time":39612.440898994,"data":"| drax | main | legacy | conf -\u003e mbr | 19 | +1.17 | [+0.96, +1.38] | 0.82 | 19 / 0 |\n"}
+,{"stream_name":"stdout","time":39612.440903024,"data":"| drax | main | legacy | conf -\u003e rover_c | 19 | +1.77 | [+1.42, +2.11] | 0.93 | 19 / 0 |\n"}
+,{"stream_name":"stdout","time":39612.440907059,"data":"| drax | main | legacy | conf -\u003e rover_cg | 19 | +1.73 | [+1.37, +2.08] | 0.93 | 19 / 0 |\n"}
+,{"stream_name":"stdout","time":39612.440911057,"data":"| drax | main | legacy | conf -\u003e rover_freq | 19 | +1.86 | [+1.48, +2.25] | 0.94 | 19 / 0 |\n"}
+,{"stream_name":"stdout","time":39612.440915021,"data":"| drax | main | legacy | first -\u003e conf | 19 | +4.07 | [+3.53, +4.62] | 0.92 | 19 / 0 |\n"}
+,{"stream_name":"stdout","time":39612.44091923,"data":"| drax | main | legacy | first -\u003e rover_cg | 19 | +6.00 | [+5.17, +6.82] | 0.96 | 19 / 0 |\n"}
+,{"stream_name":"stdout","time":39612.440923019,"data":"| drax | main | legacy | mbr -\u003e rover_cg | 19 | +0.52 | [+0.30, +0.74] | 0.95 | 12 / 0 |\n"}
+,{"stream_name":"stdout","time":39612.440926728,"data":"| drax | main | legacy | rover_freq -\u003e rover_cg | 19 | -0.12 | [-0.19, -0.04] | 0.71 | 0 / 6 |\n"}
+,{"stream_name":"stdout","time":39612.440930769,"data":"| drax | main | whisper | cm05 -\u003e rover_cg | 19 | -1.91 | [-2.83, -0.98] | 0.99 | 4 / 14 |\n"}
+,{"stream_name":"stdout","time":39612.440934743,"data":"| drax | main | whisper | conf -\u003e mbr | 19 | +0.98 | [+0.80, +1.16] | 0.73 | 18 / 0 |\n"}
+,{"stream_name":"stdout","time":39612.44093875,"data":"| drax | main | whisper | conf -\u003e rover_c | 19 | -0.97 | [-1.95, +0.00] | 0.98 | 5 / 9 |\n"}
+,{"stream_name":"stdout","time":39612.440942442,"data":"| drax | main | whisper | conf -\u003e rover_cg | 19 | -1.02 | [-2.00, -0.03] | 0.98 | 5 / 9 |\n"}
+,{"stream_name":"stdout","time":39612.440946501,"data":"| drax | main | whisper | conf -\u003e rover_freq | 19 | -0.93 | [-1.93, +0.06] | 0.98 | 5 / 9 |\n"}
+,{"stream_name":"stdout","time":39612.440950599,"data":"| drax | main | whisper | first -\u003e conf | 19 | +4.09 | [+3.54, +4.64] | 0.92 | 19 / 0 |\n"}
+,{"stream_name":"stdout","time":39612.440954022,"data":"| drax | main | whisper | first -\u003e rover_cg | 19 | +3.32 | [+2.04, +4.60] | 0.98 | 15 / 1 |\n"}
+,{"stream_name":"stdout","time":39612.440958018,"data":"| drax | main | whisper | mbr -\u003e rover_cg | 19 | -2.07 | [-2.92, -1.22] | 0.99 | 3 / 15 |\n"}
+,{"stream_name":"stdout","time":39612.440961915,"data":"| drax | main | whisper | rover_freq -\u003e rover_cg | 19 | -0.06 | [-0.13, +0.01] | 0.65 | 0 / 3 |\n"}
+,{"stream_name":"stdout","time":39612.440966604,"data":"| drax | ref | legacy | cm05 -\u003e rover_cg | 19 | +0.02 | [-0.07, +0.12] | 0.80 | 5 / 1 |\n"}
+,{"stream_name":"stdout","time":39612.440970809,"data":"| drax | ref | legacy | conf -\u003e mbr | 19 | +0.20 | [+0.12, +0.28] | 0.40 | 7 / 0 |\n"}
+,{"stream_name":"stdout","time":39612.440974659,"data":"| drax | ref | legacy | conf -\u003e rover_c | 19 | +0.27 | [+0.19, +0.34] | 0.43 | 10 / 0 |\n"}
+,{"stream_name":"stdout","time":39612.440978294,"data":"| drax | ref | legacy | conf -\u003e rover_cg | 19 | +0.20 | [+0.11, +0.29] | 0.58 | 8 / 0 |\n"}
+,{"stream_name":"stdout","time":39612.440982119,"data":"| drax | ref | legacy | conf -\u003e rover_freq | 19 | +0.26 | [+0.20, +0.33] | 0.26 | 8 / 0 |\n"}
+,{"stream_name":"stdout","time":39612.440985794,"data":"| drax | ref | legacy | first -\u003e conf | 19 | +0.22 | [+0.14, +0.30] | 0.26 | 7 / 0 |\n"}
+,{"stream_name":"stdout","time":39612.44098964,"data":"| drax | ref | legacy | first -\u003e rover_cg | 19 | +0.46 | [+0.33, +0.59] | 0.76 | 14 / 0 |\n"}
+,{"stream_name":"stdout","time":39612.440993756,"data":"| drax | ref | legacy | mbr -\u003e rover_cg | 19 | +0.02 | [-0.08, +0.12] | 0.82 | 2 / 1 |\n"}
+,{"stream_name":"stdout","time":39612.441000906,"data":"| drax | ref | legacy | rover_freq -\u003e rover_cg | 19 | -0.07 | [-0.11, -0.02] | 0.53 | 0 / 4 |\n"}
+,{"stream_name":"stdout","time":39612.441005427,"data":"| drax | ref | whisper | cm05 -\u003e rover_cg | 19 | -2.73 | [-3.56, -1.90] | 0.99 | 0 / 16 |\n"}
+,{"stream_name":"stdout","time":39612.441009625,"data":"| drax | ref | whisper | conf -\u003e mbr | 19 | +0.13 | [+0.07, +0.19] | 0.11 | 3 / 0 |\n"}
+,{"stream_name":"stdout","time":39612.441013655,"data":"| drax | ref | whisper | conf -\u003e rover_c | 19 | -2.53 | [-3.37, -1.68] | 0.99 | 1 / 16 |\n"}
+,{"stream_name":"stdout","time":39612.441017605,"data":"| drax | ref | whisper | conf -\u003e rover_cg | 19 | -2.59 | [-3.45, -1.74] | 0.99 | 1 / 16 |\n"}
+,{"stream_name":"stdout","time":39612.441021169,"data":"| drax | ref | whisper | conf -\u003e rover_freq | 19 | -2.54 | [-3.39, -1.69] | 0.99 | 1 / 16 |\n"}
+,{"stream_name":"stdout","time":39612.44102504,"data":"| drax | ref | whisper | first -\u003e conf | 19 | +0.22 | [+0.15, +0.28] | 0.06 | 5 / 0 |\n"}
+,{"stream_name":"stdout","time":39612.441029039,"data":"| drax | ref | whisper | first -\u003e rover_cg | 19 | -2.31 | [-3.20, -1.43] | 0.99 | 3 / 15 |\n"}
+,{"stream_name":"stdout","time":39612.441033163,"data":"| drax | ref | whisper | mbr -\u003e rover_cg | 19 | -2.69 | [-3.51, -1.87] | 0.99 | 0 / 15 |\n"}
+,{"stream_name":"stdout","time":39612.44103662,"data":"| drax | ref | whisper | rover_freq -\u003e rover_cg | 19 | -0.04 | [-0.08, +0.00] | 0.46 | 0 / 4 |\n"}
+,{"stream_name":"stdout","time":39612.441040236,"data":"| whisfusion | main | legacy | cm05 -\u003e rover_cg | 14 | +3.02 | [+2.35, +3.68] | 0.95 | 14 / 0 |\n"}
+,{"stream_name":"stdout","time":39612.441043714,"data":"| whisfusion | main | legacy | conf -\u003e mbr | 14 | +1.63 | [+1.32, +1.95] | 0.74 | 14 / 0 |\n"}
+,{"stream_name":"stdout","time":39612.441047783,"data":"| whisfusion | main | legacy | conf -\u003e rover_c | 14 | +4.38 | [+3.55, +5.22] | 0.95 | 14 / 0 |\n"}
+,{"stream_name":"stdout","time":39612.441052427,"data":"| whisfusion | main | legacy | conf -\u003e rover_cg | 14 | +4.43 | [+3.60, +5.26] | 0.95 | 14 / 0 |\n"}
+,{"stream_name":"stdout","time":39612.441056557,"data":"| whisfusion | main | legacy | conf -\u003e rover_freq | 14 | +3.70 | [+2.98, +4.43] | 0.93 | 14 / 0 |\n"}
+,{"stream_name":"stdout","time":39612.441060466,"data":"| whisfusion | main | legacy | first -\u003e conf | 14 | +7.44 | [+6.76, +8.13] | 0.82 | 14 / 0 |\n"}
+,{"stream_name":"stdout","time":39612.44106397,"data":"| whisfusion | main | legacy | first -\u003e rover_cg | 14 | +11.98 | [+10.63, +13.33] | 0.95 | 14 / 0 |\n"}
+,{"stream_name":"stdout","time":39612.441068194,"data":"| whisfusion | main | legacy | mbr -\u003e rover_cg | 14 | +2.77 | [+2.17, +3.37] | 0.96 | 14 / 0 |\n"}
+,{"stream_name":"stdout","time":39612.441072124,"data":"| whisfusion | main | legacy | rover_freq -\u003e rover_cg | 14 | +0.64 | [+0.47, +0.81] | 0.80 | 13 / 0 |\n"}
+,{"stream_name":"stdout","time":39612.441076125,"data":"| whisfusion | main | whisper | cm05 -\u003e rover_cg | 14 | +1.40 | [+0.37, +2.43] | 0.96 | 9 / 2 |\n"}
+,{"stream_name":"stdout","time":39612.441079972,"data":"| whisfusion | main | whisper | conf -\u003e mbr | 14 | +1.52 | [+1.18, +1.85] | 0.75 | 12 / 0 |\n"}
+,{"stream_name":"stdout","time":39612.441084207,"data":"| whisfusion | main | whisper | conf -\u003e rover_c | 14 | +2.72 | [+1.54, +3.89] | 0.96 | 10 / 1 |\n"}
+,{"stream_name":"stdout","time":39612.441088373,"data":"| whisfusion | main | whisper | conf -\u003e rover_cg | 14 | +2.77 | [+1.60, +3.93] | 0.96 | 11 / 1 |\n"}
+,{"stream_name":"stdout","time":39612.441093167,"data":"| whisfusion | main | whisper | conf -\u003e rover_freq | 14 | +2.02 | [+0.96, +3.08] | 0.95 | 10 / 1 |\n"}
+,{"stream_name":"stdout","time":39612.441101457,"data":"| whisfusion | main | whisper | first -\u003e conf | 14 | +7.64 | [+6.87, +8.41] | 0.86 | 14 / 0 |\n"}
+,{"stream_name":"stdout","time":39612.441105385,"data":"| whisfusion | main | whisper | first -\u003e rover_cg | 14 | +10.48 | [+8.89, +12.07] | 0.96 | 14 / 0 |\n"}
+,{"stream_name":"stdout","time":39612.441109521,"data":"| whisfusion | main | whisper | mbr -\u003e rover_cg | 14 | +1.24 | [+0.26, +2.23] | 0.97 | 8 / 2 |\n"}
+,{"stream_name":"stdout","time":39612.441113454,"data":"| whisfusion | main | whisper | rover_freq -\u003e rover_cg | 14 | +0.67 | [+0.49, +0.85] | 0.83 | 13 / 0 |\n"}
+,{"stream_name":"stdout","time":39612.44111733,"data":"\n"}
+,{"stream_name":"stdout","time":39612.441121105,"data":"## Against each model's standard decoding\n"}
+,{"stream_name":"stdout","time":39612.441124548,"data":"\n"}
+,{"stream_name":"stdout","time":39612.441128012,"data":"| model | set | comparison | WER a | WER b | delta | 95% CI |\n"}
+,{"stream_name":"stdout","time":39612.441131959,"data":"|---|---|---|---|---|---|---|\n"}
+,{"stream_name":"stdout","time":39612.441135784,"data":"| drax | ami | Drax standard (T=0.1, 1 sample) vs ROVER@main | 11.48 | 11.10 | +0.37 | [-0.17, +0.89] |\n"}
+,{"stream_name":"stdout","time":39612.44114018,"data":"| drax | common_voice | Drax standard (T=0.1, 1 sample) vs ROVER@main | 13.53 | 13.09 | +0.45 | [-0.18, +1.11] |\n"}
+,{"stream_name":"stdout","time":39612.441144072,"data":"| drax | earnings22 | Drax standard (T=0.1, 1 sample) vs ROVER@main | 20.97 | 22.74 | -1.77 | [-2.77, -0.85] |\n"}
+,{"stream_name":"stdout","time":39612.441148054,"data":"| drax | fleurs-de | Drax standard (T=0.1, 1 sample) vs ROVER@main | 9.24 | 7.94 | +1.31 | [+0.98, +1.65] |\n"}
+,{"stream_name":"stdout","time":39612.441152265,"data":"| drax | fleurs-en | Drax standard (T=0.1, 1 sample) vs ROVER@main | 9.95 | 9.64 | +0.32 | [-0.01, +0.63] |\n"}
+,{"stream_name":"stdout","time":39612.441156318,"data":"| drax | fleurs-es | Drax standard (T=0.1, 1 sample) vs ROVER@main | 6.69 | 6.00 | +0.69 | [+0.43, +0.97] |\n"}
+,{"stream_name":"stdout","time":39612.441160351,"data":"| drax | fleurs-fr | Drax standard (T=0.1, 1 sample) vs ROVER@main | 11.94 | 11.17 | +0.77 | [+0.41, +1.15] |\n"}
+,{"stream_name":"stdout","time":39612.4411642,"data":"| drax | fleurs-it | Drax standard (T=0.1, 1 sample) vs ROVER@main | 6.96 | 5.87 | +1.08 | [+0.75, +1.43] |\n"}
+,{"stream_name":"stdout","time":39612.441168294,"data":"| drax | fleurs-pt | Drax standard (T=0.1, 1 sample) vs ROVER@main | 13.68 | 12.07 | +1.62 | [+1.18, +2.05] |\n"}
+,{"stream_name":"stdout","time":39612.441172487,"data":"| drax | gigaspeech | Drax standard (T=0.1, 1 sample) vs ROVER@main | 14.50 | 13.91 | +0.59 | [+0.19, +1.01] |\n"}
+,{"stream_name":"stdout","time":39612.441176342,"data":"| drax | ls-dev-clean | Drax standard (T=0.1, 1 sample) vs ROVER@main | 3.11 | 2.78 | +0.33 | [+0.06, +0.59] |\n"}
+,{"stream_name":"stdout","time":39612.441180032,"data":"| drax | ls-dev-other | Drax standard (T=0.1, 1 sample) vs ROVER@main | 5.83 | 5.47 | +0.36 | [-0.01, +0.75] |\n"}
+,{"stream_name":"stdout","time":39612.441183435,"data":"| drax | ls-tc-babble0 | Drax standard (T=0.1, 1 sample) vs ROVER@main | 35.54 | 36.86 | -1.32 | [-2.26, -0.41] |\n"}
+,{"stream_name":"stdout","time":39612.441187805,"data":"| drax | ls-tc-babble10 | Drax standard (T=0.1, 1 sample) vs ROVER@main | 4.54 | 4.11 | +0.43 | [+0.15, +0.71] |\n"}
+,{"stream_name":"stdout","time":39612.441191987,"data":"| drax | ls-tc-babble5 | Drax standard (T=0.1, 1 sample) vs ROVER@main | 9.53 | 9.42 | +0.11 | [-0.28, +0.48] |\n"}
+,{"stream_name":"stdout","time":39612.441196299,"data":"| drax | ls-tc-white5 | Drax standard (T=0.1, 1 sample) vs ROVER@main | 7.26 | 7.02 | +0.23 | [-0.08, +0.53] |\n"}
+,{"stream_name":"stdout","time":39612.441199904,"data":"| drax | ls-test-clean | Drax standard (T=0.1, 1 sample) vs ROVER@main | 2.57 | 2.41 | +0.16 | [-0.03, +0.35] |\n"}
+,{"stream_name":"stdout","time":39612.441207626,"data":"| drax | ls-test-other | Drax standard (T=0.1, 1 sample) vs ROVER@main | 6.36 | 5.73 | +0.63 | [+0.35, +0.92] |\n"}
+,{"stream_name":"stdout","time":39612.441212245,"data":"| drax | slr83 | Drax standard (T=0.1, 1 sample) vs ROVER@main | 7.59 | 6.83 | +0.76 | [+0.38, +1.14] |\n"}
+,{"stream_name":"stdout","time":39612.441216174,"data":"| drax | spgispeech | Drax standard (T=0.1, 1 sample) vs ROVER@main | 7.58 | 7.56 | +0.01 | [-0.27, +0.30] |\n"}
+,{"stream_name":"stdout","time":39612.441220591,"data":"| drax | voxpopuli | Drax standard (T=0.1, 1 sample) vs ROVER@main | 7.75 | 7.65 | +0.09 | [-0.18, +0.35] |\n"}
+,{"stream_name":"stdout","time":39612.441224416,"data":"| drax | ami | Drax standard vs confidence pick@main | 11.48 | 14.11 | -2.63 | [-3.39, -1.91] |\n"}
+,{"stream_name":"stdout","time":39612.441228375,"data":"| drax | common_voice | Drax standard vs confidence pick@main | 13.53 | 14.89 | -1.36 | [-2.21, -0.53] |\n"}
+,{"stream_name":"stdout","time":39612.441232487,"data":"| drax | earnings22 | Drax standard vs confidence pick@main | 20.97 | 25.28 | -4.32 | [-6.16, -2.77] |\n"}
+,{"stream_name":"stdout","time":39612.441236109,"data":"| drax | fleurs-de | Drax standard vs confidence pick@main | 9.24 | 9.74 | -0.49 | [-0.96, -0.02] |\n"}
+,{"stream_name":"stdout","time":39612.441240458,"data":"| drax | fleurs-en | Drax standard vs confidence pick@main | 9.95 | 11.36 | -1.41 | [-1.86, -0.96] |\n"}
+,{"stream_name":"stdout","time":39612.441244196,"data":"| drax | fleurs-es | Drax standard vs confidence pick@main | 6.69 | 6.92 | -0.23 | [-0.56, +0.08] |\n"}
+,{"stream_name":"stdout","time":39612.441248056,"data":"| drax | fleurs-fr | Drax standard vs confidence pick@main | 11.94 | 12.72 | -0.79 | [-1.26, -0.32] |\n"}
+,{"stream_name":"stdout","time":39612.441251693,"data":"| drax | fleurs-it | Drax standard vs confidence pick@main | 6.96 | 7.09 | -0.14 | [-0.56, +0.29] |\n"}
+,{"stream_name":"stdout","time":39612.441255509,"data":"| drax | fleurs-pt | Drax standard vs confidence pick@main | 13.68 | 14.75 | -1.06 | [-1.58, -0.52] |\n"}
+,{"stream_name":"stdout","time":39612.44125931,"data":"| drax | gigaspeech | Drax standard vs confidence pick@main | 14.50 | 15.52 | -1.02 | [-1.55, -0.45] |\n"}
+,{"stream_name":"stdout","time":39612.441263392,"data":"| drax | ls-dev-clean | Drax standard vs confidence pick@main | 3.11 | 3.20 | -0.09 | [-0.40, +0.19] |\n"}
+,{"stream_name":"stdout","time":39612.441268014,"data":"| drax | ls-dev-other | Drax standard vs confidence pick@main | 5.83 | 6.76 | -0.93 | [-1.49, -0.40] |\n"}
+,{"stream_name":"stdout","time":39612.441271884,"data":"| drax | ls-tc-babble0 | Drax standard vs confidence pick@main | 35.54 | 42.81 | -7.27 | [-8.44, -6.21] |\n"}
+,{"stream_name":"stdout","time":39612.441275534,"data":"| drax | ls-tc-babble10 | Drax standard vs confidence pick@main | 4.54 | 5.30 | -0.76 | [-1.13, -0.39] |\n"}
+,{"stream_name":"stdout","time":39612.441279671,"data":"| drax | ls-tc-babble5 | Drax standard vs confidence pick@main | 9.53 | 11.90 | -2.37 | [-2.93, -1.82] |\n"}
+,{"stream_name":"stdout","time":39612.441283714,"data":"| drax | ls-tc-white5 | Drax standard vs confidence pick@main | 7.26 | 8.77 | -1.51 | [-1.94, -1.10] |\n"}
+,{"stream_name":"stdout","time":39612.441287774,"data":"| drax | ls-test-clean | Drax standard vs confidence pick@main | 2.57 | 2.81 | -0.24 | [-0.50, -0.01] |\n"}
+,{"stream_name":"stdout","time":39612.441291644,"data":"| drax | ls-test-other | Drax standard vs confidence pick@main | 6.36 | 7.15 | -0.79 | [-1.13, -0.44] |\n"}
+,{"stream_name":"stdout","time":39612.441296098,"data":"| drax | slr83 | Drax standard vs confidence pick@main | 7.59 | 7.65 | -0.06 | [-0.54, +0.41] |\n"}
+,{"stream_name":"stdout","time":39612.441303573,"data":"| drax | spgispeech | Drax standard vs confidence pick@main | 7.58 | 8.39 | -0.81 | [-1.17, -0.44] |\n"}
+,{"stream_name":"stdout","time":39612.441307444,"data":"| drax | voxpopuli | Drax standard vs confidence pick@main | 7.75 | 8.55 | -0.81 | [-1.20, -0.46] |\n"}
+,{"stream_name":"stdout","time":39612.441313264,"data":"| drax | ami | Drax standard vs MBR pick@main | 11.48 | 11.40 | +0.07 | [-0.46, +0.62] |\n"}
+,{"stream_name":"stdout","time":39612.441317558,"data":"| drax | common_voice | Drax standard vs MBR pick@main | 13.53 | 13.36 | +0.17 | [-0.49, +0.83] |\n"}
+,{"stream_name":"stdout","time":39612.44132161,"data":"| drax | earnings22 | Drax standard vs MBR pick@main | 20.97 | 23.21 | -2.24 | [-3.24, -1.26] |\n"}
+,{"stream_name":"stdout","time":39612.441325552,"data":"| drax | fleurs-de | Drax standard vs MBR pick@main | 9.24 | 8.45 | +0.80 | [+0.45, +1.16] |\n"}
+,{"stream_name":"stdout","time":39612.441329452,"data":"| drax | fleurs-en | Drax standard vs MBR pick@main | 9.95 | 10.16 | -0.20 | [-0.57, +0.16] |\n"}
+,{"stream_name":"stdout","time":39612.441333454,"data":"| drax | fleurs-es | Drax standard vs MBR pick@main | 6.69 | 6.16 | +0.53 | [+0.29, +0.78] |\n"}
+,{"stream_name":"stdout","time":39612.441337475,"data":"| drax | fleurs-fr | Drax standard vs MBR pick@main | 11.94 | 11.76 | +0.17 | [-0.20, +0.55] |\n"}
+,{"stream_name":"stdout","time":39612.441340998,"data":"| drax | fleurs-it | Drax standard vs MBR pick@main | 6.96 | 6.36 | +0.60 | [+0.26, +0.94] |\n"}
+,{"stream_name":"stdout","time":39612.441344974,"data":"| drax | fleurs-pt | Drax standard vs MBR pick@main | 13.68 | 13.20 | +0.48 | [-0.02, +0.96] |\n"}
+,{"stream_name":"stdout","time":39612.441348847,"data":"| drax | gigaspeech | Drax standard vs MBR pick@main | 14.50 | 14.45 | +0.05 | [-0.38, +0.50] |\n"}
+,{"stream_name":"stdout","time":39612.441363352,"data":"| drax | ls-dev-clean | Drax standard vs MBR pick@main | 3.11 | 2.82 | +0.29 | [+0.03, +0.55] |\n"}
+,{"stream_name":"stdout","time":39612.44137332,"data":"| drax | ls-dev-other | Drax standard vs MBR pick@main | 5.83 | 5.79 | +0.04 | [-0.35, +0.43] |\n"}
+,{"stream_name":"stdout","time":39612.441377125,"data":"| drax | ls-tc-babble0 | Drax standard vs MBR pick@main | 35.54 | 41.13 | -5.59 | [-6.64, -4.54] |\n"}
+,{"stream_name":"stdout","time":39612.441380749,"data":"| drax | ls-tc-babble10 | Drax standard vs MBR pick@main | 4.54 | 4.14 | +0.40 | [+0.14, +0.67] |\n"}
+,{"stream_name":"stdout","time":39612.441384969,"data":"| drax | ls-tc-babble5 | Drax standard vs MBR pick@main | 9.53 | 10.12 | -0.59 | [-1.06, -0.15] |\n"}
+,{"stream_name":"stdout","time":39612.441388907,"data":"| drax | ls-tc-white5 | Drax standard vs MBR pick@main | 7.26 | 7.41 | -0.15 | [-0.48, +0.18] |\n"}
+,{"stream_name":"stdout","time":39612.441392536,"data":"| drax | ls-test-clean | Drax standard vs MBR pick@main | 2.57 | 2.38 | +0.18 | [+0.01, +0.37] |\n"}
+,{"stream_name":"stdout","time":39612.441396882,"data":"| drax | ls-test-other | Drax standard vs MBR pick@main | 6.36 | 5.95 | +0.41 | [+0.12, +0.71] |\n"}
+,{"stream_name":"stdout","time":39612.441401018,"data":"| drax | slr83 | Drax standard vs MBR pick@main | 7.59 | 7.00 | +0.59 | [+0.19, +0.96] |\n"}
+,{"stream_name":"stdout","time":39612.441404491,"data":"| drax | spgispeech | Drax standard vs MBR pick@main | 7.58 | 7.56 | +0.01 | [-0.29, +0.32] |\n"}
+,{"stream_name":"stdout","time":39612.441407754,"data":"| drax | voxpopuli | Drax standard vs MBR pick@main | 7.75 | 7.67 | +0.07 | [-0.18, +0.32] |\n"}
+,{"stream_name":"stdout","time":39612.441411745,"data":"| drax | ami | ROVER@T=0.1 vs ROVER@main | 11.23 | 11.10 | +0.13 | [-0.35, +0.60] |\n"}
+,{"stream_name":"stdout","time":39612.441415204,"data":"| drax | common_voice | ROVER@T=0.1 vs ROVER@main | 12.64 | 13.09 | -0.45 | [-1.01, +0.12] |\n"}
+,{"stream_name":"stdout","time":39612.441424636,"data":"| drax | earnings22 | ROVER@T=0.1 vs ROVER@main | 20.70 | 22.74 | -2.04 | [-3.09, -1.12] |\n"}
+,{"stream_name":"stdout","time":39612.441428827,"data":"| drax | fleurs-de | ROVER@T=0.1 vs ROVER@main | 8.43 | 7.94 | +0.49 | [+0.21, +0.76] |\n"}
+,{"stream_name":"stdout","time":39612.441432735,"data":"| drax | fleurs-en | ROVER@T=0.1 vs ROVER@main | 9.55 | 9.64 | -0.08 | [-0.36, +0.18] |\n"}
+,{"stream_name":"stdout","time":39612.441436642,"data":"| drax | fleurs-es | ROVER@T=0.1 vs ROVER@main | 6.09 | 6.00 | +0.10 | [-0.12, +0.32] |\n"}
+,{"stream_name":"stdout","time":39612.441441036,"data":"| drax | fleurs-fr | ROVER@T=0.1 vs ROVER@main | 11.38 | 11.17 | +0.22 | [-0.07, +0.50] |\n"}
+,{"stream_name":"stdout","time":39612.441444954,"data":"| drax | fleurs-it | ROVER@T=0.1 vs ROVER@main | 6.33 | 5.87 | +0.45 | [+0.21, +0.71] |\n"}
+,{"stream_name":"stdout","time":39612.441449479,"data":"| drax | fleurs-pt | ROVER@T=0.1 vs ROVER@main | 12.57 | 12.07 | +0.50 | [+0.12, +0.87] |\n"}
+,{"stream_name":"stdout","time":39612.441453616,"data":"| drax | gigaspeech | ROVER@T=0.1 vs ROVER@main | 14.11 | 13.91 | +0.19 | [-0.19, +0.57] |\n"}
+,{"stream_name":"stdout","time":39612.441457264,"data":"| drax | ls-dev-clean | ROVER@T=0.1 vs ROVER@main | 2.66 | 2.78 | -0.12 | [-0.34, +0.09] |\n"}
+,{"stream_name":"stdout","time":39612.441461078,"data":"| drax | ls-dev-other | ROVER@T=0.1 vs ROVER@main | 5.61 | 5.47 | +0.14 | [-0.21, +0.47] |\n"}
+,{"stream_name":"stdout","time":39612.441464912,"data":"| drax | ls-tc-babble0 | ROVER@T=0.1 vs ROVER@main | 34.95 | 36.86 | -1.90 | [-2.75, -1.08] |\n"}
+,{"stream_name":"stdout","time":39612.441469841,"data":"| drax | ls-tc-babble10 | ROVER@T=0.1 vs ROVER@main | 4.18 | 4.11 | +0.07 | [-0.14, +0.28] |\n"}
+,{"stream_name":"stdout","time":39612.441474129,"data":"| drax | ls-tc-babble5 | ROVER@T=0.1 vs ROVER@main | 8.95 | 9.42 | -0.47 | [-0.79, -0.16] |\n"}
+,{"stream_name":"stdout","time":39612.441477915,"data":"| drax | ls-tc-white5 | ROVER@T=0.1 vs ROVER@main | 6.77 | 7.02 | -0.25 | [-0.53, +0.01] |\n"}
+,{"stream_name":"stdout","time":39612.441481849,"data":"| drax | ls-test-clean | ROVER@T=0.1 vs ROVER@main | 2.35 | 2.41 | -0.06 | [-0.24, +0.11] |\n"}
+,{"stream_name":"stdout","time":39612.441485875,"data":"| drax | ls-test-other | ROVER@T=0.1 vs ROVER@main | 5.82 | 5.73 | +0.09 | [-0.13, +0.33] |\n"}
+,{"stream_name":"stdout","time":39612.441490005,"data":"| drax | slr83 | ROVER@T=0.1 vs ROVER@main | 7.05 | 6.83 | +0.22 | [-0.07, +0.49] |\n"}
+,{"stream_name":"stdout","time":39612.441493864,"data":"| drax | spgispeech | ROVER@T=0.1 vs ROVER@main | 7.67 | 7.56 | +0.11 | [-0.11, +0.34] |\n"}
+,{"stream_name":"stdout","time":39612.441497589,"data":"| drax | voxpopuli | ROVER@T=0.1 vs ROVER@main | 7.70 | 7.65 | +0.05 | [-0.17, +0.26] |\n"}
+,{"stream_name":"stdout","time":39612.441501574,"data":"| whisfusion | ami | Whisfusion upstream (K=15 confidence) vs ROVER@main | 37.50 | 33.26 | +4.24 | [+3.17, +5.39] |\n"}
+,{"stream_name":"stdout","time":39612.441505606,"data":"| whisfusion | common_voice | Whisfusion upstream (K=15 confidence) vs ROVER@main | 33.19 | 28.95 | +4.24 | [+3.06, +5.42] |\n"}
+,{"stream_name":"stdout","time":39612.441509965,"data":"| whisfusion | earnings22 | Whisfusion upstream (K=15 confidence) vs ROVER@main | 40.11 | 34.40 | +5.71 | [+4.89, +6.55] |\n"}
+,{"stream_name":"stdout","time":39612.441513714,"data":"| whisfusion | fleurs-en | Whisfusion upstream (K=15 confidence) vs ROVER@main | 28.27 | 23.47 | +4.80 | [+4.25, +5.36] |\n"}
+,{"stream_name":"stdout","time":39612.441517689,"data":"| whisfusion | gigaspeech | Whisfusion upstream (K=15 confidence) vs ROVER@main | 25.93 | 21.48 | +4.45 | [+3.72, +5.14] |\n"}
+,{"stream_name":"stdout","time":39612.441521604,"data":"| whisfusion | ls-dev-clean | Whisfusion upstream (K=15 confidence) vs ROVER@main | 7.30 | 5.32 | +1.98 | [+1.53, +2.47] |\n"}
+,{"stream_name":"stdout","time":39612.441529834,"data":"| whisfusion | ls-dev-other | Whisfusion upstream (K=15 confidence) vs ROVER@main | 16.15 | 12.63 | +3.52 | [+2.86, +4.18] |\n"}
+,{"stream_name":"stdout","time":39612.441534159,"data":"| whisfusion | ls-tc-babble0 | Whisfusion upstream (K=15 confidence) vs ROVER@main | 69.39 | 58.28 | +11.11 | [+10.01, +12.23] |\n"}
+,{"stream_name":"stdout","time":39612.441545616,"data":"| whisfusion | ls-tc-babble10 | Whisfusion upstream (K=15 confidence) vs ROVER@main | 16.70 | 11.40 | +5.31 | [+4.58, +6.01] |\n"}
+,{"stream_name":"stdout","time":39612.44154959,"data":"| whisfusion | ls-tc-babble5 | Whisfusion upstream (K=15 confidence) vs ROVER@main | 32.82 | 24.41 | +8.41 | [+7.49, +9.35] |\n"}
+,{"stream_name":"stdout","time":39612.441554112,"data":"| whisfusion | ls-tc-white5 | Whisfusion upstream (K=15 confidence) vs ROVER@main | 24.75 | 18.96 | +5.79 | [+5.02, +6.57] |\n"}
+,{"stream_name":"stdout","time":39612.441558203,"data":"| whisfusion | ls-test-clean | Whisfusion upstream (K=15 confidence) vs ROVER@main | 7.75 | 5.51 | +2.25 | [+1.72, +2.79] |\n"}
+,{"stream_name":"stdout","time":39612.441562395,"data":"| whisfusion | ls-test-other | Whisfusion upstream (K=15 confidence) vs ROVER@main | 15.87 | 11.92 | +3.95 | [+3.34, +4.55] |\n"}
+,{"stream_name":"stdout","time":39612.441566285,"data":"| whisfusion | slr83 | Whisfusion upstream (K=15 confidence) vs ROVER@main | 20.69 | 17.05 | +3.64 | [+2.95, +4.34] |\n"}
+,{"stream_name":"stdout","time":39612.441570308,"data":"| whisfusion | spgispeech | Whisfusion upstream (K=15 confidence) vs ROVER@main | 20.46 | 14.88 | +5.58 | [+5.00, +6.16] |\n"}
+,{"stream_name":"stdout","time":39612.441574499,"data":"| whisfusion | voxpopuli | Whisfusion upstream (K=15 confidence) vs ROVER@main | 21.82 | 18.05 | +3.76 | [+3.14, +4.40] |\n"}
+,{"stream_name":"stdout","time":39612.441578811,"data":"| whisfusion | ami | Whisfusion upstream vs ROVER at the same K=15 | 37.50 | 33.53 | +3.97 | [+2.88, +5.07] |\n"}
+,{"stream_name":"stdout","time":39612.441582947,"data":"| whisfusion | common_voice | Whisfusion upstream vs ROVER at the same K=15 | 33.19 | 29.49 | +3.71 | [+2.58, +4.94] |\n"}
+,{"stream_name":"stdout","time":39612.441586899,"data":"| whisfusion | earnings22 | Whisfusion upstream vs ROVER at the same K=15 | 40.11 | 35.07 | +5.03 | [+4.21, +5.93] |\n"}
+,{"stream_name":"stdout","time":39612.441590417,"data":"| whisfusion | fleurs-en | Whisfusion upstream vs ROVER at the same K=15 | 28.27 | 23.80 | +4.47 | [+3.85, +5.12] |\n"}
+,{"stream_name":"stdout","time":39612.441594439,"data":"| whisfusion | gigaspeech | Whisfusion upstream vs ROVER at the same K=15 | 25.93 | 21.54 | +4.38 | [+3.69, +5.07] |\n"}
+,{"stream_name":"stdout","time":39612.441598508,"data":"| whisfusion | ls-dev-clean | Whisfusion upstream vs ROVER at the same K=15 | 7.30 | 5.48 | +1.83 | [+1.39, +2.30] |\n"}
+,{"stream_name":"stdout","time":39612.441602556,"data":"| whisfusion | ls-dev-other | Whisfusion upstream vs ROVER at the same K=15 | 16.15 | 12.89 | +3.26 | [+2.64, +3.92] |\n"}
+,{"stream_name":"stdout","time":39612.441606471,"data":"| whisfusion | ls-tc-babble0 | Whisfusion upstream vs ROVER at the same K=15 | 69.39 | 58.66 | +10.74 | [+9.62, +11.84] |\n"}
+,{"stream_name":"stdout","time":39612.441610857,"data":"| whisfusion | ls-tc-babble10 | Whisfusion upstream vs ROVER at the same K=15 | 16.70 | 11.69 | +5.01 | [+4.31, +5.74] |\n"}
+,{"stream_name":"stdout","time":39612.441615178,"data":"| whisfusion | ls-tc-babble5 | Whisfusion upstream vs ROVER at the same K=15 | 32.82 | 25.38 | +7.44 | [+6.54, +8.35] |\n"}
+,{"stream_name":"stdout","time":39612.441619231,"data":"| whisfusion | ls-tc-white5 | Whisfusion upstream vs ROVER at the same K=15 | 24.75 | 19.41 | +5.34 | [+4.55, +6.17] |\n"}
+,{"stream_name":"stdout","time":39612.441628054,"data":"| whisfusion | ls-test-clean | Whisfusion upstream vs ROVER at the same K=15 | 7.75 | 5.55 | +2.20 | [+1.66, +2.77] |\n"}
+,{"stream_name":"stdout","time":39612.441632624,"data":"| whisfusion | ls-test-other | Whisfusion upstream vs ROVER at the same K=15 | 15.87 | 12.19 | +3.68 | [+3.08, +4.26] |\n"}
+,{"stream_name":"stdout","time":39612.441636801,"data":"| whisfusion | slr83 | Whisfusion upstream vs ROVER at the same K=15 | 20.69 | 17.49 | +3.20 | [+2.54, +3.87] |\n"}
+,{"stream_name":"stdout","time":39612.441640637,"data":"| whisfusion | spgispeech | Whisfusion upstream vs ROVER at the same K=15 | 20.46 | 15.17 | +5.29 | [+4.71, +5.83] |\n"}
+,{"stream_name":"stdout","time":39612.44164474,"data":"| whisfusion | voxpopuli | Whisfusion upstream vs ROVER at the same K=15 | 21.82 | 18.63 | +3.19 | [+2.59, +3.83] |\n"}
+,{"stream_name":"stdout","time":39612.441648852,"data":"\n"}
+,{"stream_name":"stdout","time":39612.441652413,"data":"## Tuned on dev (ls-dev-clean + ls-dev-other), reported on test\n"}
+,{"stream_name":"stdout","time":39612.441656758,"data":"\n"}
+,{"stream_name":"stdout","time":39612.441659953,"data":"- **drax**: alpha=0.7, eps=0.3, gamma=0.5, lambda=3.0 (dev: select 4.35, ROVER 4.07, n=800)\n"}
+,{"stream_name":"stdout","time":39612.441664069,"data":"- **whisfusion**: alpha=0.5, eps=0.7, gamma=1.0, lambda=1.5 (dev: select 10.00, ROVER 8.87, n=800)\n"}
+,{"stream_name":"stdout","time":39612.441668077,"data":"\n"}
+,{"stream_name":"stdout","time":39612.441671576,"data":"| model | set | tuned select | tuned ROVER | delta | 95% CI |\n"}
+,{"stream_name":"stdout","time":39612.441675047,"data":"|---|---|---|---|---|---|\n"}
+,{"stream_name":"stdout","time":39612.441678845,"data":"| drax | ami | 11.36 | 11.03 | +0.33 | [-0.06, +0.73] |\n"}
+,{"stream_name":"stdout","time":39612.441682698,"data":"| drax | common_voice | 37.48 | 37.13 | +0.34 | [+0.00, +0.71] |\n"}
+,{"stream_name":"stdout","time":39612.441686623,"data":"| drax | earnings22 | 23.12 | 22.69 | +0.43 | [-0.02, +0.86] |\n"}
+,{"stream_name":"stdout","time":39612.441690569,"data":"| drax | fleurs-de | 8.42 | 7.95 | +0.47 | [+0.24, +0.69] |\n"}
+,{"stream_name":"stdout","time":39612.441694705,"data":"| drax | fleurs-en | 10.19 | 9.51 | +0.67 | [+0.42, +0.92] |\n"}
+,{"stream_name":"stdout","time":39612.441698629,"data":"| drax | fleurs-es | 6.17 | 5.97 | +0.20 | [+0.05, +0.36] |\n"}
+,{"stream_name":"stdout","time":39612.441702442,"data":"| drax | fleurs-fr | 11.74 | 11.09 | +0.65 | [+0.39, +0.91] |\n"}
+,{"stream_name":"stdout","time":39612.44170611,"data":"| drax | fleurs-it | 6.37 | 5.94 | +0.43 | [+0.22, +0.67] |\n"}
+,{"stream_name":"stdout","time":39612.441709685,"data":"| drax | fleurs-pt | 13.27 | 12.01 | +1.26 | [+0.95, +1.57] |\n"}
+,{"stream_name":"stdout","time":39612.441713612,"data":"| drax | gigaspeech | 14.38 | 13.75 | +0.63 | [+0.36, +0.90] |\n"}
+,{"stream_name":"stdout","time":39612.441717365,"data":"| drax | ls-tc-babble0 | 40.75 | 36.62 | +4.13 | [+3.58, +4.69] |\n"}
+,{"stream_name":"stdout","time":39612.441721053,"data":"| drax | ls-tc-babble10 | 4.25 | 4.09 | +0.17 | [+0.01, +0.32] |\n"}
+,{"stream_name":"stdout","time":39612.441724727,"data":"| drax | ls-tc-babble5 | 10.24 | 9.24 | +1.00 | [+0.67, +1.33] |\n"}
+,{"stream_name":"stdout","time":39612.441728669,"data":"| drax | ls-tc-white5 | 7.43 | 6.97 | +0.46 | [+0.21, +0.71] |\n"}
+,{"stream_name":"stdout","time":39612.441732578,"data":"| drax | ls-test-clean | 2.38 | 2.32 | +0.07 | [-0.08, +0.21] |\n"}
+,{"stream_name":"stdout","time":39612.441735997,"data":"| drax | ls-test-other | 5.98 | 5.71 | +0.27 | [+0.07, +0.49] |\n"}
+,{"stream_name":"stdout","time":39612.441739979,"data":"| drax | slr83 | 6.99 | 6.69 | +0.30 | [+0.08, +0.52] |\n"}
+,{"stream_name":"stdout","time":39612.441748005,"data":"| drax | spgispeech | 7.55 | 7.55 | +0.00 | [-0.18, +0.18] |\n"}
+,{"stream_name":"stdout","time":39612.44175271,"data":"| drax | voxpopuli | 7.72 | 7.64 | +0.07 | [-0.10, +0.25] |\n"}
+,{"stream_name":"stdout","time":39612.441756905,"data":"| whisfusion | ami | 35.39 | 33.29 | +2.10 | [+1.46, +2.78] |\n"}
+,{"stream_name":"stdout","time":39612.441760715,"data":"| whisfusion | common_voice | 52.21 | 50.53 | +1.67 | [+1.04, +2.30] |\n"}
+,{"stream_name":"stdout","time":39612.441764435,"data":"| whisfusion | earnings22 | 37.37 | 34.45 | +2.92 | [+2.29, +3.54] |\n"}
+,{"stream_name":"stdout","time":39612.441773745,"data":"| whisfusion | fleurs-en | 25.64 | 23.47 | +2.17 | [+1.76, +2.58] |\n"}
+,{"stream_name":"stdout","time":39612.441777838,"data":"| whisfusion | gigaspeech | 23.70 | 21.48 | +2.22 | [+1.76, +2.70] |\n"}
+,{"stream_name":"stdout","time":39612.441781882,"data":"| whisfusion | ls-tc-babble0 | 65.94 | 58.31 | +7.63 | [+6.69, +8.59] |\n"}
+,{"stream_name":"stdout","time":39612.441786157,"data":"| whisfusion | ls-tc-babble10 | 14.54 | 11.47 | +3.07 | [+2.53, +3.64] |\n"}
+,{"stream_name":"stdout","time":39612.441789502,"data":"| whisfusion | ls-tc-babble5 | 29.25 | 24.43 | +4.82 | [+4.17, +5.42] |\n"}
+,{"stream_name":"stdout","time":39612.441792965,"data":"| whisfusion | ls-tc-white5 | 21.86 | 18.94 | +2.92 | [+2.36, +3.48] |\n"}
+,{"stream_name":"stdout","time":39612.441796872,"data":"| whisfusion | ls-test-clean | 6.71 | 5.55 | +1.16 | [+0.76, +1.58] |\n"}
+,{"stream_name":"stdout","time":39612.441800589,"data":"| whisfusion | ls-test-other | 13.61 | 11.98 | +1.63 | [+1.24, +2.00] |\n"}
+,{"stream_name":"stdout","time":39612.441804454,"data":"| whisfusion | slr83 | 18.71 | 17.10 | +1.61 | [+1.25, +2.00] |\n"}
+,{"stream_name":"stdout","time":39612.441808282,"data":"| whisfusion | spgispeech | 17.28 | 14.91 | +2.37 | [+2.00, +2.74] |\n"}
+,{"stream_name":"stdout","time":39612.441812177,"data":"| whisfusion | voxpopuli | 19.79 | 18.11 | +1.68 | [+1.30, +2.11] |\n"}
+,{"stream_name":"stdout","time":39612.44181549,"data":"\n"}
+,{"stream_name":"stdout","time":39612.441818794,"data":"## Cost\n"}
+,{"stream_name":"stdout","time":39612.441822714,"data":"\n"}
+,{"stream_name":"stdout","time":39612.441826394,"data":"| model | kind | arm | K | T | steps | n | s/utt | encode s | decode s | RTF | ms/candidate | ROVER ms | peak MB |\n"}
+,{"stream_name":"stdout","time":39612.441830444,"data":"|---|---|---|---|---|---|---|---|---|---|---|---|---|---|\n"}
+,{"stream_name":"stdout","time":39612.441834104,"data":"| drax | kscale | K64 | 64 | 1.30 | 16 | 200 | 14.404 | 0.186 | 14.218 | 2.2079 | 222.2 | 2.92 | 5954 |\n"}
+,{"stream_name":"stdout","time":39612.441838002,"data":"| drax | main | main | 16 | 1.30 | 16 | 11414 | 3.718 | 0.099 | 3.620 | 0.4684 | 226.2 | 0.74 | 4336 |\n"}
+,{"stream_name":"stdout","time":39612.441841909,"data":"| drax | main | ref | 4 | 0.10 | 16 | 11414 | 1.050 | 0.099 | 0.951 | 0.1323 | 237.8 | 0.22 | 4336 |\n"}
+,{"stream_name":"stdout","time":39612.441846026,"data":"| drax | sweepT | T0.1 | 16 | 0.10 | 16 | 200 | 3.791 | 0.029 | 3.762 | 0.5835 | 235.1 | 0.75 | 4336 |\n"}
+,{"stream_name":"stdout","time":39612.441850019,"data":"| drax | sweepT | T0.4 | 16 | 0.40 | 16 | 200 | 3.776 | 0.029 | 3.747 | 0.5811 | 234.2 | 0.74 | 4336 |\n"}
+,{"stream_name":"stdout","time":39612.441853899,"data":"| drax | sweepT | T0.7 | 16 | 0.70 | 16 | 200 | 3.775 | 0.029 | 3.746 | 0.5810 | 234.1 | 0.64 | 4336 |\n"}
+,{"stream_name":"stdout","time":39612.44185782,"data":"| drax | sweepT | T1 | 16 | 1.00 | 16 | 200 | 3.776 | 0.029 | 3.748 | 0.5812 | 234.2 | 0.40 | 4336 |\n"}
+,{"stream_name":"stdout","time":39612.441862534,"data":"| drax | sweepT | T1.3 | 16 | 1.30 | 16 | 200 | 3.777 | 0.029 | 3.748 | 0.5813 | 234.2 | 0.57 | 4336 |\n"}
+,{"stream_name":"stdout","time":39612.441870438,"data":"| drax | sweepT | T1.6 | 16 | 1.60 | 16 | 200 | 3.778 | 0.029 | 3.749 | 0.5814 | 234.3 | 0.57 | 4336 |\n"}
+,{"stream_name":"stdout","time":39612.441875205,"data":"| drax | sweepT | T2 | 16 | 2.00 | 16 | 200 | 3.783 | 0.029 | 3.754 | 0.5822 | 234.6 | 1.01 | 4336 |\n"}
+,{"stream_name":"stdout","time":39612.441879361,"data":"| whisfusion | ablation | base16 | 16 |  | 4 | 200 | 1.146 | 0.015 | 1.131 | 0.1764 | 70.7 | 1.05 | 2454 |\n"}
+,{"stream_name":"stdout","time":39612.441883236,"data":"| whisfusion | ablation | fss_T1 | 16 |  | 4 | 200 | 1.178 | 0.015 | 1.163 | 0.1813 | 72.7 | 0.93 | 2454 |\n"}
+,{"stream_name":"stdout","time":39612.44188738,"data":"| whisfusion | ablation | steps8 | 16 |  | 8 | 200 | 2.263 | 0.015 | 2.248 | 0.3483 | 140.5 | 1.03 | 2454 |\n"}
+,{"stream_name":"stdout","time":39612.441891308,"data":"| whisfusion | main | main | 32 |  | 4 | 6400 | 2.367 | 0.038 | 2.329 | 0.3442 | 72.8 | 1.69 | 4205 |\n"}
+,{"stream_name":"stdout","time":39612.441894984,"data":"\n"}
+,{"stream_name":"stdout","time":39612.441898596,"data":"\n"}
+,{"stream_name":"stdout","time":39612.441902128,"data":"output: 0.07 GB in /kaggle/working/campaign\n"}
+,{"stream_name":"stdout","time":39612.441906075,"data":"  analysis.tar                           15.4 MB\n"}
+,{"stream_name":"stdout","time":39612.441909963,"data":"  dumps.tar                              30.6 MB\n"}
+,{"stream_name":"stdout","time":39612.441913396,"data":"  env.json                                0.0 MB\n"}
+,{"stream_name":"stdout","time":39612.441917147,"data":"  logs.tar                                0.1 MB\n"}
+,{"stream_name":"stdout","time":39612.441920977,"data":"  manifests.tar                           8.6 MB\n"}
+,{"stream_name":"stdout","time":39612.441924297,"data":"  plan.json                               0.1 MB\n"}
+,{"stream_name":"stdout","time":39612.441928191,"data":"  progress.json                           0.0 MB\n"}
+,{"stream_name":"stdout","time":39612.441931616,"data":"  results                                 0.0 MB\n"}
+,{"stream_name":"stdout","time":39612.441935437,"data":"  run_config.json                         0.0 MB\n"}
+,{"stream_name":"stdout","time":39612.441939634,"data":"  state.tar                               0.4 MB\n"}
+,{"stream_name":"stderr","time":39615.302383864,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":39615.302420027,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":39615.485397657,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":39615.485431432,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":39616.085425393,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":39616.439021378,"data":"[NbConvertApp] Writing 301593 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":39618.762030395,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":39620.221217103,"data":"[NbConvertApp] Writing 1318539 bytes to __results__.html\n"}
+]

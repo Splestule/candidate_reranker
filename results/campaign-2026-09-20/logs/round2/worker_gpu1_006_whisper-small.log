@@ -1,0 +1,28 @@
+[12:38:08] [lane1 whisper-small] host 2af9ea10db47  cuda=True  device=Tesla T4
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[12:38:18] [lane1 whisper-small] model loaded in 9 s
+[12:38:18] [lane1 whisper-small] job whisper-small__ls-dev-other__s01__main: 200 utts, 0 already done, arms ['greedy', 'beam', 'sample']
+[12:39:32] [lane1 whisper-small]   whisper-small__ls-dev-other__s01__main: 50/200  1.49 s/utt
+[12:40:54] [lane1 whisper-small]   whisper-small__ls-dev-other__s01__main: 100/200  1.57 s/utt
+[12:42:08] [lane1 whisper-small]   whisper-small__ls-dev-other__s01__main: 150/200  1.53 s/utt
+[12:43:26] [lane1 whisper-small]   whisper-small__ls-dev-other__s01__main: 200/200  1.54 s/utt
+[12:43:26] [lane1 whisper-small] done whisper-small__ls-dev-other__s01__main [done] 200 utts in 5.1 min (1.54 s/utt, RTF 0.241)
+[12:43:26] [lane1 whisper-small] job whisper-small__ls-test-clean__s01__main: 200 utts, 0 already done, arms ['greedy', 'beam', 'sample']
+[12:44:47] [lane1 whisper-small]   whisper-small__ls-test-clean__s01__main: 50/200  1.63 s/utt
+[12:46:16] [lane1 whisper-small]   whisper-small__ls-test-clean__s01__main: 100/200  1.70 s/utt
+[12:47:40] [lane1 whisper-small]   whisper-small__ls-test-clean__s01__main: 150/200  1.69 s/utt
+[12:49:03] [lane1 whisper-small]   whisper-small__ls-test-clean__s01__main: 200/200  1.69 s/utt
+[12:49:03] [lane1 whisper-small] done whisper-small__ls-test-clean__s01__main [done] 200 utts in 5.6 min (1.69 s/utt, RTF 0.221)
+[12:49:03] [lane1 whisper-small] job whisper-small__ls-test-other__s01__main: 200 utts, 0 already done, arms ['greedy', 'beam', 'sample']
+[12:50:21] [lane1 whisper-small]   whisper-small__ls-test-other__s01__main: 50/200  1.56 s/utt
+[12:51:30] [lane1 whisper-small]   whisper-small__ls-test-other__s01__main: 100/200  1.47 s/utt
+[12:52:48] [lane1 whisper-small]   whisper-small__ls-test-other__s01__main: 150/200  1.50 s/utt
+[12:54:04] [lane1 whisper-small]   whisper-small__ls-test-other__s01__main: 200/200  1.50 s/utt
+[12:54:04] [lane1 whisper-small] done whisper-small__ls-test-other__s01__main [done] 200 utts in 5.0 min (1.50 s/utt, RTF 0.232)
+[12:54:04] [lane1 whisper-small] job whisper-small__ami__s01__main: 200 utts, 0 already done, arms ['greedy', 'beam', 'sample']
+[12:54:55] [lane1 whisper-small]   whisper-small__ami__s01__main: 50/200  1.01 s/utt
+[12:55:53] [lane1 whisper-small]   whisper-small__ami__s01__main: 100/200  1.10 s/utt
+[12:56:46] [lane1 whisper-small]   whisper-small__ami__s01__main: 150/200  1.08 s/utt
+[12:56:48] [lane1 whisper-small] deadline reached inside whisper-small__ami__s01__main after 152 utts
+[12:56:48] [lane1 whisper-small] done whisper-small__ami__s01__main [partial] 152 utts in 2.7 min (1.08 s/utt, RTF 0.346)
+[12:56:48] [lane1 whisper-small] exiting after 4 jobs

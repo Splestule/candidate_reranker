@@ -1,0 +1,16 @@
+[10:34:09] [lane1 whisfusion] host 2af9ea10db47  cuda=True  device=Tesla T4
+[wf_compat] shims active: rotary_emb, dropout_layer_norm, flash_attn, xformers.ops.SwiGLU, FusedRMSNorm
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[wf] device=cuda (Tesla T4) dtype=torch.float16
+[wf] base: 129 keys, 72 missing
+[wf] adapter: 201 keys, 0 missing, 0 unexpected
+[wf] decoder 261.5M · Whisper encoder 88.2M
+[10:34:36] [lane1 whisfusion] model loaded in 27 s
+[10:34:36] [lane1 whisfusion] job whisfusion__ls-test-other__s00__kscale: 200 utts, 0 already done, arms ['K64']
+[10:37:51] [lane1 whisfusion]   whisfusion__ls-test-other__s00__kscale: 50/200  3.90 s/utt
+[10:41:09] [lane1 whisfusion]   whisfusion__ls-test-other__s00__kscale: 100/200  3.93 s/utt
+[10:44:28] [lane1 whisfusion]   whisfusion__ls-test-other__s00__kscale: 150/200  3.94 s/utt
+[10:47:46] [lane1 whisfusion]   whisfusion__ls-test-other__s00__kscale: 200/200  3.95 s/utt
+[10:47:47] [lane1 whisfusion] done whisfusion__ls-test-other__s00__kscale [done] 200 utts in 13.2 min (3.95 s/utt, RTF 0.606)
+[10:47:47] [lane1 whisfusion] nothing claimable for this model
+[10:47:47] [lane1 whisfusion] exiting after 1 jobs

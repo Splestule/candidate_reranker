@@ -1,0 +1,28 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[prep] ls-dev-clean: 1000 utts, 118.74 min, 40 clusters
+[prep] ls-dev-other: 1000 utts, 106.32 min, 33 clusters
+[prep] ls-test-clean: 2601 utts, 314.73 min, 40 clusters
+[prep] ls-test-other: 2925 utts, 313.57 min, 33 clusters
+[prep] ls-tc-babble10: 600 utts, 73.1 min, 40 clusters
+[prep] ls-tc-babble5: 600 utts, 73.1 min, 40 clusters
+[prep] ls-tc-babble0: 600 utts, 73.1 min, 40 clusters
+[prep] ls-tc-white5: 600 utts, 73.1 min, 40 clusters
+[prep] fleurs-en: 646 utts, 105.98 min, 350 clusters
+[prep] ami: 1600 utts, 84.1 min, 16 clusters
+[prep] earnings22: 1095 utts, 116.51 min, 6 clusters
+[prep] voxpopuli: 918 utts, 105.13 min, 365 clusters
+[prep] common_voice: 1600 utts, 147.86 min, 1234 clusters
+[prep] gigaspeech: 1600 utts, 164.58 min, 127 clusters
+[prep] spgispeech: 1600 utts, 240.46 min, 728 clusters
+[prep] slr83/irish_english_male: 320
+[prep] slr83/midlands_english_female: 246
+[prep] slr83/northern_english_female: 320
+[prep] slr83/scottish_english_female: 320
+[prep] slr83/welsh_english_female: 320
+[prep] slr83: 1526 utts, 167.07 min, 24 clusters
+[prep] fleurs-de: 800 utts, 166.37 min, 339 clusters
+[prep] fleurs-fr: 674 utts, 116.03 min, 332 clusters
+[prep] fleurs-es: 800 utts, 162.5 min, 342 clusters
+[prep] fleurs-it: 800 utts, 190.55 min, 341 clusters
+[prep] fleurs-pt: 800 utts, 166.72 min, 344 clusters
+[prep] all done in 13.1 min
