@@ -65,6 +65,16 @@ SETS: dict[str, dict] = {
                           noise="babble", snr=0, n=600, lang="en", role="test", domain="babble 0 dB"),
     "ls-tc-white5": dict(kind="noise", base="ls-test-clean", babble_from="ls-dev-other",
                          noise="white", snr=5, n=600, lang="en", role="test", domain="white noise 5 dB"),
+    # round-3 rungs: the ladder was 10/5/0 dB babble and 5 dB white, which is four points to
+    # fit a slope through. These extend it at both ends.
+    "ls-tc-babble15": dict(kind="noise", base="ls-test-clean", babble_from="ls-dev-other",
+                           noise="babble", snr=15, n=600, lang="en", role="test", domain="babble 15 dB"),
+    "ls-tc-babbleM5": dict(kind="noise", base="ls-test-clean", babble_from="ls-dev-other",
+                           noise="babble", snr=-5, n=600, lang="en", role="test", domain="babble -5 dB"),
+    "ls-tc-white10": dict(kind="noise", base="ls-test-clean", babble_from="ls-dev-other",
+                          noise="white", snr=10, n=600, lang="en", role="test", domain="white noise 10 dB"),
+    "ls-tc-white0": dict(kind="noise", base="ls-test-clean", babble_from="ls-dev-other",
+                         noise="white", snr=0, n=600, lang="en", role="test", domain="white noise 0 dB"),
     # Multilingual, Drax only (Whisfusion and its tokenizer are English).
     "fleurs-de": dict(kind="fleurs", code="de_de", lang="de", role="test", n_max=800, domain="read, German"),
     "fleurs-fr": dict(kind="fleurs", code="fr_fr", lang="fr", role="test", n_max=800, domain="read, French"),
@@ -76,6 +86,7 @@ SETS: dict[str, dict] = {
 # order matters: prep_data builds them in this order, so early tiers can start sooner
 PREP_ORDER = ["ls-dev-clean", "ls-dev-other", "ls-test-clean", "ls-test-other",
               "ls-tc-babble10", "ls-tc-babble5", "ls-tc-babble0", "ls-tc-white5",
+              "ls-tc-babble15", "ls-tc-babbleM5", "ls-tc-white10", "ls-tc-white0",
               "fleurs-en", "ami", "earnings22", "voxpopuli", "common_voice", "gigaspeech",
               "spgispeech", "slr83", "fleurs-de", "fleurs-fr", "fleurs-es", "fleurs-it", "fleurs-pt"]
 
@@ -83,6 +94,7 @@ DEV_SETS = ["ls-dev-clean", "ls-dev-other"]
 EN_EVAL = ["ls-test-clean", "ls-test-other", "ami", "earnings22", "voxpopuli", "gigaspeech",
            "spgispeech", "common_voice", "fleurs-en", "slr83",
            "ls-tc-babble10", "ls-tc-babble5", "ls-tc-babble0", "ls-tc-white5"]
+NOISE_NEW = ["ls-tc-babble15", "ls-tc-babbleM5", "ls-tc-white10", "ls-tc-white0"]
 MULTI_EVAL = ["fleurs-de", "fleurs-fr", "fleurs-es", "fleurs-it", "fleurs-pt"]
 CONTROL_SETS = ["ls-dev-other", "ls-test-clean", "ls-test-other", "ami", "earnings22",
                 "common_voice", "fleurs-en", "ls-tc-babble5"]
@@ -130,6 +142,13 @@ DEFAULTS = {
     "models": ["whisfusion", "drax", "whisper-small", "whisper-turbo", "parakeet-ctc"],
     "plan": "full",               # "round2" builds only what the first session missed
     "drax_low_T": 0.4,            # best realised temperature in the round-1 dev sweep
+    # round 3: every family gets the same temperature sweep on the same sets, so pool
+    # disagreement can be varied inside a decoder instead of only compared across decoders
+    "whisper_sweep_T": [0.3, 0.6, 0.9, 1.2],
+    "ctc_sweep_T": [0.5, 1.0, 1.5, 2.0],
+    "wf_sweep_T": [0.5, 1.0, 1.5],
+    "sweep_sets": ["ls-test-other", "ami", "ls-tc-babble5"],
+    "sweep_shard_size": 100,      # a sweep job decodes every temperature, so it gets half a shard
     "max_tier": 99,
     "analysis_workers": 2,
     # smoke-only knobs; ignored in full mode
@@ -218,6 +237,28 @@ def arms_kscale(model: str, cfg: dict) -> list[dict]:
         return [dict(name=f"K{K}", K=K, steps=4, schedule=[1.0, 0.9, 0.85, 0.8], seq_len=256)]
     d = cfg["drax"]
     return [dict(name=f"K{K}", K=K, T=d["T"], steps=d["steps"])]
+
+
+def arms_whisper_sweep(cfg: dict) -> list[dict]:
+    """Sampling temperature is the only knob that makes an autoregressive pool disagree."""
+    K = cfg["whisper_sample"]["K"]
+    return [dict(name="greedy", mode="greedy")] + [
+        dict(name=f"T{t:g}", mode="sample", K=K, T=t) for t in cfg["whisper_sweep_T"]]
+
+
+def arms_ctc_sweep(cfg: dict) -> list[dict]:
+    K = cfg["ctc_sample"]["K"]
+    return [dict(name="greedy", mode="greedy")] + [
+        dict(name=f"T{t:g}", mode="sample", K=K, T=t) for t in cfg["ctc_sweep_T"]]
+
+
+def arms_wf_sweep(cfg: dict) -> list[dict]:
+    """Whisfusion's pool is deterministic after step 1 unless the first step samples; its
+    temperature is the matching knob."""
+    base = dict(schedule=[1.0, 0.9, 0.85, 0.8], seq_len=256, steps=4, K=cfg["k_main"]["whisfusion"])
+    return [dict(name="fss0", **base)] + [
+        dict(name=f"fssT{t:g}", first_step_sampling=True, temperature=t, **base)
+        for t in cfg["wf_sweep_T"]]
 
 
 def arms_wf_ablation() -> list[dict]:
@@ -403,6 +444,104 @@ def build_plan_round2(cfg: dict) -> list[dict]:
     return jobs
 
 
+def build_plan_round3(cfg: dict) -> list[dict]:
+    """Third session: vary the disagreement, and go deeper everywhere.
+
+    Rounds 1 and 2 left the central claim resting on a between-decoder correlation: pools that
+    disagreed more gained more, but each decoder contributed one point and its disagreement was
+    a fixed property of it. Here every family gets the same temperature sweep on the same three
+    sets, so the relation can be read *inside* a decoder, where the model, the data and the
+    encoder are held constant and only the pool changes. If an autoregressive pool pushed to
+    Whisfusion's disagreement gains what Whisfusion gains, composition is about disagreement; if
+    it does not, something about iterative parallel decoding matters beyond it.
+
+    The rest is more of what already worked: two more rungs on each noise ladder, and deeper
+    shards of every cell. Shards are the same utterances as in the earlier sessions, so
+    everything pools with the data already collected.
+    """
+    sets = sets_for(cfg)
+    for name, s_ in sets.items():
+        s_["name"] = name
+    S = cfg["shard_size"]
+    models = [m for m in cfg["models"] if m in MODELS]
+    jobs: list[dict] = []
+
+    SW = cfg.get("sweep_shard_size", S)
+
+    def add(tier, model, set_name, shard, kind, arms):
+        if set_name not in sets or model not in models:
+            return
+        if sets[set_name]["lang"] not in MODELS[model]["langs"]:
+            return
+        size = SW if kind == "sweepT" else S
+        jobs.append(dict(id=f"{model}__{set_name}__s{shard:02d}__{kind}", model=model,
+                         family=MODELS[model]["family"], set=set_name, lang=sets[set_name]["lang"],
+                         shard=shard, shard_size=size, kind=kind, arms=arms, tier=tier))
+
+    def max_shard(set_name):
+        return n_shards(set_name, expected_size(sets[set_name]), S) if set_name in sets else 0
+
+    core = [m for m in ("drax", "whisfusion") if m in models]
+    controls = [m for m in ("whisper-turbo", "whisper-small", "parakeet-ctc") if m in models]
+    sweep_sets = [s_ for s_ in cfg.get("sweep_sets", []) if s_ in sets]
+    low = [dict(name="lowT", K=cfg["k_main"]["drax"], T=cfg.get("drax_low_T", 0.4),
+                steps=cfg["drax"]["steps"])]
+
+    def sweep_arms(model):
+        fam = MODELS[model]["family"]
+        return {"whisper": arms_whisper_sweep, "ctc": arms_ctc_sweep,
+                "wf": arms_wf_sweep, "drax": arms_drax_sweep}[fam](cfg)
+
+    # tier 0: the controlled comparison. One sweep job per model per set, shard 0.
+    for s_ in sweep_sets:
+        for m in ("whisfusion", "drax", "whisper-turbo", "parakeet-ctc"):
+            add(0, m, s_, 0, "sweepT", sweep_arms(m))
+    # tier 1: the new noise rungs, core models and the strongest control
+    for s_ in NOISE_NEW:
+        for m in core + [c for c in controls if c == "whisper-turbo"]:
+            add(1, m, s_, 0, "main", arms_main(m, cfg))
+        add(1, "drax", s_, 0, "lowT", low)
+    # tier 2: more data on the cells that already exist, core models first
+    for sh in (3, 4):
+        for s_ in EN_EVAL + MULTI_EVAL:
+            for m in core:
+                if sh < max_shard(s_):
+                    add(2, m, s_, sh, "main", arms_main(m, cfg))
+    # tier 3: a second shard of each sweep, and deeper controls
+    for s_ in sweep_sets:
+        for m in ("whisfusion", "drax", "whisper-turbo", "parakeet-ctc"):
+            if 1 < max_shard(s_):
+                add(3, m, s_, 1, "sweepT", sweep_arms(m))
+    for sh in (2, 3):
+        for s_ in CONTROL_SETS:
+            for m in controls:
+                if sh < max_shard(s_):
+                    add(3, m, s_, sh, "main", arms_main(m, cfg))
+    # tier 4: the new noise rungs deeper, and Drax at its tuned temperature on shard 2
+    for sh in (1, 2):
+        for s_ in NOISE_NEW:
+            for m in core:
+                if sh < max_shard(s_):
+                    add(4, m, s_, sh, "main", arms_main(m, cfg))
+    for s_ in EN_EVAL + MULTI_EVAL:
+        if 2 < max_shard(s_):
+            add(4, "drax", s_, 2, "lowT", low)
+    # tier 5: everything else, round-robin over sets
+    for sh in range(5, 20):
+        for s_ in EN_EVAL + MULTI_EVAL + NOISE_NEW:
+            for m in core:
+                if sh < max_shard(s_):
+                    add(5, m, s_, sh, "main", arms_main(m, cfg))
+
+    jobs = [j for j in jobs if j["tier"] <= cfg["max_tier"]]
+    for i, j in enumerate(jobs):
+        j["order"] = i
+    jobs.sort(key=lambda j: (j["tier"], j["shard"], j["order"]))
+    for i, j in enumerate(jobs):
+        j["order"] = i
+    return jobs
+
+
 def model_key(job: dict) -> str:
     """Worker identity: one process per (model, precision)."""
     return job["model"] + (f"@{job['precision']}" if job.get("precision") else "")
@@ -436,3 +575,7 @@ def build_plan_sweep(cfg: dict) -> list[dict]:
                          shard=0, shard_size=cfg["shard_size"], kind="sweepT",
                          arms=arms_drax_sweep(cfg), tier=0, order=i))
     return jobs
+
+
+PLANS = {"full": build_plan, "round2": build_plan_round2, "round3": build_plan_round3,
+         "sweep": build_plan_sweep}
