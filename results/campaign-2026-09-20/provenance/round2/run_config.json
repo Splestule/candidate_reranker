@@ -1,0 +1,62 @@
+{
+  "mode": "full",
+  "run_hours": 3.495728491610951,
+  "tail_minutes": 15,
+  "shard_size": 200,
+  "seed": 20260919,
+  "k_main": {
+    "whisfusion": 32,
+    "drax": 16
+  },
+  "k_scale": 64,
+  "drax": {
+    "T": 1.3,
+    "steps": 16,
+    "precision": "fp16",
+    "ref_T": 0.1,
+    "ref_K": 4
+  },
+  "drax_sweep_T": [
+    0.1,
+    0.4,
+    0.7,
+    1.0,
+    1.3,
+    1.6,
+    2.0
+  ],
+  "drax_sweep_K": 16,
+  "drax_steps_sweep": [
+    4,
+    8,
+    32
+  ],
+  "whisper_sample": {
+    "K": 16,
+    "T": 0.6
+  },
+  "whisper_beams": 8,
+  "ctc_sample": {
+    "K": 32,
+    "T": 1.0
+  },
+  "models": [
+    "whisfusion",
+    "drax",
+    "whisper-small",
+    "whisper-turbo",
+    "parakeet-ctc"
+  ],
+  "plan": "round2",
+  "drax_low_T": 0.4,
+  "max_tier": 99,
+  "analysis_workers": 2,
+  "smoke": {},
+  "upstream": {
+    "Whisfusion": "aa9afe3688ccd15ebf096ec9845d67925d1a3aea",
+    "drax": "ffab757b1c88d9c6cdf9912d543032f98fc085e3"
+  },
+  "t_start_unix": 1789897323.4353883,
+  "t_end_unix": 1789909908.0579581,
+  "gpu_deadline_unix": 1789909008.0579581
+}

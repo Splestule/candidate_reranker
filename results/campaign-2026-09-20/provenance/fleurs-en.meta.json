@@ -1,0 +1,19 @@
+{
+  "source": "google/fleurs",
+  "code": "en_us",
+  "n_total": 647,
+  "set": "fleurs-en",
+  "kind": "fleurs",
+  "lang": "en",
+  "role": "test",
+  "domain": "read Wikipedia sentences",
+  "filter": {
+    "min_dur": 0.8,
+    "max_dur": 28.0,
+    "max_ref_words": 75
+  },
+  "prep_s": 17.0,
+  "n_selected": 646,
+  "audio_min": 105.98,
+  "n_clusters": 350
+}

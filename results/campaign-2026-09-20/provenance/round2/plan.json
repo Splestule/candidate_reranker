@@ -1,0 +1,3412 @@
+[
+  {
+    "id": "whisper-small__ls-dev-other__s00__main",
+    "model": "whisper-small",
+    "family": "whisper",
+    "set": "ls-dev-other",
+    "lang": "en",
+    "shard": 0,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "beam",
+        "mode": "beam",
+        "beams": 8
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 16,
+        "T": 0.6
+      }
+    ],
+    "tier": 0,
+    "order": 0
+  },
+  {
+    "id": "whisper-turbo__ls-dev-other__s00__main",
+    "model": "whisper-turbo",
+    "family": "whisper",
+    "set": "ls-dev-other",
+    "lang": "en",
+    "shard": 0,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "beam",
+        "mode": "beam",
+        "beams": 8
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 16,
+        "T": 0.6
+      }
+    ],
+    "tier": 0,
+    "order": 1
+  },
+  {
+    "id": "parakeet-ctc__ls-dev-other__s00__main",
+    "model": "parakeet-ctc",
+    "family": "ctc",
+    "set": "ls-dev-other",
+    "lang": "en",
+    "shard": 0,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 32,
+        "T": 1.0
+      }
+    ],
+    "tier": 0,
+    "order": 2
+  },
+  {
+    "id": "whisper-small__ls-test-clean__s00__main",
+    "model": "whisper-small",
+    "family": "whisper",
+    "set": "ls-test-clean",
+    "lang": "en",
+    "shard": 0,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "beam",
+        "mode": "beam",
+        "beams": 8
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 16,
+        "T": 0.6
+      }
+    ],
+    "tier": 0,
+    "order": 3
+  },
+  {
+    "id": "whisper-turbo__ls-test-clean__s00__main",
+    "model": "whisper-turbo",
+    "family": "whisper",
+    "set": "ls-test-clean",
+    "lang": "en",
+    "shard": 0,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "beam",
+        "mode": "beam",
+        "beams": 8
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 16,
+        "T": 0.6
+      }
+    ],
+    "tier": 0,
+    "order": 4
+  },
+  {
+    "id": "parakeet-ctc__ls-test-clean__s00__main",
+    "model": "parakeet-ctc",
+    "family": "ctc",
+    "set": "ls-test-clean",
+    "lang": "en",
+    "shard": 0,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 32,
+        "T": 1.0
+      }
+    ],
+    "tier": 0,
+    "order": 5
+  },
+  {
+    "id": "whisper-small__ls-test-other__s00__main",
+    "model": "whisper-small",
+    "family": "whisper",
+    "set": "ls-test-other",
+    "lang": "en",
+    "shard": 0,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "beam",
+        "mode": "beam",
+        "beams": 8
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 16,
+        "T": 0.6
+      }
+    ],
+    "tier": 0,
+    "order": 6
+  },
+  {
+    "id": "whisper-turbo__ls-test-other__s00__main",
+    "model": "whisper-turbo",
+    "family": "whisper",
+    "set": "ls-test-other",
+    "lang": "en",
+    "shard": 0,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "beam",
+        "mode": "beam",
+        "beams": 8
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 16,
+        "T": 0.6
+      }
+    ],
+    "tier": 0,
+    "order": 7
+  },
+  {
+    "id": "parakeet-ctc__ls-test-other__s00__main",
+    "model": "parakeet-ctc",
+    "family": "ctc",
+    "set": "ls-test-other",
+    "lang": "en",
+    "shard": 0,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 32,
+        "T": 1.0
+      }
+    ],
+    "tier": 0,
+    "order": 8
+  },
+  {
+    "id": "whisper-small__ami__s00__main",
+    "model": "whisper-small",
+    "family": "whisper",
+    "set": "ami",
+    "lang": "en",
+    "shard": 0,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "beam",
+        "mode": "beam",
+        "beams": 8
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 16,
+        "T": 0.6
+      }
+    ],
+    "tier": 0,
+    "order": 9
+  },
+  {
+    "id": "whisper-turbo__ami__s00__main",
+    "model": "whisper-turbo",
+    "family": "whisper",
+    "set": "ami",
+    "lang": "en",
+    "shard": 0,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "beam",
+        "mode": "beam",
+        "beams": 8
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 16,
+        "T": 0.6
+      }
+    ],
+    "tier": 0,
+    "order": 10
+  },
+  {
+    "id": "parakeet-ctc__ami__s00__main",
+    "model": "parakeet-ctc",
+    "family": "ctc",
+    "set": "ami",
+    "lang": "en",
+    "shard": 0,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 32,
+        "T": 1.0
+      }
+    ],
+    "tier": 0,
+    "order": 11
+  },
+  {
+    "id": "whisper-small__earnings22__s00__main",
+    "model": "whisper-small",
+    "family": "whisper",
+    "set": "earnings22",
+    "lang": "en",
+    "shard": 0,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "beam",
+        "mode": "beam",
+        "beams": 8
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 16,
+        "T": 0.6
+      }
+    ],
+    "tier": 0,
+    "order": 12
+  },
+  {
+    "id": "whisper-turbo__earnings22__s00__main",
+    "model": "whisper-turbo",
+    "family": "whisper",
+    "set": "earnings22",
+    "lang": "en",
+    "shard": 0,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "beam",
+        "mode": "beam",
+        "beams": 8
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 16,
+        "T": 0.6
+      }
+    ],
+    "tier": 0,
+    "order": 13
+  },
+  {
+    "id": "parakeet-ctc__earnings22__s00__main",
+    "model": "parakeet-ctc",
+    "family": "ctc",
+    "set": "earnings22",
+    "lang": "en",
+    "shard": 0,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 32,
+        "T": 1.0
+      }
+    ],
+    "tier": 0,
+    "order": 14
+  },
+  {
+    "id": "whisper-small__common_voice__s00__main",
+    "model": "whisper-small",
+    "family": "whisper",
+    "set": "common_voice",
+    "lang": "en",
+    "shard": 0,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "beam",
+        "mode": "beam",
+        "beams": 8
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 16,
+        "T": 0.6
+      }
+    ],
+    "tier": 0,
+    "order": 15
+  },
+  {
+    "id": "whisper-turbo__common_voice__s00__main",
+    "model": "whisper-turbo",
+    "family": "whisper",
+    "set": "common_voice",
+    "lang": "en",
+    "shard": 0,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "beam",
+        "mode": "beam",
+        "beams": 8
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 16,
+        "T": 0.6
+      }
+    ],
+    "tier": 0,
+    "order": 16
+  },
+  {
+    "id": "parakeet-ctc__common_voice__s00__main",
+    "model": "parakeet-ctc",
+    "family": "ctc",
+    "set": "common_voice",
+    "lang": "en",
+    "shard": 0,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 32,
+        "T": 1.0
+      }
+    ],
+    "tier": 0,
+    "order": 17
+  },
+  {
+    "id": "whisper-small__fleurs-en__s00__main",
+    "model": "whisper-small",
+    "family": "whisper",
+    "set": "fleurs-en",
+    "lang": "en",
+    "shard": 0,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "beam",
+        "mode": "beam",
+        "beams": 8
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 16,
+        "T": 0.6
+      }
+    ],
+    "tier": 0,
+    "order": 18
+  },
+  {
+    "id": "whisper-turbo__fleurs-en__s00__main",
+    "model": "whisper-turbo",
+    "family": "whisper",
+    "set": "fleurs-en",
+    "lang": "en",
+    "shard": 0,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "beam",
+        "mode": "beam",
+        "beams": 8
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 16,
+        "T": 0.6
+      }
+    ],
+    "tier": 0,
+    "order": 19
+  },
+  {
+    "id": "parakeet-ctc__fleurs-en__s00__main",
+    "model": "parakeet-ctc",
+    "family": "ctc",
+    "set": "fleurs-en",
+    "lang": "en",
+    "shard": 0,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 32,
+        "T": 1.0
+      }
+    ],
+    "tier": 0,
+    "order": 20
+  },
+  {
+    "id": "whisper-small__ls-tc-babble5__s00__main",
+    "model": "whisper-small",
+    "family": "whisper",
+    "set": "ls-tc-babble5",
+    "lang": "en",
+    "shard": 0,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "beam",
+        "mode": "beam",
+        "beams": 8
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 16,
+        "T": 0.6
+      }
+    ],
+    "tier": 0,
+    "order": 21
+  },
+  {
+    "id": "whisper-turbo__ls-tc-babble5__s00__main",
+    "model": "whisper-turbo",
+    "family": "whisper",
+    "set": "ls-tc-babble5",
+    "lang": "en",
+    "shard": 0,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "beam",
+        "mode": "beam",
+        "beams": 8
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 16,
+        "T": 0.6
+      }
+    ],
+    "tier": 0,
+    "order": 22
+  },
+  {
+    "id": "parakeet-ctc__ls-tc-babble5__s00__main",
+    "model": "parakeet-ctc",
+    "family": "ctc",
+    "set": "ls-tc-babble5",
+    "lang": "en",
+    "shard": 0,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 32,
+        "T": 1.0
+      }
+    ],
+    "tier": 0,
+    "order": 23
+  },
+  {
+    "id": "drax__ls-test-clean__s00__lowT",
+    "model": "drax",
+    "family": "drax",
+    "set": "ls-test-clean",
+    "lang": "en",
+    "shard": 0,
+    "shard_size": 200,
+    "kind": "lowT",
+    "arms": [
+      {
+        "name": "lowT",
+        "K": 16,
+        "T": 0.4,
+        "steps": 16
+      }
+    ],
+    "tier": 1,
+    "order": 24
+  },
+  {
+    "id": "drax__ls-test-other__s00__lowT",
+    "model": "drax",
+    "family": "drax",
+    "set": "ls-test-other",
+    "lang": "en",
+    "shard": 0,
+    "shard_size": 200,
+    "kind": "lowT",
+    "arms": [
+      {
+        "name": "lowT",
+        "K": 16,
+        "T": 0.4,
+        "steps": 16
+      }
+    ],
+    "tier": 1,
+    "order": 25
+  },
+  {
+    "id": "drax__ami__s00__lowT",
+    "model": "drax",
+    "family": "drax",
+    "set": "ami",
+    "lang": "en",
+    "shard": 0,
+    "shard_size": 200,
+    "kind": "lowT",
+    "arms": [
+      {
+        "name": "lowT",
+        "K": 16,
+        "T": 0.4,
+        "steps": 16
+      }
+    ],
+    "tier": 1,
+    "order": 26
+  },
+  {
+    "id": "drax__earnings22__s00__lowT",
+    "model": "drax",
+    "family": "drax",
+    "set": "earnings22",
+    "lang": "en",
+    "shard": 0,
+    "shard_size": 200,
+    "kind": "lowT",
+    "arms": [
+      {
+        "name": "lowT",
+        "K": 16,
+        "T": 0.4,
+        "steps": 16
+      }
+    ],
+    "tier": 1,
+    "order": 27
+  },
+  {
+    "id": "drax__voxpopuli__s00__lowT",
+    "model": "drax",
+    "family": "drax",
+    "set": "voxpopuli",
+    "lang": "en",
+    "shard": 0,
+    "shard_size": 200,
+    "kind": "lowT",
+    "arms": [
+      {
+        "name": "lowT",
+        "K": 16,
+        "T": 0.4,
+        "steps": 16
+      }
+    ],
+    "tier": 1,
+    "order": 28
+  },
+  {
+    "id": "drax__gigaspeech__s00__lowT",
+    "model": "drax",
+    "family": "drax",
+    "set": "gigaspeech",
+    "lang": "en",
+    "shard": 0,
+    "shard_size": 200,
+    "kind": "lowT",
+    "arms": [
+      {
+        "name": "lowT",
+        "K": 16,
+        "T": 0.4,
+        "steps": 16
+      }
+    ],
+    "tier": 1,
+    "order": 29
+  },
+  {
+    "id": "drax__spgispeech__s00__lowT",
+    "model": "drax",
+    "family": "drax",
+    "set": "spgispeech",
+    "lang": "en",
+    "shard": 0,
+    "shard_size": 200,
+    "kind": "lowT",
+    "arms": [
+      {
+        "name": "lowT",
+        "K": 16,
+        "T": 0.4,
+        "steps": 16
+      }
+    ],
+    "tier": 1,
+    "order": 30
+  },
+  {
+    "id": "drax__common_voice__s00__lowT",
+    "model": "drax",
+    "family": "drax",
+    "set": "common_voice",
+    "lang": "en",
+    "shard": 0,
+    "shard_size": 200,
+    "kind": "lowT",
+    "arms": [
+      {
+        "name": "lowT",
+        "K": 16,
+        "T": 0.4,
+        "steps": 16
+      }
+    ],
+    "tier": 1,
+    "order": 31
+  },
+  {
+    "id": "drax__fleurs-en__s00__lowT",
+    "model": "drax",
+    "family": "drax",
+    "set": "fleurs-en",
+    "lang": "en",
+    "shard": 0,
+    "shard_size": 200,
+    "kind": "lowT",
+    "arms": [
+      {
+        "name": "lowT",
+        "K": 16,
+        "T": 0.4,
+        "steps": 16
+      }
+    ],
+    "tier": 1,
+    "order": 32
+  },
+  {
+    "id": "drax__slr83__s00__lowT",
+    "model": "drax",
+    "family": "drax",
+    "set": "slr83",
+    "lang": "en",
+    "shard": 0,
+    "shard_size": 200,
+    "kind": "lowT",
+    "arms": [
+      {
+        "name": "lowT",
+        "K": 16,
+        "T": 0.4,
+        "steps": 16
+      }
+    ],
+    "tier": 1,
+    "order": 33
+  },
+  {
+    "id": "drax__ls-tc-babble10__s00__lowT",
+    "model": "drax",
+    "family": "drax",
+    "set": "ls-tc-babble10",
+    "lang": "en",
+    "shard": 0,
+    "shard_size": 200,
+    "kind": "lowT",
+    "arms": [
+      {
+        "name": "lowT",
+        "K": 16,
+        "T": 0.4,
+        "steps": 16
+      }
+    ],
+    "tier": 1,
+    "order": 34
+  },
+  {
+    "id": "drax__ls-tc-babble5__s00__lowT",
+    "model": "drax",
+    "family": "drax",
+    "set": "ls-tc-babble5",
+    "lang": "en",
+    "shard": 0,
+    "shard_size": 200,
+    "kind": "lowT",
+    "arms": [
+      {
+        "name": "lowT",
+        "K": 16,
+        "T": 0.4,
+        "steps": 16
+      }
+    ],
+    "tier": 1,
+    "order": 35
+  },
+  {
+    "id": "drax__ls-tc-babble0__s00__lowT",
+    "model": "drax",
+    "family": "drax",
+    "set": "ls-tc-babble0",
+    "lang": "en",
+    "shard": 0,
+    "shard_size": 200,
+    "kind": "lowT",
+    "arms": [
+      {
+        "name": "lowT",
+        "K": 16,
+        "T": 0.4,
+        "steps": 16
+      }
+    ],
+    "tier": 1,
+    "order": 36
+  },
+  {
+    "id": "drax__ls-tc-white5__s00__lowT",
+    "model": "drax",
+    "family": "drax",
+    "set": "ls-tc-white5",
+    "lang": "en",
+    "shard": 0,
+    "shard_size": 200,
+    "kind": "lowT",
+    "arms": [
+      {
+        "name": "lowT",
+        "K": 16,
+        "T": 0.4,
+        "steps": 16
+      }
+    ],
+    "tier": 1,
+    "order": 37
+  },
+  {
+    "id": "drax__fleurs-de__s00__lowT",
+    "model": "drax",
+    "family": "drax",
+    "set": "fleurs-de",
+    "lang": "de",
+    "shard": 0,
+    "shard_size": 200,
+    "kind": "lowT",
+    "arms": [
+      {
+        "name": "lowT",
+        "K": 16,
+        "T": 0.4,
+        "steps": 16
+      }
+    ],
+    "tier": 1,
+    "order": 38
+  },
+  {
+    "id": "drax__fleurs-fr__s00__lowT",
+    "model": "drax",
+    "family": "drax",
+    "set": "fleurs-fr",
+    "lang": "fr",
+    "shard": 0,
+    "shard_size": 200,
+    "kind": "lowT",
+    "arms": [
+      {
+        "name": "lowT",
+        "K": 16,
+        "T": 0.4,
+        "steps": 16
+      }
+    ],
+    "tier": 1,
+    "order": 39
+  },
+  {
+    "id": "drax__fleurs-es__s00__lowT",
+    "model": "drax",
+    "family": "drax",
+    "set": "fleurs-es",
+    "lang": "es",
+    "shard": 0,
+    "shard_size": 200,
+    "kind": "lowT",
+    "arms": [
+      {
+        "name": "lowT",
+        "K": 16,
+        "T": 0.4,
+        "steps": 16
+      }
+    ],
+    "tier": 1,
+    "order": 40
+  },
+  {
+    "id": "drax__fleurs-it__s00__lowT",
+    "model": "drax",
+    "family": "drax",
+    "set": "fleurs-it",
+    "lang": "it",
+    "shard": 0,
+    "shard_size": 200,
+    "kind": "lowT",
+    "arms": [
+      {
+        "name": "lowT",
+        "K": 16,
+        "T": 0.4,
+        "steps": 16
+      }
+    ],
+    "tier": 1,
+    "order": 41
+  },
+  {
+    "id": "drax__fleurs-pt__s00__lowT",
+    "model": "drax",
+    "family": "drax",
+    "set": "fleurs-pt",
+    "lang": "pt",
+    "shard": 0,
+    "shard_size": 200,
+    "kind": "lowT",
+    "arms": [
+      {
+        "name": "lowT",
+        "K": 16,
+        "T": 0.4,
+        "steps": 16
+      }
+    ],
+    "tier": 1,
+    "order": 42
+  },
+  {
+    "id": "whisfusion__ls-test-other__s00__kscale",
+    "model": "whisfusion",
+    "family": "wf",
+    "set": "ls-test-other",
+    "lang": "en",
+    "shard": 0,
+    "shard_size": 200,
+    "kind": "kscale",
+    "arms": [
+      {
+        "name": "K64",
+        "K": 64,
+        "steps": 4,
+        "schedule": [
+          1.0,
+          0.9,
+          0.85,
+          0.8
+        ],
+        "seq_len": 256
+      }
+    ],
+    "tier": 1,
+    "order": 43
+  },
+  {
+    "id": "whisper-small__ls-dev-other__s01__main",
+    "model": "whisper-small",
+    "family": "whisper",
+    "set": "ls-dev-other",
+    "lang": "en",
+    "shard": 1,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "beam",
+        "mode": "beam",
+        "beams": 8
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 16,
+        "T": 0.6
+      }
+    ],
+    "tier": 2,
+    "order": 44
+  },
+  {
+    "id": "whisper-turbo__ls-dev-other__s01__main",
+    "model": "whisper-turbo",
+    "family": "whisper",
+    "set": "ls-dev-other",
+    "lang": "en",
+    "shard": 1,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "beam",
+        "mode": "beam",
+        "beams": 8
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 16,
+        "T": 0.6
+      }
+    ],
+    "tier": 2,
+    "order": 45
+  },
+  {
+    "id": "parakeet-ctc__ls-dev-other__s01__main",
+    "model": "parakeet-ctc",
+    "family": "ctc",
+    "set": "ls-dev-other",
+    "lang": "en",
+    "shard": 1,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 32,
+        "T": 1.0
+      }
+    ],
+    "tier": 2,
+    "order": 46
+  },
+  {
+    "id": "whisper-small__ls-test-clean__s01__main",
+    "model": "whisper-small",
+    "family": "whisper",
+    "set": "ls-test-clean",
+    "lang": "en",
+    "shard": 1,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "beam",
+        "mode": "beam",
+        "beams": 8
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 16,
+        "T": 0.6
+      }
+    ],
+    "tier": 2,
+    "order": 47
+  },
+  {
+    "id": "whisper-turbo__ls-test-clean__s01__main",
+    "model": "whisper-turbo",
+    "family": "whisper",
+    "set": "ls-test-clean",
+    "lang": "en",
+    "shard": 1,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "beam",
+        "mode": "beam",
+        "beams": 8
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 16,
+        "T": 0.6
+      }
+    ],
+    "tier": 2,
+    "order": 48
+  },
+  {
+    "id": "parakeet-ctc__ls-test-clean__s01__main",
+    "model": "parakeet-ctc",
+    "family": "ctc",
+    "set": "ls-test-clean",
+    "lang": "en",
+    "shard": 1,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 32,
+        "T": 1.0
+      }
+    ],
+    "tier": 2,
+    "order": 49
+  },
+  {
+    "id": "whisper-small__ls-test-other__s01__main",
+    "model": "whisper-small",
+    "family": "whisper",
+    "set": "ls-test-other",
+    "lang": "en",
+    "shard": 1,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "beam",
+        "mode": "beam",
+        "beams": 8
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 16,
+        "T": 0.6
+      }
+    ],
+    "tier": 2,
+    "order": 50
+  },
+  {
+    "id": "whisper-turbo__ls-test-other__s01__main",
+    "model": "whisper-turbo",
+    "family": "whisper",
+    "set": "ls-test-other",
+    "lang": "en",
+    "shard": 1,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "beam",
+        "mode": "beam",
+        "beams": 8
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 16,
+        "T": 0.6
+      }
+    ],
+    "tier": 2,
+    "order": 51
+  },
+  {
+    "id": "parakeet-ctc__ls-test-other__s01__main",
+    "model": "parakeet-ctc",
+    "family": "ctc",
+    "set": "ls-test-other",
+    "lang": "en",
+    "shard": 1,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 32,
+        "T": 1.0
+      }
+    ],
+    "tier": 2,
+    "order": 52
+  },
+  {
+    "id": "whisper-small__ami__s01__main",
+    "model": "whisper-small",
+    "family": "whisper",
+    "set": "ami",
+    "lang": "en",
+    "shard": 1,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "beam",
+        "mode": "beam",
+        "beams": 8
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 16,
+        "T": 0.6
+      }
+    ],
+    "tier": 2,
+    "order": 53
+  },
+  {
+    "id": "whisper-turbo__ami__s01__main",
+    "model": "whisper-turbo",
+    "family": "whisper",
+    "set": "ami",
+    "lang": "en",
+    "shard": 1,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "beam",
+        "mode": "beam",
+        "beams": 8
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 16,
+        "T": 0.6
+      }
+    ],
+    "tier": 2,
+    "order": 54
+  },
+  {
+    "id": "parakeet-ctc__ami__s01__main",
+    "model": "parakeet-ctc",
+    "family": "ctc",
+    "set": "ami",
+    "lang": "en",
+    "shard": 1,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 32,
+        "T": 1.0
+      }
+    ],
+    "tier": 2,
+    "order": 55
+  },
+  {
+    "id": "whisper-small__earnings22__s01__main",
+    "model": "whisper-small",
+    "family": "whisper",
+    "set": "earnings22",
+    "lang": "en",
+    "shard": 1,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "beam",
+        "mode": "beam",
+        "beams": 8
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 16,
+        "T": 0.6
+      }
+    ],
+    "tier": 2,
+    "order": 56
+  },
+  {
+    "id": "whisper-turbo__earnings22__s01__main",
+    "model": "whisper-turbo",
+    "family": "whisper",
+    "set": "earnings22",
+    "lang": "en",
+    "shard": 1,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "beam",
+        "mode": "beam",
+        "beams": 8
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 16,
+        "T": 0.6
+      }
+    ],
+    "tier": 2,
+    "order": 57
+  },
+  {
+    "id": "parakeet-ctc__earnings22__s01__main",
+    "model": "parakeet-ctc",
+    "family": "ctc",
+    "set": "earnings22",
+    "lang": "en",
+    "shard": 1,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 32,
+        "T": 1.0
+      }
+    ],
+    "tier": 2,
+    "order": 58
+  },
+  {
+    "id": "whisper-small__common_voice__s01__main",
+    "model": "whisper-small",
+    "family": "whisper",
+    "set": "common_voice",
+    "lang": "en",
+    "shard": 1,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "beam",
+        "mode": "beam",
+        "beams": 8
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 16,
+        "T": 0.6
+      }
+    ],
+    "tier": 2,
+    "order": 59
+  },
+  {
+    "id": "whisper-turbo__common_voice__s01__main",
+    "model": "whisper-turbo",
+    "family": "whisper",
+    "set": "common_voice",
+    "lang": "en",
+    "shard": 1,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "beam",
+        "mode": "beam",
+        "beams": 8
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 16,
+        "T": 0.6
+      }
+    ],
+    "tier": 2,
+    "order": 60
+  },
+  {
+    "id": "parakeet-ctc__common_voice__s01__main",
+    "model": "parakeet-ctc",
+    "family": "ctc",
+    "set": "common_voice",
+    "lang": "en",
+    "shard": 1,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 32,
+        "T": 1.0
+      }
+    ],
+    "tier": 2,
+    "order": 61
+  },
+  {
+    "id": "whisper-small__fleurs-en__s01__main",
+    "model": "whisper-small",
+    "family": "whisper",
+    "set": "fleurs-en",
+    "lang": "en",
+    "shard": 1,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "beam",
+        "mode": "beam",
+        "beams": 8
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 16,
+        "T": 0.6
+      }
+    ],
+    "tier": 2,
+    "order": 62
+  },
+  {
+    "id": "whisper-turbo__fleurs-en__s01__main",
+    "model": "whisper-turbo",
+    "family": "whisper",
+    "set": "fleurs-en",
+    "lang": "en",
+    "shard": 1,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "beam",
+        "mode": "beam",
+        "beams": 8
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 16,
+        "T": 0.6
+      }
+    ],
+    "tier": 2,
+    "order": 63
+  },
+  {
+    "id": "parakeet-ctc__fleurs-en__s01__main",
+    "model": "parakeet-ctc",
+    "family": "ctc",
+    "set": "fleurs-en",
+    "lang": "en",
+    "shard": 1,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 32,
+        "T": 1.0
+      }
+    ],
+    "tier": 2,
+    "order": 64
+  },
+  {
+    "id": "whisper-small__ls-tc-babble5__s01__main",
+    "model": "whisper-small",
+    "family": "whisper",
+    "set": "ls-tc-babble5",
+    "lang": "en",
+    "shard": 1,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "beam",
+        "mode": "beam",
+        "beams": 8
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 16,
+        "T": 0.6
+      }
+    ],
+    "tier": 2,
+    "order": 65
+  },
+  {
+    "id": "whisper-turbo__ls-tc-babble5__s01__main",
+    "model": "whisper-turbo",
+    "family": "whisper",
+    "set": "ls-tc-babble5",
+    "lang": "en",
+    "shard": 1,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "beam",
+        "mode": "beam",
+        "beams": 8
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 16,
+        "T": 0.6
+      }
+    ],
+    "tier": 2,
+    "order": 66
+  },
+  {
+    "id": "parakeet-ctc__ls-tc-babble5__s01__main",
+    "model": "parakeet-ctc",
+    "family": "ctc",
+    "set": "ls-tc-babble5",
+    "lang": "en",
+    "shard": 1,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 32,
+        "T": 1.0
+      }
+    ],
+    "tier": 2,
+    "order": 67
+  },
+  {
+    "id": "drax__ls-test-clean__s01__lowT",
+    "model": "drax",
+    "family": "drax",
+    "set": "ls-test-clean",
+    "lang": "en",
+    "shard": 1,
+    "shard_size": 200,
+    "kind": "lowT",
+    "arms": [
+      {
+        "name": "lowT",
+        "K": 16,
+        "T": 0.4,
+        "steps": 16
+      }
+    ],
+    "tier": 3,
+    "order": 68
+  },
+  {
+    "id": "drax__ls-test-other__s01__lowT",
+    "model": "drax",
+    "family": "drax",
+    "set": "ls-test-other",
+    "lang": "en",
+    "shard": 1,
+    "shard_size": 200,
+    "kind": "lowT",
+    "arms": [
+      {
+        "name": "lowT",
+        "K": 16,
+        "T": 0.4,
+        "steps": 16
+      }
+    ],
+    "tier": 3,
+    "order": 69
+  },
+  {
+    "id": "drax__ami__s01__lowT",
+    "model": "drax",
+    "family": "drax",
+    "set": "ami",
+    "lang": "en",
+    "shard": 1,
+    "shard_size": 200,
+    "kind": "lowT",
+    "arms": [
+      {
+        "name": "lowT",
+        "K": 16,
+        "T": 0.4,
+        "steps": 16
+      }
+    ],
+    "tier": 3,
+    "order": 70
+  },
+  {
+    "id": "drax__earnings22__s01__lowT",
+    "model": "drax",
+    "family": "drax",
+    "set": "earnings22",
+    "lang": "en",
+    "shard": 1,
+    "shard_size": 200,
+    "kind": "lowT",
+    "arms": [
+      {
+        "name": "lowT",
+        "K": 16,
+        "T": 0.4,
+        "steps": 16
+      }
+    ],
+    "tier": 3,
+    "order": 71
+  },
+  {
+    "id": "drax__voxpopuli__s01__lowT",
+    "model": "drax",
+    "family": "drax",
+    "set": "voxpopuli",
+    "lang": "en",
+    "shard": 1,
+    "shard_size": 200,
+    "kind": "lowT",
+    "arms": [
+      {
+        "name": "lowT",
+        "K": 16,
+        "T": 0.4,
+        "steps": 16
+      }
+    ],
+    "tier": 3,
+    "order": 72
+  },
+  {
+    "id": "drax__gigaspeech__s01__lowT",
+    "model": "drax",
+    "family": "drax",
+    "set": "gigaspeech",
+    "lang": "en",
+    "shard": 1,
+    "shard_size": 200,
+    "kind": "lowT",
+    "arms": [
+      {
+        "name": "lowT",
+        "K": 16,
+        "T": 0.4,
+        "steps": 16
+      }
+    ],
+    "tier": 3,
+    "order": 73
+  },
+  {
+    "id": "drax__spgispeech__s01__lowT",
+    "model": "drax",
+    "family": "drax",
+    "set": "spgispeech",
+    "lang": "en",
+    "shard": 1,
+    "shard_size": 200,
+    "kind": "lowT",
+    "arms": [
+      {
+        "name": "lowT",
+        "K": 16,
+        "T": 0.4,
+        "steps": 16
+      }
+    ],
+    "tier": 3,
+    "order": 74
+  },
+  {
+    "id": "drax__common_voice__s01__lowT",
+    "model": "drax",
+    "family": "drax",
+    "set": "common_voice",
+    "lang": "en",
+    "shard": 1,
+    "shard_size": 200,
+    "kind": "lowT",
+    "arms": [
+      {
+        "name": "lowT",
+        "K": 16,
+        "T": 0.4,
+        "steps": 16
+      }
+    ],
+    "tier": 3,
+    "order": 75
+  },
+  {
+    "id": "drax__fleurs-en__s01__lowT",
+    "model": "drax",
+    "family": "drax",
+    "set": "fleurs-en",
+    "lang": "en",
+    "shard": 1,
+    "shard_size": 200,
+    "kind": "lowT",
+    "arms": [
+      {
+        "name": "lowT",
+        "K": 16,
+        "T": 0.4,
+        "steps": 16
+      }
+    ],
+    "tier": 3,
+    "order": 76
+  },
+  {
+    "id": "drax__slr83__s01__lowT",
+    "model": "drax",
+    "family": "drax",
+    "set": "slr83",
+    "lang": "en",
+    "shard": 1,
+    "shard_size": 200,
+    "kind": "lowT",
+    "arms": [
+      {
+        "name": "lowT",
+        "K": 16,
+        "T": 0.4,
+        "steps": 16
+      }
+    ],
+    "tier": 3,
+    "order": 77
+  },
+  {
+    "id": "drax__ls-tc-babble10__s01__lowT",
+    "model": "drax",
+    "family": "drax",
+    "set": "ls-tc-babble10",
+    "lang": "en",
+    "shard": 1,
+    "shard_size": 200,
+    "kind": "lowT",
+    "arms": [
+      {
+        "name": "lowT",
+        "K": 16,
+        "T": 0.4,
+        "steps": 16
+      }
+    ],
+    "tier": 3,
+    "order": 78
+  },
+  {
+    "id": "drax__ls-tc-babble5__s01__lowT",
+    "model": "drax",
+    "family": "drax",
+    "set": "ls-tc-babble5",
+    "lang": "en",
+    "shard": 1,
+    "shard_size": 200,
+    "kind": "lowT",
+    "arms": [
+      {
+        "name": "lowT",
+        "K": 16,
+        "T": 0.4,
+        "steps": 16
+      }
+    ],
+    "tier": 3,
+    "order": 79
+  },
+  {
+    "id": "drax__ls-tc-babble0__s01__lowT",
+    "model": "drax",
+    "family": "drax",
+    "set": "ls-tc-babble0",
+    "lang": "en",
+    "shard": 1,
+    "shard_size": 200,
+    "kind": "lowT",
+    "arms": [
+      {
+        "name": "lowT",
+        "K": 16,
+        "T": 0.4,
+        "steps": 16
+      }
+    ],
+    "tier": 3,
+    "order": 80
+  },
+  {
+    "id": "drax__ls-tc-white5__s01__lowT",
+    "model": "drax",
+    "family": "drax",
+    "set": "ls-tc-white5",
+    "lang": "en",
+    "shard": 1,
+    "shard_size": 200,
+    "kind": "lowT",
+    "arms": [
+      {
+        "name": "lowT",
+        "K": 16,
+        "T": 0.4,
+        "steps": 16
+      }
+    ],
+    "tier": 3,
+    "order": 81
+  },
+  {
+    "id": "drax__fleurs-de__s01__lowT",
+    "model": "drax",
+    "family": "drax",
+    "set": "fleurs-de",
+    "lang": "de",
+    "shard": 1,
+    "shard_size": 200,
+    "kind": "lowT",
+    "arms": [
+      {
+        "name": "lowT",
+        "K": 16,
+        "T": 0.4,
+        "steps": 16
+      }
+    ],
+    "tier": 3,
+    "order": 82
+  },
+  {
+    "id": "drax__fleurs-fr__s01__lowT",
+    "model": "drax",
+    "family": "drax",
+    "set": "fleurs-fr",
+    "lang": "fr",
+    "shard": 1,
+    "shard_size": 200,
+    "kind": "lowT",
+    "arms": [
+      {
+        "name": "lowT",
+        "K": 16,
+        "T": 0.4,
+        "steps": 16
+      }
+    ],
+    "tier": 3,
+    "order": 83
+  },
+  {
+    "id": "drax__fleurs-es__s01__lowT",
+    "model": "drax",
+    "family": "drax",
+    "set": "fleurs-es",
+    "lang": "es",
+    "shard": 1,
+    "shard_size": 200,
+    "kind": "lowT",
+    "arms": [
+      {
+        "name": "lowT",
+        "K": 16,
+        "T": 0.4,
+        "steps": 16
+      }
+    ],
+    "tier": 3,
+    "order": 84
+  },
+  {
+    "id": "drax__fleurs-it__s01__lowT",
+    "model": "drax",
+    "family": "drax",
+    "set": "fleurs-it",
+    "lang": "it",
+    "shard": 1,
+    "shard_size": 200,
+    "kind": "lowT",
+    "arms": [
+      {
+        "name": "lowT",
+        "K": 16,
+        "T": 0.4,
+        "steps": 16
+      }
+    ],
+    "tier": 3,
+    "order": 85
+  },
+  {
+    "id": "drax__fleurs-pt__s01__lowT",
+    "model": "drax",
+    "family": "drax",
+    "set": "fleurs-pt",
+    "lang": "pt",
+    "shard": 1,
+    "shard_size": 200,
+    "kind": "lowT",
+    "arms": [
+      {
+        "name": "lowT",
+        "K": 16,
+        "T": 0.4,
+        "steps": 16
+      }
+    ],
+    "tier": 3,
+    "order": 86
+  },
+  {
+    "id": "whisper-small__ls-dev-other__s02__main",
+    "model": "whisper-small",
+    "family": "whisper",
+    "set": "ls-dev-other",
+    "lang": "en",
+    "shard": 2,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "beam",
+        "mode": "beam",
+        "beams": 8
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 16,
+        "T": 0.6
+      }
+    ],
+    "tier": 4,
+    "order": 87
+  },
+  {
+    "id": "whisper-turbo__ls-dev-other__s02__main",
+    "model": "whisper-turbo",
+    "family": "whisper",
+    "set": "ls-dev-other",
+    "lang": "en",
+    "shard": 2,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "beam",
+        "mode": "beam",
+        "beams": 8
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 16,
+        "T": 0.6
+      }
+    ],
+    "tier": 4,
+    "order": 88
+  },
+  {
+    "id": "parakeet-ctc__ls-dev-other__s02__main",
+    "model": "parakeet-ctc",
+    "family": "ctc",
+    "set": "ls-dev-other",
+    "lang": "en",
+    "shard": 2,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 32,
+        "T": 1.0
+      }
+    ],
+    "tier": 4,
+    "order": 89
+  },
+  {
+    "id": "whisper-small__ls-test-clean__s02__main",
+    "model": "whisper-small",
+    "family": "whisper",
+    "set": "ls-test-clean",
+    "lang": "en",
+    "shard": 2,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "beam",
+        "mode": "beam",
+        "beams": 8
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 16,
+        "T": 0.6
+      }
+    ],
+    "tier": 4,
+    "order": 90
+  },
+  {
+    "id": "whisper-turbo__ls-test-clean__s02__main",
+    "model": "whisper-turbo",
+    "family": "whisper",
+    "set": "ls-test-clean",
+    "lang": "en",
+    "shard": 2,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "beam",
+        "mode": "beam",
+        "beams": 8
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 16,
+        "T": 0.6
+      }
+    ],
+    "tier": 4,
+    "order": 91
+  },
+  {
+    "id": "parakeet-ctc__ls-test-clean__s02__main",
+    "model": "parakeet-ctc",
+    "family": "ctc",
+    "set": "ls-test-clean",
+    "lang": "en",
+    "shard": 2,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 32,
+        "T": 1.0
+      }
+    ],
+    "tier": 4,
+    "order": 92
+  },
+  {
+    "id": "whisper-small__ls-test-other__s02__main",
+    "model": "whisper-small",
+    "family": "whisper",
+    "set": "ls-test-other",
+    "lang": "en",
+    "shard": 2,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "beam",
+        "mode": "beam",
+        "beams": 8
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 16,
+        "T": 0.6
+      }
+    ],
+    "tier": 4,
+    "order": 93
+  },
+  {
+    "id": "whisper-turbo__ls-test-other__s02__main",
+    "model": "whisper-turbo",
+    "family": "whisper",
+    "set": "ls-test-other",
+    "lang": "en",
+    "shard": 2,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "beam",
+        "mode": "beam",
+        "beams": 8
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 16,
+        "T": 0.6
+      }
+    ],
+    "tier": 4,
+    "order": 94
+  },
+  {
+    "id": "parakeet-ctc__ls-test-other__s02__main",
+    "model": "parakeet-ctc",
+    "family": "ctc",
+    "set": "ls-test-other",
+    "lang": "en",
+    "shard": 2,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 32,
+        "T": 1.0
+      }
+    ],
+    "tier": 4,
+    "order": 95
+  },
+  {
+    "id": "whisper-small__ami__s02__main",
+    "model": "whisper-small",
+    "family": "whisper",
+    "set": "ami",
+    "lang": "en",
+    "shard": 2,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "beam",
+        "mode": "beam",
+        "beams": 8
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 16,
+        "T": 0.6
+      }
+    ],
+    "tier": 4,
+    "order": 96
+  },
+  {
+    "id": "whisper-turbo__ami__s02__main",
+    "model": "whisper-turbo",
+    "family": "whisper",
+    "set": "ami",
+    "lang": "en",
+    "shard": 2,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "beam",
+        "mode": "beam",
+        "beams": 8
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 16,
+        "T": 0.6
+      }
+    ],
+    "tier": 4,
+    "order": 97
+  },
+  {
+    "id": "parakeet-ctc__ami__s02__main",
+    "model": "parakeet-ctc",
+    "family": "ctc",
+    "set": "ami",
+    "lang": "en",
+    "shard": 2,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 32,
+        "T": 1.0
+      }
+    ],
+    "tier": 4,
+    "order": 98
+  },
+  {
+    "id": "whisper-small__earnings22__s02__main",
+    "model": "whisper-small",
+    "family": "whisper",
+    "set": "earnings22",
+    "lang": "en",
+    "shard": 2,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "beam",
+        "mode": "beam",
+        "beams": 8
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 16,
+        "T": 0.6
+      }
+    ],
+    "tier": 4,
+    "order": 99
+  },
+  {
+    "id": "whisper-turbo__earnings22__s02__main",
+    "model": "whisper-turbo",
+    "family": "whisper",
+    "set": "earnings22",
+    "lang": "en",
+    "shard": 2,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "beam",
+        "mode": "beam",
+        "beams": 8
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 16,
+        "T": 0.6
+      }
+    ],
+    "tier": 4,
+    "order": 100
+  },
+  {
+    "id": "parakeet-ctc__earnings22__s02__main",
+    "model": "parakeet-ctc",
+    "family": "ctc",
+    "set": "earnings22",
+    "lang": "en",
+    "shard": 2,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 32,
+        "T": 1.0
+      }
+    ],
+    "tier": 4,
+    "order": 101
+  },
+  {
+    "id": "whisper-small__common_voice__s02__main",
+    "model": "whisper-small",
+    "family": "whisper",
+    "set": "common_voice",
+    "lang": "en",
+    "shard": 2,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "beam",
+        "mode": "beam",
+        "beams": 8
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 16,
+        "T": 0.6
+      }
+    ],
+    "tier": 4,
+    "order": 102
+  },
+  {
+    "id": "whisper-turbo__common_voice__s02__main",
+    "model": "whisper-turbo",
+    "family": "whisper",
+    "set": "common_voice",
+    "lang": "en",
+    "shard": 2,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "beam",
+        "mode": "beam",
+        "beams": 8
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 16,
+        "T": 0.6
+      }
+    ],
+    "tier": 4,
+    "order": 103
+  },
+  {
+    "id": "parakeet-ctc__common_voice__s02__main",
+    "model": "parakeet-ctc",
+    "family": "ctc",
+    "set": "common_voice",
+    "lang": "en",
+    "shard": 2,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 32,
+        "T": 1.0
+      }
+    ],
+    "tier": 4,
+    "order": 104
+  },
+  {
+    "id": "whisper-small__fleurs-en__s02__main",
+    "model": "whisper-small",
+    "family": "whisper",
+    "set": "fleurs-en",
+    "lang": "en",
+    "shard": 2,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "beam",
+        "mode": "beam",
+        "beams": 8
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 16,
+        "T": 0.6
+      }
+    ],
+    "tier": 4,
+    "order": 105
+  },
+  {
+    "id": "whisper-turbo__fleurs-en__s02__main",
+    "model": "whisper-turbo",
+    "family": "whisper",
+    "set": "fleurs-en",
+    "lang": "en",
+    "shard": 2,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "beam",
+        "mode": "beam",
+        "beams": 8
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 16,
+        "T": 0.6
+      }
+    ],
+    "tier": 4,
+    "order": 106
+  },
+  {
+    "id": "parakeet-ctc__fleurs-en__s02__main",
+    "model": "parakeet-ctc",
+    "family": "ctc",
+    "set": "fleurs-en",
+    "lang": "en",
+    "shard": 2,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 32,
+        "T": 1.0
+      }
+    ],
+    "tier": 4,
+    "order": 107
+  },
+  {
+    "id": "whisper-small__ls-tc-babble5__s02__main",
+    "model": "whisper-small",
+    "family": "whisper",
+    "set": "ls-tc-babble5",
+    "lang": "en",
+    "shard": 2,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "beam",
+        "mode": "beam",
+        "beams": 8
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 16,
+        "T": 0.6
+      }
+    ],
+    "tier": 4,
+    "order": 108
+  },
+  {
+    "id": "whisper-turbo__ls-tc-babble5__s02__main",
+    "model": "whisper-turbo",
+    "family": "whisper",
+    "set": "ls-tc-babble5",
+    "lang": "en",
+    "shard": 2,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "beam",
+        "mode": "beam",
+        "beams": 8
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 16,
+        "T": 0.6
+      }
+    ],
+    "tier": 4,
+    "order": 109
+  },
+  {
+    "id": "parakeet-ctc__ls-tc-babble5__s02__main",
+    "model": "parakeet-ctc",
+    "family": "ctc",
+    "set": "ls-tc-babble5",
+    "lang": "en",
+    "shard": 2,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 32,
+        "T": 1.0
+      }
+    ],
+    "tier": 4,
+    "order": 110
+  },
+  {
+    "id": "whisper-small__ls-dev-other__s03__main",
+    "model": "whisper-small",
+    "family": "whisper",
+    "set": "ls-dev-other",
+    "lang": "en",
+    "shard": 3,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "beam",
+        "mode": "beam",
+        "beams": 8
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 16,
+        "T": 0.6
+      }
+    ],
+    "tier": 4,
+    "order": 111
+  },
+  {
+    "id": "whisper-turbo__ls-dev-other__s03__main",
+    "model": "whisper-turbo",
+    "family": "whisper",
+    "set": "ls-dev-other",
+    "lang": "en",
+    "shard": 3,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "beam",
+        "mode": "beam",
+        "beams": 8
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 16,
+        "T": 0.6
+      }
+    ],
+    "tier": 4,
+    "order": 112
+  },
+  {
+    "id": "parakeet-ctc__ls-dev-other__s03__main",
+    "model": "parakeet-ctc",
+    "family": "ctc",
+    "set": "ls-dev-other",
+    "lang": "en",
+    "shard": 3,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 32,
+        "T": 1.0
+      }
+    ],
+    "tier": 4,
+    "order": 113
+  },
+  {
+    "id": "whisper-small__ls-test-clean__s03__main",
+    "model": "whisper-small",
+    "family": "whisper",
+    "set": "ls-test-clean",
+    "lang": "en",
+    "shard": 3,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "beam",
+        "mode": "beam",
+        "beams": 8
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 16,
+        "T": 0.6
+      }
+    ],
+    "tier": 4,
+    "order": 114
+  },
+  {
+    "id": "whisper-turbo__ls-test-clean__s03__main",
+    "model": "whisper-turbo",
+    "family": "whisper",
+    "set": "ls-test-clean",
+    "lang": "en",
+    "shard": 3,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "beam",
+        "mode": "beam",
+        "beams": 8
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 16,
+        "T": 0.6
+      }
+    ],
+    "tier": 4,
+    "order": 115
+  },
+  {
+    "id": "parakeet-ctc__ls-test-clean__s03__main",
+    "model": "parakeet-ctc",
+    "family": "ctc",
+    "set": "ls-test-clean",
+    "lang": "en",
+    "shard": 3,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 32,
+        "T": 1.0
+      }
+    ],
+    "tier": 4,
+    "order": 116
+  },
+  {
+    "id": "whisper-small__ls-test-other__s03__main",
+    "model": "whisper-small",
+    "family": "whisper",
+    "set": "ls-test-other",
+    "lang": "en",
+    "shard": 3,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "beam",
+        "mode": "beam",
+        "beams": 8
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 16,
+        "T": 0.6
+      }
+    ],
+    "tier": 4,
+    "order": 117
+  },
+  {
+    "id": "whisper-turbo__ls-test-other__s03__main",
+    "model": "whisper-turbo",
+    "family": "whisper",
+    "set": "ls-test-other",
+    "lang": "en",
+    "shard": 3,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "beam",
+        "mode": "beam",
+        "beams": 8
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 16,
+        "T": 0.6
+      }
+    ],
+    "tier": 4,
+    "order": 118
+  },
+  {
+    "id": "parakeet-ctc__ls-test-other__s03__main",
+    "model": "parakeet-ctc",
+    "family": "ctc",
+    "set": "ls-test-other",
+    "lang": "en",
+    "shard": 3,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 32,
+        "T": 1.0
+      }
+    ],
+    "tier": 4,
+    "order": 119
+  },
+  {
+    "id": "whisper-small__ami__s03__main",
+    "model": "whisper-small",
+    "family": "whisper",
+    "set": "ami",
+    "lang": "en",
+    "shard": 3,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "beam",
+        "mode": "beam",
+        "beams": 8
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 16,
+        "T": 0.6
+      }
+    ],
+    "tier": 4,
+    "order": 120
+  },
+  {
+    "id": "whisper-turbo__ami__s03__main",
+    "model": "whisper-turbo",
+    "family": "whisper",
+    "set": "ami",
+    "lang": "en",
+    "shard": 3,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "beam",
+        "mode": "beam",
+        "beams": 8
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 16,
+        "T": 0.6
+      }
+    ],
+    "tier": 4,
+    "order": 121
+  },
+  {
+    "id": "parakeet-ctc__ami__s03__main",
+    "model": "parakeet-ctc",
+    "family": "ctc",
+    "set": "ami",
+    "lang": "en",
+    "shard": 3,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 32,
+        "T": 1.0
+      }
+    ],
+    "tier": 4,
+    "order": 122
+  },
+  {
+    "id": "whisper-small__earnings22__s03__main",
+    "model": "whisper-small",
+    "family": "whisper",
+    "set": "earnings22",
+    "lang": "en",
+    "shard": 3,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "beam",
+        "mode": "beam",
+        "beams": 8
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 16,
+        "T": 0.6
+      }
+    ],
+    "tier": 4,
+    "order": 123
+  },
+  {
+    "id": "whisper-turbo__earnings22__s03__main",
+    "model": "whisper-turbo",
+    "family": "whisper",
+    "set": "earnings22",
+    "lang": "en",
+    "shard": 3,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "beam",
+        "mode": "beam",
+        "beams": 8
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 16,
+        "T": 0.6
+      }
+    ],
+    "tier": 4,
+    "order": 124
+  },
+  {
+    "id": "parakeet-ctc__earnings22__s03__main",
+    "model": "parakeet-ctc",
+    "family": "ctc",
+    "set": "earnings22",
+    "lang": "en",
+    "shard": 3,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 32,
+        "T": 1.0
+      }
+    ],
+    "tier": 4,
+    "order": 125
+  },
+  {
+    "id": "whisper-small__common_voice__s03__main",
+    "model": "whisper-small",
+    "family": "whisper",
+    "set": "common_voice",
+    "lang": "en",
+    "shard": 3,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "beam",
+        "mode": "beam",
+        "beams": 8
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 16,
+        "T": 0.6
+      }
+    ],
+    "tier": 4,
+    "order": 126
+  },
+  {
+    "id": "whisper-turbo__common_voice__s03__main",
+    "model": "whisper-turbo",
+    "family": "whisper",
+    "set": "common_voice",
+    "lang": "en",
+    "shard": 3,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "beam",
+        "mode": "beam",
+        "beams": 8
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 16,
+        "T": 0.6
+      }
+    ],
+    "tier": 4,
+    "order": 127
+  },
+  {
+    "id": "parakeet-ctc__common_voice__s03__main",
+    "model": "parakeet-ctc",
+    "family": "ctc",
+    "set": "common_voice",
+    "lang": "en",
+    "shard": 3,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 32,
+        "T": 1.0
+      }
+    ],
+    "tier": 4,
+    "order": 128
+  },
+  {
+    "id": "whisper-small__fleurs-en__s03__main",
+    "model": "whisper-small",
+    "family": "whisper",
+    "set": "fleurs-en",
+    "lang": "en",
+    "shard": 3,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "beam",
+        "mode": "beam",
+        "beams": 8
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 16,
+        "T": 0.6
+      }
+    ],
+    "tier": 4,
+    "order": 129
+  },
+  {
+    "id": "whisper-turbo__fleurs-en__s03__main",
+    "model": "whisper-turbo",
+    "family": "whisper",
+    "set": "fleurs-en",
+    "lang": "en",
+    "shard": 3,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "beam",
+        "mode": "beam",
+        "beams": 8
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 16,
+        "T": 0.6
+      }
+    ],
+    "tier": 4,
+    "order": 130
+  },
+  {
+    "id": "parakeet-ctc__fleurs-en__s03__main",
+    "model": "parakeet-ctc",
+    "family": "ctc",
+    "set": "fleurs-en",
+    "lang": "en",
+    "shard": 3,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 32,
+        "T": 1.0
+      }
+    ],
+    "tier": 4,
+    "order": 131
+  },
+  {
+    "id": "whisper-small__ls-tc-babble5__s03__main",
+    "model": "whisper-small",
+    "family": "whisper",
+    "set": "ls-tc-babble5",
+    "lang": "en",
+    "shard": 3,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "beam",
+        "mode": "beam",
+        "beams": 8
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 16,
+        "T": 0.6
+      }
+    ],
+    "tier": 4,
+    "order": 132
+  },
+  {
+    "id": "whisper-turbo__ls-tc-babble5__s03__main",
+    "model": "whisper-turbo",
+    "family": "whisper",
+    "set": "ls-tc-babble5",
+    "lang": "en",
+    "shard": 3,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "beam",
+        "mode": "beam",
+        "beams": 8
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 16,
+        "T": 0.6
+      }
+    ],
+    "tier": 4,
+    "order": 133
+  },
+  {
+    "id": "parakeet-ctc__ls-tc-babble5__s03__main",
+    "model": "parakeet-ctc",
+    "family": "ctc",
+    "set": "ls-tc-babble5",
+    "lang": "en",
+    "shard": 3,
+    "shard_size": 200,
+    "kind": "main",
+    "arms": [
+      {
+        "name": "greedy",
+        "mode": "greedy"
+      },
+      {
+        "name": "sample",
+        "mode": "sample",
+        "K": 32,
+        "T": 1.0
+      }
+    ],
+    "tier": 4,
+    "order": 134
+  }
+]

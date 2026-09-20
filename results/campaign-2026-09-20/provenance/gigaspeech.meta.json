@@ -1,0 +1,27 @@
+{
+  "source": "hf-audio/open-asr-leaderboard",
+  "files": [
+    "test-00004-of-00019.parquet",
+    "test-00014-of-00019.parquet"
+  ],
+  "n_total": 2098,
+  "n_passing_filter": 2098,
+  "shards_used": [
+    4,
+    14
+  ],
+  "set": "gigaspeech",
+  "kind": "esb",
+  "lang": "en",
+  "role": "test",
+  "domain": "podcasts and YouTube",
+  "filter": {
+    "min_dur": 0.8,
+    "max_dur": 28.0,
+    "max_ref_words": 75
+  },
+  "prep_s": 22.9,
+  "n_selected": 1600,
+  "audio_min": 164.58,
+  "n_clusters": 127
+}

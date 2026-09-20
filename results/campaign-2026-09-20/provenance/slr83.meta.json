@@ -1,0 +1,24 @@
+{
+  "source": "openslr SLR83",
+  "per_subset": {
+    "irish_english_male": 320,
+    "midlands_english_female": 246,
+    "northern_english_female": 320,
+    "scottish_english_female": 320,
+    "welsh_english_female": 320
+  },
+  "set": "slr83",
+  "kind": "slr83",
+  "lang": "en",
+  "role": "test",
+  "domain": "UK and Irish accents",
+  "filter": {
+    "min_dur": 0.8,
+    "max_dur": 28.0,
+    "max_ref_words": 75
+  },
+  "prep_s": 50.7,
+  "n_selected": 1526,
+  "audio_min": 167.07,
+  "n_clusters": 24
+}

@@ -1,0 +1,19 @@
+{
+  "source": "google/fleurs",
+  "code": "it_it",
+  "n_total": 865,
+  "set": "fleurs-it",
+  "kind": "fleurs",
+  "lang": "it",
+  "role": "test",
+  "domain": "read, Italian",
+  "filter": {
+    "min_dur": 0.8,
+    "max_dur": 28.0,
+    "max_ref_words": 75
+  },
+  "prep_s": 27.7,
+  "n_selected": 800,
+  "audio_min": 190.55,
+  "n_clusters": 341
+}
