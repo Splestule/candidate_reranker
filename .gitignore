@@ -14,9 +14,8 @@ results/*.jsonl
 results/*.log
 results/_to_delete/
 
-# campaign findings are kept: summaries, per-utterance tables, figures, provenance.
-# The candidate dumps themselves stay out (hundreds of MB); they come from the Kaggle
-# notebook output, see docs/campaign.md.
+# a campaign directory is kept whole: candidate dumps, per-utterance tables, manifests,
+# logs, provenance, figures. See docs/campaign.md for what each part is.
 !results/campaign-*/
 !results/campaign-*/**
 

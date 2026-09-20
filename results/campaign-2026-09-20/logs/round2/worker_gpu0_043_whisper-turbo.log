@@ -1,0 +1,3 @@
+[09:52:47] [lane0 whisper-turbo] host 2af9ea10db47  cuda=True  device=Tesla T4
+[09:52:47] [lane0 whisper-turbo] yielding: another model has lower-tier work waiting
+[09:52:47] [lane0 whisper-turbo] exiting after 0 jobs

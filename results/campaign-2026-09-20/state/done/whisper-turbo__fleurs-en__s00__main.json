@@ -1,0 +1,20 @@
+{
+  "n_ok": 200,
+  "n_err": 0,
+  "audio_s": 1950.9799999999993,
+  "encode_s": 4.073951244354248,
+  "decode_s": {
+    "greedy": 67.55840807724002,
+    "beam": 108.27699445457456,
+    "sample": 91.6515672504426
+  },
+  "started": 1789899848.9723861,
+  "status": "done",
+  "wall_s": 400.94424176216125,
+  "n_in_shard": 200,
+  "n_resumed": 0,
+  "peak_mem_mb": 2581.3017578125,
+  "job": "whisper-turbo__fleurs-en__s00__main",
+  "model": "whisper-turbo",
+  "lane": 0
+}

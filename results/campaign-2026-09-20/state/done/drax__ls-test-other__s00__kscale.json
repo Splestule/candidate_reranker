@@ -1,0 +1,18 @@
+{
+  "n_ok": 200,
+  "n_err": 0,
+  "audio_s": 1304.725000000001,
+  "encode_s": 37.15850210189819,
+  "decode_s": {
+    "K64": 2843.5587916374207
+  },
+  "started": 1789886129.9738827,
+  "status": "done",
+  "wall_s": 2881.619862794876,
+  "n_in_shard": 200,
+  "n_resumed": 0,
+  "peak_mem_mb": 5953.546875,
+  "job": "drax__ls-test-other__s00__kscale",
+  "model": "drax",
+  "lane": 1
+}

@@ -1,0 +1,20 @@
+{
+  "n_ok": 200,
+  "n_err": 0,
+  "audio_s": 1421.96,
+  "encode_s": 4.0840904712677,
+  "decode_s": {
+    "greedy": 65.62571411743158,
+    "beam": 104.37425645599369,
+    "sample": 89.06195059318541
+  },
+  "started": 1789900249.919747,
+  "status": "done",
+  "wall_s": 392.3058297634125,
+  "n_in_shard": 200,
+  "n_resumed": 0,
+  "peak_mem_mb": 2559.1416015625,
+  "job": "whisper-turbo__ls-tc-babble5__s00__main",
+  "model": "whisper-turbo",
+  "lane": 0
+}

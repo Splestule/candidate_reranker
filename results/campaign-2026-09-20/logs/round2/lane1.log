@@ -1,0 +1,209 @@
+[09:43:24] [lane1 whisper-small] host 2af9ea10db47  cuda=True  device=Tesla T4
+[09:43:50] [lane1 whisper-small] model loaded in 26 s
+[09:43:50] [lane1 whisper-small] job whisper-small__ls-dev-other__s00__main: 200 utts, 0 already done, arms ['greedy', 'beam', 'sample']
+[09:45:19] [lane1 whisper-small]   whisper-small__ls-dev-other__s00__main: 50/200  1.78 s/utt
+[09:46:44] [lane1 whisper-small]   whisper-small__ls-dev-other__s00__main: 100/200  1.74 s/utt
+[09:48:16] [lane1 whisper-small]   whisper-small__ls-dev-other__s00__main: 150/200  1.78 s/utt
+[09:49:49] [lane1 whisper-small]   whisper-small__ls-dev-other__s00__main: 200/200  1.79 s/utt
+[09:49:49] [lane1 whisper-small] done whisper-small__ls-dev-other__s00__main [done] 200 utts in 6.0 min (1.79 s/utt, RTF 0.276)
+[09:49:49] [lane1 whisper-small] yielding: another model has lower-tier work waiting
+[09:49:49] [lane1 whisper-small] exiting after 1 jobs
+[09:49:55] [lane1 parakeet-ctc] host 2af9ea10db47  cuda=True  device=Tesla T4
+[09:50:35] [lane1 parakeet-ctc] model loaded in 40 s
+[09:50:35] [lane1 parakeet-ctc] job parakeet-ctc__ls-dev-other__s00__main: 200 utts, 0 already done, arms ['greedy', 'sample']
+[09:51:40] [lane1 parakeet-ctc]   parakeet-ctc__ls-dev-other__s00__main: 50/200  1.31 s/utt
+[09:52:39] [lane1 parakeet-ctc]   parakeet-ctc__ls-dev-other__s00__main: 100/200  1.24 s/utt
+[09:53:18] [lane1 parakeet-ctc]   parakeet-ctc__ls-dev-other__s00__main: 150/200  1.09 s/utt
+[09:54:00] [lane1 parakeet-ctc]   parakeet-ctc__ls-dev-other__s00__main: 200/200  1.03 s/utt
+[09:54:01] [lane1 parakeet-ctc] done parakeet-ctc__ls-dev-other__s00__main [done] 200 utts in 3.4 min (1.03 s/utt, RTF 0.158)
+[09:54:01] [lane1 parakeet-ctc] job parakeet-ctc__ls-test-clean__s00__main: 200 utts, 0 already done, arms ['greedy', 'sample']
+[09:54:44] [lane1 parakeet-ctc]   parakeet-ctc__ls-test-clean__s00__main: 50/200  0.86 s/utt
+[09:55:18] [lane1 parakeet-ctc]   parakeet-ctc__ls-test-clean__s00__main: 100/200  0.78 s/utt
+[09:55:46] [lane1 parakeet-ctc]   parakeet-ctc__ls-test-clean__s00__main: 150/200  0.71 s/utt
+[09:56:10] [lane1 parakeet-ctc]   parakeet-ctc__ls-test-clean__s00__main: 200/200  0.65 s/utt
+[09:56:10] [lane1 parakeet-ctc] done parakeet-ctc__ls-test-clean__s00__main [done] 200 utts in 2.2 min (0.65 s/utt, RTF 0.091)
+[09:56:10] [lane1 parakeet-ctc] job parakeet-ctc__ls-test-other__s00__main: 200 utts, 0 already done, arms ['greedy', 'sample']
+[09:56:33] [lane1 parakeet-ctc]   parakeet-ctc__ls-test-other__s00__main: 50/200  0.46 s/utt
+[09:56:50] [lane1 parakeet-ctc]   parakeet-ctc__ls-test-other__s00__main: 100/200  0.40 s/utt
+[09:57:06] [lane1 parakeet-ctc]   parakeet-ctc__ls-test-other__s00__main: 150/200  0.38 s/utt
+[09:57:22] [lane1 parakeet-ctc]   parakeet-ctc__ls-test-other__s00__main: 200/200  0.36 s/utt
+[09:57:22] [lane1 parakeet-ctc] done parakeet-ctc__ls-test-other__s00__main [done] 200 utts in 1.2 min (0.36 s/utt, RTF 0.055)
+[09:57:22] [lane1 parakeet-ctc] job parakeet-ctc__ami__s00__main: 200 utts, 0 already done, arms ['greedy', 'sample']
+[09:57:36] [lane1 parakeet-ctc]   parakeet-ctc__ami__s00__main: 50/200  0.28 s/utt
+[09:57:45] [lane1 parakeet-ctc]   parakeet-ctc__ami__s00__main: 100/200  0.23 s/utt
+[09:57:51] [lane1 parakeet-ctc]   parakeet-ctc__ami__s00__main: 150/200  0.19 s/utt
+[09:57:57] [lane1 parakeet-ctc]   parakeet-ctc__ami__s00__main: 200/200  0.18 s/utt
+[09:57:57] [lane1 parakeet-ctc] done parakeet-ctc__ami__s00__main [done] 200 utts in 0.6 min (0.18 s/utt, RTF 0.057)
+[09:57:57] [lane1 parakeet-ctc] job parakeet-ctc__earnings22__s00__main: 200 utts, 0 already done, arms ['greedy', 'sample']
+[09:58:13] [lane1 parakeet-ctc]   parakeet-ctc__earnings22__s00__main: 50/200  0.31 s/utt
+[09:58:24] [lane1 parakeet-ctc]   parakeet-ctc__earnings22__s00__main: 100/200  0.27 s/utt
+[09:58:38] [lane1 parakeet-ctc]   parakeet-ctc__earnings22__s00__main: 150/200  0.27 s/utt
+[09:58:47] [lane1 parakeet-ctc]   parakeet-ctc__earnings22__s00__main: 200/200  0.25 s/utt
+[09:58:47] [lane1 parakeet-ctc] done parakeet-ctc__earnings22__s00__main [done] 200 utts in 0.8 min (0.25 s/utt, RTF 0.040)
+[09:58:47] [lane1 parakeet-ctc] job parakeet-ctc__common_voice__s00__main: 200 utts, 0 already done, arms ['greedy', 'sample']
+[09:58:56] [lane1 parakeet-ctc]   parakeet-ctc__common_voice__s00__main: 50/200  0.17 s/utt
+[09:59:01] [lane1 parakeet-ctc]   parakeet-ctc__common_voice__s00__main: 100/200  0.14 s/utt
+[09:59:10] [lane1 parakeet-ctc]   parakeet-ctc__common_voice__s00__main: 150/200  0.15 s/utt
+[09:59:17] [lane1 parakeet-ctc]   parakeet-ctc__common_voice__s00__main: 200/200  0.15 s/utt
+[09:59:17] [lane1 parakeet-ctc] done parakeet-ctc__common_voice__s00__main [done] 200 utts in 0.5 min (0.15 s/utt, RTF 0.027)
+[09:59:17] [lane1 parakeet-ctc] job parakeet-ctc__fleurs-en__s00__main: 200 utts, 0 already done, arms ['greedy', 'sample']
+[09:59:35] [lane1 parakeet-ctc]   parakeet-ctc__fleurs-en__s00__main: 50/200  0.37 s/utt
+[09:59:55] [lane1 parakeet-ctc]   parakeet-ctc__fleurs-en__s00__main: 100/200  0.38 s/utt
+[10:00:08] [lane1 parakeet-ctc]   parakeet-ctc__fleurs-en__s00__main: 150/200  0.34 s/utt
+[10:00:24] [lane1 parakeet-ctc]   parakeet-ctc__fleurs-en__s00__main: 200/200  0.34 s/utt
+[10:00:24] [lane1 parakeet-ctc] done parakeet-ctc__fleurs-en__s00__main [done] 200 utts in 1.1 min (0.34 s/utt, RTF 0.034)
+[10:00:24] [lane1 parakeet-ctc] job parakeet-ctc__ls-tc-babble5__s00__main: 200 utts, 0 already done, arms ['greedy', 'sample']
+[10:00:29] [lane1 parakeet-ctc]   parakeet-ctc__ls-tc-babble5__s00__main: 50/200  0.10 s/utt
+[10:00:34] [lane1 parakeet-ctc]   parakeet-ctc__ls-tc-babble5__s00__main: 100/200  0.10 s/utt
+[10:00:39] [lane1 parakeet-ctc]   parakeet-ctc__ls-tc-babble5__s00__main: 150/200  0.10 s/utt
+[10:00:44] [lane1 parakeet-ctc]   parakeet-ctc__ls-tc-babble5__s00__main: 200/200  0.10 s/utt
+[10:00:45] [lane1 parakeet-ctc] done parakeet-ctc__ls-tc-babble5__s00__main [done] 200 utts in 0.3 min (0.10 s/utt, RTF 0.014)
+[10:00:45] [lane1 parakeet-ctc] yielding: another model has lower-tier work waiting
+[10:00:45] [lane1 parakeet-ctc] exiting after 8 jobs
+[10:00:48] [lane1 whisper-small] host 2af9ea10db47  cuda=True  device=Tesla T4
+[10:01:02] [lane1 whisper-small] model loaded in 13 s
+[10:01:02] [lane1 whisper-small] job whisper-small__ls-test-clean__s00__main: 200 utts, 0 already done, arms ['greedy', 'beam', 'sample']
+[10:02:22] [lane1 whisper-small]   whisper-small__ls-test-clean__s00__main: 50/200  1.60 s/utt
+[10:03:43] [lane1 whisper-small]   whisper-small__ls-test-clean__s00__main: 100/200  1.61 s/utt
+[10:05:05] [lane1 whisper-small]   whisper-small__ls-test-clean__s00__main: 150/200  1.63 s/utt
+[10:06:19] [lane1 whisper-small]   whisper-small__ls-test-clean__s00__main: 200/200  1.59 s/utt
+[10:06:19] [lane1 whisper-small] done whisper-small__ls-test-clean__s00__main [done] 200 utts in 5.3 min (1.59 s/utt, RTF 0.223)
+[10:06:19] [lane1 whisper-small] job whisper-small__ls-test-other__s00__main: 200 utts, 0 already done, arms ['greedy', 'beam', 'sample']
+[10:07:37] [lane1 whisper-small]   whisper-small__ls-test-other__s00__main: 50/200  1.55 s/utt
+[10:08:48] [lane1 whisper-small]   whisper-small__ls-test-other__s00__main: 100/200  1.49 s/utt
+[10:09:56] [lane1 whisper-small]   whisper-small__ls-test-other__s00__main: 150/200  1.45 s/utt
+[10:11:19] [lane1 whisper-small]   whisper-small__ls-test-other__s00__main: 200/200  1.50 s/utt
+[10:11:19] [lane1 whisper-small] done whisper-small__ls-test-other__s00__main [done] 200 utts in 5.0 min (1.50 s/utt, RTF 0.230)
+[10:11:19] [lane1 whisper-small] job whisper-small__ami__s00__main: 200 utts, 0 already done, arms ['greedy', 'beam', 'sample']
+[10:12:16] [lane1 whisper-small]   whisper-small__ami__s00__main: 50/200  1.13 s/utt
+[10:13:08] [lane1 whisper-small]   whisper-small__ami__s00__main: 100/200  1.08 s/utt
+[10:14:07] [lane1 whisper-small]   whisper-small__ami__s00__main: 150/200  1.12 s/utt
+[10:14:52] [lane1 whisper-small]   whisper-small__ami__s00__main: 200/200  1.06 s/utt
+[10:14:52] [lane1 whisper-small] done whisper-small__ami__s00__main [done] 200 utts in 3.6 min (1.07 s/utt, RTF 0.346)
+[10:14:52] [lane1 whisper-small] job whisper-small__earnings22__s00__main: 200 utts, 0 already done, arms ['greedy', 'beam', 'sample']
+[10:15:57] [lane1 whisper-small]   whisper-small__earnings22__s00__main: 50/200  1.30 s/utt
+[10:17:05] [lane1 whisper-small]   whisper-small__earnings22__s00__main: 100/200  1.32 s/utt
+[10:18:18] [lane1 whisper-small]   whisper-small__earnings22__s00__main: 150/200  1.37 s/utt
+[10:19:25] [lane1 whisper-small]   whisper-small__earnings22__s00__main: 200/200  1.36 s/utt
+[10:19:25] [lane1 whisper-small] done whisper-small__earnings22__s00__main [done] 200 utts in 4.5 min (1.36 s/utt, RTF 0.217)
+[10:19:25] [lane1 whisper-small] job whisper-small__common_voice__s00__main: 200 utts, 0 already done, arms ['greedy', 'beam', 'sample']
+[10:20:16] [lane1 whisper-small]   whisper-small__common_voice__s00__main: 50/200  1.03 s/utt
+[10:21:07] [lane1 whisper-small]   whisper-small__common_voice__s00__main: 100/200  1.02 s/utt
+[10:21:55] [lane1 whisper-small]   whisper-small__common_voice__s00__main: 150/200  1.00 s/utt
+[10:22:43] [lane1 whisper-small]   whisper-small__common_voice__s00__main: 200/200  0.99 s/utt
+[10:22:43] [lane1 whisper-small] done whisper-small__common_voice__s00__main [done] 200 utts in 3.3 min (0.99 s/utt, RTF 0.182)
+[10:22:43] [lane1 whisper-small] job whisper-small__fleurs-en__s00__main: 200 utts, 0 already done, arms ['greedy', 'beam', 'sample']
+[10:24:07] [lane1 whisper-small]   whisper-small__fleurs-en__s00__main: 50/200  1.68 s/utt
+[10:25:40] [lane1 whisper-small]   whisper-small__fleurs-en__s00__main: 100/200  1.76 s/utt
+[10:27:02] [lane1 whisper-small]   whisper-small__fleurs-en__s00__main: 150/200  1.72 s/utt
+[10:28:27] [lane1 whisper-small]   whisper-small__fleurs-en__s00__main: 200/200  1.72 s/utt
+[10:28:27] [lane1 whisper-small] done whisper-small__fleurs-en__s00__main [done] 200 utts in 5.7 min (1.72 s/utt, RTF 0.176)
+[10:28:27] [lane1 whisper-small] job whisper-small__ls-tc-babble5__s00__main: 200 utts, 0 already done, arms ['greedy', 'beam', 'sample']
+[10:30:03] [lane1 whisper-small]   whisper-small__ls-tc-babble5__s00__main: 50/200  1.92 s/utt
+[10:31:27] [lane1 whisper-small]   whisper-small__ls-tc-babble5__s00__main: 100/200  1.80 s/utt
+[10:32:52] [lane1 whisper-small]   whisper-small__ls-tc-babble5__s00__main: 150/200  1.77 s/utt
+[10:34:06] [lane1 whisper-small]   whisper-small__ls-tc-babble5__s00__main: 200/200  1.69 s/utt
+[10:34:06] [lane1 whisper-small] done whisper-small__ls-tc-babble5__s00__main [done] 200 utts in 5.6 min (1.69 s/utt, RTF 0.238)
+[10:34:06] [lane1 whisper-small] yielding: another model has lower-tier work waiting
+[10:34:06] [lane1 whisper-small] exiting after 7 jobs
+[10:34:09] [lane1 whisfusion] host 2af9ea10db47  cuda=True  device=Tesla T4
+[10:34:36] [lane1 whisfusion] model loaded in 27 s
+[10:34:36] [lane1 whisfusion] job whisfusion__ls-test-other__s00__kscale: 200 utts, 0 already done, arms ['K64']
+[10:37:51] [lane1 whisfusion]   whisfusion__ls-test-other__s00__kscale: 50/200  3.90 s/utt
+[10:41:09] [lane1 whisfusion]   whisfusion__ls-test-other__s00__kscale: 100/200  3.93 s/utt
+[10:44:28] [lane1 whisfusion]   whisfusion__ls-test-other__s00__kscale: 150/200  3.94 s/utt
+[10:47:46] [lane1 whisfusion]   whisfusion__ls-test-other__s00__kscale: 200/200  3.95 s/utt
+[10:47:47] [lane1 whisfusion] done whisfusion__ls-test-other__s00__kscale [done] 200 utts in 13.2 min (3.95 s/utt, RTF 0.606)
+[10:47:47] [lane1 whisfusion] nothing claimable for this model
+[10:47:47] [lane1 whisfusion] exiting after 1 jobs
+[10:47:51] [lane1 drax] host 2af9ea10db47  cuda=True  device=Tesla T4
+[10:48:07] [lane1 drax] model loaded in 16 s
+[10:48:07] [lane1 drax] job drax__ls-test-other__s00__lowT: 200 utts, 0 already done, arms ['lowT']
+[10:50:52] [lane1 drax]   drax__ls-test-other__s00__lowT: 50/200  3.29 s/utt
+[10:53:36] [lane1 drax]   drax__ls-test-other__s00__lowT: 100/200  3.29 s/utt
+[10:56:21] [lane1 drax]   drax__ls-test-other__s00__lowT: 150/200  3.29 s/utt
+[10:59:06] [lane1 drax]   drax__ls-test-other__s00__lowT: 200/200  3.29 s/utt
+[10:59:06] [lane1 drax] done drax__ls-test-other__s00__lowT [done] 200 utts in 11.0 min (3.29 s/utt, RTF 0.505)
+[10:59:06] [lane1 drax] job drax__earnings22__s00__lowT: 200 utts, 0 already done, arms ['lowT']
+[11:01:51] [lane1 drax]   drax__earnings22__s00__lowT: 50/200  3.30 s/utt
+[11:04:36] [lane1 drax]   drax__earnings22__s00__lowT: 100/200  3.29 s/utt
+[11:07:20] [lane1 drax]   drax__earnings22__s00__lowT: 150/200  3.29 s/utt
+[11:10:05] [lane1 drax]   drax__earnings22__s00__lowT: 200/200  3.29 s/utt
+[11:10:05] [lane1 drax] done drax__earnings22__s00__lowT [done] 200 utts in 11.0 min (3.29 s/utt, RTF 0.526)
+[11:10:05] [lane1 drax] job drax__gigaspeech__s00__lowT: 200 utts, 0 already done, arms ['lowT']
+[11:12:50] [lane1 drax]   drax__gigaspeech__s00__lowT: 50/200  3.30 s/utt
+[11:15:35] [lane1 drax]   drax__gigaspeech__s00__lowT: 100/200  3.30 s/utt
+[11:18:20] [lane1 drax]   drax__gigaspeech__s00__lowT: 150/200  3.30 s/utt
+[11:21:04] [lane1 drax]   drax__gigaspeech__s00__lowT: 200/200  3.30 s/utt
+[11:21:04] [lane1 drax] done drax__gigaspeech__s00__lowT [done] 200 utts in 11.0 min (3.30 s/utt, RTF 0.546)
+[11:21:04] [lane1 drax] job drax__common_voice__s00__lowT: 200 utts, 0 already done, arms ['lowT']
+[11:23:49] [lane1 drax]   drax__common_voice__s00__lowT: 50/200  3.29 s/utt
+[11:26:33] [lane1 drax]   drax__common_voice__s00__lowT: 100/200  3.29 s/utt
+[11:29:17] [lane1 drax]   drax__common_voice__s00__lowT: 150/200  3.29 s/utt
+[11:32:02] [lane1 drax]   drax__common_voice__s00__lowT: 200/200  3.29 s/utt
+[11:32:02] [lane1 drax] done drax__common_voice__s00__lowT [done] 200 utts in 11.0 min (3.29 s/utt, RTF 0.602)
+[11:32:02] [lane1 drax] job drax__slr83__s00__lowT: 200 utts, 0 already done, arms ['lowT']
+[11:34:47] [lane1 drax]   drax__slr83__s00__lowT: 50/200  3.29 s/utt
+[11:37:31] [lane1 drax]   drax__slr83__s00__lowT: 100/200  3.29 s/utt
+[11:40:16] [lane1 drax]   drax__slr83__s00__lowT: 150/200  3.29 s/utt
+[11:43:01] [lane1 drax]   drax__slr83__s00__lowT: 200/200  3.29 s/utt
+[11:43:01] [lane1 drax] done drax__slr83__s00__lowT [done] 200 utts in 11.0 min (3.29 s/utt, RTF 0.477)
+[11:43:01] [lane1 drax] job drax__ls-tc-babble5__s00__lowT: 200 utts, 0 already done, arms ['lowT']
+[11:45:45] [lane1 drax]   drax__ls-tc-babble5__s00__lowT: 50/200  3.29 s/utt
+[11:48:30] [lane1 drax]   drax__ls-tc-babble5__s00__lowT: 100/200  3.29 s/utt
+[11:51:15] [lane1 drax]   drax__ls-tc-babble5__s00__lowT: 150/200  3.30 s/utt
+[11:54:00] [lane1 drax]   drax__ls-tc-babble5__s00__lowT: 200/200  3.29 s/utt
+[11:54:00] [lane1 drax] done drax__ls-tc-babble5__s00__lowT [done] 200 utts in 11.0 min (3.29 s/utt, RTF 0.463)
+[11:54:00] [lane1 drax] job drax__ls-tc-white5__s00__lowT: 200 utts, 0 already done, arms ['lowT']
+[11:56:45] [lane1 drax]   drax__ls-tc-white5__s00__lowT: 50/200  3.30 s/utt
+[11:59:30] [lane1 drax]   drax__ls-tc-white5__s00__lowT: 100/200  3.30 s/utt
+[12:02:15] [lane1 drax]   drax__ls-tc-white5__s00__lowT: 150/200  3.30 s/utt
+[12:04:59] [lane1 drax]   drax__ls-tc-white5__s00__lowT: 200/200  3.30 s/utt
+[12:04:59] [lane1 drax] done drax__ls-tc-white5__s00__lowT [done] 200 utts in 11.0 min (3.30 s/utt, RTF 0.464)
+[12:04:59] [lane1 drax] job drax__fleurs-fr__s00__lowT: 200 utts, 0 already done, arms ['lowT']
+[12:07:45] [lane1 drax]   drax__fleurs-fr__s00__lowT: 50/200  3.31 s/utt
+[12:10:30] [lane1 drax]   drax__fleurs-fr__s00__lowT: 100/200  3.31 s/utt
+[12:13:16] [lane1 drax]   drax__fleurs-fr__s00__lowT: 150/200  3.31 s/utt
+[12:16:01] [lane1 drax]   drax__fleurs-fr__s00__lowT: 200/200  3.31 s/utt
+[12:16:01] [lane1 drax] done drax__fleurs-fr__s00__lowT [done] 200 utts in 11.0 min (3.31 s/utt, RTF 0.322)
+[12:16:01] [lane1 drax] job drax__fleurs-es__s00__lowT: 200 utts, 0 already done, arms ['lowT']
+[12:18:47] [lane1 drax]   drax__fleurs-es__s00__lowT: 50/200  3.31 s/utt
+[12:21:32] [lane1 drax]   drax__fleurs-es__s00__lowT: 100/200  3.31 s/utt
+[12:24:17] [lane1 drax]   drax__fleurs-es__s00__lowT: 150/200  3.31 s/utt
+[12:27:02] [lane1 drax]   drax__fleurs-es__s00__lowT: 200/200  3.31 s/utt
+[12:27:03] [lane1 drax] done drax__fleurs-es__s00__lowT [done] 200 utts in 11.0 min (3.31 s/utt, RTF 0.277)
+[12:27:03] [lane1 drax] job drax__fleurs-pt__s00__lowT: 200 utts, 0 already done, arms ['lowT']
+[12:29:48] [lane1 drax]   drax__fleurs-pt__s00__lowT: 50/200  3.32 s/utt
+[12:32:34] [lane1 drax]   drax__fleurs-pt__s00__lowT: 100/200  3.31 s/utt
+[12:35:19] [lane1 drax]   drax__fleurs-pt__s00__lowT: 150/200  3.31 s/utt
+[12:38:05] [lane1 drax]   drax__fleurs-pt__s00__lowT: 200/200  3.31 s/utt
+[12:38:05] [lane1 drax] done drax__fleurs-pt__s00__lowT [done] 200 utts in 11.0 min (3.31 s/utt, RTF 0.260)
+[12:38:05] [lane1 drax] yielding: another model has lower-tier work waiting
+[12:38:05] [lane1 drax] exiting after 10 jobs
+[12:38:08] [lane1 whisper-small] host 2af9ea10db47  cuda=True  device=Tesla T4
+[12:38:18] [lane1 whisper-small] model loaded in 9 s
+[12:38:18] [lane1 whisper-small] job whisper-small__ls-dev-other__s01__main: 200 utts, 0 already done, arms ['greedy', 'beam', 'sample']
+[12:39:32] [lane1 whisper-small]   whisper-small__ls-dev-other__s01__main: 50/200  1.49 s/utt
+[12:40:54] [lane1 whisper-small]   whisper-small__ls-dev-other__s01__main: 100/200  1.57 s/utt
+[12:42:08] [lane1 whisper-small]   whisper-small__ls-dev-other__s01__main: 150/200  1.53 s/utt
+[12:43:26] [lane1 whisper-small]   whisper-small__ls-dev-other__s01__main: 200/200  1.54 s/utt
+[12:43:26] [lane1 whisper-small] done whisper-small__ls-dev-other__s01__main [done] 200 utts in 5.1 min (1.54 s/utt, RTF 0.241)
+[12:43:26] [lane1 whisper-small] job whisper-small__ls-test-clean__s01__main: 200 utts, 0 already done, arms ['greedy', 'beam', 'sample']
+[12:44:47] [lane1 whisper-small]   whisper-small__ls-test-clean__s01__main: 50/200  1.63 s/utt
+[12:46:16] [lane1 whisper-small]   whisper-small__ls-test-clean__s01__main: 100/200  1.70 s/utt
+[12:47:40] [lane1 whisper-small]   whisper-small__ls-test-clean__s01__main: 150/200  1.69 s/utt
+[12:49:03] [lane1 whisper-small]   whisper-small__ls-test-clean__s01__main: 200/200  1.69 s/utt
+[12:49:03] [lane1 whisper-small] done whisper-small__ls-test-clean__s01__main [done] 200 utts in 5.6 min (1.69 s/utt, RTF 0.221)
+[12:49:03] [lane1 whisper-small] job whisper-small__ls-test-other__s01__main: 200 utts, 0 already done, arms ['greedy', 'beam', 'sample']
+[12:50:21] [lane1 whisper-small]   whisper-small__ls-test-other__s01__main: 50/200  1.56 s/utt
+[12:51:30] [lane1 whisper-small]   whisper-small__ls-test-other__s01__main: 100/200  1.47 s/utt
+[12:52:48] [lane1 whisper-small]   whisper-small__ls-test-other__s01__main: 150/200  1.50 s/utt
+[12:54:04] [lane1 whisper-small]   whisper-small__ls-test-other__s01__main: 200/200  1.50 s/utt
+[12:54:04] [lane1 whisper-small] done whisper-small__ls-test-other__s01__main [done] 200 utts in 5.0 min (1.50 s/utt, RTF 0.232)
+[12:54:04] [lane1 whisper-small] job whisper-small__ami__s01__main: 200 utts, 0 already done, arms ['greedy', 'beam', 'sample']
+[12:54:55] [lane1 whisper-small]   whisper-small__ami__s01__main: 50/200  1.01 s/utt
+[12:55:53] [lane1 whisper-small]   whisper-small__ami__s01__main: 100/200  1.10 s/utt
+[12:56:46] [lane1 whisper-small]   whisper-small__ami__s01__main: 150/200  1.08 s/utt
+[12:56:48] [lane1 whisper-small] deadline reached inside whisper-small__ami__s01__main after 152 utts
+[12:56:48] [lane1 whisper-small] done whisper-small__ami__s01__main [partial] 152 utts in 2.7 min (1.08 s/utt, RTF 0.346)
+[12:56:48] [lane1 whisper-small] exiting after 4 jobs

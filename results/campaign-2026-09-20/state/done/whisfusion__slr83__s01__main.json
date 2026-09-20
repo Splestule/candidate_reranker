@@ -1,0 +1,18 @@
+{
+  "n_ok": 200,
+  "n_err": 0,
+  "audio_s": 1326.8470000000002,
+  "encode_s": 7.9801108837127686,
+  "decode_s": {
+    "main": 485.6019151210785
+  },
+  "started": 1789873704.960598,
+  "status": "done",
+  "wall_s": 494.21561312675476,
+  "n_in_shard": 200,
+  "n_resumed": 0,
+  "peak_mem_mb": 4204.26171875,
+  "job": "whisfusion__slr83__s01__main",
+  "model": "whisfusion",
+  "lane": 0
+}

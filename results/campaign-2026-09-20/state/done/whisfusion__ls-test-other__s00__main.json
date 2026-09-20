@@ -1,0 +1,18 @@
+{
+  "n_ok": 200,
+  "n_err": 0,
+  "audio_s": 1304.725000000001,
+  "encode_s": 7.816194295883179,
+  "decode_s": {
+    "main": 452.34956407546997
+  },
+  "started": 1789867771.9947922,
+  "status": "done",
+  "wall_s": 460.8500807285309,
+  "n_in_shard": 200,
+  "n_resumed": 0,
+  "peak_mem_mb": 4205.189453125,
+  "job": "whisfusion__ls-test-other__s00__main",
+  "model": "whisfusion",
+  "lane": 1
+}

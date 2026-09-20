@@ -1,0 +1,18 @@
+{
+  "n_ok": 200,
+  "n_err": 0,
+  "audio_s": 1826.130000000001,
+  "encode_s": 6.843266725540161,
+  "decode_s": {
+    "main": 449.26561880111694
+  },
+  "started": 1789872807.4690607,
+  "status": "done",
+  "wall_s": 456.96248722076416,
+  "n_in_shard": 200,
+  "n_resumed": 0,
+  "peak_mem_mb": 4204.26171875,
+  "job": "whisfusion__spgispeech__s01__main",
+  "model": "whisfusion",
+  "lane": 1
+}

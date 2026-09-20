@@ -1,0 +1,20 @@
+{
+  "n_ok": 200,
+  "n_err": 0,
+  "audio_s": 616.2599999999998,
+  "encode_s": 3.6024439334869385,
+  "decode_s": {
+    "greedy": 35.3514043170929,
+    "beam": 81.91357423553463,
+    "sample": 53.93515002098086
+  },
+  "started": 1789899079.875854,
+  "status": "done",
+  "wall_s": 213.04307770729065,
+  "n_in_shard": 200,
+  "n_resumed": 0,
+  "peak_mem_mb": 2744.48486328125,
+  "job": "whisper-small__ami__s00__main",
+  "model": "whisper-small",
+  "lane": 1
+}
