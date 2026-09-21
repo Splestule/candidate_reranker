@@ -188,15 +188,17 @@ def build(variant: str) -> dict:
         ref = subprocess.run(["git", "show", "HEAD:src/decode.py"], cwd=ROOT,
                              capture_output=True, text=True, check=True).stdout
         cells.append(cell("markdown",
-            "The decoder as committed, for the identity check below. Flat sampling has to "
-            "come out bit-identical to it, or every number measured before the tree work "
+            "The decoder as committed, for the identity check further down. Flat sampling has "
+            "to come out bit-identical to it, or every number measured before the tree work "
             "stops being comparable."))
         cells.append(cell("code", f"%%writefile /kaggle/working/code/src/decode_old.py\n{ref}"))
-        cells.append(cell("markdown", "Identity check, then a sanity pass over every tree arm. "
-                                      "**If this fails, stop.**"))
-        cells.append(cell("code", CHECK))
     cells.append(cell("markdown", "Dependencies and the two upstream repositories, pinned."))
     cells.append(cell("code", SETUP))
+    if variant.startswith("tree"):
+        cells.append(cell("markdown", "Identity check, then a sanity pass over every tree arm. "
+                                      "Needs lit_gpt, so it has to come after the setup above. "
+                                      "**If it fails, stop -- do not run the ablation.**"))
+        cells.append(cell("code", CHECK))
     cells.append(cell("markdown", "The campaign. Progress is printed every 10 minutes; worker logs are in "
                                   "`campaign/logs/`."))
     cells.append(cell("code", RUN))
