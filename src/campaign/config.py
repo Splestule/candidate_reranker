@@ -436,3 +436,55 @@ def build_plan_sweep(cfg: dict) -> list[dict]:
                          shard=0, shard_size=cfg["shard_size"], kind="sweepT",
                          arms=arms_drax_sweep(cfg), tier=0, order=i))
     return jobs
+
+
+# ---------------------------------------------------------------------------------------------
+# tree arms
+# ---------------------------------------------------------------------------------------------
+
+def arms_tree(cfg: dict) -> list[dict]:
+    """Flat sampling against trees that share their early steps, and against adaptive width.
+
+    Whisfusion's candidates only differ through the random masks of steps 2-4, so a tree is
+    a branch_schedule rather than a new decoder. The flat arm must reproduce the main arm
+    exactly; it is the control everything else is read against.
+
+    The adaptive arms size the tree from how uncertain the shared prefix is, so an easy
+    utterance spends few candidates and a hard one spends many. They are budget-matched only
+    on average, so compare them against flat at their own realised mean K, which the k ladder
+    in the per-utterance table already provides.
+    """
+    K = cfg["k_main"]["whisfusion"]
+    q = max(K // 4, 1)
+    h = max(K // 8, 1)
+    ad = dict(base=K, u0=cfg.get("tree_u0", 0.15), gamma=cfg.get("tree_gamma", 1.0),
+              k_min=max(K // 8, 2), k_max=K, probe_step=1)
+    return [
+        dict(name="flat", K=K, steps=4),
+        dict(name="tree-early", K=K, steps=4, branch_schedule=[1, q, K, K]),
+        dict(name="tree-late", K=K, steps=4, branch_schedule=[1, 1, q, K]),
+        dict(name="tree-deep", K=K, steps=4, branch_schedule=[1, 2, h, K]),
+        dict(name="cond", K=K, steps=4, mask_mode="uncertain"),
+        dict(name="cond-tree", K=K, steps=4, branch_schedule=[1, q, K, K],
+             mask_mode="uncertain"),
+        dict(name="adapt", K=K, steps=4, adaptive=ad),
+        dict(name="adapt-tree", K=K, steps=4, branch_schedule=[1, q, K, K], adaptive=ad),
+        dict(name="adapt-cond-tree", K=K, steps=4, branch_schedule=[1, q, K, K],
+             mask_mode="uncertain", adaptive=ad),
+    ]
+
+
+def build_plan_tree(cfg: dict) -> list[dict]:
+    """Nothing but the tree ablation on Whisfusion, on the sets named in tree_sets."""
+    sets = sets_for(cfg)
+    for name, s in sets.items():
+        s["name"] = name
+    jobs = []
+    for i, name in enumerate(cfg.get("tree_sets", ["ls-test-other"])):
+        if name not in sets:
+            continue
+        jobs.append(dict(id=f"whisfusion__{name}__s00__tree", model="whisfusion",
+                         family=MODELS["whisfusion"]["family"], set=name,
+                         lang=sets[name]["lang"], shard=0, shard_size=cfg["shard_size"],
+                         kind="tree", arms=arms_tree(cfg), tier=0, order=i))
+    return jobs

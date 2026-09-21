@@ -54,9 +54,15 @@ class Whisfusion:
         r = dec.pdd_decode(self.wf, enc, n_candidates=arm["K"], n_steps=arm.get("steps", 4),
                            mask_ratio_schedule=arm.get("schedule"), seq_len=arm.get("seq_len", 256),
                            first_step_sampling=arm.get("first_step_sampling", False),
-                           temperature=arm.get("temperature", 1.0), seed=seed)
+                           temperature=arm.get("temperature", 1.0), seed=seed,
+                           branch_schedule=arm.get("branch_schedule"),
+                           mask_mode=arm.get("mask_mode", "uniform"),
+                           adaptive=arm.get("adaptive"))
         return ([dec.candidate_to_dict(c) for c in r.candidates],
-                {"identical_after_step1": r.identical_after_step1})
+                {"identical_after_step1": r.identical_after_step1,
+                 "n_candidates_used": r.n_candidates_used,
+                 "uncertainty": r.uncertainty,
+                 "branch_widths": r.branch_widths})
 
 
 # ---------------------------------------------------------------------------------------------

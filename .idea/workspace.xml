@@ -4,12 +4,12 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ec4b20f5-aa4e-423a-a25f-e3d22fa98819" name="Changes" comment="drax run with variant temperatures">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/campaign/analysis.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/campaign/analysis.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compose.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/compose.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uv.lock" beforeDir="false" afterPath="$PROJECT_DIR$/uv.lock" afterDir="false" />
+    <list default="true" id="ec4b20f5-aa4e-423a-a25f-e3d22fa98819" name="Changes" comment="temperature ladder run">
+      <change beforePath="$PROJECT_DIR$/src/campaign/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/campaign/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/campaign/families.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/campaign/families.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/campaign/run.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/campaign/run.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/decode.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/decode.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/build_campaign_notebook.py" beforeDir="false" afterPath="$PROJECT_DIR$/tools/build_campaign_notebook.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,23 +38,23 @@
 }</component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0000132835827646" />
-      <entry key="MS500" value="1.1192998870373783" />
-      <entry key="S2" value="2.301803067908995" />
-      <entry key="S5" value="4.1209744810976" />
-      <entry key="S10" value="5.757398390882595" />
-      <entry key="S30" value="7.649197773434099" />
-      <entry key="S60" value="8.282570464944019" />
-      <entry key="M2" value="8.630023535127517" />
-      <entry key="M5" value="8.849203413015559" />
-      <entry key="M10" value="8.92412514866547" />
-      <entry key="M15" value="8.949310194744108" />
-      <entry key="M30" value="8.974601643489809" />
-      <entry key="H1" value="8.987288304747118" />
-      <entry key="H2" value="8.996290854540305" />
-      <entry key="H4" value="9.142460287096172" />
-      <entry key="D1" value="17.601303132863187" />
-      <entry key="W1" value="70.2322073184207" />
+      <entry key="MS100" value="1.0111552328483766" />
+      <entry key="MS500" value="1.736132642252244" />
+      <entry key="S2" value="3.678202717604833" />
+      <entry key="S5" value="4.830010495724969" />
+      <entry key="S10" value="5.363133840375506" />
+      <entry key="S30" value="5.774804006825461" />
+      <entry key="S60" value="5.885693199618531" />
+      <entry key="M2" value="5.942411871278459" />
+      <entry key="M5" value="5.977506831657006" />
+      <entry key="M10" value="6.06474279144166" />
+      <entry key="M15" value="6.366564044571326" />
+      <entry key="M30" value="7.831515130794107" />
+      <entry key="H1" value="10.062352416355862" />
+      <entry key="H2" value="12.048836811347394" />
+      <entry key="H4" value="13.496766319697969" />
+      <entry key="D1" value="23.028742724334926" />
+      <entry key="W1" value="75.9012258143326" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
@@ -66,33 +66,33 @@
       <entry key="S60" value="0.0" />
       <entry key="M2" value="0.0" />
       <entry key="M5" value="0.0" />
-      <entry key="M10" value="1.4954719933064269E-171" />
-      <entry key="M15" value="1.307732316461363E-114" />
-      <entry key="M30" value="1.1435612429867336E-57" />
-      <entry key="H1" value="3.3816582938325646E-29" />
-      <entry key="H2" value="5.815958528607789E-15" />
-      <entry key="H4" value="7.71268640628782E-8" />
-      <entry key="D1" value="0.09601353044283946" />
-      <entry key="W1" value="1.2854183583823497" />
+      <entry key="M10" value="1.2791218907755458E-173" />
+      <entry key="M15" value="5.4694201670536E-116" />
+      <entry key="M30" value="2.3386791500874167E-58" />
+      <entry key="H1" value="1.529274085671116E-29" />
+      <entry key="H2" value="3.911101664000027E-15" />
+      <entry key="H4" value="6.324767647712451E-8" />
+      <entry key="D1" value="0.09289070438113908" />
+      <entry key="W1" value="1.2793608113073083" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.9266001169982462" />
-      <entry key="MS500" value="1.1020383100222797" />
-      <entry key="S2" value="2.2937898215139843" />
-      <entry key="S5" value="4.115865195818357" />
-      <entry key="S10" value="5.754003847299105" />
-      <entry key="S30" value="7.647742628271887" />
-      <entry key="S60" value="8.281788640699654" />
-      <entry key="M2" value="8.629617733085375" />
-      <entry key="M5" value="8.8490373336884" />
-      <entry key="M10" value="8.924041466498622" />
-      <entry key="M15" value="8.949254262638" />
-      <entry key="M30" value="8.97457360513279" />
-      <entry key="H1" value="8.98727426743411" />
-      <entry key="H2" value="8.996283830131528" />
-      <entry key="H4" value="9.142456818186613" />
-      <entry key="D1" value="17.697315109920787" />
-      <entry key="W1" value="71.51762398082015" />
+      <entry key="MS100" value="0.9901953247723491" />
+      <entry key="MS500" value="1.7265941681481902" />
+      <entry key="S2" value="3.6721279234741915" />
+      <entry key="S5" value="4.826718625840901" />
+      <entry key="S10" value="5.361289921657968" />
+      <entry key="S30" value="5.774138582540588" />
+      <entry key="S60" value="5.885353659497309" />
+      <entry key="M2" value="5.942240355916108" />
+      <entry key="M5" value="5.9774377894838855" />
+      <entry key="M10" value="6.064707489603805" />
+      <entry key="M15" value="6.366538632073401" />
+      <entry key="M30" value="7.831497852188547" />
+      <entry key="H1" value="10.062340294072726" />
+      <entry key="H2" value="12.048829199972467" />
+      <entry key="H4" value="13.49676203109536" />
+      <entry key="D1" value="23.12163168518179" />
+      <entry key="W1" value="77.18058490326713" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -331,7 +331,7 @@
       <workItem from="1789488964420" duration="4707000" />
       <workItem from="1789497666463" duration="4312000" />
       <workItem from="1789662460736" duration="724000" />
-      <workItem from="1789665765802" duration="14420000" />
+      <workItem from="1789665765802" duration="15156000" />
     </task>
     <task id="LOCAL-00001" summary="implement ROVER method for word picking">
       <option name="closed" value="true" />
@@ -421,7 +421,15 @@
       <option name="project" value="LOCAL" />
       <updated>1789927995527</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="temperature ladder run">
+      <option name="closed" value="true" />
+      <created>1790015342628</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1790015342628</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -453,6 +461,7 @@
     <MESSAGE value="benchmark k=3" />
     <MESSAGE value="prepare notebook for testing on drax" />
     <MESSAGE value="drax run with variant temperatures" />
-    <option name="LAST_COMMIT_MESSAGE" value="drax run with variant temperatures" />
+    <MESSAGE value="temperature ladder run" />
+    <option name="LAST_COMMIT_MESSAGE" value="temperature ladder run" />
   </component>
 </project>
