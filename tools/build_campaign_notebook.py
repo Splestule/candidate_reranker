@@ -70,12 +70,23 @@ VARIANTS = {
     }),
 }
 
-CHECK = """import subprocess, sys
-sys.path.insert(0, "/kaggle/working/code/src")
+CHECK = r'''# The campaign runs as a subprocess with its own PYTHONPATH; this cell runs in the
+# kernel, so it has to reproduce that environment before importing anything.
+import os, sys
+CODE = "/kaggle/working/code/src"
+WF = f"{UP}/Whisfusion/src"
+for pth in (WF, CODE):
+    if pth not in sys.path:
+        sys.path.insert(0, pth)
+os.environ.setdefault("HF_HOME", "/tmp/hf")          # same cache the campaign will use
+os.environ.setdefault("TOKENIZERS_PARALLELISM", "false")
+os.environ.setdefault("HF_HUB_DISABLE_PROGRESS_BARS", "1")
+assert os.path.isdir(WF), f"Whisfusion checkout missing at {WF}; did the setup cell run?"
+
 import check_decode
 rc = check_decode.main()
 assert rc != 1, "flat sampling changed -- do not run the ablation"
-"""
+'''
 
 INTRO = """# Candidate composition campaign
 

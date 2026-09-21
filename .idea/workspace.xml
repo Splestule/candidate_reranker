@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ec4b20f5-aa4e-423a-a25f-e3d22fa98819" name="Changes" comment="first test of trees" />
+    <list default="true" id="ec4b20f5-aa4e-423a-a25f-e3d22fa98819" name="Changes" comment="fix err in smoke test ntb" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -32,23 +32,23 @@
 }</component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.00003747721793" />
-      <entry key="MS500" value="1.2959837520060096" />
-      <entry key="S2" value="3.9788529650242896" />
-      <entry key="S5" value="6.292233586113137" />
-      <entry key="S10" value="7.486280390961737" />
-      <entry key="S30" value="8.454463518333753" />
-      <entry key="S60" value="8.721725624519395" />
-      <entry key="M2" value="8.861469080268556" />
-      <entry key="M5" value="9.188108615291123" />
-      <entry key="M10" value="10.198653824876297" />
-      <entry key="M15" value="11.175202689390746" />
-      <entry key="M30" value="13.588045664979289" />
-      <entry key="H1" value="16.704972971155858" />
-      <entry key="H2" value="19.544276258813117" />
-      <entry key="H4" value="21.626226684846362" />
-      <entry key="D1" value="31.774414722410857" />
-      <entry key="W1" value="84.78097090677399" />
+      <entry key="MS100" value="1.0001068094908503" />
+      <entry key="MS500" value="1.307218273842924" />
+      <entry key="S2" value="3.6329403263038476" />
+      <entry key="S5" value="5.620900179487669" />
+      <entry key="S10" value="6.662701904035989" />
+      <entry key="S30" value="7.515930699776464" />
+      <entry key="S60" value="7.758368067886001" />
+      <entry key="M2" value="8.10446543225406" />
+      <entry key="M5" value="10.300228893853474" />
+      <entry key="M10" value="13.539417938110356" />
+      <entry key="M15" value="15.776325173224832" />
+      <entry key="M30" value="19.961993358290435" />
+      <entry key="H1" value="24.376734743193488" />
+      <entry key="H2" value="28.155282570416027" />
+      <entry key="H4" value="30.850734508025386" />
+      <entry key="D1" value="41.586165341194985" />
+      <entry key="W1" value="94.71123198982878" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
@@ -60,33 +60,33 @@
       <entry key="S60" value="0.0" />
       <entry key="M2" value="0.0" />
       <entry key="M5" value="0.0" />
-      <entry key="M10" value="2.58786108635887E-174" />
-      <entry key="M15" value="1.8849245610310427E-116" />
-      <entry key="M30" value="1.3729255482476255E-58" />
-      <entry key="H1" value="1.1717190766711806E-29" />
-      <entry key="H2" value="3.423483119117735E-15" />
-      <entry key="H4" value="5.917375351716168E-8" />
-      <entry key="D1" value="0.09186562059593509" />
-      <entry key="W1" value="1.2773343173255636" />
+      <entry key="M10" value="1.1467653169003642E-174" />
+      <entry key="M15" value="1.0955941375236642E-116" />
+      <entry key="M30" value="1.0467063282142054E-58" />
+      <entry key="H1" value="1.0230866842939827E-29" />
+      <entry key="H2" value="3.1989883355716802E-15" />
+      <entry key="H4" value="5.7200701015812614E-8" />
+      <entry key="D1" value="0.09134786163537338" />
+      <entry key="W1" value="1.2763033792782172" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.9659721461128747" />
-      <entry key="MS500" value="1.2870523489899437" />
-      <entry key="S2" value="3.972549533495136" />
-      <entry key="S5" value="6.288323081502148" />
-      <entry key="S10" value="7.483965296972953" />
-      <entry key="S30" value="8.453594335393491" />
-      <entry key="S60" value="8.721277561005328" />
-      <entry key="M2" value="8.861241517700389" />
-      <entry key="M5" value="9.18801394030011" />
-      <entry key="M10" value="10.19860061590923" />
-      <entry key="M15" value="11.175163188525822" />
-      <entry key="M30" value="13.588020134179313" />
-      <entry key="H1" value="16.704955985489896" />
-      <entry key="H2" value="19.54426574656706" />
-      <entry key="H4" value="21.626220747321984" />
-      <entry key="D1" value="31.866278297818507" />
-      <entry key="W1" value="86.05830345861206" />
+      <entry key="MS100" value="0.972759474104318" />
+      <entry key="MS500" value="1.2996735868382663" />
+      <entry key="S2" value="3.6263570495687354" />
+      <entry key="S5" value="5.6166200380111455" />
+      <entry key="S10" value="6.660132055440634" />
+      <entry key="S30" value="7.514957155104424" />
+      <entry key="S60" value="7.757864739715803" />
+      <entry key="M2" value="8.104202954257367" />
+      <entry key="M5" value="10.300098815126388" />
+      <entry key="M10" value="13.539334697326318" />
+      <entry key="M15" value="15.776261137167301" />
+      <entry key="M30" value="19.961952552050462" />
+      <entry key="H1" value="24.37670900618028" />
+      <entry key="H2" value="28.155267230907665" />
+      <entry key="H4" value="30.850725993628778" />
+      <entry key="D1" value="41.677510704339" />
+      <entry key="W1" value="95.98753353858172" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -325,7 +325,7 @@
       <workItem from="1789488964420" duration="4707000" />
       <workItem from="1789497666463" duration="4312000" />
       <workItem from="1789662460736" duration="724000" />
-      <workItem from="1789665765802" duration="15473000" />
+      <workItem from="1789665765802" duration="16085000" />
     </task>
     <task id="LOCAL-00001" summary="implement ROVER method for word picking">
       <option name="closed" value="true" />
@@ -431,7 +431,23 @@
       <option name="project" value="LOCAL" />
       <updated>1790016723745</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="first test of trees, notebooks">
+      <option name="closed" value="true" />
+      <created>1790016867053</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1790016867053</updated>
+    </task>
+    <task id="LOCAL-00015" summary="fix err in smoke test ntb">
+      <option name="closed" value="true" />
+      <created>1790017432497</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1790017432497</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -465,6 +481,8 @@
     <MESSAGE value="drax run with variant temperatures" />
     <MESSAGE value="temperature ladder run" />
     <MESSAGE value="first test of trees" />
-    <option name="LAST_COMMIT_MESSAGE" value="first test of trees" />
+    <MESSAGE value="first test of trees, notebooks" />
+    <MESSAGE value="fix err in smoke test ntb" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix err in smoke test ntb" />
   </component>
 </project>
