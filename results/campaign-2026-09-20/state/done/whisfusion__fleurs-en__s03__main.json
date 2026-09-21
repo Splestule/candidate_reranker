@@ -1,0 +1,18 @@
+{
+  "n_ok": 46,
+  "n_err": 0,
+  "audio_s": 481.09999999999997,
+  "encode_s": 1.6190590858459473,
+  "decode_s": {
+    "main": 91.53056478500366
+  },
+  "started": 1789954922.180615,
+  "status": "done",
+  "wall_s": 93.3401563167572,
+  "n_in_shard": 46,
+  "n_resumed": 0,
+  "peak_mem_mb": 4204.26171875,
+  "job": "whisfusion__fleurs-en__s03__main",
+  "model": "whisfusion",
+  "lane": 1
+}

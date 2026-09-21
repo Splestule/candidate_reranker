@@ -1,0 +1,51 @@
+[03:58:58] [lane0 whisper-turbo] host 3953d49cb228  cuda=True  device=Tesla T4
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[03:59:16] [lane0 whisper-turbo] model loaded in 17 s
+[03:59:16] [lane0 whisper-turbo] job whisper-turbo__ls-test-other__s01__sweepT: 100 utts, 0 already done, arms ['greedy', 'T0.3', 'T0.6', 'T0.9', 'T1.2']
+[04:02:12] [lane0 whisper-turbo]   whisper-turbo__ls-test-other__s01__sweepT: 50/100  3.53 s/utt
+[04:05:18] [lane0 whisper-turbo]   whisper-turbo__ls-test-other__s01__sweepT: 100/100  3.63 s/utt
+[04:05:19] [lane0 whisper-turbo] done whisper-turbo__ls-test-other__s01__sweepT [done] 100 utts in 6.0 min (3.63 s/utt, RTF 0.549)
+[04:05:19] [lane0 whisper-turbo] job whisper-turbo__ls-test-clean__s02__main: 200 utts, 0 already done, arms ['greedy', 'beam', 'sample']
+[04:06:52] [lane0 whisper-turbo]   whisper-turbo__ls-test-clean__s02__main: 50/200  1.86 s/utt
+[04:08:23] [lane0 whisper-turbo]   whisper-turbo__ls-test-clean__s02__main: 100/200  1.85 s/utt
+[04:09:54] [lane0 whisper-turbo]   whisper-turbo__ls-test-clean__s02__main: 150/200  1.83 s/utt
+[04:11:27] [lane0 whisper-turbo]   whisper-turbo__ls-test-clean__s02__main: 200/200  1.84 s/utt
+[04:11:27] [lane0 whisper-turbo] done whisper-turbo__ls-test-clean__s02__main [done] 200 utts in 6.1 min (1.84 s/utt, RTF 0.257)
+[04:11:27] [lane0 whisper-turbo] job whisper-turbo__ami__s02__main: 200 utts, 0 already done, arms ['greedy', 'beam', 'sample']
+[04:12:42] [lane0 whisper-turbo]   whisper-turbo__ami__s02__main: 50/200  1.50 s/utt
+[04:14:00] [lane0 whisper-turbo]   whisper-turbo__ami__s02__main: 100/200  1.53 s/utt
+[04:15:16] [lane0 whisper-turbo]   whisper-turbo__ami__s02__main: 150/200  1.53 s/utt
+[04:16:38] [lane0 whisper-turbo]   whisper-turbo__ami__s02__main: 200/200  1.55 s/utt
+[04:16:38] [lane0 whisper-turbo] done whisper-turbo__ami__s02__main [done] 200 utts in 5.2 min (1.55 s/utt, RTF 0.527)
+[04:16:38] [lane0 whisper-turbo] job whisper-turbo__earnings22__s02__main: 200 utts, 0 already done, arms ['greedy', 'beam', 'sample']
+[04:18:06] [lane0 whisper-turbo]   whisper-turbo__earnings22__s02__main: 50/200  1.76 s/utt
+[04:19:33] [lane0 whisper-turbo]   whisper-turbo__earnings22__s02__main: 100/200  1.75 s/utt
+[04:20:59] [lane0 whisper-turbo]   whisper-turbo__earnings22__s02__main: 150/200  1.74 s/utt
+[04:22:26] [lane0 whisper-turbo]   whisper-turbo__earnings22__s02__main: 200/200  1.74 s/utt
+[04:22:26] [lane0 whisper-turbo] done whisper-turbo__earnings22__s02__main [done] 200 utts in 5.8 min (1.74 s/utt, RTF 0.263)
+[04:22:26] [lane0 whisper-turbo] job whisper-turbo__ls-tc-babble5__s02__main: 200 utts, 0 already done, arms ['greedy', 'beam', 'sample']
+[04:24:00] [lane0 whisper-turbo]   whisper-turbo__ls-tc-babble5__s02__main: 50/200  1.88 s/utt
+[04:25:33] [lane0 whisper-turbo]   whisper-turbo__ls-tc-babble5__s02__main: 100/200  1.87 s/utt
+[04:27:04] [lane0 whisper-turbo]   whisper-turbo__ls-tc-babble5__s02__main: 150/200  1.85 s/utt
+[04:28:38] [lane0 whisper-turbo]   whisper-turbo__ls-tc-babble5__s02__main: 200/200  1.86 s/utt
+[04:28:38] [lane0 whisper-turbo] done whisper-turbo__ls-tc-babble5__s02__main [done] 200 utts in 6.2 min (1.86 s/utt, RTF 0.259)
+[04:28:38] [lane0 whisper-turbo] job whisper-turbo__ls-test-clean__s03__main: 200 utts, 0 already done, arms ['greedy', 'beam', 'sample']
+[04:30:12] [lane0 whisper-turbo]   whisper-turbo__ls-test-clean__s03__main: 50/200  1.88 s/utt
+[04:31:45] [lane0 whisper-turbo]   whisper-turbo__ls-test-clean__s03__main: 100/200  1.87 s/utt
+[04:33:19] [lane0 whisper-turbo]   whisper-turbo__ls-test-clean__s03__main: 150/200  1.87 s/utt
+[04:34:57] [lane0 whisper-turbo]   whisper-turbo__ls-test-clean__s03__main: 200/200  1.89 s/utt
+[04:34:57] [lane0 whisper-turbo] done whisper-turbo__ls-test-clean__s03__main [done] 200 utts in 6.3 min (1.90 s/utt, RTF 0.256)
+[04:34:57] [lane0 whisper-turbo] job whisper-turbo__ami__s03__main: 200 utts, 0 already done, arms ['greedy', 'beam', 'sample']
+[04:36:19] [lane0 whisper-turbo]   whisper-turbo__ami__s03__main: 50/200  1.63 s/utt
+[04:37:42] [lane0 whisper-turbo]   whisper-turbo__ami__s03__main: 100/200  1.65 s/utt
+[04:39:01] [lane0 whisper-turbo]   whisper-turbo__ami__s03__main: 150/200  1.62 s/utt
+[04:40:20] [lane0 whisper-turbo]   whisper-turbo__ami__s03__main: 200/200  1.61 s/utt
+[04:40:20] [lane0 whisper-turbo] done whisper-turbo__ami__s03__main [done] 200 utts in 5.4 min (1.61 s/utt, RTF 0.475)
+[04:40:20] [lane0 whisper-turbo] job whisper-turbo__common_voice__s03__main: 200 utts, 0 already done, arms ['greedy', 'beam', 'sample']
+[04:41:39] [lane0 whisper-turbo]   whisper-turbo__common_voice__s03__main: 50/200  1.58 s/utt
+[04:42:58] [lane0 whisper-turbo]   whisper-turbo__common_voice__s03__main: 100/200  1.58 s/utt
+[04:44:15] [lane0 whisper-turbo]   whisper-turbo__common_voice__s03__main: 150/200  1.57 s/utt
+[04:45:30] [lane0 whisper-turbo]   whisper-turbo__common_voice__s03__main: 200/200  1.55 s/utt
+[04:45:30] [lane0 whisper-turbo] done whisper-turbo__common_voice__s03__main [done] 200 utts in 5.2 min (1.55 s/utt, RTF 0.275)
+[04:45:30] [lane0 whisper-turbo] nothing claimable for this model
+[04:45:30] [lane0 whisper-turbo] exiting after 8 jobs

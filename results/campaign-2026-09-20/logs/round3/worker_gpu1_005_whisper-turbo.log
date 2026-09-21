@@ -1,0 +1,41 @@
+[20:47:04] [lane1 whisper-turbo] host 3953d49cb228  cuda=True  device=Tesla T4
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[20:47:20] [lane1 whisper-turbo] model loaded in 16 s
+[20:47:20] [lane1 whisper-turbo] job whisper-turbo__ls-test-other__s00__sweepT: 100 utts, 0 already done, arms ['greedy', 'T0.3', 'T0.6', 'T0.9', 'T1.2']
+[20:50:09] [lane1 whisper-turbo]   whisper-turbo__ls-test-other__s00__sweepT: 50/100  3.38 s/utt
+[20:52:54] [lane1 whisper-turbo]   whisper-turbo__ls-test-other__s00__sweepT: 100/100  3.34 s/utt
+[20:52:55] [lane1 whisper-turbo] done whisper-turbo__ls-test-other__s00__sweepT [done] 100 utts in 5.6 min (3.35 s/utt, RTF 0.519)
+[20:52:55] [lane1 whisper-turbo] job whisper-turbo__ami__s00__sweepT: 100 utts, 0 already done, arms ['greedy', 'T0.3', 'T0.6', 'T0.9', 'T1.2']
+[20:55:12] [lane1 whisper-turbo]   whisper-turbo__ami__s00__sweepT: 50/100  2.74 s/utt
+[20:57:32] [lane1 whisper-turbo]   whisper-turbo__ami__s00__sweepT: 100/100  2.77 s/utt
+[20:57:32] [lane1 whisper-turbo] done whisper-turbo__ami__s00__sweepT [done] 100 utts in 4.6 min (2.77 s/utt, RTF 0.870)
+[20:57:32] [lane1 whisper-turbo] job whisper-turbo__ls-tc-babble5__s00__sweepT: 100 utts, 0 already done, arms ['greedy', 'T0.3', 'T0.6', 'T0.9', 'T1.2']
+[21:00:43] [lane1 whisper-turbo]   whisper-turbo__ls-tc-babble5__s00__sweepT: 50/100  3.81 s/utt
+[21:03:52] [lane1 whisper-turbo]   whisper-turbo__ls-tc-babble5__s00__sweepT: 100/100  3.80 s/utt
+[21:03:52] [lane1 whisper-turbo] done whisper-turbo__ls-tc-babble5__s00__sweepT [done] 100 utts in 6.3 min (3.80 s/utt, RTF 0.518)
+[21:03:52] [lane1 whisper-turbo] job whisper-turbo__ls-tc-babble15__s00__main: 200 utts, 0 already done, arms ['greedy', 'beam', 'sample']
+[21:05:21] [lane1 whisper-turbo]   whisper-turbo__ls-tc-babble15__s00__main: 50/200  1.78 s/utt
+[21:06:51] [lane1 whisper-turbo]   whisper-turbo__ls-tc-babble15__s00__main: 100/200  1.79 s/utt
+[21:08:21] [lane1 whisper-turbo]   whisper-turbo__ls-tc-babble15__s00__main: 150/200  1.80 s/utt
+[21:09:47] [lane1 whisper-turbo]   whisper-turbo__ls-tc-babble15__s00__main: 200/200  1.78 s/utt
+[21:09:48] [lane1 whisper-turbo] done whisper-turbo__ls-tc-babble15__s00__main [done] 200 utts in 5.9 min (1.78 s/utt, RTF 0.250)
+[21:09:48] [lane1 whisper-turbo] job whisper-turbo__ls-tc-babbleM5__s00__main: 200 utts, 0 already done, arms ['greedy', 'beam', 'sample']
+[21:12:17] [lane1 whisper-turbo]   whisper-turbo__ls-tc-babbleM5__s00__main: 50/200  2.99 s/utt
+[21:14:45] [lane1 whisper-turbo]   whisper-turbo__ls-tc-babbleM5__s00__main: 100/200  2.97 s/utt
+[21:17:29] [lane1 whisper-turbo]   whisper-turbo__ls-tc-babbleM5__s00__main: 150/200  3.07 s/utt
+[21:20:06] [lane1 whisper-turbo]   whisper-turbo__ls-tc-babbleM5__s00__main: 200/200  3.09 s/utt
+[21:20:06] [lane1 whisper-turbo] done whisper-turbo__ls-tc-babbleM5__s00__main [done] 200 utts in 10.3 min (3.09 s/utt, RTF 0.435)
+[21:20:06] [lane1 whisper-turbo] job whisper-turbo__ls-tc-white10__s00__main: 200 utts, 0 already done, arms ['greedy', 'beam', 'sample']
+[21:21:36] [lane1 whisper-turbo]   whisper-turbo__ls-tc-white10__s00__main: 50/200  1.80 s/utt
+[21:23:05] [lane1 whisper-turbo]   whisper-turbo__ls-tc-white10__s00__main: 100/200  1.79 s/utt
+[21:24:35] [lane1 whisper-turbo]   whisper-turbo__ls-tc-white10__s00__main: 150/200  1.79 s/utt
+[21:26:02] [lane1 whisper-turbo]   whisper-turbo__ls-tc-white10__s00__main: 200/200  1.78 s/utt
+[21:26:02] [lane1 whisper-turbo] done whisper-turbo__ls-tc-white10__s00__main [done] 200 utts in 5.9 min (1.78 s/utt, RTF 0.250)
+[21:26:02] [lane1 whisper-turbo] job whisper-turbo__ls-tc-white0__s00__main: 200 utts, 0 already done, arms ['greedy', 'beam', 'sample']
+[21:27:32] [lane1 whisper-turbo]   whisper-turbo__ls-tc-white0__s00__main: 50/200  1.80 s/utt
+[21:29:01] [lane1 whisper-turbo]   whisper-turbo__ls-tc-white0__s00__main: 100/200  1.79 s/utt
+[21:30:31] [lane1 whisper-turbo]   whisper-turbo__ls-tc-white0__s00__main: 150/200  1.79 s/utt
+[21:31:56] [lane1 whisper-turbo]   whisper-turbo__ls-tc-white0__s00__main: 200/200  1.77 s/utt
+[21:31:56] [lane1 whisper-turbo] done whisper-turbo__ls-tc-white0__s00__main [done] 200 utts in 5.9 min (1.77 s/utt, RTF 0.249)
+[21:31:56] [lane1 whisper-turbo] yielding: another model has lower-tier work waiting
+[21:31:56] [lane1 whisper-turbo] exiting after 7 jobs

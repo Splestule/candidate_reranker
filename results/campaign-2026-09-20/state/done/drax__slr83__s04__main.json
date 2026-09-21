@@ -1,0 +1,19 @@
+{
+  "n_ok": 200,
+  "n_err": 0,
+  "audio_s": 1325.314,
+  "encode_s": 34.3156201839447,
+  "decode_s": {
+    "main": 625.5244839191437,
+    "ref": 174.40468454360962
+  },
+  "started": 1789952445.4334407,
+  "status": "done",
+  "wall_s": 834.5457098484039,
+  "n_in_shard": 200,
+  "n_resumed": 0,
+  "peak_mem_mb": 4335.87890625,
+  "job": "drax__slr83__s04__main",
+  "model": "drax",
+  "lane": 1
+}

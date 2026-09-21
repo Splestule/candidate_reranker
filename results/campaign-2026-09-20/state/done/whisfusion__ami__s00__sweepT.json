@@ -1,0 +1,21 @@
+{
+  "n_ok": 100,
+  "n_err": 0,
+  "audio_s": 318.78,
+  "encode_s": 4.274982452392578,
+  "decode_s": {
+    "fss0": 193.84217858314514,
+    "fssT0.5": 199.16845273971558,
+    "fssT1": 199.23499727249146,
+    "fssT1.5": 199.35763907432556
+  },
+  "started": 1789935603.0970778,
+  "status": "done",
+  "wall_s": 796.5750181674957,
+  "n_in_shard": 100,
+  "n_resumed": 0,
+  "peak_mem_mb": 4205.189453125,
+  "job": "whisfusion__ami__s00__sweepT",
+  "model": "whisfusion",
+  "lane": 1
+}

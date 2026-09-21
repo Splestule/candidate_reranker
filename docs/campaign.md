@@ -41,7 +41,7 @@ for Drax too.
 | `dumps.tar` | `dumps/<job>/<arm>.jsonl.gz`, every candidate in the dump_candidates.py schema plus `lang`, `cluster`, `model`, `arm`, `encode_s`, `decode_s` |
 | `results/per_utt_k.parquet` (and `.csv.gz`) | one row per (model, set, arm, utterance, k): edit counts of every method, reference length, diversity, timing; the input for any further statistics |
 | `results/grid.parquet` | ROVER (alpha, eps, gamma) and conf+lambda*MBR grids at the main k |
-| `results/cells.csv` | corpus and mean-utterance WER of every method per cell and k, legacy and Whisper normalisation |
+| `results/cells.csv` | corpus and mean-utterance WER of every method per cell and k (Whisper normalisation; `lg_wer_*` legacy, for a few methods) |
 | `results/contrasts.csv` | paired contrasts within an arm: delta, utterance and cluster bootstrap CIs, Wilcoxon p, wins/ties/losses |
 | `results/cross_arm.csv` | composition against each model's standard decoding |
 | `results/tuned.csv` | parameters picked on dev, reported on test |
@@ -50,19 +50,29 @@ for Drax too.
 | `results/campaign_summary.json`, `results/REPORT.md` | everything above in one file, and readable |
 | `manifests.tar`, `state.tar`, `logs.tar`, `analysis.tar` | provenance |
 
+**Normalisation.** Every edit count is under one normaliser, applied to the reference and to each
+candidate before anything is combined, so the words voted on are the words scored: Whisper's
+(`whisper-normalizer`; English for en, basic otherwise), falling back to legacy lowercase-and-strip-
+punctuation only if the package is missing (the per-utterance table records which, in `norm`).
+`lg_*` columns repeat first, conf, MBR, ROVER and the candidate oracle end to end on legacy tokens,
+to reproduce the Whisfusion paper. Before 2026-09-21 the analysis scored headline numbers with
+legacy tokens and built its Whisper-normalised ROVER columns on legacy tokens too, which
+understated ROVER there by 1.5–2.7 points; the checked-in results are re-scored.
+
 ## What is checked in
 
-`results/campaign-2026-09-20/` is the whole of both sessions, merged, so every number can be
+`results/campaign-2026-09-20/` is the whole of all three sessions, merged, so every number can be
 recomputed without a GPU and every claim traced back to the run that produced it.
 
 | path | what | size |
 |---|---|---|
-| `dumps/<job>/<arm>.jsonl.gz` | the raw data: every one of the ~695,000 candidate transcripts, with per-token confidences, timings and the reference | 41 MB |
-| `per_utt_k.parquet` | one row per (model, set, arm, utterance, k); the input to every table below | 6.3 MB |
-| `grid.parquet` | the ROVER and conf + lambda*MBR grids at the main k | 1.5 MB |
-| `manifests/<set>.jsonl.gz` | which utterances were used, in order, with cluster ids | 1.9 MB |
-| `logs/round{1,2}/` | the Kaggle console log, both lane logs, the prep log and one log per worker | 0.6 MB |
-| `provenance/jobs.jsonl` | one line per job that ran: wall time, encode and decode seconds, peak memory, status, session | 146 lines |
+| `dumps/<job>/<arm>.jsonl.gz` | the raw data: every one of the ~1.59 million candidate transcripts, with per-token confidences, timings and the reference | 87 MB |
+| `per_utt_k.parquet` | one row per (model, set, arm, utterance, k); the input to every table below | 12 MB |
+| `grid.parquet` | the ROVER and conf + lambda*MBR grids at the main k | 2.6 MB |
+| `manifests/<set>.jsonl.gz` | which utterances were used, in order, with cluster ids (25 sets) | 2.1 MB |
+| `logs/round{1,2,3}/` | the Kaggle console log, both lane logs, the prep log and one log per worker | 1.1 MB |
+| `provenance/jobs.jsonl` | one line per job that ran: wall time, encode and decode seconds, peak memory, status, session | 297 lines |
+| `mover/` | MOVER against ROVER on the first shard of every test set and on every sweep job (`tools/mover_experiment.py`) | 0.5 MB |
 | `provenance/` | the plan, config, environment and dataset metadata of each session | |
 | `plan.json`, `run_config.json`, `state/done/` | the merged plan and the done markers, so the directory is itself a campaign root the tooling can read | 0.4 MB |
 | `tables/`, `figures/`, `REPORT.md`, `campaign_summary.json` | the analysis | 2 MB |
@@ -71,7 +81,7 @@ The whole chain reruns on a CPU, from the candidate transcripts up:
 
 ```bash
 PYTHONPATH=src python -m campaign.analysis --root results/campaign-2026-09-20 --redo   # dumps -> analysis/
-PYTHONPATH=src python -m campaign.aggregate --root results/campaign-2026-09-20         # -> per_utt_k, tables
+PYTHONPATH=src python -m campaign.aggregate --root results/campaign-2026-09-20         # -> <root>/results/
 PYTHONPATH=src python tools/paper_tables.py results/campaign-2026-09-20                # -> tables/paper/
 PYTHONPATH=src python tools/fig_cost_quality.py results/campaign-2026-09-20            # -> figures/
 ```
@@ -98,8 +108,10 @@ PYTHONPATH=src python -m campaign.aggregate --root results/campaign/campaign   #
 ```
 
 Variants: `cpu` (no accelerator, tiny, every code path; free), `smoke` (T4 x2, ~50 min, every model and
-job kind on a few utterances, Drax temperature calibration and an fp16/bf16 check), `full`, and `round2`
-(the controls, Drax at its dev-tuned temperature, and the Whisfusion K=64 job).
+job kind on a few utterances, Drax temperature calibration and an fp16/bf16 check), `full`, `round2`
+(the controls, Drax at its dev-tuned temperature, and the Whisfusion K=64 job), `round3` (a
+temperature sweep for every family on ls-test-other, AMI and babble 5 dB, four more noise rungs,
+deeper shards everywhere) and `sweep` (Drax's temperature ladder alone, densely between 1.0 and 1.6).
 
 Sessions are poolable: shard k of a set is the same utterances in every session, so
 

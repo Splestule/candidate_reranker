@@ -1,0 +1,18 @@
+{
+  "n_ok": 109,
+  "n_err": 0,
+  "audio_s": 975.9000000000001,
+  "encode_s": 18.670504093170166,
+  "decode_s": {
+    "lowT": 342.6204812526703
+  },
+  "started": 1789972947.7553494,
+  "status": "partial",
+  "wall_s": 361.46090149879456,
+  "n_in_shard": 200,
+  "n_resumed": 0,
+  "peak_mem_mb": 4335.87890625,
+  "job": "drax__spgispeech__s02__lowT",
+  "model": "drax",
+  "lane": 1
+}

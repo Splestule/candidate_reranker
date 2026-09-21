@@ -1,0 +1,19 @@
+{
+  "n_ok": 200,
+  "n_err": 0,
+  "audio_s": 1434.3699999999994,
+  "encode_s": 17.16077494621277,
+  "decode_s": {
+    "greedy": 0.19770169258117676,
+    "sample": 4.059715986251831
+  },
+  "started": 1789963020.9198434,
+  "status": "done",
+  "wall_s": 21.837520599365234,
+  "n_in_shard": 200,
+  "n_resumed": 0,
+  "peak_mem_mb": 2162.24951171875,
+  "job": "parakeet-ctc__ls-tc-babble5__s02__main",
+  "model": "parakeet-ctc",
+  "lane": 1
+}

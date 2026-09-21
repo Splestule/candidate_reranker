@@ -1,0 +1,18 @@
+{
+  "n_ok": 200,
+  "n_err": 0,
+  "audio_s": 574.6599999999999,
+  "encode_s": 7.500749826431274,
+  "decode_s": {
+    "main": 432.7431273460388
+  },
+  "started": 1789955529.232306,
+  "status": "done",
+  "wall_s": 440.614369392395,
+  "n_in_shard": 200,
+  "n_resumed": 0,
+  "peak_mem_mb": 4204.26171875,
+  "job": "whisfusion__ami__s04__main",
+  "model": "whisfusion",
+  "lane": 0
+}

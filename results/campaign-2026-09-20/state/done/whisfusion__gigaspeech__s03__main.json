@@ -1,0 +1,18 @@
+{
+  "n_ok": 200,
+  "n_err": 0,
+  "audio_s": 1247.635,
+  "encode_s": 7.246402263641357,
+  "decode_s": {
+    "main": 434.48656725883484
+  },
+  "started": 1789954204.6928444,
+  "status": "done",
+  "wall_s": 442.3975522518158,
+  "n_in_shard": 200,
+  "n_resumed": 0,
+  "peak_mem_mb": 4204.26171875,
+  "job": "whisfusion__gigaspeech__s03__main",
+  "model": "whisfusion",
+  "lane": 0
+}

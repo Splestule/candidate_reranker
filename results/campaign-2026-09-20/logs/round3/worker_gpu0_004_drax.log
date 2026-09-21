@@ -1,0 +1,18 @@
+[02:33:25] [lane0 drax] host 3953d49cb228  cuda=True  device=Tesla T4
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[drax] decoder 580M (fp16 blocks), encoder 637M, canvas 128, vocab 51866
+[02:33:43] [lane0 drax] model loaded in 19 s
+[02:33:43] [lane0 drax] job drax__ls-test-other__s01__sweepT: 100 utts, 0 already done, arms ['T0.4', 'T0.7', 'T1', 'T1.3', 'T1.6']
+[02:47:53] [lane0 drax]   drax__ls-test-other__s01__sweepT: 50/100  17.00 s/utt
+[03:02:07] [lane0 drax]   drax__ls-test-other__s01__sweepT: 100/100  17.04 s/utt
+[03:02:08] [lane0 drax] done drax__ls-test-other__s01__sweepT [done] 100 utts in 28.4 min (17.04 s/utt, RTF 2.579)
+[03:02:08] [lane0 drax] job drax__ami__s01__sweepT: 100 utts, 0 already done, arms ['T0.4', 'T0.7', 'T1', 'T1.3', 'T1.6']
+[03:16:19] [lane0 drax]   drax__ami__s01__sweepT: 50/100  17.02 s/utt
+[03:30:30] [lane0 drax]   drax__ami__s01__sweepT: 100/100  17.02 s/utt
+[03:30:30] [lane0 drax] done drax__ami__s01__sweepT [done] 100 utts in 28.4 min (17.02 s/utt, RTF 5.723)
+[03:30:30] [lane0 drax] job drax__ls-tc-babble5__s01__sweepT: 100 utts, 0 already done, arms ['T0.4', 'T0.7', 'T1', 'T1.3', 'T1.6']
+[03:44:42] [lane0 drax]   drax__ls-tc-babble5__s01__sweepT: 50/100  17.03 s/utt
+[03:58:53] [lane0 drax]   drax__ls-tc-babble5__s01__sweepT: 100/100  17.03 s/utt
+[03:58:53] [lane0 drax] done drax__ls-tc-babble5__s01__sweepT [done] 100 utts in 28.4 min (17.03 s/utt, RTF 2.473)
+[03:58:53] [lane0 drax] yielding: another model has lower-tier work waiting
+[03:58:53] [lane0 drax] exiting after 3 jobs

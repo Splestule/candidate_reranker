@@ -1,0 +1,18 @@
+{
+  "source": "ls-test-clean + white @ 10 dB SNR",
+  "babble_from": "ls-dev-other",
+  "set": "ls-tc-white10",
+  "kind": "noise",
+  "lang": "en",
+  "role": "test",
+  "domain": "white noise 10 dB",
+  "filter": {
+    "min_dur": 0.8,
+    "max_dur": 28.0,
+    "max_ref_words": 75
+  },
+  "prep_s": 11.3,
+  "n_selected": 600,
+  "audio_min": 73.1,
+  "n_clusters": 40
+}

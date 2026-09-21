@@ -1,0 +1,18 @@
+{
+  "n_ok": 200,
+  "n_err": 0,
+  "audio_s": 1421.96,
+  "encode_s": 7.457530498504639,
+  "decode_s": {
+    "main": 391.6951994895935
+  },
+  "started": 1789939936.5758994,
+  "status": "done",
+  "wall_s": 399.8448119163513,
+  "n_in_shard": 200,
+  "n_resumed": 0,
+  "peak_mem_mb": 4205.189453125,
+  "job": "whisfusion__ls-tc-babble15__s00__main",
+  "model": "whisfusion",
+  "lane": 1
+}

@@ -114,7 +114,8 @@ def t_kscale(df: pd.DataFrame) -> pd.DataFrame:
 
 def t_sweep(df: pd.DataFrame) -> pd.DataFrame:
     s = df[df["kind"] == "sweepT"]
-    s = s[s["k"] == s["k"].max()]
+    # each pool at its own largest k: sweeps differ in K by family (16 for Drax and Whisper)
+    s = s[s["k"] == s.groupby(["model", "set", "arm"])["k"].transform("max")]
     rows = []
     for (mod, st, arm), g in s.groupby(["model", "set", "arm"]):
         rows.append(dict(model=mod, set=st, arm=arm, T=g["arm_T"].iloc[0], n=len(g),

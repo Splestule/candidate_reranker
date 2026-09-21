@@ -1,0 +1,19 @@
+{
+  "n_ok": 200,
+  "n_err": 0,
+  "audio_s": 1434.3699999999994,
+  "encode_s": 34.61348342895508,
+  "decode_s": {
+    "main": 626.9054911136627,
+    "ref": 173.7301540374756
+  },
+  "started": 1789969284.2083871,
+  "status": "done",
+  "wall_s": 835.5946979522705,
+  "n_in_shard": 200,
+  "n_resumed": 0,
+  "peak_mem_mb": 4336.244140625,
+  "job": "drax__ls-tc-babble15__s02__main",
+  "model": "drax",
+  "lane": 1
+}

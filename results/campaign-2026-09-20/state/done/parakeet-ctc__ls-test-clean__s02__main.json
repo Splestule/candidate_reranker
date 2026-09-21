@@ -1,0 +1,19 @@
+{
+  "n_ok": 200,
+  "n_err": 0,
+  "audio_s": 1434.3699999999994,
+  "encode_s": 69.22369527816772,
+  "decode_s": {
+    "greedy": 0.19569754600524902,
+    "sample": 3.7391700744628906
+  },
+  "started": 1789962743.1936593,
+  "status": "done",
+  "wall_s": 73.52445149421692,
+  "n_in_shard": 200,
+  "n_resumed": 0,
+  "peak_mem_mb": 2162.24951171875,
+  "job": "parakeet-ctc__ls-test-clean__s02__main",
+  "model": "parakeet-ctc",
+  "lane": 1
+}

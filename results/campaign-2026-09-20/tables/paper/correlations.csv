@@ -1,7 +1,7 @@
 model,arm,n_cells,r_gain_pairwise,r_gain_baseline,r_gain_conf_pairwise
-drax,lowT,19,0.777,0.692,0.156
-drax,main,21,0.869,0.887,0.954
-parakeet-ctc,sample,8,0.104,0.464,0.828
-whisfusion,main,16,0.867,0.845,0.874
-whisper-small,sample,8,0.239,0.405,0.256
-whisper-turbo,sample,8,-0.017,0.099,-0.393
+drax,lowT,23,0.836,0.815,0.248
+drax,main,25,0.726,0.64,0.968
+parakeet-ctc,sample,8,0.464,0.735,0.897
+whisfusion,main,20,0.916,0.895,0.916
+whisper-small,sample,8,0.455,0.681,0.26
+whisper-turbo,sample,12,0.981,0.981,0.985

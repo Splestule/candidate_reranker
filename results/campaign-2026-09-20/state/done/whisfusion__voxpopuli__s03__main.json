@@ -1,0 +1,18 @@
+{
+  "n_ok": 200,
+  "n_err": 0,
+  "audio_s": 1435.8549999999998,
+  "encode_s": 7.046393871307373,
+  "decode_s": {
+    "main": 398.02865529060364
+  },
+  "started": 1789954110.6805384,
+  "status": "done",
+  "wall_s": 405.737913608551,
+  "n_in_shard": 200,
+  "n_resumed": 0,
+  "peak_mem_mb": 4204.26171875,
+  "job": "whisfusion__voxpopuli__s03__main",
+  "model": "whisfusion",
+  "lane": 1
+}

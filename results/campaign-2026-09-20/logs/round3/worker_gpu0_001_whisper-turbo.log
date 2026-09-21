@@ -1,0 +1,11 @@
+[19:51:05] [lane0 whisper-turbo] host 3953d49cb228  cuda=True  device=Tesla T4
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[19:52:22] [lane0 whisper-turbo] model loaded in 77 s
+[19:52:22] [lane0 whisper-turbo] job whisper-turbo__ls-dev-other__s02__main: 200 utts, 0 already done, arms ['greedy', 'beam', 'sample']
+[19:53:55] [lane0 whisper-turbo]   whisper-turbo__ls-dev-other__s02__main: 50/200  1.87 s/utt
+[19:55:22] [lane0 whisper-turbo]   whisper-turbo__ls-dev-other__s02__main: 100/200  1.80 s/utt
+[19:56:57] [lane0 whisper-turbo]   whisper-turbo__ls-dev-other__s02__main: 150/200  1.84 s/utt
+[19:58:33] [lane0 whisper-turbo]   whisper-turbo__ls-dev-other__s02__main: 200/200  1.86 s/utt
+[19:58:33] [lane0 whisper-turbo] done whisper-turbo__ls-dev-other__s02__main [done] 200 utts in 6.2 min (1.86 s/utt, RTF 0.296)
+[19:58:33] [lane0 whisper-turbo] yielding: another model has lower-tier work waiting
+[19:58:33] [lane0 whisper-turbo] exiting after 1 jobs
