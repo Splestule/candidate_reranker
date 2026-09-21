@@ -152,12 +152,9 @@ def oracle_path(slots: list[dict], ref: list[str]) -> int:
     return cur[R]
 
 
-def rover(slots: list[dict], total: float, alpha: float = 1.0,
-          eps_conf: float = 0.5) -> list[str]:
-    """Vote per slot. alpha=1 is pure frequency; below that, confidence weighs in.
-
-    total is the summed vote weight of all candidates, so frequencies stay in [0, 1].
-    """
+def rover_slot_picks(slots: list[dict], total: float, alpha: float = 1.0,
+                     eps_conf: float = 0.5) -> list[str]:
+    """The winning word of every slot, epsilons included, one per slot."""
     out = []
     for slot in slots:
         best, best_w = None, EPS
@@ -167,9 +164,17 @@ def rover(slots: list[dict], total: float, alpha: float = 1.0,
             score = alpha * freq + (1.0 - alpha) * conf
             if best is None or score > best:
                 best, best_w = score, w
-        if best_w != EPS:
-            out.append(best_w)
+        out.append(best_w)
     return out
+
+
+def rover(slots: list[dict], total: float, alpha: float = 1.0,
+          eps_conf: float = 0.5) -> list[str]:
+    """Vote per slot. alpha=1 is pure frequency; below that, confidence weighs in.
+
+    total is the summed vote weight of all candidates, so frequencies stay in [0, 1].
+    """
+    return [w for w in rover_slot_picks(slots, total, alpha, eps_conf) if w != EPS]
 
 
 def shuffled_control(slots: list[dict], pool: list[str], rng: random.Random) -> list[dict]:
@@ -192,9 +197,15 @@ def shuffled_control(slots: list[dict], pool: list[str], rng: random.Random) -> 
     return out
 
 
-def prepare(row: dict) -> tuple[list[list[str]], list[list[float]] | None]:
-    """Candidate word lists, and per-word confidences when the dump carries them."""
-    cands = [normalize(c["text"]).split() for c in row["candidates"]]
+def prepare(row: dict, norm=normalize) -> tuple[list[list[str]], list[list[float]] | None]:
+    """Candidate word lists, and per-word confidences when the dump carries them.
+
+    norm is the text normaliser the words are compared in, and it must be the same one the
+    reference is scored with. Compose in the space you measure in: normalising ROVER's output
+    a second time further downstream is not the same as normalising the candidates once, since
+    a normaliser that expands contractions cannot expand what an earlier pass already stripped.
+    """
+    cands = [norm(c["text"]).split() for c in row["candidates"]]
     confs = None
     if all("word_conf" in c for c in row["candidates"]):
         confs = [c["word_conf"] for c in row["candidates"]]
