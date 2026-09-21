@@ -39,7 +39,7 @@ from campaign import config as C  # noqa: E402
 
 METHODS = ["first", "conf", "minconf", "logprob", "mbr", "cm05", "cm15", "rover_freq", "rover_c",
            "rover_cg", "oracle_cand", "oracle_comp", "control", "anti"]
-WN_METHODS = ["first", "conf", "mbr", "cm05", "rover_freq", "rover_c", "rover_cg", "oracle_cand"]
+LG_METHODS = ["first", "conf", "mbr", "rover_cg", "oracle_cand"]   # legacy, for the upstream reproduction
 CELL = ["model", "precision", "set", "kind", "arm", "k"]
 WITHIN = [("conf", "rover_cg"), ("mbr", "rover_cg"), ("cm05", "rover_cg"), ("conf", "rover_c"),
           ("conf", "rover_freq"), ("first", "rover_cg"), ("conf", "mbr"), ("first", "conf"),
@@ -142,12 +142,12 @@ def cells_table(df: pd.DataFrame) -> pd.DataFrame:
             if col in g and g[col].notna().all():
                 r[f"wer_{m}"] = 100.0 * g[col].sum() / max(words, 1)
                 r[f"mu_{m}"] = 100.0 * (g[col] / g["ref_len"].clip(lower=1)).mean()
-        if "ref_len_wn" in g and g["ref_len_wn"].notna().all():
-            wwn = g["ref_len_wn"].sum()
-            for m in WN_METHODS:
-                col = f"wn_{m}"
+        if "ref_len_lg" in g and g["ref_len_lg"].notna().all():
+            wlg = g["ref_len_lg"].sum()
+            for m in LG_METHODS:
+                col = f"lg_{m}"
                 if col in g and g[col].notna().all():
-                    r[f"wn_wer_{m}"] = 100.0 * g[col].sum() / max(wwn, 1)
+                    r[f"lg_wer_{m}"] = 100.0 * g[col].sum() / max(wlg, 1)
         if "e_oracle_cand" in g and g["e_oracle_comp"].notna().all():
             r["beats_best_pct"] = 100.0 * (g["e_oracle_comp"] < g["e_oracle_cand"]).mean()
         rows.append(r)
@@ -168,7 +168,7 @@ def contrasts_table(df: pd.DataFrame, k_extra=(16,)) -> pd.DataFrame:
         for k in sorted({kmax, *[x for x in k_extra if x < kmax and (g["k"] == x).any()]}):
             gk = g[g["k"] == k]
             for a, b in WITHIN:
-                for pre, words_col in (("e_", "ref_len"), ("wn_", "ref_len_wn")):
+                for pre, words_col in (("e_", "ref_len"), ("lg_", "ref_len_lg")):
                     ca, cb = f"{pre}{a}", f"{pre}{b}"
                     if ca not in gk or cb not in gk or gk[ca].isna().any() or gk[cb].isna().any():
                         continue
@@ -177,7 +177,7 @@ def contrasts_table(df: pd.DataFrame, k_extra=(16,)) -> pd.DataFrame:
                     s = boot_delta(gk[ca], gk[cb], gk[words_col], gk["cluster"].to_numpy())
                     if s:
                         rows.append(dict(zip(["model", "precision", "set", "kind", "arm"], key), k=k,
-                                         k_is_main=(k == kmax), norm="legacy" if pre == "e_" else "whisper",
+                                         k_is_main=(k == kmax), norm="whisper" if pre == "e_" else "legacy",
                                          a=a, b=b, **s))
     return pd.DataFrame(rows)
 
@@ -341,7 +341,7 @@ def write_report(out: Path, cells: pd.DataFrame, contr: pd.DataFrame, cross: pd.
     L = [f"# Campaign report\n", f"generated {time.strftime('%Y-%m-%d %H:%M UTC', time.gmtime())}\n",
          f"utterance decodes analysed: {summary.get('n_rows', 0)}; cells: {len(cells)}\n"]
     if not cells.empty:
-        L.append("\n## Main arm at the largest K, corpus WER (legacy normalisation)\n")
+        L.append("\n## Main arm at the largest K, corpus WER (Whisper normalisation)\n")
         L.append("| model | set | n | K | first | conf | MBR | ROVER | ROVER-cg | oracle | oracle-comp | control | pairwise % |")
         L.append("|---|---|---|---|---|---|---|---|---|---|---|---|---|")
         main = cells[(cells["kind"] == "main") & (cells["precision"] == "")]
@@ -355,7 +355,7 @@ def write_report(out: Path, cells: pd.DataFrame, contr: pd.DataFrame, cross: pd.
         L.append("\n## ROVER-cg against the best selection, paired bootstrap (main arm, largest K)\n")
         L.append("| model | set | vs | delta | 95% CI | cluster CI | Wilcoxon p | better/worse/tied |")
         L.append("|---|---|---|---|---|---|---|---|")
-        c = contr[(contr["k_is_main"]) & (contr["norm"] == "legacy") & (contr["kind"] == "main") &
+        c = contr[(contr["k_is_main"]) & (contr["norm"] == "whisper") & (contr["kind"] == "main") &
                   (contr["b"] == "rover_cg") & (contr["a"].isin(["conf", "mbr"]))]
         for _, r in c.iterrows():
             L.append(f"| {r['model']}/{r['arm']} | {r['set']} | {r['a']} | {r['delta']:+.2f} | "
