@@ -76,6 +76,7 @@ def pdd_decode(
     seed: int | None = None,
     branch_schedule: list[int] | None = None,
     mask_mode: str = "uniform",
+    mask_mix: float = 1.0,
     adaptive: dict | None = None,
 ) -> DecodeResult:
     """branch_schedule gives the number of distinct mask groups at each step.
@@ -119,6 +120,7 @@ def pdd_decode(
     final_logits = None
     after_step1 = None
     conf_prev = None
+    score_prev = None
     uncertainty = None
     used = []
 
@@ -142,21 +144,30 @@ def pdd_decode(
 
         if ratio <= 0:
             mask_idx = torch.zeros((rows, seq_len), dtype=torch.bool, device=device)
-        elif mask_mode == "uncertain" and conf_prev is not None:
+        elif mask_mode != "uniform" and score_prev is not None:
             # Mask exactly as many positions as the uniform draw would, but choose them by
             # weighted sampling WITHOUT replacement. The first version scaled a per-position
             # probability, which at a high mask ratio pinned the low-confidence positions to
             # p = 1: they were re-masked every step, never accumulated context and never
             # settled, and WER came out four times worse. Sampling a fixed count keeps the
             # budget identical to flat and still leaves every position a chance to be spared.
-            n_mask = int(round(ratio * (seq_len - 1)))
-            w = (1.0 - conf_prev).clamp_min(1e-6)
-            w = torch.cat([torch.zeros_like(w[:, :1]), w[:, 1:]], dim=1)   # never the BOS slot
+            # Pure targeting starves the confident positions of any revision, so early errors
+            # lock in and every candidate converges on the same wrong transcript: that is what
+            # cost 30 WER points. mask_mix keeps part of the budget uniform, so exploration
+            # never stops; mix = 0 is flat sampling and mix = 1 is the version that failed.
+            n_mask = min(int(round(ratio * (seq_len - 1))), seq_len - 1)
+            n_aim = int(round(mask_mix * n_mask))
             mask_idx = torch.zeros((rows, seq_len), dtype=torch.bool, device=device)
-            if n_mask > 0:
-                pick = torch.multinomial(w, min(n_mask, seq_len - 1),
-                                         replacement=False, generator=gen)
-                mask_idx.scatter_(1, pick, True)
+            if n_aim > 0:
+                w = torch.cat([torch.zeros_like(score_prev[:, :1]),
+                               score_prev[:, 1:].clamp_min(1e-6)], dim=1)
+                mask_idx.scatter_(1, torch.multinomial(w, n_aim, replacement=False,
+                                                       generator=gen), True)
+            if n_mask > n_aim:
+                free = (~mask_idx).float()
+                free[:, 0] = 0.0
+                mask_idx.scatter_(1, torch.multinomial(free, n_mask - n_aim,
+                                                       replacement=False, generator=gen), True)
         else:
             r = torch.rand((rows, seq_len), device=device, generator=gen)
             mask_idx = r < ratio
@@ -174,9 +185,24 @@ def pdd_decode(
         else:
             pred = torch.argmax(logits, dim=-1)
 
+        prev_tokens = cur
         cur = torch.where(mask_idx, pred, masked)
-        if mask_mode == "uncertain" or adaptive is not None:
-            conf_prev = torch.softmax(logits.float(), dim=-1).max(dim=-1).values
+        if mask_mode != "uniform" or adaptive is not None:
+            probs_p = torch.softmax(logits.float(), dim=-1)
+            top2 = probs_p.topk(2, dim=-1).values
+            conf_prev = top2[..., 0]
+            if mask_mode == "uncertain":
+                score_prev = 1.0 - conf_prev
+            elif mask_mode == "entropy":
+                score_prev = -(probs_p * torch.log(probs_p + 1e-9)).sum(-1)
+            elif mask_mode == "margin":                       # a close runner-up is a real doubt
+                score_prev = 1.0 - (top2[..., 0] - top2[..., 1])
+            elif mask_mode == "unstable":                     # did this token just change
+                score_prev = (cur != prev_tokens).float() + 0.05
+            elif mask_mode == "disagree":                     # where the siblings already differ
+                score_prev = (cur != cur[0:1]).float().mean(0, keepdim=True) \
+                    .expand(rows, -1).contiguous() + 0.05
+            del probs_p, top2
 
         if adaptive is not None and step == probe and uncertainty is None:
             a = adaptive

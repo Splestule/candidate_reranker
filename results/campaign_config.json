@@ -1,26 +1,17 @@
 {
-  "plan": "sweep",
-  "tail_minutes": 15,
+  "plan": "tree",
+  "tail_minutes": 25,
   "models": [
-    "drax"
+    "whisfusion"
   ],
-  "sweep_sets": [
+  "tree_sets": [
+    "ls-test-other",
     "ami",
-    "earnings22",
-    "ls-test-other"
+    "earnings22"
   ],
-  "drax_sweep_T": [
-    0.1,
-    0.4,
-    0.7,
-    1.0,
-    1.15,
-    1.3,
-    1.45,
-    1.6
-  ],
+  "tree_shards": 8,
   "mode": "full",
-  "run_hours": 6.496220419473119,
+  "run_hours": 10.97785055147277,
   "upstream": {
     "Whisfusion": "aa9afe3688ccd15ebf096ec9845d67925d1a3aea",
     "drax": "ffab757b1c88d9c6cdf9912d543032f98fc085e3"

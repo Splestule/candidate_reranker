@@ -48,6 +48,17 @@ VARIANTS = {
         "plan": "tree", "tail_minutes": 6, "models": ["whisfusion"],
         "tree_sets": ["ls-test-other"], "shard_size": 24,
     }),
+    # where-to-branch ablation: ten arms, three sets, six shards
+    "branch": dict(MODE="full", RUN_HOURS=11.0, CONFIG={
+        "plan": "tree", "tail_minutes": 25, "models": ["whisfusion"],
+        "tree_sets": ["ls-test-other", "ami", "earnings22"], "tree_shards": 6,
+        "tree_mask_mix": 0.5,
+    }),
+    "branch-smoke": dict(MODE="full", RUN_HOURS=0.9, CONFIG={
+        "plan": "tree", "tail_minutes": 6, "models": ["whisfusion"],
+        "tree_sets": ["ls-test-other"], "tree_shards": 1, "shard_size": 24,
+        "tree_mask_mix": 0.5,
+    }),
     # tree ablation, full: nine arms, three sets, eight shards each -- about 9 h of decoding,
     # shard-major so an early stop leaves every set at the same depth
     "tree": dict(MODE="full", RUN_HOURS=11.0, CONFIG={
@@ -196,7 +207,7 @@ def build(variant: str) -> dict:
     for rel in FILES:
         text = (SRC / rel).read_text(encoding="utf-8")
         cells.append(cell("code", f"%%writefile /kaggle/working/code/src/{rel}\n{text}"))
-    if variant.startswith("tree"):
+    if variant.startswith(("tree", "branch")):
         ref = subprocess.run(["git", "show", "HEAD:src/decode.py"], cwd=ROOT,
                              capture_output=True, text=True, check=True).stdout
         cells.append(cell("markdown",
@@ -206,7 +217,7 @@ def build(variant: str) -> dict:
         cells.append(cell("code", f"%%writefile /kaggle/working/code/src/decode_old.py\n{ref}"))
     cells.append(cell("markdown", "Dependencies and the two upstream repositories, pinned."))
     cells.append(cell("code", SETUP))
-    if variant.startswith("tree"):
+    if variant.startswith(("tree", "branch")):
         cells.append(cell("markdown", "Identity check, then a sanity pass over every tree arm. "
                                       "Needs lit_gpt, so it has to come after the setup above. "
                                       "**If it fails, stop -- do not run the ablation.**"))

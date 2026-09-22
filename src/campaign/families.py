@@ -57,6 +57,7 @@ class Whisfusion:
                            temperature=arm.get("temperature", 1.0), seed=seed,
                            branch_schedule=arm.get("branch_schedule"),
                            mask_mode=arm.get("mask_mode", "uniform"),
+                           mask_mix=arm.get("mask_mix", 1.0),
                            adaptive=arm.get("adaptive"))
         return ([dec.candidate_to_dict(c) for c in r.candidates],
                 {"identical_after_step1": r.identical_after_step1,
