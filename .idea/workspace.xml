@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ec4b20f5-aa4e-423a-a25f-e3d22fa98819" name="Changes" comment="fix err in smoke test ntb" />
+    <list default="true" id="ec4b20f5-aa4e-423a-a25f-e3d22fa98819" name="Changes" comment="fix err in smoke test ntb again">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notebooks/kaggle_tree.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/notebooks/kaggle_tree.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notebooks/kaggle_tree_smoke.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/notebooks/kaggle_tree_smoke.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/campaign/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/campaign/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/check_decode.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/check_decode.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/decode.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/decode.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/build_campaign_notebook.py" beforeDir="false" afterPath="$PROJECT_DIR$/tools/build_campaign_notebook.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,12 +26,16 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;Splestule&quot;
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "history": [
+    {
+      "state": "OPEN"
+    }
+  ],
+  "lastFilter": {
+    "state": "OPEN"
   }
-}</component>
+}]]></component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/Splestule/candidate_reranker.git&quot;,
@@ -32,23 +44,23 @@
 }</component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0001068094908503" />
-      <entry key="MS500" value="1.307218273842924" />
-      <entry key="S2" value="3.6329403263038476" />
-      <entry key="S5" value="5.620900179487669" />
-      <entry key="S10" value="6.662701904035989" />
-      <entry key="S30" value="7.515930699776464" />
-      <entry key="S60" value="7.758368067886001" />
-      <entry key="M2" value="8.10446543225406" />
-      <entry key="M5" value="10.300228893853474" />
-      <entry key="M10" value="13.539417938110356" />
-      <entry key="M15" value="15.776325173224832" />
-      <entry key="M30" value="19.961993358290435" />
-      <entry key="H1" value="24.376734743193488" />
-      <entry key="H2" value="28.155282570416027" />
-      <entry key="H4" value="30.850734508025386" />
-      <entry key="D1" value="41.586165341194985" />
-      <entry key="W1" value="94.71123198982878" />
+      <entry key="MS100" value="2.197189931383787" />
+      <entry key="MS500" value="3.9544583104270545" />
+      <entry key="S2" value="4.867491221108384" />
+      <entry key="S5" value="7.830635103566531" />
+      <entry key="S10" value="13.878350212943023" />
+      <entry key="S30" value="26.07780806666381" />
+      <entry key="S60" value="32.6887136347249" />
+      <entry key="M2" value="37.48099696722193" />
+      <entry key="M5" value="41.13123876359371" />
+      <entry key="M10" value="42.516461475649116" />
+      <entry key="M15" value="42.99958402039638" />
+      <entry key="M30" value="43.493985989128646" />
+      <entry key="H1" value="43.764647616420326" />
+      <entry key="H2" value="44.70704081782269" />
+      <entry key="H4" value="49.55021473209786" />
+      <entry key="D1" value="77.61353914134386" />
+      <entry key="W1" value="138.50835392857957" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
@@ -60,33 +72,33 @@
       <entry key="S60" value="0.0" />
       <entry key="M2" value="0.0" />
       <entry key="M5" value="0.0" />
-      <entry key="M10" value="1.1467653169003642E-174" />
-      <entry key="M15" value="1.0955941375236642E-116" />
-      <entry key="M30" value="1.0467063282142054E-58" />
-      <entry key="H1" value="1.0230866842939827E-29" />
-      <entry key="H2" value="3.1989883355716802E-15" />
-      <entry key="H4" value="5.7200701015812614E-8" />
-      <entry key="D1" value="0.09134786163537338" />
-      <entry key="W1" value="1.2763033792782172" />
+      <entry key="M10" value="1.0315585052697709E-193" />
+      <entry key="M15" value="2.1995267231205417E-129" />
+      <entry key="M30" value="4.689911217838288E-65" />
+      <entry key="H1" value="6.848292762651165E-33" />
+      <entry key="H2" value="8.276516770936335E-17" />
+      <entry key="H4" value="9.200656622491524E-9" />
+      <entry key="D1" value="0.06736504909631437" />
+      <entry key="W1" value="1.2219659289722071" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.972759474104318" />
-      <entry key="MS500" value="1.2996735868382663" />
-      <entry key="S2" value="3.6263570495687354" />
-      <entry key="S5" value="5.6166200380111455" />
-      <entry key="S10" value="6.660132055440634" />
-      <entry key="S30" value="7.514957155104424" />
-      <entry key="S60" value="7.757864739715803" />
-      <entry key="M2" value="8.104202954257367" />
-      <entry key="M5" value="10.300098815126388" />
-      <entry key="M10" value="13.539334697326318" />
-      <entry key="M15" value="15.776261137167301" />
-      <entry key="M30" value="19.961952552050462" />
-      <entry key="H1" value="24.37670900618028" />
-      <entry key="H2" value="28.155267230907665" />
-      <entry key="H4" value="30.850725993628778" />
-      <entry key="D1" value="41.677510704339" />
-      <entry key="W1" value="95.98753353858172" />
+      <entry key="MS100" value="2.0520052012618533" />
+      <entry key="MS500" value="3.901931857866164" />
+      <entry key="S2" value="4.851426523850093" />
+      <entry key="S5" value="7.8207604548805705" />
+      <entry key="S10" value="13.869773199817002" />
+      <entry key="S30" value="26.072484592726248" />
+      <entry key="S60" value="32.68538819832112" />
+      <entry key="M2" value="37.47909411178984" />
+      <entry key="M5" value="41.13040445132113" />
+      <entry key="M10" value="42.51603043044342" />
+      <entry key="M15" value="42.99929342690916" />
+      <entry key="M30" value="43.4938390394971" />
+      <entry key="H1" value="43.76457369791112" />
+      <entry key="H2" value="44.70700325477092" />
+      <entry key="H4" value="49.55019446396367" />
+      <entry key="D1" value="77.68089899107628" />
+      <entry key="W1" value="139.73031761429363" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -109,7 +121,7 @@
     "git-widget-placeholder": "main",
     "git.auto.fetch.suggestion.counter": "3",
     "junie.onboarding.icon.badge.shown": "true",
-    "last_opened_file_path": "/Users/eduardsimon/coding/candidate_reranker",
+    "last_opened_file_path": "/Users/eduardsimon/coding/candidate_reranker/results/trees",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -119,6 +131,11 @@
     "to.speed.mode.migration.done": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/results/trees" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration default="true" type="DjangoTestsConfigurationType">
       <module name="candidate-reranker" />
@@ -325,7 +342,7 @@
       <workItem from="1789488964420" duration="4707000" />
       <workItem from="1789497666463" duration="4312000" />
       <workItem from="1789662460736" duration="724000" />
-      <workItem from="1789665765802" duration="16085000" />
+      <workItem from="1789665765802" duration="18237000" />
     </task>
     <task id="LOCAL-00001" summary="implement ROVER method for word picking">
       <option name="closed" value="true" />
@@ -447,7 +464,15 @@
       <option name="project" value="LOCAL" />
       <updated>1790017432497</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="fix err in smoke test ntb again">
+      <option name="closed" value="true" />
+      <created>1790017699766</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1790017699766</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -483,6 +508,7 @@
     <MESSAGE value="first test of trees" />
     <MESSAGE value="first test of trees, notebooks" />
     <MESSAGE value="fix err in smoke test ntb" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix err in smoke test ntb" />
+    <MESSAGE value="fix err in smoke test ntb again" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix err in smoke test ntb again" />
   </component>
 </project>

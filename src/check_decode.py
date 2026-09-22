@@ -44,25 +44,58 @@ def compare(wf, old, new, n_trials: int = 6, k: int = 16, n_steps: int = 4) -> i
     return bad
 
 
-def tree_sanity(wf, new, k: int = 16) -> None:
-    """The tree arms must at least decode, branch when told to, and size themselves."""
+def tree_sanity(wf, new, k: int = 16) -> int:
+    """Every arm must decode, branch as told, size itself, and not fall apart.
+
+    The previous run printed all of this and passed anyway, because nothing asserted. Five of
+    nine arms were broken: adapt never changed width, and uncertainty masking pinned the hard
+    positions to p = 1 so they never settled and WER came out four times worse. Each check
+    below is one of those failures turned into a condition.
+    """
     cond = fake_condition(wf, seconds=6.0, seed=99)
     q = max(k // 4, 1)
+    low = [1.0, 0.5, 0.35, 0.25]
+    ad = dict(base=max(k * 2 // 3, 4), u0=0.021, gamma=1.5, k_min=max(k // 6, 2), k_max=k)
     arms = [
-        ("flat", dict()),
-        ("tree-early", dict(branch_schedule=[1, q, k, k])),
-        ("tree-late", dict(branch_schedule=[1, 1, q, k])),
-        ("cond", dict(mask_mode="uncertain")),
-        ("adapt", dict(adaptive=dict(base=k, u0=0.15, gamma=1.0, k_min=2, k_max=k))),
-        ("adapt-tree", dict(branch_schedule=[1, q, k, k],
-                            adaptive=dict(base=k, u0=0.15, gamma=1.0, k_min=2, k_max=k))),
+        ("flat", dict(), None),
+        ("tree-early", dict(branch_schedule=[1, q, k, k]), [1, q, k, k]),
+        ("tree-late", dict(branch_schedule=[1, 1, q, k]), [1, 1, q, k]),
+        ("flat-sched", dict(mask_ratio_schedule=low), None),
+        ("cond", dict(mask_ratio_schedule=low, mask_mode="uncertain"), None),
+        ("cond-tree", dict(mask_ratio_schedule=low, mask_mode="uncertain",
+                           branch_schedule=[1, q, k, k]), [1, q, k, k]),
+        ("adapt", dict(adaptive=ad), None),
+        ("adapt-tree", dict(branch_schedule=[1, q, k, k], adaptive=ad), None),
     ]
-    print(f"\n{'arm':<14}{'K used':>8}{'unique':>8}{'widths':>22}{'uncertainty':>13}")
-    for name, kw in arms:
+    print(f"\n{'arm':<13}{'K':>5}{'unique':>8}{'mean len':>10}{'widths':>20}{'uncert.':>10}")
+    res, bad = {}, []
+    for name, kw, want in arms:
         r = new.pdd_decode(wf, cond, n_candidates=k, n_steps=4, seed=7, **kw)
+        res[name] = r
+        lens = [c.n_tokens for c in r.candidates]
+        mean_len = sum(lens) / max(len(lens), 1)
         u = "" if r.uncertainty is None else f"{r.uncertainty:.4f}"
-        print(f"{name:<14}{r.n_candidates_used:>8}{r.n_unique:>8}"
-              f"{str(r.branch_widths):>22}{u:>13}")
+        print(f"{name:<13}{r.n_candidates_used:>5}{r.n_unique:>8}{mean_len:>10.1f}"
+              f"{str(r.branch_widths):>20}{u:>10}")
+        if want is not None and r.branch_widths != want:
+            bad.append(f"{name}: branched {r.branch_widths}, asked for {want}")
+
+    base_len = sum(c.n_tokens for c in res["flat"].candidates) / k
+    for name in ("cond", "cond-tree", "flat-sched"):
+        lens = [c.n_tokens for c in res[name].candidates]
+        m = sum(lens) / max(len(lens), 1)
+        if not 0.5 * base_len <= m <= 2.0 * base_len:   # divergence shows up as length first
+            bad.append(f"{name}: mean length {m:.0f} against flat {base_len:.0f}, it is diverging")
+    if res["adapt"].n_candidates_used == k:
+        bad.append(f"adapt returned the full {k}: the width never adapted (u0 miscalibrated, "
+                   f"or rows are not allowed to shrink)")
+    if res["adapt"].uncertainty is None:
+        bad.append("adapt reported no uncertainty: the probe step never ran")
+
+    for line in bad:
+        print(f"  FAIL  {line}")
+    print("every arm behaves" if not bad else f"\n{len(bad)} arms misbehaving")
+    return len(bad)
 
 
 def main() -> int:
@@ -78,7 +111,7 @@ def main() -> int:
         return 2
     wf = Whisfusion({}).wf
     bad = compare(wf, old, new)
-    tree_sanity(wf, new)
+    bad += tree_sanity(wf, new)
     return 1 if bad else 0
 
 

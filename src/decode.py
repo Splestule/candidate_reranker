@@ -132,19 +132,31 @@ def pdd_decode(
             if conf_prev is not None:
                 conf_prev = conf_prev[idx] if idx is not None else \
                     conf_prev.repeat_interleave(want // rows, dim=0)
-            rows = want
+        elif want < rows:                     # prune, which is how adaptive width shrinks
+            cur = cur[:want]                  # rows are interchangeable at the probe step
+            if conf_prev is not None:
+                conf_prev = conf_prev[:want]
+        rows = want
         used.append(rows)
         cond = condition.expand(rows, -1, -1)
 
         if ratio <= 0:
             mask_idx = torch.zeros((rows, seq_len), dtype=torch.bool, device=device)
         elif mask_mode == "uncertain" and conf_prev is not None:
-            # Keep the expected mask ratio, spend it where confidence is low. Siblings share
-            # conf_prev, so the independent draw is what still lets them diverge.
+            # Mask exactly as many positions as the uniform draw would, but choose them by
+            # weighted sampling WITHOUT replacement. The first version scaled a per-position
+            # probability, which at a high mask ratio pinned the low-confidence positions to
+            # p = 1: they were re-masked every step, never accumulated context and never
+            # settled, and WER came out four times worse. Sampling a fixed count keeps the
+            # budget identical to flat and still leaves every position a chance to be spared.
+            n_mask = int(round(ratio * (seq_len - 1)))
             w = (1.0 - conf_prev).clamp_min(1e-6)
-            p = (w / w.mean(dim=1, keepdim=True) * ratio).clamp(0.0, 1.0)
-            mask_idx = torch.rand((rows, seq_len), device=device, generator=gen) < p
-            mask_idx[:, 0] = False
+            w = torch.cat([torch.zeros_like(w[:, :1]), w[:, 1:]], dim=1)   # never the BOS slot
+            mask_idx = torch.zeros((rows, seq_len), dtype=torch.bool, device=device)
+            if n_mask > 0:
+                pick = torch.multinomial(w, min(n_mask, seq_len - 1),
+                                         replacement=False, generator=gen)
+                mask_idx.scatter_(1, pick, True)
         else:
             r = torch.rand((rows, seq_len), device=device, generator=gen)
             mask_idx = r < ratio
@@ -169,7 +181,10 @@ def pdd_decode(
         if adaptive is not None and step == probe and uncertainty is None:
             a = adaptive
             uncertainty = float((1.0 - conf_prev).mean())
-            k = a.get("base", n_candidates) * (uncertainty / a.get("u0", 0.15)) ** a.get("gamma", 1.0)
+            # base is the TARGET MEAN width, not a ceiling, and u0 is the measured median
+            # uncertainty (0.021 over three sets), not a guess. The first version used
+            # u0 = 0.15, about seven times too high, so every utterance clipped to k_min.
+            k = a.get("base", n_candidates) * (uncertainty / a.get("u0", 0.021)) ** a.get("gamma", 1.0)
             k = int(min(max(round(k), a.get("k_min", 2)), a.get("k_max", n_candidates)))
             scale = k / max(n_candidates, 1)
             for s in range(step + 1, n_steps):       # re-aim the rest of the tree at k

@@ -48,10 +48,11 @@ VARIANTS = {
         "plan": "tree", "tail_minutes": 6, "models": ["whisfusion"],
         "tree_sets": ["ls-test-other"], "shard_size": 24,
     }),
-    # tree ablation, full: nine arms on three sets
-    "tree": dict(MODE="full", RUN_HOURS=4.0, CONFIG={
-        "plan": "tree", "tail_minutes": 15, "models": ["whisfusion"],
-        "tree_sets": ["ls-test-other", "ami", "earnings22"],
+    # tree ablation, full: nine arms, three sets, eight shards each -- about 9 h of decoding,
+    # shard-major so an early stop leaves every set at the same depth
+    "tree": dict(MODE="full", RUN_HOURS=11.0, CONFIG={
+        "plan": "tree", "tail_minutes": 25, "models": ["whisfusion"],
+        "tree_sets": ["ls-test-other", "ami", "earnings22"], "tree_shards": 8,
     }),
     # GPU smoke: every model, every job kind, a few utterances each; also calibrates Drax
     "smoke": dict(MODE="smoke", RUN_HOURS=0.9, CONFIG={

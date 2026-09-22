@@ -443,34 +443,37 @@ def build_plan_sweep(cfg: dict) -> list[dict]:
 # ---------------------------------------------------------------------------------------------
 
 def arms_tree(cfg: dict) -> list[dict]:
-    """Flat sampling against trees that share their early steps, and against adaptive width.
+    """Flat sampling against trees, against uncertainty-targeted masking, against adaptive width.
 
-    Whisfusion's candidates only differ through the random masks of steps 2-4, so a tree is
-    a branch_schedule rather than a new decoder. The flat arm must reproduce the main arm
-    exactly; it is the control everything else is read against.
+    Whisfusion's candidates only differ through the random masks of steps 2-4, so a tree is a
+    branch_schedule rather than a new decoder. Rows are materialised only when they split, so a
+    narrow early schedule is cheaper as well as more correlated.
 
-    The adaptive arms size the tree from how uncertain the shared prefix is, so an easy
-    utterance spends few candidates and a hard one spends many. They are budget-matched only
-    on average, so compare them against flat at their own realised mean K, which the k ladder
-    in the per-utterance table already provides.
+    Targeting the mask by uncertainty only means anything when the mask is small: at the default
+    ratios almost every position is re-predicted anyway and there is nothing left to choose. The
+    cond arms therefore run a lower schedule, and flat-sched is the same schedule with a uniform
+    mask, so any difference is the targeting and not the schedule.
+
+    The adaptive arms treat base as the target MEAN width and let it run both ways, so they are
+    budget-matched to flat only on average. Compare them against flat at their own realised mean
+    K, which the k ladder in the per-utterance table gives for free.
     """
     K = cfg["k_main"]["whisfusion"]
-    q = max(K // 4, 1)
-    h = max(K // 8, 1)
-    ad = dict(base=K, u0=cfg.get("tree_u0", 0.15), gamma=cfg.get("tree_gamma", 1.0),
-              k_min=max(K // 8, 2), k_max=K, probe_step=1)
+    q, h = max(K // 4, 1), max(K // 8, 1)
+    low = cfg.get("tree_low_schedule", [1.0, 0.5, 0.35, 0.25])
+    ad = dict(base=cfg.get("tree_base_k", max(K * 2 // 3, 4)), u0=cfg.get("tree_u0", 0.021),
+              gamma=cfg.get("tree_gamma", 1.5), k_min=max(K // 6, 2), k_max=K, probe_step=1)
     return [
         dict(name="flat", K=K, steps=4),
         dict(name="tree-early", K=K, steps=4, branch_schedule=[1, q, K, K]),
         dict(name="tree-late", K=K, steps=4, branch_schedule=[1, 1, q, K]),
         dict(name="tree-deep", K=K, steps=4, branch_schedule=[1, 2, h, K]),
-        dict(name="cond", K=K, steps=4, mask_mode="uncertain"),
-        dict(name="cond-tree", K=K, steps=4, branch_schedule=[1, q, K, K],
-             mask_mode="uncertain"),
+        dict(name="flat-sched", K=K, steps=4, schedule=low),
+        dict(name="cond", K=K, steps=4, schedule=low, mask_mode="uncertain"),
+        dict(name="cond-tree", K=K, steps=4, schedule=low, mask_mode="uncertain",
+             branch_schedule=[1, q, K, K]),
         dict(name="adapt", K=K, steps=4, adaptive=ad),
         dict(name="adapt-tree", K=K, steps=4, branch_schedule=[1, q, K, K], adaptive=ad),
-        dict(name="adapt-cond-tree", K=K, steps=4, branch_schedule=[1, q, K, K],
-             mask_mode="uncertain", adaptive=ad),
     ]
 
 
@@ -479,12 +482,20 @@ def build_plan_tree(cfg: dict) -> list[dict]:
     sets = sets_for(cfg)
     for name, s in sets.items():
         s["name"] = name
-    jobs = []
-    for i, name in enumerate(cfg.get("tree_sets", ["ls-test-other"])):
-        if name not in sets:
-            continue
-        jobs.append(dict(id=f"whisfusion__{name}__s00__tree", model="whisfusion",
-                         family=MODELS["whisfusion"]["family"], set=name,
-                         lang=sets[name]["lang"], shard=0, shard_size=cfg["shard_size"],
-                         kind="tree", arms=arms_tree(cfg), tier=0, order=i))
+    S = cfg["shard_size"]
+    jobs, order = [], 0
+    names = [n for n in cfg.get("tree_sets", ["ls-test-other"]) if n in sets]
+
+    def max_shard(name):
+        return n_shards(name, expected_size(sets[name]), S)
+    # Shard-major, so if the budget runs out every set still has the same depth.
+    for shard in range(cfg.get("tree_shards", 1)):
+        for name in names:
+            if shard >= max_shard(name):
+                continue
+            jobs.append(dict(id=f"whisfusion__{name}__s{shard:02d}__tree", model="whisfusion",
+                             family=MODELS["whisfusion"]["family"], set=name,
+                             lang=sets[name]["lang"], shard=shard, shard_size=cfg["shard_size"],
+                             kind="tree", arms=arms_tree(cfg), tier=0, order=order))
+            order += 1
     return jobs
