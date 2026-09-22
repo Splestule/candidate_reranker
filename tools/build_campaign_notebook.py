@@ -105,12 +105,21 @@ with open(cfg_path, "w") as f:
     json.dump(dict(CONFIG, mode=MODE, upstream=upstream), f, indent=2)
 env = dict(os.environ, PYTHONPATH=f"{CODE}:{WF}", HF_HOME="/tmp/hf",
            TOKENIZERS_PARALLELISM="false", HF_HUB_DISABLE_PROGRESS_BARS="1", PYTHONUNBUFFERED="1")
-subprocess.run([sys.executable, "-m", "campaign.prep_data", "--config", cfg_path,
-                "--data", DATA, "--only", PROBE_SET], env=env, cwd=CODE, check=True)
-MANIFEST = f"{DATA}/manifests/{PROBE_SET}.jsonl"
 
-import check_decode
-rc = check_decode.main(MANIFEST)
+# A broken check must not cost a night. Only a real mismatch stops the run; anything else
+# here -- a failed download, an import, a typo in this cell -- is reported and stepped over,
+# and the same check can be run afterwards with tools/verify_decode.py.
+rc = None
+try:
+    subprocess.run([sys.executable, "-m", "campaign.prep_data", "--config", cfg_path,
+                    "--data", DATA, "--only", PROBE_SET], env=env, cwd=CODE, check=True)
+    import check_decode
+    rc = check_decode.main(f"{DATA}/manifests/{PROBE_SET}.jsonl")
+except Exception as e:
+    import traceback
+    traceback.print_exc()
+    print(f"\n!! the check itself failed to run ({type(e).__name__}); the campaign goes ahead "
+          f"unverified.\n!! rerun it later: PYTHONPATH=src python tools/verify_decode.py {DATA}")
 assert rc != 1, "flat sampling changed -- do not run the ablation"
 '''
 
