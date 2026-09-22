@@ -16,13 +16,14 @@ the repo.
 from __future__ import annotations
 
 import argparse
-import pprint
 import json
+import pprint
+import subprocess
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / "src"
-FILES = ["scorers.py", "compose.py", "bootstrap.py", "decode.py", "wf_model.py", "wf_compat.py", "data.py",
+FILES = ["scorers.py", "compose.py", "bootstrap.py", "decode.py", "check_decode.py", "wf_model.py", "wf_compat.py", "data.py",
          "campaign/__init__.py", "campaign/config.py", "campaign/state.py", "campaign/tokwords.py",
          "campaign/prep_data.py", "campaign/drax_fast.py", "campaign/families.py", "campaign/worker.py",
          "campaign/analysis.py", "campaign/aggregate.py", "campaign/run.py"]
@@ -49,6 +50,17 @@ VARIANTS = {
         # five rungs, not the round-1 seven: 0.1 is the reference decode and 2.0 was already bad
         "drax_sweep_T": [0.4, 0.7, 1.0, 1.3, 1.6],
     }),
+    # tree ablation, smoke: every arm on a handful of utterances, to see it run at all
+    "tree-smoke": dict(MODE="full", RUN_HOURS=0.8, CONFIG={
+        "plan": "tree", "tail_minutes": 6, "models": ["whisfusion"],
+        "tree_sets": ["ls-test-other"], "shard_size": 24,
+    }),
+    # tree ablation, full: nine arms, three sets, eight shards each -- about 9 h of decoding,
+    # shard-major so an early stop leaves every set at the same depth
+    "tree": dict(MODE="full", RUN_HOURS=11.0, CONFIG={
+        "plan": "tree", "tail_minutes": 25, "models": ["whisfusion"],
+        "tree_sets": ["ls-test-other", "ami", "earnings22"], "tree_shards": 8,
+    }),
     # GPU smoke: every model, every job kind, a few utterances each; also calibrates Drax
     "smoke": dict(MODE="smoke", RUN_HOURS=0.9, CONFIG={
         "tail_minutes": 6, "shard_size": 12,
@@ -65,6 +77,24 @@ VARIANTS = {
                                        "fleurs-de", "ls-tc-babble5", "slr83"]},
     }),
 }
+
+CHECK = r'''# The campaign runs as a subprocess with its own PYTHONPATH; this cell runs in the
+# kernel, so it has to reproduce that environment before importing anything.
+import os, sys
+CODE = "/kaggle/working/code/src"
+WF = f"{UP}/Whisfusion/src"
+for pth in (WF, CODE):
+    if pth not in sys.path:
+        sys.path.insert(0, pth)
+os.environ.setdefault("HF_HOME", "/tmp/hf")          # same cache the campaign will use
+os.environ.setdefault("TOKENIZERS_PARALLELISM", "false")
+os.environ.setdefault("HF_HUB_DISABLE_PROGRESS_BARS", "1")
+assert os.path.isdir(WF), f"Whisfusion checkout missing at {WF}; did the setup cell run?"
+
+import check_decode
+rc = check_decode.main()
+assert rc != 1, "flat sampling changed -- do not run the ablation"
+'''
 
 INTRO = """# Candidate composition campaign
 
@@ -173,8 +203,21 @@ def build(variant: str) -> dict:
     for rel in FILES:
         text = (SRC / rel).read_text(encoding="utf-8")
         cells.append(cell("code", f"%%writefile /kaggle/working/code/src/{rel}\n{text}"))
+    if variant.startswith("tree"):
+        ref = subprocess.run(["git", "show", "HEAD:src/decode.py"], cwd=ROOT,
+                             capture_output=True, text=True, check=True).stdout
+        cells.append(cell("markdown",
+            "The decoder as committed, for the identity check further down. Flat sampling has "
+            "to come out bit-identical to it, or every number measured before the tree work "
+            "stops being comparable."))
+        cells.append(cell("code", f"%%writefile /kaggle/working/code/src/decode_old.py\n{ref}"))
     cells.append(cell("markdown", "Dependencies and the two upstream repositories, pinned."))
     cells.append(cell("code", SETUP))
+    if variant.startswith("tree"):
+        cells.append(cell("markdown", "Identity check, then a sanity pass over every tree arm. "
+                                      "Needs lit_gpt, so it has to come after the setup above. "
+                                      "**If it fails, stop -- do not run the ablation.**"))
+        cells.append(cell("code", CHECK))
     cells.append(cell("markdown", "The campaign. Progress is printed every 10 minutes; worker logs are in "
                                   "`campaign/logs/`."))
     cells.append(cell("code", RUN))

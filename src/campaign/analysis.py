@@ -238,6 +238,30 @@ def analyze_row(row: dict, k_main: int, pool: list[str], tok, meta: dict):
                                  ROVER_DEFAULT["alpha"], ROVER_DEFAULT["eps"])
             rec.update(lg_first=ed_lg[0], lg_conf=ed_lg[p_conf], lg_mbr=ed_lg[q_mbr],
                        lg_rover_cg=Levenshtein.distance(ref_lg, h_lg), lg_oracle_cand=min(ed_lg[:k]))
+        if use_wn and (k in WN_KS or k == k_main or k == K):
+            # Build the network from Whisper-normalised candidates rather than normalising
+            # ROVER's legacy-normalised output a second time. That second pass cost 2-7 points
+            # of pure artifact: legacy strips the apostrophe, so "time\'s leisure" becomes
+            # "times leisure" and stays that way, while the reference becomes "time is leisure".
+            # Per-word confidences cannot come along -- they index the model\'s own tokens and
+            # this normaliser changes the word count -- so wn_rover_freq is the clean metric
+            # here and wn_rover_c / _cg fall back to frequency with a flat confidence.
+            sub_wn = cand_wn[:k]
+            n1 = compose.confusion_network(sub_wn, p_mbr, None, None)
+            w5 = compose.cluster_weights(sub_wn, 0.5)
+            n5 = compose.confusion_network(sub_wn, p_mbr, None, w5)
+            rec.update(wn_first=ed_wn[0], wn_conf=ed_wn[p_conf], wn_mbr=ed_wn[p_mbr],
+                       wn_cm05=ed_wn[p_cm05],
+                       wn_rover_freq=Levenshtein.distance(
+                           ref_wn, compose.rover(n1, float(k), 1.0, 0.5)),
+                       wn_rover_c=Levenshtein.distance(
+                           ref_wn, compose.rover(n1, float(k), ROVER_DEFAULT["alpha"],
+                                                 ROVER_DEFAULT["eps"])),
+                       wn_rover_cg=Levenshtein.distance(
+                           ref_wn, compose.rover(n5, sum(w5), ROVER_DEFAULT["alpha"],
+                                                 ROVER_DEFAULT["eps"])),
+                       wn_oracle_cand=min(ed_wn[:k]))
+>>>>>>> origin/main
         out.append(rec)
 
         if k == min(k_main, K):
