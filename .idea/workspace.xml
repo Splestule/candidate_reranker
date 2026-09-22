@@ -4,14 +4,15 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ec4b20f5-aa4e-423a-a25f-e3d22fa98819" name="Changes" comment="more extensive tree run">
+    <list default="true" id="ec4b20f5-aa4e-423a-a25f-e3d22fa98819" name="Changes" comment="more branching techniques">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/campaign_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/results/campaign_config.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/campaign/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/campaign/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/campaign/families.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/campaign/families.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/decode.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/decode.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notebooks/kaggle_branch.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/notebooks/kaggle_branch.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notebooks/kaggle_branch_smoke.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/notebooks/kaggle_branch_smoke.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notebooks/kaggle_tree.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/notebooks/kaggle_tree.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notebooks/kaggle_tree_smoke.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/notebooks/kaggle_tree_smoke.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/check_decode.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/check_decode.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tools/build_campaign_notebook.py" beforeDir="false" afterPath="$PROJECT_DIR$/tools/build_campaign_notebook.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/tree_report.py" beforeDir="false" afterPath="$PROJECT_DIR$/tools/tree_report.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,23 +45,23 @@
 }</component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.0" />
-      <entry key="S5" value="1.0" />
-      <entry key="S10" value="1.0" />
-      <entry key="S30" value="1.0" />
-      <entry key="S60" value="1.0" />
-      <entry key="M2" value="1.0" />
-      <entry key="M5" value="1.0000000001870621" />
-      <entry key="M10" value="1.0000273541128846" />
-      <entry key="M15" value="1.001441125197387" />
-      <entry key="M30" value="1.075925551612449" />
-      <entry key="H1" value="1.5591154408325414" />
-      <entry key="H2" value="3.140499048889574" />
-      <entry key="H4" value="9.851466068026248" />
-      <entry key="D1" value="64.05232460025823" />
-      <entry key="W1" value="143.99051712345394" />
+      <entry key="MS100" value="1.1368082929817374" />
+      <entry key="MS500" value="1.8179924204537796" />
+      <entry key="S2" value="3.599160721744199" />
+      <entry key="S5" value="5.171462096191396" />
+      <entry key="S10" value="6.107824086609371" />
+      <entry key="S30" value="7.150605559155404" />
+      <entry key="S60" value="7.533500278759872" />
+      <entry key="M2" value="7.754691727188518" />
+      <entry key="M5" value="7.898746105998174" />
+      <entry key="M10" value="7.948856617478186" />
+      <entry key="M15" value="7.967174979420291" />
+      <entry key="M30" value="8.057935087669078" />
+      <entry key="H1" value="8.547515619374813" />
+      <entry key="H2" value="10.130452504079534" />
+      <entry key="H4" value="16.837435560853343" />
+      <entry key="D1" value="71.03785762889918" />
+      <entry key="W1" value="150.98589483198185" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
@@ -72,33 +73,33 @@
       <entry key="S60" value="0.0" />
       <entry key="M2" value="0.0" />
       <entry key="M5" value="0.0" />
-      <entry key="M10" value="1.185533827805322E-216" />
-      <entry key="M15" value="1.120149442450171E-144" />
-      <entry key="M30" value="1.0583711269919308E-72" />
-      <entry key="H1" value="1.028771676686087E-36" />
-      <entry key="H2" value="1.014415648206502E-18" />
-      <entry key="H4" value="1.018598407781917E-9" />
-      <entry key="D1" value="0.04668012306733872" />
-      <entry key="W1" value="1.159582299058891" />
+      <entry key="M10" value="1.1479410008265951E-216" />
+      <entry key="M15" value="1.096342824522365E-144" />
+      <entry key="M30" value="1.0470639066085523E-72" />
+      <entry key="H1" value="1.0232614240682013E-36" />
+      <entry key="H2" value="1.011695320889859E-18" />
+      <entry key="H4" value="1.0172317188675654E-9" />
+      <entry key="D1" value="0.046669678502578166" />
+      <entry key="W1" value="1.1595452306844793" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="5.570135331388785E-4" />
-      <entry key="MS500" value="0.22344629058919674" />
-      <entry key="S2" value="0.6875325871370548" />
-      <entry key="S5" value="0.8608298437109339" />
-      <entry key="S10" value="0.927809163411816" />
-      <entry key="S30" value="0.9753329262917066" />
-      <entry key="S60" value="0.9875894522987306" />
-      <entry key="M2" value="0.9937753530344424" />
-      <entry key="M5" value="0.9975054763548975" />
-      <entry key="M10" value="0.9987793131411022" />
-      <entry key="M15" value="1.0006089160070473" />
-      <entry key="M30" value="1.0755091309275533" />
-      <entry key="H1" value="1.5589064641492725" />
-      <entry key="H2" value="3.140393321073308" />
-      <entry key="H4" value="9.85141059021917" />
-      <entry key="D1" value="64.09899194840725" />
-      <entry key="W1" value="145.1500959674512" />
+      <entry key="MS100" value="1.099003446965786" />
+      <entry key="MS500" value="1.80642322609226" />
+      <entry key="S2" value="3.593730218079202" />
+      <entry key="S5" value="5.165536080256973" />
+      <entry key="S10" value="6.095652984394476" />
+      <entry key="S30" value="7.137020609290061" />
+      <entry key="S60" value="7.524182097941786" />
+      <entry key="M2" value="7.7492280249616545" />
+      <entry key="M5" value="7.896340622223358" />
+      <entry key="M10" value="7.947614737409252" />
+      <entry key="M15" value="7.966338161677844" />
+      <entry key="M30" value="8.057511958291201" />
+      <entry key="H1" value="8.547302180767566" />
+      <entry key="H2" value="10.130344268560538" />
+      <entry key="H4" value="16.83737876171464" />
+      <entry key="D1" value="71.0845143026925" />
+      <entry key="W1" value="152.14543657447908" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -342,7 +343,7 @@
       <workItem from="1789488964420" duration="4707000" />
       <workItem from="1789497666463" duration="4312000" />
       <workItem from="1789662460736" duration="724000" />
-      <workItem from="1789665765802" duration="20807000" />
+      <workItem from="1789665765802" duration="21452000" />
     </task>
     <task id="LOCAL-00001" summary="implement ROVER method for word picking">
       <option name="closed" value="true" />
@@ -480,7 +481,15 @@
       <option name="project" value="LOCAL" />
       <updated>1790056382479</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="more branching techniques">
+      <option name="closed" value="true" />
+      <created>1790101142534</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1790101142534</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -518,6 +527,7 @@
     <MESSAGE value="fix err in smoke test ntb" />
     <MESSAGE value="fix err in smoke test ntb again" />
     <MESSAGE value="more extensive tree run" />
-    <option name="LAST_COMMIT_MESSAGE" value="more extensive tree run" />
+    <MESSAGE value="more branching techniques" />
+    <option name="LAST_COMMIT_MESSAGE" value="more branching techniques" />
   </component>
 </project>

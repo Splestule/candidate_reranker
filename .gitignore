@@ -21,3 +21,4 @@ results/_to_delete/
 
 # soukromy vyzkumny denik, nepatri na GitHub
 research-log.md
+*.parquet

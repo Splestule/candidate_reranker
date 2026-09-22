@@ -84,8 +84,9 @@ VARIANTS = {
 
 CHECK = r'''# The campaign runs as a subprocess with its own PYTHONPATH; this cell runs in the
 # kernel, so it has to reproduce that environment before importing anything.
-import os, sys
+import os, sys, json, subprocess
 CODE = "/kaggle/working/code/src"
+DATA = "/tmp/campaign_data"
 WF = f"{UP}/Whisfusion/src"
 for pth in (WF, CODE):
     if pth not in sys.path:
@@ -95,10 +96,24 @@ os.environ.setdefault("TOKENIZERS_PARALLELISM", "false")
 os.environ.setdefault("HF_HUB_DISABLE_PROGRESS_BARS", "1")
 assert os.path.isdir(WF), f"Whisfusion checkout missing at {WF}; did the setup cell run?"
 
+# The probe has to be speech. Pseudo-random audio decodes to a single token, so every
+# assertion in the check passes on an empty output -- which is exactly what happened the
+# first two times. Prepare one real set here; the campaign finds it already done.
+PROBE_SET = (CONFIG.get("tree_sets") or ["ls-dev-clean"])[0]
+cfg_path = "/kaggle/working/campaign_config.json"
+with open(cfg_path, "w") as f:
+    json.dump(dict(CONFIG, mode=MODE, upstream=upstream), f, indent=2)
+env = dict(os.environ, PYTHONPATH=f"{CODE}:{WF}", HF_HOME="/tmp/hf",
+           TOKENIZERS_PARALLELISM="false", HF_HUB_DISABLE_PROGRESS_BARS="1", PYTHONUNBUFFERED="1")
+subprocess.run([sys.executable, "-m", "campaign.prep_data", "--config", cfg_path,
+                "--data", DATA, "--only", PROBE_SET], env=env, cwd=CODE, check=True)
+MANIFEST = f"{DATA}/manifests/{PROBE_SET}.jsonl"
+
 import check_decode
-rc = check_decode.main()
+rc = check_decode.main(MANIFEST)
 assert rc != 1, "flat sampling changed -- do not run the ablation"
 '''
+
 
 INTRO = """# Candidate composition campaign
 

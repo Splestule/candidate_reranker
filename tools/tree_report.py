@@ -23,6 +23,8 @@ import pandas as pd
 
 import bootstrap
 
+DEFAULT_K = 15          # src/decode.py pdd_decode, and the upstream README
+
 ORDER = ["flat", "tree-early", "tree-late", "tree-deep", "flat-sched", "cond", "cond-tree",
          "adapt", "adapt-tree", "adapt-cond-tree"]
 
@@ -83,6 +85,11 @@ def main() -> int:
                                                 n_boot=args.n_boot)
                 flag = "" if st["ci_low"] > 0 or st["ci_high"] < 0 else "   spans zero"
                 print(bootstrap.format_row(f"{a} vs flat, {label}", st) + flag)
+
+    k_run = d.k.mean()
+    print(f"\n{'-' * 104}\nflat here runs at K = {k_run:.0f}. Whisfusion's own default is "
+          f"{DEFAULT_K}, so a saving measured against this flat is not a saving against the\n"
+          f"model as it ships -- quote the K both numbers were taken at.\n{'-' * 104}")
     return 0
 
 
