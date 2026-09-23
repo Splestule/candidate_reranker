@@ -1,0 +1,20 @@
+{
+  "n_ok": 200,
+  "n_err": 0,
+  "audio_s": 1318.6049999999998,
+  "encode_s": 3.8314366340637207,
+  "decode_s": {
+    "greedy": 70.45325713386534,
+    "beam": 111.50032867393497,
+    "sample": 84.28948909568783
+  },
+  "started": 1789959022.2055857,
+  "status": "done",
+  "wall_s": 309.56606793403625,
+  "n_in_shard": 200,
+  "n_resumed": 0,
+  "peak_mem_mb": 1532.81298828125,
+  "job": "whisper-small__ls-test-other__s02__main",
+  "model": "whisper-small",
+  "lane": 1
+}

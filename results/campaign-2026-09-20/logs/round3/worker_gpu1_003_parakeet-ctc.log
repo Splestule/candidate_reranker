@@ -1,0 +1,17 @@
+[20:14:27] [lane1 parakeet-ctc] host 3953d49cb228  cuda=True  device=Tesla T4
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[20:15:56] [lane1 parakeet-ctc] model loaded in 89 s
+[20:15:56] [lane1 parakeet-ctc] job parakeet-ctc__ls-test-other__s00__sweepT: 100 utts, 0 already done, arms ['greedy', 'T0.5', 'T1', 'T1.5', 'T2']
+[20:16:51] [lane1 parakeet-ctc]   parakeet-ctc__ls-test-other__s00__sweepT: 50/100  1.11 s/utt
+[20:17:31] [lane1 parakeet-ctc]   parakeet-ctc__ls-test-other__s00__sweepT: 100/100  0.96 s/utt
+[20:17:32] [lane1 parakeet-ctc] done parakeet-ctc__ls-test-other__s00__sweepT [done] 100 utts in 1.6 min (0.96 s/utt, RTF 0.149)
+[20:17:32] [lane1 parakeet-ctc] job parakeet-ctc__ami__s00__sweepT: 100 utts, 0 already done, arms ['greedy', 'T0.5', 'T1', 'T1.5', 'T2']
+[20:18:09] [lane1 parakeet-ctc]   parakeet-ctc__ami__s00__sweepT: 50/100  0.74 s/utt
+[20:18:26] [lane1 parakeet-ctc]   parakeet-ctc__ami__s00__sweepT: 100/100  0.54 s/utt
+[20:18:26] [lane1 parakeet-ctc] done parakeet-ctc__ami__s00__sweepT [done] 100 utts in 0.9 min (0.55 s/utt, RTF 0.172)
+[20:18:26] [lane1 parakeet-ctc] job parakeet-ctc__ls-tc-babble5__s00__sweepT: 100 utts, 0 already done, arms ['greedy', 'T0.5', 'T1', 'T1.5', 'T2']
+[20:19:06] [lane1 parakeet-ctc]   parakeet-ctc__ls-tc-babble5__s00__sweepT: 50/100  0.78 s/utt
+[20:19:39] [lane1 parakeet-ctc]   parakeet-ctc__ls-tc-babble5__s00__sweepT: 100/100  0.73 s/utt
+[20:19:39] [lane1 parakeet-ctc] done parakeet-ctc__ls-tc-babble5__s00__sweepT [done] 100 utts in 1.2 min (0.73 s/utt, RTF 0.100)
+[20:19:39] [lane1 parakeet-ctc] yielding: another model has lower-tier work waiting
+[20:19:39] [lane1 parakeet-ctc] exiting after 3 jobs

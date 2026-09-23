@@ -43,6 +43,13 @@ VARIANTS = {
         "sweep_sets": ["ami", "earnings22", "ls-test-other"],
         "drax_sweep_T": [0.1, 0.4, 0.7, 1.0, 1.15, 1.3, 1.45, 1.6],
     }),
+    # round 3: a temperature sweep for every family on the same sets, two more rungs on
+    # each noise ladder, and deeper shards of every cell that already exists
+    "round3": dict(MODE="full", RUN_HOURS=11.4, CONFIG={
+        "plan": "round3", "tail_minutes": 25, "drax_low_T": 0.4,
+        # five rungs, not the round-1 seven: 0.1 is the reference decode and 2.0 was already bad
+        "drax_sweep_T": [0.4, 0.7, 1.0, 1.3, 1.6],
+    }),
     # tree ablation, smoke: every arm on a handful of utterances, to see it run at all
     "tree-smoke": dict(MODE="full", RUN_HOURS=0.8, CONFIG={
         "plan": "tree", "tail_minutes": 6, "models": ["whisfusion"],

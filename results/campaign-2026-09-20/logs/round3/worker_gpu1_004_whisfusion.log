@@ -1,0 +1,18 @@
+[20:19:43] [lane1 whisfusion] host 3953d49cb228  cuda=True  device=Tesla T4
+[wf_compat] shims active: rotary_emb, dropout_layer_norm, flash_attn, xformers.ops.SwiGLU, FusedRMSNorm
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[wf] device=cuda (Tesla T4) dtype=torch.float16
+[wf] base: 129 keys, 72 missing
+[wf] adapter: 201 keys, 0 missing, 0 unexpected
+[wf] decoder 261.5M · Whisper encoder 88.2M
+[20:20:03] [lane1 whisfusion] model loaded in 19 s
+[20:20:03] [lane1 whisfusion] job whisfusion__ami__s00__sweepT: 100 utts, 0 already done, arms ['fss0', 'fssT0.5', 'fssT1', 'fssT1.5']
+[20:26:31] [lane1 whisfusion]   whisfusion__ami__s00__sweepT: 50/100  7.76 s/utt
+[20:33:19] [lane1 whisfusion]   whisfusion__ami__s00__sweepT: 100/100  7.96 s/utt
+[20:33:19] [lane1 whisfusion] done whisfusion__ami__s00__sweepT [done] 100 utts in 13.3 min (7.97 s/utt, RTF 2.499)
+[20:33:19] [lane1 whisfusion] job whisfusion__ls-tc-babble5__s00__sweepT: 100 utts, 0 already done, arms ['fss0', 'fssT0.5', 'fssT1', 'fssT1.5']
+[20:40:09] [lane1 whisfusion]   whisfusion__ls-tc-babble5__s00__sweepT: 50/100  8.20 s/utt
+[20:46:59] [lane1 whisfusion]   whisfusion__ls-tc-babble5__s00__sweepT: 100/100  8.20 s/utt
+[20:47:00] [lane1 whisfusion] done whisfusion__ls-tc-babble5__s00__sweepT [done] 100 utts in 13.7 min (8.21 s/utt, RTF 1.119)
+[20:47:00] [lane1 whisfusion] yielding: another model has lower-tier work waiting
+[20:47:00] [lane1 whisfusion] exiting after 2 jobs

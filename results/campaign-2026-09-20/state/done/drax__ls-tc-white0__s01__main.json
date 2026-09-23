@@ -1,0 +1,19 @@
+{
+  "n_ok": 200,
+  "n_err": 0,
+  "audio_s": 1529.9400000000007,
+  "encode_s": 37.02304744720459,
+  "decode_s": {
+    "main": 675.5690066814423,
+    "ref": 182.04191517829895
+  },
+  "started": 1789968636.4193506,
+  "status": "done",
+  "wall_s": 895.0396292209625,
+  "n_in_shard": 200,
+  "n_resumed": 0,
+  "peak_mem_mb": 4335.87890625,
+  "job": "drax__ls-tc-white0__s01__main",
+  "model": "drax",
+  "lane": 0
+}

@@ -1,0 +1,20 @@
+{
+  "n_ok": 200,
+  "n_err": 0,
+  "audio_s": 1434.3699999999994,
+  "encode_s": 3.8242571353912354,
+  "decode_s": {
+    "greedy": 74.19522789535525,
+    "beam": 118.31457250556946,
+    "sample": 92.08784543876651
+  },
+  "started": 1789960385.1894715,
+  "status": "done",
+  "wall_s": 328.48993706703186,
+  "n_in_shard": 200,
+  "n_resumed": 0,
+  "peak_mem_mb": 1558.494140625,
+  "job": "whisper-small__ls-tc-babble5__s02__main",
+  "model": "whisper-small",
+  "lane": 1
+}

@@ -1,0 +1,40 @@
+[05:41:07] [lane1 drax] host 3953d49cb228  cuda=True  device=Tesla T4
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[drax] decoder 580M (fp16 blocks), encoder 637M, canvas 128, vocab 51866
+[05:41:24] [lane1 drax] model loaded in 17 s
+[05:41:24] [lane1 drax] job drax__ls-tc-babble15__s02__main: 200 utts, 0 already done, arms ['main', 'ref']
+[05:44:50] [lane1 drax]   drax__ls-tc-babble15__s02__main: 50/200  4.12 s/utt
+[05:48:19] [lane1 drax]   drax__ls-tc-babble15__s02__main: 100/200  4.16 s/utt
+[05:51:49] [lane1 drax]   drax__ls-tc-babble15__s02__main: 150/200  4.17 s/utt
+[05:55:19] [lane1 drax]   drax__ls-tc-babble15__s02__main: 200/200  4.18 s/utt
+[05:55:19] [lane1 drax] done drax__ls-tc-babble15__s02__main [done] 200 utts in 13.9 min (4.18 s/utt, RTF 0.583)
+[05:55:19] [lane1 drax] job drax__ls-tc-white10__s02__main: 200 utts, 0 already done, arms ['main', 'ref']
+[05:58:50] [lane1 drax]   drax__ls-tc-white10__s02__main: 50/200  4.20 s/utt
+[06:02:19] [lane1 drax]   drax__ls-tc-white10__s02__main: 100/200  4.20 s/utt
+[06:05:49] [lane1 drax]   drax__ls-tc-white10__s02__main: 150/200  4.20 s/utt
+[06:09:21] [lane1 drax]   drax__ls-tc-white10__s02__main: 200/200  4.21 s/utt
+[06:09:21] [lane1 drax] done drax__ls-tc-white10__s02__main [done] 200 utts in 14.0 min (4.21 s/utt, RTF 0.587)
+[06:09:21] [lane1 drax] job drax__ls-test-clean__s02__lowT: 200 utts, 0 already done, arms ['lowT']
+[06:12:07] [lane1 drax]   drax__ls-test-clean__s02__lowT: 50/200  3.32 s/utt
+[06:14:53] [lane1 drax]   drax__ls-test-clean__s02__lowT: 100/200  3.32 s/utt
+[06:17:39] [lane1 drax]   drax__ls-test-clean__s02__lowT: 150/200  3.32 s/utt
+[06:20:24] [lane1 drax]   drax__ls-test-clean__s02__lowT: 200/200  3.32 s/utt
+[06:20:24] [lane1 drax] done drax__ls-test-clean__s02__lowT [done] 200 utts in 11.1 min (3.32 s/utt, RTF 0.463)
+[06:20:24] [lane1 drax] job drax__ami__s02__lowT: 200 utts, 0 already done, arms ['lowT']
+[06:23:09] [lane1 drax]   drax__ami__s02__lowT: 50/200  3.30 s/utt
+[06:25:55] [lane1 drax]   drax__ami__s02__lowT: 100/200  3.31 s/utt
+[06:28:40] [lane1 drax]   drax__ami__s02__lowT: 150/200  3.31 s/utt
+[06:31:25] [lane1 drax]   drax__ami__s02__lowT: 200/200  3.30 s/utt
+[06:31:25] [lane1 drax] done drax__ami__s02__lowT [done] 200 utts in 11.0 min (3.31 s/utt, RTF 1.120)
+[06:31:25] [lane1 drax] job drax__voxpopuli__s02__lowT: 200 utts, 0 already done, arms ['lowT']
+[06:34:11] [lane1 drax]   drax__voxpopuli__s02__lowT: 50/200  3.31 s/utt
+[06:36:56] [lane1 drax]   drax__voxpopuli__s02__lowT: 100/200  3.31 s/utt
+[06:39:42] [lane1 drax]   drax__voxpopuli__s02__lowT: 150/200  3.31 s/utt
+[06:42:27] [lane1 drax]   drax__voxpopuli__s02__lowT: 200/200  3.31 s/utt
+[06:42:27] [lane1 drax] done drax__voxpopuli__s02__lowT [done] 200 utts in 11.0 min (3.31 s/utt, RTF 0.499)
+[06:42:27] [lane1 drax] job drax__spgispeech__s02__lowT: 200 utts, 0 already done, arms ['lowT']
+[06:45:13] [lane1 drax]   drax__spgispeech__s02__lowT: 50/200  3.31 s/utt
+[06:47:59] [lane1 drax]   drax__spgispeech__s02__lowT: 100/200  3.31 s/utt
+[06:48:29] [lane1 drax] deadline reached inside drax__spgispeech__s02__lowT after 109 utts
+[06:48:29] [lane1 drax] done drax__spgispeech__s02__lowT [partial] 109 utts in 6.0 min (3.32 s/utt, RTF 0.370)
+[06:48:29] [lane1 drax] exiting after 6 jobs

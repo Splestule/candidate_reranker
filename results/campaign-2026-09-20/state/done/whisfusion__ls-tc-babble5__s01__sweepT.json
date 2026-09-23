@@ -1,0 +1,21 @@
+{
+  "n_ok": 100,
+  "n_err": 0,
+  "audio_s": 688.595,
+  "encode_s": 3.7713851928710938,
+  "decode_s": {
+    "fss0": 200.29382419586182,
+    "fssT0.5": 205.77640318870544,
+    "fssT1": 205.7599756717682,
+    "fssT1.5": 205.74842357635498
+  },
+  "started": 1789957855.4899347,
+  "status": "done",
+  "wall_s": 822.6241707801819,
+  "n_in_shard": 100,
+  "n_resumed": 0,
+  "peak_mem_mb": 4204.26171875,
+  "job": "whisfusion__ls-tc-babble5__s01__sweepT",
+  "model": "whisfusion",
+  "lane": 1
+}

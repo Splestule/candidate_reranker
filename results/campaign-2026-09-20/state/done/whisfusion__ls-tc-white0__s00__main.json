@@ -1,0 +1,18 @@
+{
+  "n_ok": 200,
+  "n_err": 0,
+  "audio_s": 1421.96,
+  "encode_s": 7.1942315101623535,
+  "decode_s": {
+    "main": 398.7382869720459
+  },
+  "started": 1789941148.5194874,
+  "status": "done",
+  "wall_s": 406.5809602737427,
+  "n_in_shard": 200,
+  "n_resumed": 0,
+  "peak_mem_mb": 4204.26171875,
+  "job": "whisfusion__ls-tc-white0__s00__main",
+  "model": "whisfusion",
+  "lane": 1
+}

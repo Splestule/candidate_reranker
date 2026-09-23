@@ -16,7 +16,9 @@ import pandas as pd
 
 NOISE = {"ls-test-clean": ("clean", 99), "ls-tc-babble10": ("babble 10 dB", 10),
          "ls-tc-babble5": ("babble 5 dB", 5), "ls-tc-babble0": ("babble 0 dB", 0),
-         "ls-tc-white5": ("white 5 dB", 5)}
+         "ls-tc-white5": ("white 5 dB", 5), "ls-tc-babble15": ("babble 15 dB", 15),
+         "ls-tc-babbleM5": ("babble -5 dB", -5), "ls-tc-white10": ("white 10 dB", 10),
+         "ls-tc-white0": ("white 0 dB", 0)}
 MULTI = ["fleurs-de", "fleurs-fr", "fleurs-es", "fleurs-it", "fleurs-pt"]
 
 
@@ -112,7 +114,8 @@ def t_kscale(df: pd.DataFrame) -> pd.DataFrame:
 
 def t_sweep(df: pd.DataFrame) -> pd.DataFrame:
     s = df[df["kind"] == "sweepT"]
-    s = s[s["k"] == s["k"].max()]
+    # each pool at its own largest k: sweeps differ in K by family (16 for Drax and Whisper)
+    s = s[s["k"] == s.groupby(["model", "set", "arm"])["k"].transform("max")]
     rows = []
     for (mod, st, arm), g in s.groupby(["model", "set", "arm"]):
         rows.append(dict(model=mod, set=st, arm=arm, T=g["arm_T"].iloc[0], n=len(g),

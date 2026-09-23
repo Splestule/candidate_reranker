@@ -1,0 +1,20 @@
+{
+  "n_ok": 200,
+  "n_err": 0,
+  "audio_s": 1434.3699999999994,
+  "encode_s": 3.944380283355713,
+  "decode_s": {
+    "greedy": 61.45503979072569,
+    "beam": 99.50039158401486,
+    "sample": 82.51041485176087
+  },
+  "started": 1789963519.0201917,
+  "status": "done",
+  "wall_s": 368.2687511444092,
+  "n_in_shard": 200,
+  "n_resumed": 0,
+  "peak_mem_mb": 2525.9013671875,
+  "job": "whisper-turbo__ls-test-clean__s02__main",
+  "model": "whisper-turbo",
+  "lane": 0
+}

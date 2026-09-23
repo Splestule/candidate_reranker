@@ -1,0 +1,66 @@
+[01:15:05] [lane0 whisfusion] host 3953d49cb228  cuda=True  device=Tesla T4
+[wf_compat] shims active: rotary_emb, dropout_layer_norm, flash_attn, xformers.ops.SwiGLU, FusedRMSNorm
+[wf] device=cuda (Tesla T4) dtype=torch.float16
+[wf] base: 129 keys, 72 missing
+[wf] adapter: 201 keys, 0 missing, 0 unexpected
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[wf] decoder 261.5M · Whisper encoder 88.2M
+[01:15:20] [lane0 whisfusion] model loaded in 15 s
+[01:15:20] [lane0 whisfusion] job whisfusion__ls-test-other__s03__main: 200 utts, 0 already done, arms ['main']
+[01:17:11] [lane0 whisfusion]   whisfusion__ls-test-other__s03__main: 50/200  2.22 s/utt
+[01:19:01] [lane0 whisfusion]   whisfusion__ls-test-other__s03__main: 100/200  2.21 s/utt
+[01:20:51] [lane0 whisfusion]   whisfusion__ls-test-other__s03__main: 150/200  2.20 s/utt
+[01:22:41] [lane0 whisfusion]   whisfusion__ls-test-other__s03__main: 200/200  2.21 s/utt
+[01:22:41] [lane0 whisfusion] done whisfusion__ls-test-other__s03__main [done] 200 utts in 7.4 min (2.21 s/utt, RTF 0.343)
+[01:22:41] [lane0 whisfusion] job whisfusion__earnings22__s03__main: 200 utts, 0 already done, arms ['main']
+[01:24:32] [lane0 whisfusion]   whisfusion__earnings22__s03__main: 50/200  2.21 s/utt
+[01:26:22] [lane0 whisfusion]   whisfusion__earnings22__s03__main: 100/200  2.21 s/utt
+[01:28:13] [lane0 whisfusion]   whisfusion__earnings22__s03__main: 150/200  2.21 s/utt
+[01:30:04] [lane0 whisfusion]   whisfusion__earnings22__s03__main: 200/200  2.21 s/utt
+[01:30:04] [lane0 whisfusion] done whisfusion__earnings22__s03__main [done] 200 utts in 7.4 min (2.21 s/utt, RTF 0.340)
+[01:30:04] [lane0 whisfusion] job whisfusion__gigaspeech__s03__main: 200 utts, 0 already done, arms ['main']
+[01:31:55] [lane0 whisfusion]   whisfusion__gigaspeech__s03__main: 50/200  2.21 s/utt
+[01:33:45] [lane0 whisfusion]   whisfusion__gigaspeech__s03__main: 100/200  2.21 s/utt
+[01:35:36] [lane0 whisfusion]   whisfusion__gigaspeech__s03__main: 150/200  2.21 s/utt
+[01:37:26] [lane0 whisfusion]   whisfusion__gigaspeech__s03__main: 200/200  2.21 s/utt
+[01:37:27] [lane0 whisfusion] done whisfusion__gigaspeech__s03__main [done] 200 utts in 7.4 min (2.21 s/utt, RTF 0.355)
+[01:37:27] [lane0 whisfusion] job whisfusion__common_voice__s03__main: 200 utts, 0 already done, arms ['main']
+[01:39:17] [lane0 whisfusion]   whisfusion__common_voice__s03__main: 50/200  2.20 s/utt
+[01:41:07] [lane0 whisfusion]   whisfusion__common_voice__s03__main: 100/200  2.20 s/utt
+[01:42:57] [lane0 whisfusion]   whisfusion__common_voice__s03__main: 150/200  2.20 s/utt
+[01:44:47] [lane0 whisfusion]   whisfusion__common_voice__s03__main: 200/200  2.20 s/utt
+[01:44:47] [lane0 whisfusion] done whisfusion__common_voice__s03__main [done] 200 utts in 7.3 min (2.20 s/utt, RTF 0.390)
+[01:44:47] [lane0 whisfusion] job whisfusion__ls-test-clean__s04__main: 200 utts, 0 already done, arms ['main']
+[01:46:37] [lane0 whisfusion]   whisfusion__ls-test-clean__s04__main: 50/200  2.20 s/utt
+[01:48:28] [lane0 whisfusion]   whisfusion__ls-test-clean__s04__main: 100/200  2.21 s/utt
+[01:50:18] [lane0 whisfusion]   whisfusion__ls-test-clean__s04__main: 150/200  2.21 s/utt
+[01:52:08] [lane0 whisfusion]   whisfusion__ls-test-clean__s04__main: 200/200  2.21 s/utt
+[01:52:09] [lane0 whisfusion] done whisfusion__ls-test-clean__s04__main [done] 200 utts in 7.4 min (2.21 s/utt, RTF 0.315)
+[01:52:09] [lane0 whisfusion] job whisfusion__ami__s04__main: 200 utts, 0 already done, arms ['main']
+[01:53:59] [lane0 whisfusion]   whisfusion__ami__s04__main: 50/200  2.20 s/utt
+[01:55:49] [lane0 whisfusion]   whisfusion__ami__s04__main: 100/200  2.20 s/utt
+[01:57:39] [lane0 whisfusion]   whisfusion__ami__s04__main: 150/200  2.20 s/utt
+[01:59:29] [lane0 whisfusion]   whisfusion__ami__s04__main: 200/200  2.20 s/utt
+[01:59:29] [lane0 whisfusion] done whisfusion__ami__s04__main [done] 200 utts in 7.3 min (2.20 s/utt, RTF 0.767)
+[01:59:29] [lane0 whisfusion] job whisfusion__voxpopuli__s04__main: 118 utts, 0 already done, arms ['main']
+[02:01:20] [lane0 whisfusion]   whisfusion__voxpopuli__s04__main: 50/118  2.21 s/utt
+[02:03:10] [lane0 whisfusion]   whisfusion__voxpopuli__s04__main: 100/118  2.21 s/utt
+[02:03:50] [lane0 whisfusion] done whisfusion__voxpopuli__s04__main [done] 118 utts in 4.3 min (2.21 s/utt, RTF 0.328)
+[02:03:50] [lane0 whisfusion] job whisfusion__spgispeech__s04__main: 200 utts, 0 already done, arms ['main']
+[02:05:41] [lane0 whisfusion]   whisfusion__spgispeech__s04__main: 50/200  2.21 s/utt
+[02:07:31] [lane0 whisfusion]   whisfusion__spgispeech__s04__main: 100/200  2.21 s/utt
+[02:09:22] [lane0 whisfusion]   whisfusion__spgispeech__s04__main: 150/200  2.21 s/utt
+[02:11:13] [lane0 whisfusion]   whisfusion__spgispeech__s04__main: 200/200  2.21 s/utt
+[02:11:13] [lane0 whisfusion] done whisfusion__spgispeech__s04__main [done] 200 utts in 7.4 min (2.22 s/utt, RTF 0.253)
+[02:11:13] [lane0 whisfusion] job whisfusion__slr83__s04__main: 200 utts, 0 already done, arms ['main']
+[02:13:03] [lane0 whisfusion]   whisfusion__slr83__s04__main: 50/200  2.19 s/utt
+[02:14:53] [lane0 whisfusion]   whisfusion__slr83__s04__main: 100/200  2.19 s/utt
+[02:16:43] [lane0 whisfusion]   whisfusion__slr83__s04__main: 150/200  2.20 s/utt
+[02:18:33] [lane0 whisfusion]   whisfusion__slr83__s04__main: 200/200  2.20 s/utt
+[02:18:33] [lane0 whisfusion] done whisfusion__slr83__s04__main [done] 200 utts in 7.3 min (2.20 s/utt, RTF 0.332)
+[02:18:33] [lane0 whisfusion] job whisfusion__ami__s01__sweepT: 100 utts, 0 already done, arms ['fss0', 'fssT0.5', 'fssT1', 'fssT1.5']
+[02:25:57] [lane0 whisfusion]   whisfusion__ami__s01__sweepT: 50/100  8.89 s/utt
+[02:33:21] [lane0 whisfusion]   whisfusion__ami__s01__sweepT: 100/100  8.88 s/utt
+[02:33:21] [lane0 whisfusion] done whisfusion__ami__s01__sweepT [done] 100 utts in 14.8 min (8.88 s/utt, RTF 2.985)
+[02:33:21] [lane0 whisfusion] yielding: another model has lower-tier work waiting
+[02:33:21] [lane0 whisfusion] exiting after 10 jobs

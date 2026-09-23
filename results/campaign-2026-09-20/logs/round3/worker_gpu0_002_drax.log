@@ -1,0 +1,112 @@
+[19:58:37] [lane0 drax] host 3953d49cb228  cuda=True  device=Tesla T4
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[drax] decoder 580M (fp16 blocks), encoder 637M, canvas 128, vocab 51866
+[19:59:56] [lane0 drax] model loaded in 79 s
+[19:59:56] [lane0 drax] job drax__ls-test-other__s00__sweepT: 100 utts, 0 already done, arms ['T0.4', 'T0.7', 'T1', 'T1.3', 'T1.6']
+[20:14:09] [lane0 drax]   drax__ls-test-other__s00__sweepT: 50/100  17.05 s/utt
+[20:28:21] [lane0 drax]   drax__ls-test-other__s00__sweepT: 100/100  17.05 s/utt
+[20:28:21] [lane0 drax] done drax__ls-test-other__s00__sweepT [done] 100 utts in 28.4 min (17.05 s/utt, RTF 2.648)
+[20:28:21] [lane0 drax] job drax__ami__s00__sweepT: 100 utts, 0 already done, arms ['T0.4', 'T0.7', 'T1', 'T1.3', 'T1.6']
+[20:42:34] [lane0 drax]   drax__ami__s00__sweepT: 50/100  17.05 s/utt
+[20:56:44] [lane0 drax]   drax__ami__s00__sweepT: 100/100  17.03 s/utt
+[20:56:45] [lane0 drax] done drax__ami__s00__sweepT [done] 100 utts in 28.4 min (17.03 s/utt, RTF 5.344)
+[20:56:45] [lane0 drax] job drax__ls-tc-babble5__s00__sweepT: 100 utts, 0 already done, arms ['T0.4', 'T0.7', 'T1', 'T1.3', 'T1.6']
+[21:10:59] [lane0 drax]   drax__ls-tc-babble5__s00__sweepT: 50/100  17.08 s/utt
+[21:25:12] [lane0 drax]   drax__ls-tc-babble5__s00__sweepT: 100/100  17.07 s/utt
+[21:25:12] [lane0 drax] done drax__ls-tc-babble5__s00__sweepT [done] 100 utts in 28.5 min (17.08 s/utt, RTF 2.328)
+[21:25:12] [lane0 drax] job drax__ls-tc-babble15__s00__main: 200 utts, 0 already done, arms ['main', 'ref']
+[21:28:56] [lane0 drax]   drax__ls-tc-babble15__s00__main: 50/200  4.48 s/utt
+[21:32:40] [lane0 drax]   drax__ls-tc-babble15__s00__main: 100/200  4.48 s/utt
+[21:36:24] [lane0 drax]   drax__ls-tc-babble15__s00__main: 150/200  4.48 s/utt
+[21:40:07] [lane0 drax]   drax__ls-tc-babble15__s00__main: 200/200  4.48 s/utt
+[21:40:08] [lane0 drax] done drax__ls-tc-babble15__s00__main [done] 200 utts in 14.9 min (4.48 s/utt, RTF 0.630)
+[21:40:08] [lane0 drax] job drax__ls-tc-babble15__s00__lowT: 200 utts, 0 already done, arms ['lowT']
+[21:43:06] [lane0 drax]   drax__ls-tc-babble15__s00__lowT: 50/200  3.56 s/utt
+[21:46:04] [lane0 drax]   drax__ls-tc-babble15__s00__lowT: 100/200  3.57 s/utt
+[21:49:02] [lane0 drax]   drax__ls-tc-babble15__s00__lowT: 150/200  3.56 s/utt
+[21:52:00] [lane0 drax]   drax__ls-tc-babble15__s00__lowT: 200/200  3.56 s/utt
+[21:52:00] [lane0 drax] done drax__ls-tc-babble15__s00__lowT [done] 200 utts in 11.9 min (3.56 s/utt, RTF 0.501)
+[21:52:00] [lane0 drax] job drax__ls-tc-babbleM5__s00__main: 200 utts, 0 already done, arms ['main', 'ref']
+[21:55:44] [lane0 drax]   drax__ls-tc-babbleM5__s00__main: 50/200  4.48 s/utt
+[21:59:29] [lane0 drax]   drax__ls-tc-babbleM5__s00__main: 100/200  4.48 s/utt
+[22:03:13] [lane0 drax]   drax__ls-tc-babbleM5__s00__main: 150/200  4.48 s/utt
+[22:06:57] [lane0 drax]   drax__ls-tc-babbleM5__s00__main: 200/200  4.48 s/utt
+[22:06:57] [lane0 drax] done drax__ls-tc-babbleM5__s00__main [done] 200 utts in 14.9 min (4.48 s/utt, RTF 0.631)
+[22:06:57] [lane0 drax] job drax__ls-tc-white10__s00__main: 200 utts, 0 already done, arms ['main', 'ref']
+[22:10:42] [lane0 drax]   drax__ls-tc-white10__s00__main: 50/200  4.49 s/utt
+[22:14:26] [lane0 drax]   drax__ls-tc-white10__s00__main: 100/200  4.49 s/utt
+[22:18:10] [lane0 drax]   drax__ls-tc-white10__s00__main: 150/200  4.49 s/utt
+[22:21:54] [lane0 drax]   drax__ls-tc-white10__s00__main: 200/200  4.48 s/utt
+[22:21:54] [lane0 drax] done drax__ls-tc-white10__s00__main [done] 200 utts in 15.0 min (4.49 s/utt, RTF 0.631)
+[22:21:54] [lane0 drax] job drax__ls-tc-white0__s00__main: 200 utts, 0 already done, arms ['main', 'ref']
+[22:25:38] [lane0 drax]   drax__ls-tc-white0__s00__main: 50/200  4.48 s/utt
+[22:29:22] [lane0 drax]   drax__ls-tc-white0__s00__main: 100/200  4.47 s/utt
+[22:33:05] [lane0 drax]   drax__ls-tc-white0__s00__main: 150/200  4.48 s/utt
+[22:36:49] [lane0 drax]   drax__ls-tc-white0__s00__main: 200/200  4.47 s/utt
+[22:36:49] [lane0 drax] done drax__ls-tc-white0__s00__main [done] 200 utts in 14.9 min (4.48 s/utt, RTF 0.630)
+[22:36:49] [lane0 drax] job drax__ls-test-other__s03__main: 200 utts, 0 already done, arms ['main', 'ref']
+[22:40:33] [lane0 drax]   drax__ls-test-other__s03__main: 50/200  4.48 s/utt
+[22:44:18] [lane0 drax]   drax__ls-test-other__s03__main: 100/200  4.48 s/utt
+[22:48:02] [lane0 drax]   drax__ls-test-other__s03__main: 150/200  4.48 s/utt
+[22:51:46] [lane0 drax]   drax__ls-test-other__s03__main: 200/200  4.49 s/utt
+[22:51:46] [lane0 drax] done drax__ls-test-other__s03__main [done] 200 utts in 15.0 min (4.49 s/utt, RTF 0.697)
+[22:51:47] [lane0 drax] job drax__earnings22__s03__main: 200 utts, 0 already done, arms ['main', 'ref']
+[22:55:31] [lane0 drax]   drax__earnings22__s03__main: 50/200  4.49 s/utt
+[22:59:15] [lane0 drax]   drax__earnings22__s03__main: 100/200  4.49 s/utt
+[23:03:00] [lane0 drax]   drax__earnings22__s03__main: 150/200  4.49 s/utt
+[23:06:44] [lane0 drax]   drax__earnings22__s03__main: 200/200  4.49 s/utt
+[23:06:44] [lane0 drax] done drax__earnings22__s03__main [done] 200 utts in 15.0 min (4.49 s/utt, RTF 0.689)
+[23:06:44] [lane0 drax] job drax__gigaspeech__s03__main: 200 utts, 0 already done, arms ['main', 'ref']
+[23:10:28] [lane0 drax]   drax__gigaspeech__s03__main: 50/200  4.47 s/utt
+[23:14:11] [lane0 drax]   drax__gigaspeech__s03__main: 100/200  4.47 s/utt
+[23:17:55] [lane0 drax]   drax__gigaspeech__s03__main: 150/200  4.47 s/utt
+[23:21:39] [lane0 drax]   drax__gigaspeech__s03__main: 200/200  4.47 s/utt
+[23:21:39] [lane0 drax] done drax__gigaspeech__s03__main [done] 200 utts in 14.9 min (4.47 s/utt, RTF 0.717)
+[23:21:39] [lane0 drax] job drax__common_voice__s03__main: 200 utts, 0 already done, arms ['main', 'ref']
+[23:25:22] [lane0 drax]   drax__common_voice__s03__main: 50/200  4.46 s/utt
+[23:29:06] [lane0 drax]   drax__common_voice__s03__main: 100/200  4.47 s/utt
+[23:32:49] [lane0 drax]   drax__common_voice__s03__main: 150/200  4.47 s/utt
+[23:36:32] [lane0 drax]   drax__common_voice__s03__main: 200/200  4.47 s/utt
+[23:36:32] [lane0 drax] done drax__common_voice__s03__main [done] 200 utts in 14.9 min (4.47 s/utt, RTF 0.791)
+[23:36:32] [lane0 drax] job drax__fleurs-de__s03__main: 200 utts, 0 already done, arms ['main', 'ref']
+[23:40:17] [lane0 drax]   drax__fleurs-de__s03__main: 50/200  4.49 s/utt
+[23:44:01] [lane0 drax]   drax__fleurs-de__s03__main: 100/200  4.49 s/utt
+[23:47:46] [lane0 drax]   drax__fleurs-de__s03__main: 150/200  4.49 s/utt
+[23:51:32] [lane0 drax]   drax__fleurs-de__s03__main: 200/200  4.50 s/utt
+[23:51:32] [lane0 drax] done drax__fleurs-de__s03__main [done] 200 utts in 15.0 min (4.50 s/utt, RTF 0.365)
+[23:51:32] [lane0 drax] job drax__fleurs-it__s03__main: 200 utts, 0 already done, arms ['main', 'ref']
+[23:55:17] [lane0 drax]   drax__fleurs-it__s03__main: 50/200  4.51 s/utt
+[23:59:02] [lane0 drax]   drax__fleurs-it__s03__main: 100/200  4.50 s/utt
+[00:02:48] [lane0 drax]   drax__fleurs-it__s03__main: 150/200  4.51 s/utt
+[00:06:33] [lane0 drax]   drax__fleurs-it__s03__main: 200/200  4.51 s/utt
+[00:06:34] [lane0 drax] done drax__fleurs-it__s03__main [done] 200 utts in 15.0 min (4.51 s/utt, RTF 0.323)
+[00:06:34] [lane0 drax] job drax__ls-test-clean__s04__main: 200 utts, 0 already done, arms ['main', 'ref']
+[00:10:18] [lane0 drax]   drax__ls-test-clean__s04__main: 50/200  4.48 s/utt
+[00:14:02] [lane0 drax]   drax__ls-test-clean__s04__main: 100/200  4.48 s/utt
+[00:17:46] [lane0 drax]   drax__ls-test-clean__s04__main: 150/200  4.48 s/utt
+[00:21:30] [lane0 drax]   drax__ls-test-clean__s04__main: 200/200  4.48 s/utt
+[00:21:30] [lane0 drax] done drax__ls-test-clean__s04__main [done] 200 utts in 14.9 min (4.48 s/utt, RTF 0.640)
+[00:21:30] [lane0 drax] job drax__ami__s04__main: 200 utts, 0 already done, arms ['main', 'ref']
+[00:25:14] [lane0 drax]   drax__ami__s04__main: 50/200  4.47 s/utt
+[00:28:57] [lane0 drax]   drax__ami__s04__main: 100/200  4.47 s/utt
+[00:32:40] [lane0 drax]   drax__ami__s04__main: 150/200  4.47 s/utt
+[00:36:23] [lane0 drax]   drax__ami__s04__main: 200/200  4.47 s/utt
+[00:36:23] [lane0 drax] done drax__ami__s04__main [done] 200 utts in 14.9 min (4.47 s/utt, RTF 1.555)
+[00:36:24] [lane0 drax] job drax__voxpopuli__s04__main: 118 utts, 0 already done, arms ['main', 'ref']
+[00:40:07] [lane0 drax]   drax__voxpopuli__s04__main: 50/118  4.48 s/utt
+[00:43:51] [lane0 drax]   drax__voxpopuli__s04__main: 100/118  4.48 s/utt
+[00:45:12] [lane0 drax] done drax__voxpopuli__s04__main [done] 118 utts in 8.8 min (4.48 s/utt, RTF 0.665)
+[00:45:12] [lane0 drax] job drax__gigaspeech__s04__main: 200 utts, 0 already done, arms ['main', 'ref']
+[00:48:56] [lane0 drax]   drax__gigaspeech__s04__main: 50/200  4.49 s/utt
+[00:52:40] [lane0 drax]   drax__gigaspeech__s04__main: 100/200  4.48 s/utt
+[00:56:24] [lane0 drax]   drax__gigaspeech__s04__main: 150/200  4.48 s/utt
+[01:00:07] [lane0 drax]   drax__gigaspeech__s04__main: 200/200  4.48 s/utt
+[01:00:08] [lane0 drax] done drax__gigaspeech__s04__main [done] 200 utts in 14.9 min (4.48 s/utt, RTF 0.715)
+[01:00:08] [lane0 drax] job drax__common_voice__s04__main: 200 utts, 0 already done, arms ['main', 'ref']
+[01:03:51] [lane0 drax]   drax__common_voice__s04__main: 50/200  4.47 s/utt
+[01:07:35] [lane0 drax]   drax__common_voice__s04__main: 100/200  4.47 s/utt
+[01:11:18] [lane0 drax]   drax__common_voice__s04__main: 150/200  4.47 s/utt
+[01:15:01] [lane0 drax]   drax__common_voice__s04__main: 200/200  4.47 s/utt
+[01:15:01] [lane0 drax] done drax__common_voice__s04__main [done] 200 utts in 14.9 min (4.47 s/utt, RTF 0.798)
+[01:15:01] [lane0 drax] yielding: another model has lower-tier work waiting
+[01:15:01] [lane0 drax] exiting after 19 jobs

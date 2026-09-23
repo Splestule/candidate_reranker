@@ -1,0 +1,19 @@
+{
+  "n_ok": 200,
+  "n_err": 0,
+  "audio_s": 1753.8899999999996,
+  "encode_s": 34.52890920639038,
+  "decode_s": {
+    "main": 626.9381048679352,
+    "ref": 174.8468472957611
+  },
+  "started": 1789951608.6934264,
+  "status": "done",
+  "wall_s": 836.7344121932983,
+  "n_in_shard": 200,
+  "n_resumed": 0,
+  "peak_mem_mb": 4335.87890625,
+  "job": "drax__spgispeech__s04__main",
+  "model": "drax",
+  "lane": 1
+}

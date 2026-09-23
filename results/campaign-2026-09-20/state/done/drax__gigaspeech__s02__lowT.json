@@ -1,0 +1,18 @@
+{
+  "n_ok": 159,
+  "n_err": 0,
+  "audio_s": 1002.06,
+  "encode_s": 29.061084270477295,
+  "decode_s": {
+    "lowT": 536.5256202220917
+  },
+  "started": 1789972745.5239422,
+  "status": "partial",
+  "wall_s": 565.8043510913849,
+  "n_in_shard": 200,
+  "n_resumed": 0,
+  "peak_mem_mb": 4335.87890625,
+  "job": "drax__gigaspeech__s02__lowT",
+  "model": "drax",
+  "lane": 0
+}

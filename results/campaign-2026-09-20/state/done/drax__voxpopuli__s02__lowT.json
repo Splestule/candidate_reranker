@@ -1,0 +1,18 @@
+{
+  "n_ok": 200,
+  "n_err": 0,
+  "audio_s": 1325.1040000000003,
+  "encode_s": 34.21414399147034,
+  "decode_s": {
+    "lowT": 627.337146282196
+  },
+  "started": 1789972285.9431086,
+  "status": "done",
+  "wall_s": 661.7946763038635,
+  "n_in_shard": 200,
+  "n_resumed": 0,
+  "peak_mem_mb": 4335.87890625,
+  "job": "drax__voxpopuli__s02__lowT",
+  "model": "drax",
+  "lane": 1
+}

@@ -1,0 +1,103 @@
+[03:47:00] [lane1 parakeet-ctc] host 3953d49cb228  cuda=True  device=Tesla T4
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[03:47:23] [lane1 parakeet-ctc] model loaded in 24 s
+[03:47:23] [lane1 parakeet-ctc] job parakeet-ctc__ls-test-other__s01__sweepT: 100 utts, 0 already done, arms ['greedy', 'T0.5', 'T1', 'T1.5', 'T2']
+[03:48:15] [lane1 parakeet-ctc]   parakeet-ctc__ls-test-other__s01__sweepT: 50/100  1.03 s/utt
+[03:48:59] [lane1 parakeet-ctc]   parakeet-ctc__ls-test-other__s01__sweepT: 100/100  0.95 s/utt
+[03:48:59] [lane1 parakeet-ctc] done parakeet-ctc__ls-test-other__s01__sweepT [done] 100 utts in 1.6 min (0.96 s/utt, RTF 0.145)
+[03:48:59] [lane1 parakeet-ctc] job parakeet-ctc__ami__s01__sweepT: 100 utts, 0 already done, arms ['greedy', 'T0.5', 'T1', 'T1.5', 'T2']
+[03:49:29] [lane1 parakeet-ctc]   parakeet-ctc__ami__s01__sweepT: 50/100  0.59 s/utt
+[03:49:44] [lane1 parakeet-ctc]   parakeet-ctc__ami__s01__sweepT: 100/100  0.45 s/utt
+[03:49:44] [lane1 parakeet-ctc] done parakeet-ctc__ami__s01__sweepT [done] 100 utts in 0.8 min (0.45 s/utt, RTF 0.152)
+[03:49:44] [lane1 parakeet-ctc] job parakeet-ctc__ls-tc-babble5__s01__sweepT: 100 utts, 0 already done, arms ['greedy', 'T0.5', 'T1', 'T1.5', 'T2']
+[03:50:21] [lane1 parakeet-ctc]   parakeet-ctc__ls-tc-babble5__s01__sweepT: 50/100  0.73 s/utt
+[03:50:52] [lane1 parakeet-ctc]   parakeet-ctc__ls-tc-babble5__s01__sweepT: 100/100  0.67 s/utt
+[03:50:52] [lane1 parakeet-ctc] done parakeet-ctc__ls-tc-babble5__s01__sweepT [done] 100 utts in 1.1 min (0.68 s/utt, RTF 0.098)
+[03:50:52] [lane1 parakeet-ctc] job parakeet-ctc__ls-dev-other__s02__main: 200 utts, 0 already done, arms ['greedy', 'sample']
+[03:51:24] [lane1 parakeet-ctc]   parakeet-ctc__ls-dev-other__s02__main: 50/200  0.65 s/utt
+[03:51:43] [lane1 parakeet-ctc]   parakeet-ctc__ls-dev-other__s02__main: 100/200  0.51 s/utt
+[03:52:04] [lane1 parakeet-ctc]   parakeet-ctc__ls-dev-other__s02__main: 150/200  0.48 s/utt
+[03:52:23] [lane1 parakeet-ctc]   parakeet-ctc__ls-dev-other__s02__main: 200/200  0.45 s/utt
+[03:52:23] [lane1 parakeet-ctc] done parakeet-ctc__ls-dev-other__s02__main [done] 200 utts in 1.5 min (0.45 s/utt, RTF 0.072)
+[03:52:23] [lane1 parakeet-ctc] job parakeet-ctc__ls-test-clean__s02__main: 200 utts, 0 already done, arms ['greedy', 'sample']
+[03:52:45] [lane1 parakeet-ctc]   parakeet-ctc__ls-test-clean__s02__main: 50/200  0.45 s/utt
+[03:53:03] [lane1 parakeet-ctc]   parakeet-ctc__ls-test-clean__s02__main: 100/200  0.41 s/utt
+[03:53:20] [lane1 parakeet-ctc]   parakeet-ctc__ls-test-clean__s02__main: 150/200  0.38 s/utt
+[03:53:36] [lane1 parakeet-ctc]   parakeet-ctc__ls-test-clean__s02__main: 200/200  0.37 s/utt
+[03:53:36] [lane1 parakeet-ctc] done parakeet-ctc__ls-test-clean__s02__main [done] 200 utts in 1.2 min (0.37 s/utt, RTF 0.051)
+[03:53:36] [lane1 parakeet-ctc] job parakeet-ctc__ls-test-other__s02__main: 200 utts, 0 already done, arms ['greedy', 'sample']
+[03:53:56] [lane1 parakeet-ctc]   parakeet-ctc__ls-test-other__s02__main: 50/200  0.39 s/utt
+[03:54:11] [lane1 parakeet-ctc]   parakeet-ctc__ls-test-other__s02__main: 100/200  0.35 s/utt
+[03:54:27] [lane1 parakeet-ctc]   parakeet-ctc__ls-test-other__s02__main: 150/200  0.34 s/utt
+[03:54:40] [lane1 parakeet-ctc]   parakeet-ctc__ls-test-other__s02__main: 200/200  0.32 s/utt
+[03:54:40] [lane1 parakeet-ctc] done parakeet-ctc__ls-test-other__s02__main [done] 200 utts in 1.1 min (0.32 s/utt, RTF 0.049)
+[03:54:41] [lane1 parakeet-ctc] job parakeet-ctc__ami__s02__main: 200 utts, 0 already done, arms ['greedy', 'sample']
+[03:54:46] [lane1 parakeet-ctc]   parakeet-ctc__ami__s02__main: 50/200  0.12 s/utt
+[03:54:53] [lane1 parakeet-ctc]   parakeet-ctc__ami__s02__main: 100/200  0.12 s/utt
+[03:54:57] [lane1 parakeet-ctc]   parakeet-ctc__ami__s02__main: 150/200  0.11 s/utt
+[03:55:02] [lane1 parakeet-ctc]   parakeet-ctc__ami__s02__main: 200/200  0.11 s/utt
+[03:55:02] [lane1 parakeet-ctc] done parakeet-ctc__ami__s02__main [done] 200 utts in 0.4 min (0.11 s/utt, RTF 0.036)
+[03:55:02] [lane1 parakeet-ctc] job parakeet-ctc__earnings22__s02__main: 200 utts, 0 already done, arms ['greedy', 'sample']
+[03:55:14] [lane1 parakeet-ctc]   parakeet-ctc__earnings22__s02__main: 50/200  0.24 s/utt
+[03:55:23] [lane1 parakeet-ctc]   parakeet-ctc__earnings22__s02__main: 100/200  0.22 s/utt
+[03:55:31] [lane1 parakeet-ctc]   parakeet-ctc__earnings22__s02__main: 150/200  0.19 s/utt
+[03:55:40] [lane1 parakeet-ctc]   parakeet-ctc__earnings22__s02__main: 200/200  0.19 s/utt
+[03:55:40] [lane1 parakeet-ctc] done parakeet-ctc__earnings22__s02__main [done] 200 utts in 0.6 min (0.19 s/utt, RTF 0.029)
+[03:55:40] [lane1 parakeet-ctc] job parakeet-ctc__common_voice__s02__main: 200 utts, 0 already done, arms ['greedy', 'sample']
+[03:55:47] [lane1 parakeet-ctc]   parakeet-ctc__common_voice__s02__main: 50/200  0.14 s/utt
+[03:55:54] [lane1 parakeet-ctc]   parakeet-ctc__common_voice__s02__main: 100/200  0.14 s/utt
+[03:56:01] [lane1 parakeet-ctc]   parakeet-ctc__common_voice__s02__main: 150/200  0.14 s/utt
+[03:56:05] [lane1 parakeet-ctc]   parakeet-ctc__common_voice__s02__main: 200/200  0.13 s/utt
+[03:56:06] [lane1 parakeet-ctc] done parakeet-ctc__common_voice__s02__main [done] 200 utts in 0.4 min (0.13 s/utt, RTF 0.022)
+[03:56:06] [lane1 parakeet-ctc] job parakeet-ctc__fleurs-en__s02__main: 200 utts, 0 already done, arms ['greedy', 'sample']
+[03:56:17] [lane1 parakeet-ctc]   parakeet-ctc__fleurs-en__s02__main: 50/200  0.23 s/utt
+[03:56:34] [lane1 parakeet-ctc]   parakeet-ctc__fleurs-en__s02__main: 100/200  0.29 s/utt
+[03:56:50] [lane1 parakeet-ctc]   parakeet-ctc__fleurs-en__s02__main: 150/200  0.30 s/utt
+[03:57:00] [lane1 parakeet-ctc]   parakeet-ctc__fleurs-en__s02__main: 200/200  0.27 s/utt
+[03:57:00] [lane1 parakeet-ctc] done parakeet-ctc__fleurs-en__s02__main [done] 200 utts in 0.9 min (0.27 s/utt, RTF 0.028)
+[03:57:00] [lane1 parakeet-ctc] job parakeet-ctc__ls-tc-babble5__s02__main: 200 utts, 0 already done, arms ['greedy', 'sample']
+[03:57:06] [lane1 parakeet-ctc]   parakeet-ctc__ls-tc-babble5__s02__main: 50/200  0.10 s/utt
+[03:57:12] [lane1 parakeet-ctc]   parakeet-ctc__ls-tc-babble5__s02__main: 100/200  0.12 s/utt
+[03:57:17] [lane1 parakeet-ctc]   parakeet-ctc__ls-tc-babble5__s02__main: 150/200  0.11 s/utt
+[03:57:22] [lane1 parakeet-ctc]   parakeet-ctc__ls-tc-babble5__s02__main: 200/200  0.11 s/utt
+[03:57:22] [lane1 parakeet-ctc] done parakeet-ctc__ls-tc-babble5__s02__main [done] 200 utts in 0.4 min (0.11 s/utt, RTF 0.015)
+[03:57:22] [lane1 parakeet-ctc] job parakeet-ctc__ls-dev-other__s03__main: 200 utts, 0 already done, arms ['greedy', 'sample']
+[03:57:35] [lane1 parakeet-ctc]   parakeet-ctc__ls-dev-other__s03__main: 50/200  0.26 s/utt
+[03:57:44] [lane1 parakeet-ctc]   parakeet-ctc__ls-dev-other__s03__main: 100/200  0.22 s/utt
+[03:57:52] [lane1 parakeet-ctc]   parakeet-ctc__ls-dev-other__s03__main: 150/200  0.20 s/utt
+[03:58:01] [lane1 parakeet-ctc]   parakeet-ctc__ls-dev-other__s03__main: 200/200  0.19 s/utt
+[03:58:01] [lane1 parakeet-ctc] done parakeet-ctc__ls-dev-other__s03__main [done] 200 utts in 0.6 min (0.19 s/utt, RTF 0.031)
+[03:58:01] [lane1 parakeet-ctc] job parakeet-ctc__ls-test-clean__s03__main: 200 utts, 0 already done, arms ['greedy', 'sample']
+[03:58:15] [lane1 parakeet-ctc]   parakeet-ctc__ls-test-clean__s03__main: 50/200  0.28 s/utt
+[03:58:25] [lane1 parakeet-ctc]   parakeet-ctc__ls-test-clean__s03__main: 100/200  0.24 s/utt
+[03:58:34] [lane1 parakeet-ctc]   parakeet-ctc__ls-test-clean__s03__main: 150/200  0.22 s/utt
+[03:58:44] [lane1 parakeet-ctc]   parakeet-ctc__ls-test-clean__s03__main: 200/200  0.22 s/utt
+[03:58:44] [lane1 parakeet-ctc] done parakeet-ctc__ls-test-clean__s03__main [done] 200 utts in 0.7 min (0.22 s/utt, RTF 0.029)
+[03:58:44] [lane1 parakeet-ctc] job parakeet-ctc__ls-test-other__s03__main: 200 utts, 0 already done, arms ['greedy', 'sample']
+[03:58:53] [lane1 parakeet-ctc]   parakeet-ctc__ls-test-other__s03__main: 50/200  0.17 s/utt
+[03:59:02] [lane1 parakeet-ctc]   parakeet-ctc__ls-test-other__s03__main: 100/200  0.18 s/utt
+[03:59:09] [lane1 parakeet-ctc]   parakeet-ctc__ls-test-other__s03__main: 150/200  0.16 s/utt
+[03:59:19] [lane1 parakeet-ctc]   parakeet-ctc__ls-test-other__s03__main: 200/200  0.17 s/utt
+[03:59:20] [lane1 parakeet-ctc] done parakeet-ctc__ls-test-other__s03__main [done] 200 utts in 0.6 min (0.18 s/utt, RTF 0.027)
+[03:59:20] [lane1 parakeet-ctc] job parakeet-ctc__ami__s03__main: 200 utts, 0 already done, arms ['greedy', 'sample']
+[03:59:24] [lane1 parakeet-ctc]   parakeet-ctc__ami__s03__main: 50/200  0.09 s/utt
+[03:59:31] [lane1 parakeet-ctc]   parakeet-ctc__ami__s03__main: 100/200  0.11 s/utt
+[03:59:35] [lane1 parakeet-ctc]   parakeet-ctc__ami__s03__main: 150/200  0.10 s/utt
+[03:59:39] [lane1 parakeet-ctc]   parakeet-ctc__ami__s03__main: 200/200  0.10 s/utt
+[03:59:40] [lane1 parakeet-ctc] done parakeet-ctc__ami__s03__main [done] 200 utts in 0.3 min (0.10 s/utt, RTF 0.029)
+[03:59:40] [lane1 parakeet-ctc] job parakeet-ctc__earnings22__s03__main: 200 utts, 0 already done, arms ['greedy', 'sample']
+[03:59:44] [lane1 parakeet-ctc]   parakeet-ctc__earnings22__s03__main: 50/200  0.10 s/utt
+[03:59:52] [lane1 parakeet-ctc]   parakeet-ctc__earnings22__s03__main: 100/200  0.12 s/utt
+[03:59:57] [lane1 parakeet-ctc]   parakeet-ctc__earnings22__s03__main: 150/200  0.12 s/utt
+[04:00:03] [lane1 parakeet-ctc]   parakeet-ctc__earnings22__s03__main: 200/200  0.12 s/utt
+[04:00:03] [lane1 parakeet-ctc] done parakeet-ctc__earnings22__s03__main [done] 200 utts in 0.4 min (0.12 s/utt, RTF 0.018)
+[04:00:03] [lane1 parakeet-ctc] job parakeet-ctc__common_voice__s03__main: 200 utts, 0 already done, arms ['greedy', 'sample']
+[04:00:08] [lane1 parakeet-ctc]   parakeet-ctc__common_voice__s03__main: 50/200  0.10 s/utt
+[04:00:14] [lane1 parakeet-ctc]   parakeet-ctc__common_voice__s03__main: 100/200  0.11 s/utt
+[04:00:19] [lane1 parakeet-ctc]   parakeet-ctc__common_voice__s03__main: 150/200  0.10 s/utt
+[04:00:23] [lane1 parakeet-ctc]   parakeet-ctc__common_voice__s03__main: 200/200  0.10 s/utt
+[04:00:23] [lane1 parakeet-ctc] done parakeet-ctc__common_voice__s03__main [done] 200 utts in 0.3 min (0.10 s/utt, RTF 0.018)
+[04:00:23] [lane1 parakeet-ctc] job parakeet-ctc__fleurs-en__s03__main: 46 utts, 0 already done, arms ['greedy', 'sample']
+[04:00:34] [lane1 parakeet-ctc] done parakeet-ctc__fleurs-en__s03__main [done] 46 utts in 0.2 min (0.24 s/utt, RTF 0.023)
+[04:00:34] [lane1 parakeet-ctc] nothing claimable for this model
+[04:00:34] [lane1 parakeet-ctc] exiting after 18 jobs

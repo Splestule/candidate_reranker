@@ -1,0 +1,19 @@
+{
+  "n_ok": 200,
+  "n_err": 0,
+  "audio_s": 1217.1399999999999,
+  "encode_s": 34.40767192840576,
+  "decode_s": {
+    "main": 626.0819301605225,
+    "ref": 174.48739051818848
+  },
+  "started": 1789949937.4574053,
+  "status": "done",
+  "wall_s": 835.3241844177246,
+  "n_in_shard": 200,
+  "n_resumed": 0,
+  "peak_mem_mb": 4335.87890625,
+  "job": "drax__ls-test-other__s04__main",
+  "model": "drax",
+  "lane": 1
+}

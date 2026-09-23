@@ -18,9 +18,16 @@ computed later from integers without touching the candidates again:
     control        oracle_comp with every alternative replaced by an unrelated word
     anti           worst single candidate
 
-wn_* are the same edits after Whisper's text normaliser (the Open ASR Leaderboard convention),
-for the main methods. A second table holds a parameter grid at the main k, for tuning on dev
-and applying on test without re-running anything.
+Every edit count is under one normalisation, applied the same way to the reference and to each
+candidate *before* anything is combined, so the words that are voted on are the words that are
+scored: Whisper's text normaliser (the Open ASR Leaderboard convention; the English one for en,
+the basic one otherwise), or the legacy lowercase-and-strip-punctuation one if it is missing.
+Earlier versions built the confusion network on legacy tokens and applied Whisper's normaliser
+to the combined output only, which scored composition and selection through two different
+pipelines. lg_* keep the legacy numbers for a few methods, to reproduce the Whisfusion paper.
+
+A second table holds a parameter grid at the main k, for tuning on dev and applying on test
+without re-running anything.
 """
 
 from __future__ import annotations
@@ -44,7 +51,7 @@ import scorers as S  # noqa: E402
 
 LADDER = [1, 2, 3, 4, 5, 6, 8, 10, 12, 15, 16, 20, 24, 32, 48, 64]
 ORACLE_KS = {2, 4, 8, 15, 16, 32, 64}
-WN_KS = {1, 15, 16}
+LG_KS = {1, 15, 16}
 GRID_ALPHA = [0.3, 0.5, 0.7, 0.85, 1.0]
 GRID_EPS = [0.3, 0.5, 0.7]
 GRID_GAMMA = [0.0, 0.5, 1.0]
@@ -105,12 +112,18 @@ def read_dump(path: Path) -> list[dict]:
     return rows
 
 
-def prepare(row: dict) -> tuple[list[list[str]], list[list[float]], float]:
+def legacy(text: str) -> list[str]:
+    return S.normalize(text).split()
+
+
+def prepare(row: dict, tok=legacy) -> tuple[list[list[str]], list[list[float]], float]:
     """Word lists and per-word confidences. A candidate without usable word confidences gets
-    its own mean confidence on every word, so confidence-weighted voting stays defined."""
+    its own mean confidence on every word, so confidence-weighted voting stays defined. Word
+    confidences are aligned to the decoder's words; when the normaliser merges or splits words
+    ("twenty five" -> "25") they no longer line up and the candidate falls back to its mean."""
     cands, confs, exact = [], [], 0
     for c in row["candidates"]:
-        words = S.normalize(c["text"]).split()
+        words = tok(c["text"])
         wc = c.get("word_conf")
         if wc is not None and len(wc) == len(words):
             confs.append([float(x) for x in wc])
@@ -133,11 +146,10 @@ def argbest(values: list[float]) -> int:
     return bi
 
 
-def analyze_row(row: dict, k_main: int, pool: list[str], wn: WhisperNorm, meta: dict):
-    ref = S.normalize(row["reference"]).split()
+def analyze_row(row: dict, k_main: int, pool: list[str], tok, meta: dict):
+    ref = tok(row["reference"])
     R = len(ref)
-    lang = row.get("lang", "en")
-    cands, confs, conf_frac = prepare(row)
+    cands, confs, conf_frac = prepare(row, tok)
     K = len(cands)
     if K == 0:
         return [], []
@@ -153,15 +165,15 @@ def analyze_row(row: dict, k_main: int, pool: list[str], wn: WhisperNorm, meta: 
     mnc = [float(c.get("min_conf", 0.0)) for c in raw]
     mlp = [float(c.get("mean_logprob", 0.0)) for c in raw]
 
-    use_wn = wn.ok
-    if use_wn:
-        ref_wn = wn(row["reference"], lang)
-        cand_wn = [wn(c["text"], lang) for c in raw]
-        ed_wn = [Levenshtein.distance(ref_wn, c) for c in cand_wn]
+    use_lg = meta.get("norm") == "whisper"
+    if use_lg:
+        ref_lg = legacy(row["reference"])
+        cand_lg, conf_lg, _ = prepare(row, legacy)
+        ed_lg = [Levenshtein.distance(ref_lg, c) for c in cand_lg]
     rng = random.Random(zlib.crc32(row["id"].encode("utf-8")))
 
     base = dict(meta, id=row["id"], cluster=row.get("cluster") or row["id"],
-                duration_s=row.get("duration_s"), ref_len=R, ref_len_wn=len(ref_wn) if use_wn else None,
+                duration_s=row.get("duration_s"), ref_len=R, ref_len_lg=len(ref_lg) if use_lg else None,
                 K_avail=K, conf_frac=round(conf_frac, 3), encode_s=row.get("encode_s"),
                 decode_s=row.get("decode_s"), n_unique_all=row.get("n_unique"),
                 identical_after_step1=row.get("identical_after_step1"))
@@ -211,6 +223,21 @@ def analyze_row(row: dict, k_main: int, pool: list[str], wn: WhisperNorm, meta: 
             ctrl = compose.oracle_path(compose.shuffled_control(slots1, pool, rng), ref)
             rec["e_oracle_comp"] = min(oc, rec["e_oracle_cand"])
             rec["e_control"] = min(ctrl, rec["e_oracle_cand"])
+        if use_lg and (k in LG_KS or k == k_main or k == K):
+            # the legacy pipeline end to end: its own tokens, its own MBR pick, its own network
+            sl = cand_lg[:k]
+            if k > 1:
+                ll = [max(len(c), 1) for c in sl]
+                mbr_lg = [-sum(Levenshtein.distance(sl[i], sl[j]) / ll[j] for j in idx if j != i)
+                          for i in idx]
+            else:
+                mbr_lg = [0.0]
+            q_mbr = argbest(mbr_lg)
+            wl = compose.cluster_weights(sl, ROVER_DEFAULT["gamma"])
+            h_lg = compose.rover(compose.confusion_network(sl, q_mbr, conf_lg[:k], wl), sum(wl),
+                                 ROVER_DEFAULT["alpha"], ROVER_DEFAULT["eps"])
+            rec.update(lg_first=ed_lg[0], lg_conf=ed_lg[p_conf], lg_mbr=ed_lg[q_mbr],
+                       lg_rover_cg=Levenshtein.distance(ref_lg, h_lg), lg_oracle_cand=min(ed_lg[:k]))
         if use_wn and (k in WN_KS or k == k_main or k == K):
             # Build the network from Whisper-normalised candidates rather than normalising
             # ROVER's legacy-normalised output a second time. That second pass cost 2-7 points
@@ -234,6 +261,7 @@ def analyze_row(row: dict, k_main: int, pool: list[str], wn: WhisperNorm, meta: 
                            ref_wn, compose.rover(n5, sum(w5), ROVER_DEFAULT["alpha"],
                                                  ROVER_DEFAULT["eps"])),
                        wn_oracle_cand=min(ed_wn[:k]))
+>>>>>>> origin/main
         out.append(rec)
 
         if k == min(k_main, K):
@@ -262,15 +290,18 @@ def analyze_dump(path: Path, out_dir: Path, meta: dict, k_main: int) -> dict:
     tag = meta["tag"]
     if not rows:
         return {"tag": tag, "n": 0}
-    pool = [w for r in rows[:200] for w in S.normalize(r["candidates"][0]["text"]).split()] if rows[0]["candidates"] else []
+    wn = WhisperNorm()
+    lang = meta.get("lang", "en")
+    tok = (lambda t: wn(t, lang)) if wn.ok else legacy
+    meta = dict(meta, norm="whisper" if wn.ok else "legacy")
+    pool = [w for r in rows[:200] if r["candidates"] for w in tok(r["candidates"][0]["text"])]
     if not pool:
         pool = ["the"]
-    wn = WhisperNorm()
     recs, grid = [], []
     t0 = time.time()
     for r in rows:
         try:
-            a, g = analyze_row(r, k_main, pool, wn, meta)
+            a, g = analyze_row(r, k_main, pool, tok, meta)
         except Exception as e:  # one malformed row must not lose the dump
             print(f"[analysis] {tag}/{r.get('id')}: {type(e).__name__}: {e}", flush=True)
             continue
@@ -281,7 +312,7 @@ def analyze_dump(path: Path, out_dir: Path, meta: dict, k_main: int) -> dict:
     if grid:
         pd.DataFrame(grid).to_parquet(out_dir / f"{tag}.grid.parquet", index=False)
     return {"tag": tag, "n": len(rows), "n_rec": len(recs), "seconds": round(time.time() - t0, 1),
-            "wn": wn.ok}
+            "norm": meta["norm"]}
 
 
 def analyze_job(root: Path, job: dict, k_main: int) -> list[dict]:

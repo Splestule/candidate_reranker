@@ -36,7 +36,8 @@ MODELS = [
           note_xy=(2.75, 13.47), note_ha="left", note_va="center")),
     ("Drax", "drax", "kscale", "K64", 0.186, 0.2222, ORANGE,
      dict(name_xy=(0.37, 11.4), k_below=(1, 4), k_right=(64,),
-          note_xy=(7.0, 6.15), note_ha="center", note_va="bottom", arrow_y=4.35)),
+          note_xy=(7.0, 6.15), note_ha="center", note_va="bottom", arrow_y=4.35,
+          note_none="the two meet\nfrom K = 16 on")),
 ]
 SET = "ls-test-other"
 MARK_K = (1, 2, 4, 8, 16, 32, 64)
@@ -67,6 +68,10 @@ def iso_arrow(ax, lad: pd.DataFrame, colour: str, st: dict):
     best_sel = lad["mbr"].min()
     hit = lad[lad["rover"] <= best_sel]
     if hit.empty:
+        # composition never gets below selection's best: say so where the arrow would have been
+        if st.get("note_none"):
+            ax.text(*st["note_xy"], st["note_none"], color=colour, fontsize=8.5, ha=st["note_ha"],
+                    va=st["note_va"], linespacing=1.35, zorder=6)
         return
     x0 = float(hit["cost"].iloc[0])
     x1 = float(lad.loc[lad["mbr"].idxmin(), "cost"])

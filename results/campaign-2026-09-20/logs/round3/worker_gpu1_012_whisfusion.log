@@ -1,0 +1,58 @@
+[04:46:11] [lane1 whisfusion] host 3953d49cb228  cuda=True  device=Tesla T4
+[wf_compat] shims active: rotary_emb, dropout_layer_norm, flash_attn, xformers.ops.SwiGLU, FusedRMSNorm
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[wf] device=cuda (Tesla T4) dtype=torch.float16
+[wf] base: 129 keys, 72 missing
+[wf] adapter: 201 keys, 0 missing, 0 unexpected
+[wf] decoder 261.5M · Whisper encoder 88.2M
+[04:46:28] [lane1 whisfusion] model loaded in 17 s
+[04:46:28] [lane1 whisfusion] job whisfusion__ls-tc-babble15__s01__main: 200 utts, 0 already done, arms ['main']
+[04:48:09] [lane1 whisfusion]   whisfusion__ls-tc-babble15__s01__main: 50/200  2.02 s/utt
+[04:49:51] [lane1 whisfusion]   whisfusion__ls-tc-babble15__s01__main: 100/200  2.03 s/utt
+[04:51:33] [lane1 whisfusion]   whisfusion__ls-tc-babble15__s01__main: 150/200  2.04 s/utt
+[04:53:16] [lane1 whisfusion]   whisfusion__ls-tc-babble15__s01__main: 200/200  2.04 s/utt
+[04:53:16] [lane1 whisfusion] done whisfusion__ls-tc-babble15__s01__main [done] 200 utts in 6.8 min (2.04 s/utt, RTF 0.267)
+[04:53:16] [lane1 whisfusion] job whisfusion__ls-tc-babbleM5__s01__main: 200 utts, 0 already done, arms ['main']
+[04:54:59] [lane1 whisfusion]   whisfusion__ls-tc-babbleM5__s01__main: 50/200  2.05 s/utt
+[04:56:41] [lane1 whisfusion]   whisfusion__ls-tc-babbleM5__s01__main: 100/200  2.05 s/utt
+[04:58:24] [lane1 whisfusion]   whisfusion__ls-tc-babbleM5__s01__main: 150/200  2.05 s/utt
+[05:00:06] [lane1 whisfusion]   whisfusion__ls-tc-babbleM5__s01__main: 200/200  2.05 s/utt
+[05:00:06] [lane1 whisfusion] done whisfusion__ls-tc-babbleM5__s01__main [done] 200 utts in 6.8 min (2.05 s/utt, RTF 0.268)
+[05:00:06] [lane1 whisfusion] job whisfusion__ls-tc-white10__s01__main: 200 utts, 0 already done, arms ['main']
+[05:01:49] [lane1 whisfusion]   whisfusion__ls-tc-white10__s01__main: 50/200  2.05 s/utt
+[05:03:31] [lane1 whisfusion]   whisfusion__ls-tc-white10__s01__main: 100/200  2.05 s/utt
+[05:05:13] [lane1 whisfusion]   whisfusion__ls-tc-white10__s01__main: 150/200  2.05 s/utt
+[05:06:55] [lane1 whisfusion]   whisfusion__ls-tc-white10__s01__main: 200/200  2.05 s/utt
+[05:06:56] [lane1 whisfusion] done whisfusion__ls-tc-white10__s01__main [done] 200 utts in 6.8 min (2.05 s/utt, RTF 0.268)
+[05:06:56] [lane1 whisfusion] job whisfusion__ls-tc-white0__s01__main: 200 utts, 0 already done, arms ['main']
+[05:08:38] [lane1 whisfusion]   whisfusion__ls-tc-white0__s01__main: 50/200  2.04 s/utt
+[05:10:21] [lane1 whisfusion]   whisfusion__ls-tc-white0__s01__main: 100/200  2.05 s/utt
+[05:12:03] [lane1 whisfusion]   whisfusion__ls-tc-white0__s01__main: 150/200  2.05 s/utt
+[05:13:44] [lane1 whisfusion]   whisfusion__ls-tc-white0__s01__main: 200/200  2.04 s/utt
+[05:13:45] [lane1 whisfusion] done whisfusion__ls-tc-white0__s01__main [done] 200 utts in 6.8 min (2.04 s/utt, RTF 0.267)
+[05:13:45] [lane1 whisfusion] job whisfusion__ls-tc-babble15__s02__main: 200 utts, 0 already done, arms ['main']
+[05:15:27] [lane1 whisfusion]   whisfusion__ls-tc-babble15__s02__main: 50/200  2.04 s/utt
+[05:17:09] [lane1 whisfusion]   whisfusion__ls-tc-babble15__s02__main: 100/200  2.04 s/utt
+[05:18:52] [lane1 whisfusion]   whisfusion__ls-tc-babble15__s02__main: 150/200  2.05 s/utt
+[05:20:35] [lane1 whisfusion]   whisfusion__ls-tc-babble15__s02__main: 200/200  2.05 s/utt
+[05:20:35] [lane1 whisfusion] done whisfusion__ls-tc-babble15__s02__main [done] 200 utts in 6.8 min (2.05 s/utt, RTF 0.286)
+[05:20:35] [lane1 whisfusion] job whisfusion__ls-tc-babbleM5__s02__main: 200 utts, 0 already done, arms ['main']
+[05:22:17] [lane1 whisfusion]   whisfusion__ls-tc-babbleM5__s02__main: 50/200  2.05 s/utt
+[05:23:59] [lane1 whisfusion]   whisfusion__ls-tc-babbleM5__s02__main: 100/200  2.04 s/utt
+[05:25:42] [lane1 whisfusion]   whisfusion__ls-tc-babbleM5__s02__main: 150/200  2.05 s/utt
+[05:27:24] [lane1 whisfusion]   whisfusion__ls-tc-babbleM5__s02__main: 200/200  2.05 s/utt
+[05:27:25] [lane1 whisfusion] done whisfusion__ls-tc-babbleM5__s02__main [done] 200 utts in 6.8 min (2.05 s/utt, RTF 0.286)
+[05:27:25] [lane1 whisfusion] job whisfusion__ls-tc-white10__s02__main: 200 utts, 0 already done, arms ['main']
+[05:29:07] [lane1 whisfusion]   whisfusion__ls-tc-white10__s02__main: 50/200  2.05 s/utt
+[05:30:50] [lane1 whisfusion]   whisfusion__ls-tc-white10__s02__main: 100/200  2.05 s/utt
+[05:32:32] [lane1 whisfusion]   whisfusion__ls-tc-white10__s02__main: 150/200  2.05 s/utt
+[05:34:14] [lane1 whisfusion]   whisfusion__ls-tc-white10__s02__main: 200/200  2.05 s/utt
+[05:34:14] [lane1 whisfusion] done whisfusion__ls-tc-white10__s02__main [done] 200 utts in 6.8 min (2.05 s/utt, RTF 0.285)
+[05:34:14] [lane1 whisfusion] job whisfusion__ls-tc-white0__s02__main: 200 utts, 0 already done, arms ['main']
+[05:35:56] [lane1 whisfusion]   whisfusion__ls-tc-white0__s02__main: 50/200  2.04 s/utt
+[05:37:38] [lane1 whisfusion]   whisfusion__ls-tc-white0__s02__main: 100/200  2.04 s/utt
+[05:39:20] [lane1 whisfusion]   whisfusion__ls-tc-white0__s02__main: 150/200  2.04 s/utt
+[05:41:03] [lane1 whisfusion]   whisfusion__ls-tc-white0__s02__main: 200/200  2.04 s/utt
+[05:41:03] [lane1 whisfusion] done whisfusion__ls-tc-white0__s02__main [done] 200 utts in 6.8 min (2.05 s/utt, RTF 0.285)
+[05:41:03] [lane1 whisfusion] yielding: another model has lower-tier work waiting
+[05:41:03] [lane1 whisfusion] exiting after 8 jobs
