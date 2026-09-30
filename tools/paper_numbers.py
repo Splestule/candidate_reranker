@@ -38,6 +38,7 @@ SLOT_OC = "results/slot_lr_oracle_ctx.pkl"
 MANGU = "results/eval_mangu_k32_n200__res_0.45x1c.pkl"
 CONTROLS = "results/controls.json"
 SWITCH = "results/switch_oracle.json"
+STITCH = "results/stitch_learn.json"
 
 HEAD_MODEL, HEAD_ARM, HEAD_K = "whisfusion", "main", 32
 MISSING: list[str] = []
@@ -210,6 +211,37 @@ def block_switch():
     print("  problem: see tools/stitch_score.py for what is.")
 
 
+def block_stitch():
+    """A learned scorer over stitchings, against the oracle over the same search space."""
+    rule("3c. A LEARNED SEGMENT SCORER -- the space is right, the score is not", STITCH)
+    p = need(STITCH)
+    if p is None:
+        return
+    import json
+    r = json.loads(p.read_text())
+    print(f"{r['n']} held-out utterances, k={r['k']}, ROVER's own output included as one "
+          f"more candidate column\n")
+    for key, lab in (("rover", "ROVER as shipped"),
+                     ("cand", "best whole candidate (oracle)"),
+                     ("s0", "learned scorer, no switch"),
+                     ("s1", "learned scorer, one switch"),
+                     ("or0", "ORACLE over this space, no switch"),
+                     ("or1", "ORACLE over this space, one switch"),
+                     ("or2", "ORACLE over this space, two switches")):
+        if key in r:
+            print(f"  {lab:<38}{r[key]:>8.2f}")
+    if "or1" in r:
+        head = r["rover"] - r["or1"]
+        got = r["rover"] - r["s1"]
+        print(f"\n  reachable in this space with one switch  {head:>6.2f} WER")
+        print(f"  the trained scorer finds                 {got:>6.2f} WER = "
+              f"{100 * got / max(head, 1e-9):.1f}% of it")
+    print("\n  'no switch' reproducing ROVER exactly is the identity check: the ROVER column")
+    print("  and the scoring machinery agree with the baseline before anything is learned.")
+    print("  Fewer decisions did not mean easier decisions -- per slot a 54-feature model")
+    print("  reaches 4-10% of its headroom, per segment a 17-feature one reaches 0.3%.")
+
+
 # ------------------------------------------------------------ where the gap actually lives
 
 def block_ar():
@@ -377,7 +409,7 @@ def block_cost(df):
     print(f"  {'ratio':<32}{1000 * (g['encode_s'] + g['decode_s']).mean() / max(g['rover_ms'].mean(), 1e-9):>8.0f}x")
 
 
-BLOCKS = ("gap", "models", "controls", "switch", "ar", "slot", "calib", "mangu", "cost")
+BLOCKS = ("gap", "models", "controls", "switch", "stitch", "ar", "slot", "calib", "mangu", "cost")
 
 
 def main() -> int:
@@ -399,6 +431,8 @@ def main() -> int:
         block_controls()
     if "switch" in want:
         block_switch()
+    if "stitch" in want:
+        block_stitch()
     if "ar" in want:
         block_ar()
     if "slot" in want:

@@ -43,7 +43,7 @@ EPS = compose.EPS
 INF = 1e9
 
 
-def slot_matrix(cands: list[list[str]], backbone: int) -> list[list[str]]:
+def slot_matrix(cands: list[list[str]], backbone: int, with_map: bool = False):
     """One row per micro-slot, one column per candidate: the word that candidate puts there.
 
     Same alignment as compose.confusion_network -- substitutions land on the backbone
@@ -75,17 +75,30 @@ def slot_matrix(cands: list[list[str]], backbone: int) -> list[list[str]]:
                     ins[i1][ci].append(c[off])
 
     rows: list[list[str]] = []
+    # confusion_network keeps ONE slot per insertion point however many words were inserted
+    # there, while a micro-slot per word is needed to attribute a multi-word insertion to a
+    # single candidate. owner[] maps each micro-slot back to its network slot so the two
+    # objects stay in step.
+    owner: list[int] = []
+    net = 0
 
     def push_ins(i):
+        nonlocal net
         width = max((len(x) for x in ins[i]), default=0)
+        if not width:
+            return
         for m in range(width):
             rows.append([(ins[i][c][m] if m < len(ins[i][c]) else EPS) for c in range(K)])
+            owner.append(net)
+        net += 1
 
     for i in range(n):
         push_ins(i)
         rows.append(sub[i])
+        owner.append(net)
+        net += 1
     push_ins(n)
-    return rows
+    return (rows, owner) if with_map else rows
 
 
 def switch_oracle(rows: list[list[str]], ref: list[str], budgets: list[int]) -> dict[int, int]:

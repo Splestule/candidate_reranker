@@ -219,12 +219,71 @@ slots or across candidates. The decoder's confidences are not much better -- con
 selection of a whole candidate reaches 24.81 where ROVER, which never compares paths at all,
 reaches 20.50.
 
-So: **the structure is there, the search is free, and the decoder emits nothing that ranks
-one path against another.** That is the sharpest statement of the problem this paper can
-make, and it says where the next work goes -- a learned scorer over stitchings first,
-because it needs no retraining and bounds what is reachable without it, and then a decoder
-whose confidences are comparable across candidates because the training objective made them
-so.
+### The learned segment scorer, and what it did not find (block 3c)
+
+So we built the scorer. Linear in features that are additive along the path -- eight per-slot
+(is-word, confidence, vote share, gap to the slot leader, agrees-with-ROVER, bigram, word
+length, log votes), three per candidate on each side (MBR score, average confidence, relative
+length), a junction bigram and a switch indicator; seventeen parameters, trained by minimum
+risk (softmax over sampled stitchings, loss = expected edit distance) so the objective is the
+reported metric. Prefix sums make the whole 30 000-option space exactly searchable.
+
+ROVER's own output enters as one more candidate column, so "no switch, take the last column"
+IS ROVER: the search space contains its own baseline, and that doubles as an identity check.
+
+| held-out, 5 sets | WER |
+|---|---|
+| ROVER as shipped | 20.51 |
+| best whole candidate (oracle) | 17.65 |
+| learned scorer, no switch | **20.51** (identity check passes) |
+| learned scorer, one switch | 20.49 |
+| oracle over the same space, one switch | **14.44** |
+| oracle over the same space, two switches | 13.02 |
+
+**The space contains a stitching worth 6.07 WER and the trained scorer finds 0.02 of it --
+0.3 %.** It switches on 7 % of utterances, and minimum risk was right to make it that
+cautious: nothing in these features locates the seam. (Without the ROVER column it reaches
+20.83 against ROVER's 20.51, with switching worth 1.21 over not switching -- so switching
+does something, just not enough to beat voting over all K.)
+
+Put beside the per-slot result, this is the paper's sharpest pair:
+
+| level | model | features | headroom | captured |
+|---|---|---|---|---|
+| slot | convex multinomial LR | 54 | 7.02 WER | 0.25-0.69 (**4-10 %**) |
+| segment | linear minimum-risk scorer | 17 | 6.07 WER | 0.02 (**0.3 %**) |
+
+**Fewer decisions did not mean easier decisions.** In a slot you choose among two to five
+words with the local evidence right there; over segments you choose among thirty thousand
+paths differing in dozens of words, and the same evidence is spread thin. The gap is
+segment-shaped but not segment-scorable.
+
+Is that the features or the model class? Both answers were measured, on a fixed 230-option
+menu per utterance so the scorer, a nonparametric estimator and the oracle all choose from
+the same list (`tools/stitch_signal.py`):
+
+- **k-NN over the same features**, which estimates E[edits | features] directly and converges
+  to the Bayes-optimal ranker, reaches 20.21 where ROVER is 19.52 and the menu's own oracle
+  is 15.22. It recovers none of the 4.30 WER on the menu.
+- **Collision test**, model-free: among pairs of stitchings that produce *different*
+  transcripts, the nearest 1 % by feature distance differ by 0.40 edits on average against
+  1.48 for random pairs. So the features are genuinely informative -- they cut the expected
+  quality difference by about two thirds -- and still do not determine which stitching is
+  better.
+
+The honest limit of the claim: seventeen linear features, 700 training utterances, and k-NN
+in sixteen dimensions on 47 000 samples is itself data-starved, so it lower-bounds the Bayes
+risk rather than pinning it. What the pair of measurements supports is narrower and enough:
+the features carry real but insufficient signal, and the marginal return on a larger model
+over *these* features is small. The missing quantity is different information, not more
+capacity.
+
+So: **the structure is there, the search is free, and nothing the decoder emits ranks one
+path against another** -- not per slot, not per segment. That is the sharpest statement of
+the problem this paper can make, and with four independent attempts to route around it now
+measured, the remaining hypothesis is the decoder itself: candidates that disagree where it
+carries information, and confidences comparable across candidates because the training
+objective made them so.
 
 ## 6. What does not close it
 
@@ -366,6 +425,7 @@ The budget, against a gap of 9.35 WER:
 | learned per-slot picker | 0.25 | 3 % |
 | + neighbouring-slot bigram | 0.51 | 5 % |
 | + oracle knowledge of the neighbouring words | 0.69 | 7 % |
+| learned segment scorer (one switch) | 0.02 | 0.2 % |
 
 Nothing applied after the decoder recovers more than a few percent of what composition could
 in principle reach. Three conclusions, and the last is the proposal:
@@ -382,13 +442,13 @@ but it is the one a combiner could actually reach, and here it still sits 1.75x 
 n-best oracle. Reporting against the n-best oracle alone, as most correction papers do,
 understates the headroom by that factor.
 
-**The gap is segment-shaped, so the next model is a segment chooser.** Section 5b: one
-contiguous switch recovers 54 % of it and four recover 85 %, the one-switch search space is
-30 000 options and enumerable in microseconds, and every cheap path score fails. The work
-that follows from this paper is a learned scorer over stitchings -- three or four decisions
-per utterance instead of twenty-five, with a whole segment of context to decide on -- and it
-needs no retraining, so it also measures how much of the gap is reachable without touching
-the decoder.
+**The gap is segment-shaped, and that does not make it scorable.** Section 5b: one contiguous
+switch recovers 54 % of the gap and four recover 85 %, the one-switch space is 30 000 options
+enumerable in microseconds -- and a scorer trained by minimum risk directly on that space
+finds 0.3 % of the 6.07 WER sitting in it. Fewer decisions turned out to be harder decisions,
+because the evidence that identifies one word in one slot is spread thin over a path that
+differs in dozens. Four independent routes around the decoder have now been measured, and
+each one lands in the low single digits.
 
 **Closing the rest means changing what the decoder emits, not what is done with it.** The
 measurements say which part. 12 % of reference words are in no candidate at all -- that is
