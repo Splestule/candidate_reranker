@@ -1,12 +1,12 @@
-# Kaggle: GPU T4, internet ON, dataset with kaggle_patch.tar.gz added as input
-import glob, os, shutil, subprocess
-subprocess.run("git clone -q https://github.com/Splestule/candidate_reranker.git /kaggle/working/cr", shell=True, check=True)
+# Kaggle: GPU T4 x2, internet ON, no input dataset needed -- everything comes from GitHub
+import os, subprocess
+
+if not os.path.isdir("/kaggle/working/cr"):
+    subprocess.run("git clone -q https://github.com/Splestule/candidate_reranker.git /kaggle/working/cr",
+                   shell=True, check=True)
 os.chdir("/kaggle/working/cr")
-tars = glob.glob("/kaggle/input/**/kaggle_patch.tar.gz", recursive=True)
-if tars:
-    subprocess.run(["tar", "xzf", tars[0]], check=True)
-else:  # Kaggle sometimes unpacks archives on upload
-    hit = glob.glob("/kaggle/input/**/tools/final_compare.py", recursive=True)[0]
-    shutil.copytree(os.path.dirname(os.path.dirname(hit)), "../Claude outputs", dirs_exist_ok=True)
-assert os.path.exists("tools/final_compare.py")
+for f in ("tools/run_kaggle_all.sh", "tools/treek_eval.py", "tools/cand_audio.py", "tools/final_compare.py"):
+    assert os.path.exists(f), f"missing {f}: is it pushed to GitHub?"
+assert "treek" in open("src/campaign/run.py").read(), "src/campaign/run.py without the treek plan"
+print("repo OK, starting the run", flush=True)
 subprocess.run("bash tools/run_kaggle_all.sh /tmp/campaign_data 2>&1 | tee results/run_all.log", shell=True)
