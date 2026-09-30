@@ -182,7 +182,7 @@ def main() -> int:
     C.write_json(root / "run_config.json", cfg)
 
     _plans = {"round2": C.build_plan_round2, "sweep": C.build_plan_sweep,
-              "tree": C.build_plan_tree}
+              "tree": C.build_plan_tree, "treek": C.build_plan_treek}
     plan = _plans.get(cfg.get("plan"), C.build_plan)(cfg)
     C.write_json(root / "plan.json", plan)
     info = env_info()

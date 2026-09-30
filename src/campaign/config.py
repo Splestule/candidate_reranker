@@ -497,3 +497,35 @@ def build_plan_tree(cfg: dict) -> list[dict]:
                              kind="tree", arms=arms_tree(cfg), tier=0, order=order))
             order += 1
     return jobs
+
+
+def arms_treek(cfg: dict) -> list[dict]:
+    """flat and tree-early side by side at every K of the cost curve.
+
+    Run 8 measured tree-early only at K=32 (1.69x cheaper, no loss with the final pipeline).
+    Whether the saving holds at the small K where the cost/quality optimum sits is the open
+    question, and the flat arms give measured, not interpolated, decode times at the same K.
+    """
+    arms = []
+    for K in cfg.get("treek_ks", [4, 8, 15, 32]):
+        arms.append(dict(name=f"flat-k{K}", K=K, steps=4))
+        arms.append(dict(name=f"tree-early-k{K}", K=K, steps=4,
+                         branch_schedule=[1, max(K // 4, 1), K, K]))
+    return arms
+
+
+def build_plan_treek(cfg: dict) -> list[dict]:
+    """flat vs tree-early over K, Whisfusion only, one job per (set, shard)."""
+    sets = sets_for(cfg)
+    names = [n for n in cfg.get("tree_sets", []) if n in sets]
+    jobs, order = [], 0
+    for shard in range(cfg.get("tree_shards", 1)):
+        for name in names:
+            if shard >= n_shards(name, expected_size(sets[name]), cfg["shard_size"]):
+                continue
+            jobs.append(dict(id=f"whisfusion__{name}__s{shard:02d}__treek", model="whisfusion",
+                             family=MODELS["whisfusion"]["family"], set=name,
+                             lang=sets[name]["lang"], shard=shard, shard_size=cfg["shard_size"],
+                             kind="tree", arms=arms_treek(cfg), tier=0, order=order))
+            order += 1
+    return jobs
