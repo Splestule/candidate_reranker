@@ -519,9 +519,15 @@ def build_plan_treek(cfg: dict) -> list[dict]:
     sets = sets_for(cfg)
     names = [n for n in cfg.get("tree_sets", []) if n in sets]
     jobs, order = [], 0
-    for shard in range(cfg.get("tree_shards", 1)):
+    # treek_shards picks shards explicitly (the confirmation run decodes s00 to train on and
+    # the never-decoded s02 to test on); sets in treek_train_only get shard 0 only
+    shards = cfg.get("treek_shards", list(range(cfg.get("tree_shards", 1))))
+    train_only = set(cfg.get("treek_train_only", []))
+    for shard in shards:
         for name in names:
             if shard >= n_shards(name, expected_size(sets[name]), cfg["shard_size"]):
+                continue
+            if shard > 0 and name in train_only:
                 continue
             jobs.append(dict(id=f"whisfusion__{name}__s{shard:02d}__treek", model="whisfusion",
                              family=MODELS["whisfusion"]["family"], set=name,

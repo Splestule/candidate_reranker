@@ -242,8 +242,9 @@ def main() -> int:
             pr = progress(st, cfg)
             C.write_json(root / "progress.json", pr)
             done_an = sum(1 for f in submitted.values() if f is not None and f.done())
+            tiers = {t: f"{v['done']}/{v['total']}" for t, v in sorted(pr['tiers'].items())}
             say(f"progress: jobs {pr['jobs']}; tiers "
-                f"{ {t: f'{v['done']}/{v['total']}' for t, v in sorted(pr['tiers'].items())} }; "
+                f"{tiers}; "
                 f"analysed {done_an}/{len(submitted)}")
             for m, d in sorted(pr["by_model"].items()):
                 say(f"    {m:<16} {d['jobs']:>4} jobs {d['utts']:>6} utts {d['audio_h']:6.2f} h audio "

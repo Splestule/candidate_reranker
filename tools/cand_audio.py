@@ -17,6 +17,7 @@ import gzip
 import json
 import math
 import pickle
+import re
 import sys
 import time
 from pathlib import Path
@@ -63,10 +64,13 @@ def main() -> int:
         rows = {arm: {} for arm in arms}          # arm -> id -> dump row
         for arm in arms:
             for p in sorted(Path(a.dumps_root).glob(a.pattern.format(set=s, arm=arm))):
-                with gzip.open(p, "rt", encoding="utf-8") as fh:
+                opener = gzip.open if p.suffix == ".gz" else open
+                with opener(p, "rt", encoding="utf-8") as fh:
+                    m = re.search(r"__s(\d+)__", str(p))
                     for line in fh:
                         r = json.loads(line)
                         if ids is None or r["id"] in ids:
+                            r["_shard"] = int(m.group(1)) if m else None
                             rows[arm][r["id"]] = r
         order = [u for u in rows[arms[0]] if all(u in rows[x] for x in arms)]
         if ids is None:
@@ -92,11 +96,13 @@ def main() -> int:
                                       aud=[math.exp(x) for x in sc] if ok else None))
                 out.append(dict(set=s, id=uid, cluster=row.get("cluster") or uid,
                                 lang=row.get("lang", "en"), ref=normalize(row["reference"]).split(),
-                                ref_text=row["reference"], decode_s=row.get("decode_s"), arm=arm,
+                                ref_text=row["reference"], decode_s=row.get("decode_s"),
+                                encode_s=row.get("encode_s"), shard=row.get("_shard"), arm=arm,
                                 cands=cands))
             n += 1
-            if n % 50 == 0:
+            if n % 100 == 0:
                 out_p.write_bytes(pickle.dumps(out))
+            if n in (1, 10) or n % 50 == 0:
                 print(f"  {n} utterances ({len(out)} records), {(time.time() - t0) / n:.1f} s each",
                       flush=True)
     out_p.write_bytes(pickle.dumps(out))
