@@ -535,3 +535,27 @@ def build_plan_treek(cfg: dict) -> list[dict]:
                              kind="tree", arms=arms_treek(cfg), tier=0, order=order))
             order += 1
     return jobs
+
+
+def build_plan_explorer(cfg: dict) -> list[dict]:
+    """Anchor-only against anchor + LoRA explorer candidates (tools/train_explorer.py).
+
+    The arms come straight from cfg["explorer_arms"]; shards from cfg["explorer_shards"], the
+    first one listed decoded first; sets in cfg["explorer_train_only"] get shard 0 only.
+    """
+    sets = sets_for(cfg)
+    names = [n for n in cfg.get("tree_sets", []) if n in sets]
+    train_only = set(cfg.get("explorer_train_only", []))
+    jobs, order = [], 0
+    for shard in cfg.get("explorer_shards", [0]):
+        for name in names:
+            if shard >= n_shards(name, expected_size(sets[name]), cfg["shard_size"]):
+                continue
+            if shard > 0 and name in train_only:
+                continue
+            jobs.append(dict(id=f"whisfusion__{name}__s{shard:02d}__explorer", model="whisfusion",
+                             family=MODELS["whisfusion"]["family"], set=name,
+                             lang=sets[name]["lang"], shard=shard, shard_size=cfg["shard_size"],
+                             kind="tree", arms=cfg["explorer_arms"], tier=0, order=order))
+            order += 1
+    return jobs

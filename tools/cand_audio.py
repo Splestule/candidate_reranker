@@ -93,7 +93,8 @@ def main() -> int:
                     ok = (words and wc is not None and len(wc) == len(words)
                           and sc is not None and len(sc) == len(words))
                     cands.append(dict(words=words, avg_conf=c["avg_conf"], conf=list(wc) if ok else None,
-                                      aud=[math.exp(x) for x in sc] if ok else None))
+                                      aud=[math.exp(x) for x in sc] if ok else None,
+                                      source=c.get("source", "anchor")))
                 out.append(dict(set=s, id=uid, cluster=row.get("cluster") or uid,
                                 lang=row.get("lang", "en"), ref=normalize(row["reference"]).split(),
                                 ref_text=row["reference"], decode_s=row.get("decode_s"),

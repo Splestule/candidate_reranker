@@ -49,6 +49,8 @@ class Whisfusion:
         return wf_model.encode_audio(self.wf, audio)
 
     def decode(self, enc, arm, seed, lang):
+        if arm.get("explorer"):
+            return self._decode_mixed(enc, arm, seed, lang)
         import decode as dec
 
         r = dec.pdd_decode(self.wf, enc, n_candidates=arm["K"], n_steps=arm.get("steps", 4),
@@ -64,6 +66,31 @@ class Whisfusion:
                  "n_candidates_used": r.n_candidates_used,
                  "uncertainty": r.uncertainty,
                  "branch_widths": r.branch_widths})
+
+
+    def _decode_mixed(self, enc, arm, seed, lang):
+        """K - n_explorer candidates from the anchor, n_explorer from a LoRA explorer
+        (tools/train_explorer.py), one row in the usual schema."""
+        import lora
+
+        n_e = int(arm["n_explorer"])
+        base = {k: v for k, v in arm.items() if k not in ("explorer", "n_explorer")}
+        a_c, a_x = self.decode(enc, dict(base, K=arm["K"] - n_e), seed, lang)
+        if getattr(self, "_lora_path", None) != arm["explorer"]:
+            lora.load(self.wf.model, arm["explorer"])
+            self.wf.model.to(self.wf.device)
+            self._lora_path = arm["explorer"]
+        lora.set_enabled(self.wf.model, True)
+        try:
+            e_c, _ = self.decode(enc, dict(base, K=n_e), seed + 7919, lang)
+        finally:
+            lora.set_enabled(self.wf.model, False)
+        for c in a_c:
+            c["source"] = "anchor"
+        for c in e_c:
+            c["source"] = "explorer"
+        return a_c + e_c, {"identical_after_step1": a_x.get("identical_after_step1"),
+                           "n_candidates_used": len(a_c) + len(e_c)}
 
 
 # ---------------------------------------------------------------------------------------------

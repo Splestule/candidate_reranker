@@ -4,12 +4,14 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ec4b20f5-aa4e-423a-a25f-e3d22fa98819" name="Changes" comment="research">
+    <list default="true" id="ec4b20f5-aa4e-423a-a25f-e3d22fa98819" name="Changes" comment="final test run + GPT-2 comparison">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/campaign.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/campaign.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/confirm_prereg.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/confirm_prereg.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/kaggle.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/kaggle.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/campaign/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/campaign/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/campaign/run.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/campaign/run.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tools/kaggle_cell.py" beforeDir="false" afterPath="$PROJECT_DIR$/tools/kaggle_cell.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/run_confirm.sh" beforeDir="false" afterPath="$PROJECT_DIR$/tools/run_confirm.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/uv.lock" beforeDir="false" afterPath="$PROJECT_DIR$/uv.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -25,16 +27,16 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "history": [
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;history&quot;: [
     {
-      "state": "OPEN"
+      &quot;state&quot;: &quot;OPEN&quot;
     }
   ],
-  "lastFilter": {
-    "state": "OPEN"
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;
   }
-}]]></component>
+}</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/Splestule/candidate_reranker.git&quot;,
@@ -43,61 +45,61 @@
 }</component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="2.8621519123603315E-37" />
-      <entry key="MS500" value="1.1462682756817478E-7" />
-      <entry key="S2" value="0.053384675087641865" />
-      <entry key="S5" value="1.1642586606503877" />
-      <entry key="S10" value="4.069214484054897" />
-      <entry key="S30" value="10.554800828670764" />
-      <entry key="S60" value="13.700372821681258" />
-      <entry key="M2" value="15.678034417401857" />
-      <entry key="M5" value="17.025590941212513" />
-      <entry key="M10" value="17.504796198856216" />
-      <entry key="M15" value="17.66805579473508" />
-      <entry key="M30" value="17.83311590427205" />
-      <entry key="H1" value="17.916328473110852" />
-      <entry key="H2" value="17.95810668049396" />
-      <entry key="H4" value="17.97903892792332" />
-      <entry key="D1" value="18.920586219963702" />
-      <entry key="W1" value="104.42244522924105" />
+      <entry key="MS100" value="1.0257825237114884" />
+      <entry key="MS500" value="1.6291461464170127" />
+      <entry key="S2" value="2.7777234793714953" />
+      <entry key="S5" value="3.4683545708986414" />
+      <entry key="S10" value="3.9435642546594116" />
+      <entry key="S30" value="4.5316263008277" />
+      <entry key="S60" value="4.759698258419563" />
+      <entry key="M2" value="5.378252529186191" />
+      <entry key="M5" value="11.735050684983493" />
+      <entry key="M10" value="23.154169594569666" />
+      <entry key="M15" value="30.606278625078374" />
+      <entry key="M30" value="41.3666325292682" />
+      <entry key="H1" value="48.44999653527943" />
+      <entry key="H2" value="52.525838886182314" />
+      <entry key="H4" value="54.781831509492505" />
+      <entry key="D1" value="61.71357461107529" />
+      <entry key="W1" value="142.29003836732022" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.0" />
-      <entry key="S5" value="1.0" />
-      <entry key="S10" value="1.0" />
-      <entry key="S30" value="1.0" />
-      <entry key="S60" value="1.0" />
-      <entry key="M2" value="1.0" />
-      <entry key="M5" value="1.0" />
-      <entry key="M10" value="1.0" />
-      <entry key="M15" value="1.0" />
-      <entry key="M30" value="1.0" />
-      <entry key="H1" value="1.0" />
-      <entry key="H2" value="1.0" />
-      <entry key="H4" value="1.0" />
-      <entry key="D1" value="1.0005028546025703" />
-      <entry key="W1" value="1.6070200949155828" />
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="0.0" />
+      <entry key="S5" value="0.0" />
+      <entry key="S10" value="0.0" />
+      <entry key="S30" value="0.0" />
+      <entry key="S60" value="0.0" />
+      <entry key="M2" value="6.4384876200746915E-174" />
+      <entry key="M5" value="5.2907049907891993E-70" />
+      <entry key="M10" value="2.300153253761408E-35" />
+      <entry key="M15" value="8.087938656539258E-24" />
+      <entry key="M30" value="2.843930142696764E-12" />
+      <entry key="H1" value="1.686395606866866E-6" />
+      <entry key="H2" value="0.0012986199088889647" />
+      <entry key="H4" value="0.03611966292256653" />
+      <entry key="D1" value="0.7838445627136845" />
+      <entry key="W1" value="2.208930400960633" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="9.96833707977913E-9" />
-      <entry key="MS500" value="0.025103049010188505" />
-      <entry key="S2" value="0.4465343421255301" />
-      <entry key="S5" value="1.7858792374526467" />
-      <entry key="S10" value="4.774523351272305" />
-      <entry key="S30" value="11.392268088214397" />
-      <entry key="S60" value="14.605396024342788" />
-      <entry key="M2" value="16.626468138442537" />
-      <entry key="M5" value="18.003889075609443" />
-      <entry key="M10" value="18.493757351388584" />
-      <entry key="M15" value="18.66065413659359" />
-      <entry key="M30" value="18.829393692646384" />
-      <entry key="H1" value="18.914461989687776" />
-      <entry key="H2" value="18.957172090363485" />
-      <entry key="H4" value="18.97857129525005" />
-      <entry key="D1" value="19.92101094327574" />
-      <entry key="W1" value="106.02945231987043" />
+      <entry key="MS100" value="0.9908406052291383" />
+      <entry key="MS500" value="1.6178928119768026" />
+      <entry key="S2" value="2.7729057795452876" />
+      <entry key="S5" value="3.4657796348009815" />
+      <entry key="S10" value="3.9418797077978276" />
+      <entry key="S30" value="4.530848976777968" />
+      <entry key="S60" value="4.759265078182789" />
+      <entry key="M2" value="5.377982043282809" />
+      <entry key="M5" value="11.734539843929277" />
+      <entry key="M10" value="23.153471997081283" />
+      <entry key="M15" value="30.60561059014216" />
+      <entry key="M30" value="41.36614864826188" />
+      <entry key="H1" value="48.449706290507976" />
+      <entry key="H2" value="52.526976891469154" />
+      <entry key="H4" value="54.817864364293676" />
+      <entry key="D1" value="62.49738116554776" />
+      <entry key="W1" value="144.49895464292428" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -137,198 +139,10 @@
       <recent name="$PROJECT_DIR$/results/trees" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/results" />
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/tools" />
+      <recent name="$PROJECT_DIR$/results" />
     </key>
-  </component>
-  <component name="RunManager">
-    <configuration default="true" type="DjangoTestsConfigurationType">
-      <module name="candidate-reranker" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="DEBUG_JUST_MY_CODE" value="false" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="RUN_TOOL" value="" />
-      <option name="TARGET" value="" />
-      <option name="SETTINGS_FILE" value="" />
-      <option name="CUSTOM_SETTINGS" value="false" />
-      <option name="USE_OPTIONS" value="false" />
-      <option name="OPTIONS" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
-      <module name="candidate-reranker" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="DEBUG_JUST_MY_CODE" value="false" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="RUN_TOOL" value="" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="Python.Celery" factoryName="Python.Celery.App">
-      <module name="candidate-reranker" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="DEBUG_JUST_MY_CODE" value="false" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="RUN_TOOL" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="Python.Celery" factoryName="Python.Celery.Task">
-      <module name="candidate-reranker" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="DEBUG_JUST_MY_CODE" value="false" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="RUN_TOOL" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="Python.FlaskServer">
-      <module name="candidate-reranker" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="DEBUG_JUST_MY_CODE" value="false" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="RUN_TOOL" value="" />
-      <option name="launchJavascriptDebuger" value="false" />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="Tox" factoryName="Tox">
-      <module name="candidate-reranker" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="DEBUG_JUST_MY_CODE" value="false" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="RUN_TOOL" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="docs" factoryName="Docutils task">
-      <module name="candidate-reranker" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="DEBUG_JUST_MY_CODE" value="false" />
-      <option name="RUN_TOOL" value="" />
-      <option name="docutils_input_file" value="" />
-      <option name="docutils_output_file" value="" />
-      <option name="docutils_params" value="" />
-      <option name="docutils_task" value="" />
-      <option name="docutils_open_in_browser" value="false" />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="docs" factoryName="Sphinx task">
-      <module name="candidate-reranker" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="DEBUG_JUST_MY_CODE" value="false" />
-      <option name="RUN_TOOL" value="" />
-      <option name="docutils_input_file" value="" />
-      <option name="docutils_output_file" value="" />
-      <option name="docutils_params" value="" />
-      <option name="docutils_task" value="" />
-      <option name="docutils_open_in_browser" value="false" />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="tests" factoryName="Autodetect">
-      <module name="candidate-reranker" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="DEBUG_JUST_MY_CODE" value="false" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="RUN_TOOL" value="" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;&quot;" />
-      <option name="_new_targetType" value="&quot;PATH&quot;" />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="tests" factoryName="Doctests">
-      <module name="candidate-reranker" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="DEBUG_JUST_MY_CODE" value="false" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="RUN_TOOL" value="" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_SCRIPT" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <method v="2" />
-    </configuration>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -347,7 +161,8 @@
       <workItem from="1789488964420" duration="4707000" />
       <workItem from="1789497666463" duration="4312000" />
       <workItem from="1789662460736" duration="724000" />
-      <workItem from="1789665765802" duration="27159000" />
+      <workItem from="1789665765802" duration="29385000" />
+      <workItem from="1790869024348" duration="3685000" />
     </task>
     <task id="LOCAL-00001" summary="implement ROVER method for word picking">
       <option name="closed" value="true" />
@@ -517,7 +332,23 @@
       <option name="project" value="LOCAL" />
       <updated>1790665868755</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="test run">
+      <option name="closed" value="true" />
+      <created>1790791948600</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1790791948600</updated>
+    </task>
+    <task id="LOCAL-00023" summary="final test run + GPT-2 comparison">
+      <option name="closed" value="true" />
+      <created>1790859809618</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1790859809618</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -559,6 +390,8 @@
     <MESSAGE value="fix err in branching smoke test" />
     <MESSAGE value="full branching run" />
     <MESSAGE value="research" />
-    <option name="LAST_COMMIT_MESSAGE" value="research" />
+    <MESSAGE value="test run" />
+    <MESSAGE value="final test run + GPT-2 comparison" />
+    <option name="LAST_COMMIT_MESSAGE" value="final test run + GPT-2 comparison" />
   </component>
 </project>

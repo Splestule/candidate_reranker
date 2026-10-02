@@ -92,8 +92,8 @@ python src/selftest.py --work /work
 python src/dump_candidates.py --source librispeech --path /work/data/LibriSpeech/test-clean \
     --base_model /work/ckpt/mdm_safetensors/mdm-170M-100e18-rsl-0.01.safetensors \
     --adapter /work/ckpt/whisfusion_stage2_decoder.pt \
-    --out results/test-clean.jsonl --resume
-python src/analyze.py results/test-clean.jsonl --json results/test-clean.stats.json
+    --out results_latest_run/test-clean.jsonl --resume
+python src/analyze.py results_latest_run/test-clean.jsonl --json results_latest_run/test-clean.stats.json
 ```
 
 `src/wf_compat.py` replaces the CUDA extensions Whisfusion imports; FlashAttention 2 needs

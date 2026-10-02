@@ -70,10 +70,10 @@ recomputed without a GPU and every claim traced back to the run that produced it
 The whole chain reruns on a CPU, from the candidate transcripts up:
 
 ```bash
-PYTHONPATH=src python -m campaign.analysis --root results/campaign-2026-09-20 --redo   # dumps -> analysis/
-PYTHONPATH=src python -m campaign.aggregate --root results/campaign-2026-09-20         # -> per_utt_k, tables
-PYTHONPATH=src python tools/paper_tables.py results/campaign-2026-09-20                # -> tables/paper/
-PYTHONPATH=src python tools/fig_cost_quality.py results/campaign-2026-09-20            # -> figures/
+PYTHONPATH=src python -m campaign.analysis --root results_latest_run/campaign-2026-09-20 --redo   # dumps -> analysis/
+PYTHONPATH=src python -m campaign.aggregate --root results_latest_run/campaign-2026-09-20         # -> per_utt_k, tables
+PYTHONPATH=src python tools/paper_tables.py results_latest_run/campaign-2026-09-20                # -> tables/paper/
+PYTHONPATH=src python tools/fig_cost_quality.py results_latest_run/campaign-2026-09-20            # -> figures/
 ```
 
 The last two read `per_utt_k.parquet` only and reproduce the checked-in CSVs byte for byte. The
@@ -92,9 +92,9 @@ Deltas are WER(a) - WER(b) in points, positive when b is better.
 python tools/build_campaign_notebook.py --variant full --user <kaggle-user> --kernel_dir /tmp/k
 kaggle kernels push -p /tmp/k
 # afterwards
-kaggle kernels output <kaggle-user>/candidate-composition-campaign -p results/campaign
-cd results/campaign/campaign && for t in *.tar; do tar xf $t; done
-PYTHONPATH=src python -m campaign.aggregate --root results/campaign/campaign   # re-aggregate offline
+kaggle kernels output <kaggle-user>/candidate-composition-campaign -p results_latest_run/campaign
+cd results_latest_run/campaign/campaign && for t in *.tar; do tar xf $t; done
+PYTHONPATH=src python -m campaign.aggregate --root results_latest_run/campaign/campaign   # re-aggregate offline
 ```
 
 Variants: `cpu` (no accelerator, tiny, every code path; free), `smoke` (T4 x2, ~50 min, every model and

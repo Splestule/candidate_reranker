@@ -42,4 +42,9 @@ plausible and will be reported as such.
 - Per-set WER at the headline configurations; Whisper-normalised WER.
 
 ## Deviations
-(none yet)
+1. Step 2 found no dumps on Kaggle (`campaign.run` packs them into dumps.tar and removes the
+   directory), so it was run afterwards on CPU from the packed dumps.tar. To save CPU time the
+   training candidates (s00) come from the previous treek decode of the same utterances with
+   the same arm settings; the test candidates (s02) are from this run. No test data changed.
+2. GPT-2 features (H5, H6) were computed on CPU and only for the two headline configurations,
+   flat K=15 and tree-early K=8, instead of all six.

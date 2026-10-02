@@ -25,7 +25,7 @@ mkdir -p "$R"
 log() { echo "[$(date +%H:%M:%S)] $*"; }
 want() { case " $STEPS " in *" $1 "*) return 0;; *) return 1;; esac; }
 pack() {
-  [ -d "$R/dumps" ] && tar cf "$R/dumps.tar" -C "$R" dumps
+  [ -d "$R/dumps" ] && [ ! -f "$R/dumps.tar" ] && tar cf "$R/dumps.tar" -C "$R" dumps
   tar czf results/confirm_all.tar.gz $(ls "$R"/*.txt "$R"/*.log "$R"/*.json "$R"/*.jsonl \
       "$R"/*.pkl "$R/dumps.tar" 2>/dev/null) 2>/dev/null || true
   log "packed results/confirm_all.tar.gz"
@@ -61,6 +61,8 @@ fi
 
 if want 2; then
   log "step 2: acoustic scores"
+  # campaign.run packs the dumps into dumps.tar and removes the directory when it finishes
+  [ -d "$R/dumps" ] || tar xf "$R/dumps.tar" -C "$R"
   ls -d "$R"/dumps/*treek | head -3
   timeout 9000 python3 -u tools/cand_audio.py --data "$DATA" --dumps_root "$R/dumps" \
       --sets "$(echo $DEV $TEST | tr ' ' ',')" --per_set 1000 --arm "$ARMS" \

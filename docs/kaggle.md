@@ -19,5 +19,5 @@ CLI, once the browser gets old:
 ```bash
 pip3 install --user kaggle      # token from Settings -> API into ~/.kaggle/kaggle.json
 kaggle kernels push -p kaggle/
-kaggle kernels output <user>/<slug> -p results/
+kaggle kernels output <user>/<slug> -p results_latest_run/
 ```
