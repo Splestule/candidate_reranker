@@ -72,6 +72,22 @@ def groups(idx, max_run):
     return gs
 
 
+def network(r, k):
+    """The confusion network k_curve.build constructs over the same K candidates, and its
+    consensus (ROVER as shipped). None if fewer than two candidates are usable."""
+    import compose
+    import crf_rover as F
+    ok = [c for c in r["cands"][:k] if c["conf"] is not None]
+    if len(ok) < 2:
+        return None
+    cands = [c["words"] for c in ok]
+    bb = compose.central_index(cands)
+    slots = compose.confusion_network(cands, bb, [c["conf"] for c in ok], None)
+    n = float(len(ok))
+    top = [F.rover_pick(s, n, 0.5, 0.7, None) for s in slots]
+    return ok, cands, bb, slots, n, top
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--cand", required=True, help="cand_audio.pkl (tools/cand_audio.py)")
@@ -85,6 +101,8 @@ def main() -> int:
     ap.add_argument("--seq_len", type=int, default=256)
     ap.add_argument("--bs", type=int, default=32)
     ap.add_argument("--limit", type=int, default=0, help="first N records per arm (smoke test)")
+    ap.add_argument("--sets", default="", help="comma separated; default every set in --cand")
+    ap.add_argument("--lora", default="", help="adapter from tools/train_refiner.py, on for refill and scoring")
     a = ap.parse_args()
 
     import numpy as np
@@ -98,7 +116,9 @@ def main() -> int:
     from scorers import normalize
 
     arms = [x for x in a.arms.split(",") if x]
-    recs = [r for r in pickle.loads(Path(a.cand).read_bytes()) if r["arm"] in arms]
+    sets = {x for x in a.sets.split(",") if x}
+    recs = [r for r in pickle.loads(Path(a.cand).read_bytes())
+            if r["arm"] in arms and (not sets or r["set"] in sets)]
     if a.limit:
         recs = [r for arm in arms for r in [x for x in recs if x["arm"] == arm][:a.limit]]
     out_p = Path(a.out)
@@ -108,6 +128,12 @@ def main() -> int:
 
     wf = Whisfusion({}).wf
     tok, model, dev = wf.tokenizer, wf.model, wf.device
+    if a.lora:
+        import lora
+        lora.load(model, a.lora)
+        model.to(dev)
+        lora.set_enabled(model, True)
+        print(f"adapter {a.lora} on", flush=True)
     mask_id, pad_id = wf.mask_token_id, wf.pad_token_id
     bos = tok.bos_token_id if tok.bos_token_id is not None else 0
     L = a.seq_len
@@ -155,26 +181,21 @@ def main() -> int:
     for s in sorted({r["set"] for r in recs}):
         audio[s] = {u.id: u.audio_path for u in dataio.iter_manifest(str(Path(a.data) / "manifests" / f"{s}.jsonl"))}
 
-    t0, n_done, rt_ok, rt_all = time.time(), 0, 0, 0
+    t0, n_done = time.time(), 0
+    rt = [0, 0]                         # consensus round trips: [tried, exact]
     stats = dict(slots=0, contested=0, props=0, refined=0, seqs=0)
-    for r in recs:
-        key = (r["arm"], r["set"], r["id"])
-        if key in out or r["id"] not in audio.get(r["set"], {}):
-            continue
-        k = int(r["arm"].rsplit("-k", 1)[1])
-        ok = [c for c in r["cands"][:k] if c["conf"] is not None]
-        if len(ok) < 2:
-            continue
-        cands = [c["words"] for c in ok]
-        bb = compose.central_index(cands)
-        slots = compose.confusion_network(cands, bb, [c["conf"] for c in ok], None)
-        n = float(len(ok))
-        top = [F.rover_pick(s, n, 0.5, 0.7, None) for s in slots]
+    failed = 0
+
+    def one(r):
+        net = network(r, int(r["arm"].rsplit("-k", 1)[1]))
+        if net is None:
+            return None
+        ok, cands, bb, slots, n, top = net
         cons = [w for w in top if w != EPS]
         if not cons:
-            continue
-        rt_all += 1
-        rt_ok += int(normalize(tok.decode([t for w in cons for t in wtoks(w)])).split() == cons)
+            return None
+        rt[0] += 1
+        rt[1] += int(normalize(tok.decode([t for w in cons for t in wtoks(w)])).split() == cons)
         cidx = contested(slots, top, n, a.max_slots, a.conf_thr)
         stats["slots"] += len(slots)
         stats["contested"] += len(cidx)
@@ -217,7 +238,7 @@ def main() -> int:
 
         # refined whole candidates: every group replaced by its refill at the consensus length
         # (delta 0) or one token longer (delta 1), stitched into the consensus
-        refined = []
+        refined, cons_refined = [], list(cons)
         for delta in (0, 1):
             words, confs = [], []
             gi = {g[0]: g for g in refills}
@@ -238,10 +259,37 @@ def main() -> int:
                 elif w != EPS:
                     words.append(w)
                     confs.append(slots[i][w][1] / max(slots[i][w][0], 1e-9))
+            if delta == 0:
+                cons_refined = list(words)
             if words and words != cons and all(words != x["words"] for x in refined):
                 refined.append(dict(words=words, conf=confs, delta=delta))
+
+        # ---- the single-hypothesis baseline (Mask-CTC / Whisper-LLaDA style deliberation): the
+        # upstream pick alone, its least confident words masked -- as many as there are
+        # contested slots -- each refilled with the rest of that one candidate as context
+        up = max(ok, key=lambda c: c["avg_conf"])
+        uw = list(up["words"])
+        worst = sorted(range(len(uw)), key=lambda j: up["conf"][j])[:max(1, len(cidx))]
+        seqs, meta = [], []
+        for j in worst:
+            ids, spans = build(uw, mask_len={j: len(wtoks(uw[j]))})
+            if ids is not None:
+                st, en = spans[j]
+                seqs.append((ids, list(range(st, en))))
+                meta.append(j)
+        fill = {}
+        for j, lp in zip(meta, run(seqs, cond)):
+            fill[j] = normalize(tok.decode(lp.argmax(-1).tolist(), skip_special_tokens=True)).split()
+        single = dict(base=uw, refined=[x for j, w in enumerate(uw) for x in fill.get(j, [w])],
+                      n_masked=len(meta))
+        stats["seqs"] += len(seqs)
+
         if refined:
+            if a.lora:
+                lora.set_enabled(model, False)  # acoustic features as for every other candidate
             lp0 = acoustic_reading(wf, cond, L)
+            if a.lora:
+                lora.set_enabled(model, True)
             for c in refined:
                 sc = word_scores(wf, lp0, " ".join(w.upper() for w in c["words"]), 2)
                 c["aud"] = [float(np.exp(x)) for x in sc] if sc is not None and len(sc) == len(c["words"]) else None
@@ -284,19 +332,36 @@ def main() -> int:
                 f[1] = float(v.sum())
         stats["seqs"] += len(seqs)
 
-        out[key] = dict(n_slots=len(slots), contested=cidx, feats=feats,
-                        props={i: sorted(v) for i, v in props.items()}, refined=refined)
+        return dict(n_slots=len(slots), contested=cidx, feats=feats,
+                        props={i: sorted(v) for i, v in props.items()}, refined=refined,
+                        consensus=cons, cons_refined=cons_refined, single=single)
+    for r in recs:
+        key = (r["arm"], r["set"], r["id"])
+        if key in out or r["id"] not in audio.get(r["set"], {}):
+            continue
+        try:
+            res = one(r)
+        except Exception as e:          # one bad utterance must not end an overnight run
+            failed += 1
+            print(f"  !! {key}: {type(e).__name__}: {e}", flush=True)
+            if failed > 50:
+                raise
+            continue
+        if res is None:
+            continue
+        out[key] = res
         n_done += 1
         if n_done % 100 == 0:
             out_p.write_bytes(pickle.dumps(out))
             el = time.time() - t0
             print(f"  {n_done} records, {el / n_done:.2f} s each; per record: "
                   + ", ".join(f"{k_} {v / n_done:.1f}" for k_, v in stats.items())
-                  + f"; tokeniser round trip {100 * rt_ok / max(rt_all, 1):.1f}%", flush=True)
+                  + f"; tokeniser round trip {100 * rt[1] / max(rt[0], 1):.1f}%", flush=True)
     out_p.write_bytes(pickle.dumps(out))
+    print(f"failed: {failed}", flush=True)
     print(f"done: {n_done} records in {(time.time() - t0) / 60:.1f} min; "
           + ", ".join(f"{k_} {v / max(n_done, 1):.1f}" for k_, v in stats.items())
-          + f"; tokeniser round trip {100 * rt_ok / max(rt_all, 1):.1f}%", flush=True)
+          + f"; tokeniser round trip {100 * rt[1] / max(rt[0], 1):.1f}%", flush=True)
     return 0 if n_done else 1
 
 
