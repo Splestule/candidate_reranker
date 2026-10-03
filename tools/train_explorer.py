@@ -10,9 +10,18 @@ base model was already trained on, so any gain cannot come from new data):
             gets wrong. There the loss is up-weighted (alpha) and an unlikelihood term (beta)
             pushes the explorer away from the anchor's wrong token, so that the explorer's
             candidates disagree with the anchor where the anchor errs, and only there, which is
-            what the confusion network can use.
+            what the confusion network can use. (Run 1: no gain; the step-zero error signal is
+            mostly word shifts, and nothing kept the explorer right where the anchor is right.)
+  vote      labels from tools/explorer_prep.py: the anchor's real decoded candidates, their
+            confusion network and the reference aligned to it. Where the reference word wins
+            the anchor's vote, a KL term keeps the explorer on the anchor. Where it loses or is
+            missing, a hinge on the expected vote margin, a differentiable stand-in for ROVER,
+              V(w) = (1 - s) * anchor share(w) + s * p_explorer(w),   s = explorer share of K
+              loss = relu(margin + max_competitor V - V(reference)),
+            pushes the explorer's probability toward the reference and away from the winner.
 
     python3 tools/train_explorer.py --mode explorer --out results/explorer/explorer.pt
+    python3 tools/train_explorer.py --mode vote --labels results/explorer2/labels.pkl --out ...
 """
 
 from __future__ import annotations
@@ -29,8 +38,8 @@ sys.path.insert(0, "src")
 sys.path.insert(0, "tools")
 
 
-def batches(files, bs, skip, seed):
-    """(audio arrays, transcripts) from LibriSpeech parquet shards, shuffled within a buffer."""
+def batches(files, bs, skip, seed, keep=None):
+    """(audio arrays, transcripts, ids) from LibriSpeech parquet shards, shuffled within a buffer."""
     import pyarrow.parquet as pq
     import soundfile as sf
     rng = random.Random(seed)
@@ -38,19 +47,25 @@ def batches(files, bs, skip, seed):
     for f in files:
         t = pq.read_table(f, columns=["audio", "text", "id"])
         for r in t.to_pylist():
-            if r["id"] in skip:
+            if r["id"] in skip or (keep is not None and r["id"] not in keep):
                 continue
             buf.append(r)
         rng.shuffle(buf)
         while len(buf) >= bs:
             chunk, buf = buf[:bs], buf[bs:]
             yield [sf.read(io.BytesIO(r["audio"]["bytes"]), dtype="float32")[0] for r in chunk], \
-                [r["text"] for r in chunk]
+                [r["text"] for r in chunk], [r["id"] for r in chunk]
 
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--mode", choices=["plain", "explorer"], required=True)
+    ap.add_argument("--mode", choices=["plain", "explorer", "vote"], required=True)
+    ap.add_argument("--labels", default="", help="vote mode: tools/explorer_prep.py output")
+    ap.add_argument("--share", type=float, default=0.25, help="vote mode: explorer share of K (6+2 -> 0.25)")
+    ap.add_argument("--margin", type=float, default=0.1, help="vote mode: required vote margin")
+    ap.add_argument("--lam_ce", type=float, default=0.2, help="vote mode: plain CE weight")
+    ap.add_argument("--gamma_kl", type=float, default=1.0, help="vote mode: KL to the anchor")
+    ap.add_argument("--eta_vote", type=float, default=1.0, help="vote mode: vote hinge weight")
     ap.add_argument("--out", required=True)
     ap.add_argument("--shards", type=int, default=8, help="train-clean-100 parquet files (~2k utts each)")
     ap.add_argument("--bs", type=int, default=16)
@@ -64,8 +79,13 @@ def main() -> int:
     ap.add_argument("--val_utts", type=int, default=256)
     ap.add_argument("--seed", type=int, default=0)
     a = ap.parse_args()
-    if a.mode == "plain":
+    if a.mode in ("plain", "vote"):
         a.alpha_err = a.beta_ul = 0.0
+    labels = None
+    if a.mode == "vote":
+        import pickle
+        labels = pickle.loads(Path(a.labels).read_bytes())
+        print(f"vote labels for {len(labels)} utterances", flush=True)
 
     import torch
     import torch.nn.functional as Fn
@@ -133,6 +153,43 @@ def main() -> int:
             loss = loss + a.beta_ul * ul
         return loss, ce.mean().item(), ul.item(), err.sum().item() / max(m.sum().item(), 1)
 
+    def vote_loss(cond, tgt, ids):
+        """CE (small) + KL to the anchor off the target words + expected-vote hinge on them."""
+        b, l = tgt.shape
+        p = a.mask_min + (a.mask_max - a.mask_min) * torch.rand((b, 1), device=dev)
+        m = torch.rand((b, l), device=dev) < p
+        m[:, 0] = False
+        ents = [(i, e) for i, u in enumerate(ids) for e in labels[u] if e[0] < l]
+        hard = [(i, e) for i, e in ents if e[4] != "maj"]
+        for i, e in hard:                # the words to fix are always masked: that is the job
+            m[i, e[0]] = True
+        noisy = torch.where(m, mask_id, tgt)
+        lora.set_enabled(model, False)
+        with torch.no_grad():
+            la = torch.log_softmax(model(idx=noisy, condition=cond).float(), -1)
+        lora.set_enabled(model, True)
+        logits = model(idx=noisy, condition=cond).float()
+        le = torch.log_softmax(logits, -1)
+        ce = Fn.cross_entropy(logits[m], tgt[m])
+        keep = m.clone()
+        for i, e in hard:
+            keep[i, e[0]] = False
+        kl = (la[keep].exp() * (la[keep] - le[keep])).sum(-1).mean() if keep.any() else ce * 0
+        hinge, flips = [], 0
+        sh = a.share
+        for i, (pos, ref_t, mine, comp, cls) in hard:
+            pe = le[i, pos].exp()
+            v_ref = (1 - sh) * mine + sh * pe[ref_t]
+            v_comp = [(1 - sh) * c_s + (sh * pe[c_t] if c_t is not None else 0.0) for c_t, c_s in comp]
+            best = torch.stack([torch.as_tensor(v, device=dev, dtype=torch.float32) for v in v_comp]).max() \
+                if v_comp else torch.zeros((), device=dev)
+            hinge.append(torch.relu(a.margin + best - v_ref))
+            flips += int((v_ref > best).item())
+        hl = torch.stack(hinge).mean() if hinge else ce * 0
+        loss = a.lam_ce * ce + a.gamma_kl * kl + a.eta_vote * hl
+        return loss, dict(ce=ce.item(), kl=kl.item(), hinge=hl.item(), n_hard=len(hard),
+                          would_win=flips / max(len(hard), 1))
+
     @torch.no_grad()
     def diagnose():
         """Step-zero reading on held-out utterances: where the anchor errs, how often the
@@ -166,14 +223,19 @@ def main() -> int:
                         log=log), out)
 
     model.train()
-    log = []
+    log, vote_log = [], []
     print("before training:", json.dumps(diagnose()), flush=True)
     t0, s = time.time(), 0
     while s < a.steps:
-        for audios, texts in batches(files, a.bs, val_ids, a.seed + s):
+        keep_ids = set(labels) if labels is not None else None
+        for audios, texts, ids in batches(files, a.bs, val_ids, a.seed + s, keep_ids):
             cond, tgt, anchor = prep(audios, texts)
             with torch.autocast("cuda", dtype=torch.float16, enabled=dev == "cuda"):
-                loss, ce, ul, er = step_loss(cond, tgt, anchor)
+                if a.mode == "vote":
+                    loss, info = vote_loss(cond, tgt, ids)
+                    vote_log.append(info)
+                else:
+                    loss, ce, ul, er = step_loss(cond, tgt, anchor)
             opt.zero_grad(set_to_none=True)
             scaler.scale(loss).backward()
             scaler.unscale_(opt)
@@ -182,7 +244,12 @@ def main() -> int:
             scaler.update()
             sched.step()
             s += 1
-            if s % 50 == 0:
+            if s % 50 == 0 and a.mode == "vote":
+                last = vote_log[-50:]
+                avg = {k: sum(x[k] for x in last) / len(last) for k in last[0]}
+                print(f"step {s}: loss {loss.item():.3f} " + " ".join(f"{k} {v:.3f}" for k, v in avg.items())
+                      + f"  {(time.time() - t0) / s:.2f} s/step", flush=True)
+            elif s % 50 == 0:
                 print(f"step {s}: loss {loss.item():.3f} ce {ce:.3f} ul {ul:.3f} "
                       f"anchor-error share {er:.3f}  {(time.time() - t0) / s:.2f} s/step", flush=True)
             if s % 250 == 0 or s == a.steps:

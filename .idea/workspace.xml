@@ -4,15 +4,11 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ec4b20f5-aa4e-423a-a25f-e3d22fa98819" name="Changes" comment="final test run + GPT-2 comparison">
+    <list default="true" id="ec4b20f5-aa4e-423a-a25f-e3d22fa98819" name="Changes" comment="research for decoder training">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/campaign.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/campaign.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/confirm_prereg.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/confirm_prereg.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/kaggle.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/kaggle.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tools/run_confirm.sh" beforeDir="false" afterPath="$PROJECT_DIR$/tools/run_confirm.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uv.lock" beforeDir="false" afterPath="$PROJECT_DIR$/uv.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/explorer_poc.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/explorer_poc.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/explorer_eval.py" beforeDir="false" afterPath="$PROJECT_DIR$/tools/explorer_eval.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/train_explorer.py" beforeDir="false" afterPath="$PROJECT_DIR$/tools/train_explorer.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,61 +41,61 @@
 }</component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0257825237114884" />
-      <entry key="MS500" value="1.6291461464170127" />
-      <entry key="S2" value="2.7777234793714953" />
-      <entry key="S5" value="3.4683545708986414" />
-      <entry key="S10" value="3.9435642546594116" />
-      <entry key="S30" value="4.5316263008277" />
-      <entry key="S60" value="4.759698258419563" />
-      <entry key="M2" value="5.378252529186191" />
-      <entry key="M5" value="11.735050684983493" />
-      <entry key="M10" value="23.154169594569666" />
-      <entry key="M15" value="30.606278625078374" />
-      <entry key="M30" value="41.3666325292682" />
-      <entry key="H1" value="48.44999653527943" />
-      <entry key="H2" value="52.525838886182314" />
-      <entry key="H4" value="54.781831509492505" />
-      <entry key="D1" value="61.71357461107529" />
-      <entry key="W1" value="142.29003836732022" />
+      <entry key="MS100" value="1.0879056836874237" />
+      <entry key="MS500" value="1.925497330943621" />
+      <entry key="S2" value="4.186909660205471" />
+      <entry key="S5" value="5.592320834682241" />
+      <entry key="S10" value="6.242767725172095" />
+      <entry key="S30" value="7.7167847230828155" />
+      <entry key="S60" value="10.440602989443347" />
+      <entry key="M2" value="14.011852017767202" />
+      <entry key="M5" value="22.258363516785074" />
+      <entry key="M10" value="34.394694675192255" />
+      <entry key="M15" value="42.434211533075676" />
+      <entry key="M30" value="54.29487527145503" />
+      <entry key="H1" value="62.25271966401226" />
+      <entry key="H2" value="66.88051731878518" />
+      <entry key="H4" value="69.4462417320561" />
+      <entry key="D1" value="76.65132493496124" />
+      <entry key="W1" value="157.27085326031374" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="0.0" />
-      <entry key="S2" value="0.0" />
-      <entry key="S5" value="0.0" />
-      <entry key="S10" value="0.0" />
-      <entry key="S30" value="0.0" />
-      <entry key="S60" value="0.0" />
-      <entry key="M2" value="6.4384876200746915E-174" />
-      <entry key="M5" value="5.2907049907891993E-70" />
-      <entry key="M10" value="2.300153253761408E-35" />
-      <entry key="M15" value="8.087938656539258E-24" />
-      <entry key="M30" value="2.843930142696764E-12" />
-      <entry key="H1" value="1.686395606866866E-6" />
-      <entry key="H2" value="0.0012986199088889647" />
-      <entry key="H4" value="0.03611966292256653" />
-      <entry key="D1" value="0.7838445627136845" />
-      <entry key="W1" value="2.208930400960633" />
+      <entry key="MS100" value="1.62369195E-316" />
+      <entry key="MS500" value="6.951855393618901E-64" />
+      <entry key="S2" value="1.6237725016970944E-16" />
+      <entry key="S5" value="4.832925193662087E-7" />
+      <entry key="S10" value="6.951924333349787E-4" />
+      <entry key="S30" value="0.08858666362896474" />
+      <entry key="S60" value="0.29763511827229794" />
+      <entry key="M2" value="0.5455594543881517" />
+      <entry key="M5" value="0.7847599566984428" />
+      <entry key="M10" value="0.8858667827040603" />
+      <entry key="M15" value="0.9223850985867217" />
+      <entry key="M30" value="0.9604088184684454" />
+      <entry key="H1" value="0.980006149808747" />
+      <entry key="H2" value="0.9912365304952226" />
+      <entry key="H4" value="1.03088965672244" />
+      <entry key="D1" value="1.7823029668132853" />
+      <entry key="W1" value="3.208528120442713" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.9908406052291383" />
-      <entry key="MS500" value="1.6178928119768026" />
-      <entry key="S2" value="2.7729057795452876" />
-      <entry key="S5" value="3.4657796348009815" />
-      <entry key="S10" value="3.9418797077978276" />
-      <entry key="S30" value="4.530848976777968" />
-      <entry key="S60" value="4.759265078182789" />
-      <entry key="M2" value="5.377982043282809" />
-      <entry key="M5" value="11.734539843929277" />
-      <entry key="M10" value="23.153471997081283" />
-      <entry key="M15" value="30.60561059014216" />
-      <entry key="M30" value="41.36614864826188" />
-      <entry key="H1" value="48.449706290507976" />
-      <entry key="H2" value="52.526976891469154" />
-      <entry key="H4" value="54.817864364293676" />
-      <entry key="D1" value="62.49738116554776" />
-      <entry key="W1" value="144.49895464292428" />
+      <entry key="MS100" value="1.0514381976470666" />
+      <entry key="MS500" value="1.9128809743157285" />
+      <entry key="S2" value="4.177400925259228" />
+      <entry key="S5" value="5.586493260880461" />
+      <entry key="S10" value="6.2399329861426995" />
+      <entry key="S30" value="7.7983797723056645" />
+      <entry key="S60" value="10.727642357481592" />
+      <entry key="M2" value="14.547787690031603" />
+      <entry key="M5" value="23.037277911053597" />
+      <entry key="M10" value="35.27687017529372" />
+      <entry key="M15" value="43.353846483724794" />
+      <entry key="M30" value="55.25370766083128" />
+      <entry key="H1" value="63.23187220703317" />
+      <entry key="H2" value="67.87130810848419" />
+      <entry key="H4" value="70.47690089343047" />
+      <entry key="D1" value="78.4335658001311" />
+      <entry key="W1" value="160.47936380793072" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -122,7 +118,7 @@
     "git-widget-placeholder": "main",
     "git.auto.fetch.suggestion.counter": "3",
     "junie.onboarding.icon.badge.shown": "true",
-    "last_opened_file_path": "/Users/eduardsimon/coding/candidate_reranker/results/trees",
+    "last_opened_file_path": "/Users/eduardsimon/coding/candidate_reranker/results",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.jshint": "true",
     "node.js.detected.package.tslint": "true",
@@ -136,6 +132,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/results" />
       <recent name="$PROJECT_DIR$/results/trees" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -163,6 +160,7 @@
       <workItem from="1789662460736" duration="724000" />
       <workItem from="1789665765802" duration="29385000" />
       <workItem from="1790869024348" duration="3685000" />
+      <workItem from="1790972268179" duration="1404000" />
     </task>
     <task id="LOCAL-00001" summary="implement ROVER method for word picking">
       <option name="closed" value="true" />
@@ -348,7 +346,15 @@
       <option name="project" value="LOCAL" />
       <updated>1790859809618</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="research for decoder training">
+      <option name="closed" value="true" />
+      <created>1790972481889</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1790972481889</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -392,6 +398,7 @@
     <MESSAGE value="research" />
     <MESSAGE value="test run" />
     <MESSAGE value="final test run + GPT-2 comparison" />
-    <option name="LAST_COMMIT_MESSAGE" value="final test run + GPT-2 comparison" />
+    <MESSAGE value="research for decoder training" />
+    <option name="LAST_COMMIT_MESSAGE" value="research for decoder training" />
   </component>
 </project>

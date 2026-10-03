@@ -52,3 +52,24 @@ decoding compute.
 ## Cost
 ~20 min per LoRA on a T4 (estimate), ~2 h of decoding, ~1 h acoustic scores, ~30 min
 evaluation. Caps in `tools/run_explorer.sh` keep the worst case under 10 h.
+
+## Run 1 result
+No gain: final WER at K=8, anchor 24.30, anchor + plain 24.17, anchor + explorer 24.38; the
+explorer loss added nothing over the plain control. Diagnostics: the anchor's step-zero
+reading is "wrong" at 48% of positions, mostly word shifts, and the explorer bought its
+diversity by getting worse where the anchor was right (candidate WER 40.6 vs 38.2).
+
+## Run 2: vote explorer (`tools/run_explorer2.sh`)
+Three changes, inference unchanged (same K, same four steps, the adapter switched on for
+some candidates):
+1. Real errors. `tools/explorer_prep.py` decodes ~6000 training utterances with the anchor as
+   at inference (K=4), builds the confusion network and aligns the reference: every reference
+   word is `maj` (wins the anchor's vote), `min` (in the network, loses) or `hole` (missing).
+2. Keep what works. KL(anchor || explorer) on every masked position except the `min`/`hole`
+   words.
+3. A differentiable stand-in for the composition. With s the explorer's share of K,
+   V(w) = (1 - s) anchor share(w) + s p_explorer(w), read at the word's first token; the loss is
+   relu(margin + max_competitor V - V(reference)) on `min` and `hole` words. Plus 0.2 x CE.
+Arms: anchor-k4, mix-vote-k4 (2+2), anchor-k8, mix-plain-k8 (6+2), mix-vote-k8 (6+2),
+mix-vote44-k8 (4+4). Same data, composer and evaluation as run 1. A smoke test (step 0) runs
+first on Kaggle and stops the run if any new piece fails.

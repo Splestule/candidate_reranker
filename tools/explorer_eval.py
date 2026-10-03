@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Does a composition-aware explorer help? Anchor-only K candidates against K/2 anchor + K/2
-LoRA explorer candidates (tools/train_explorer.py), and against K/2 anchor + K/2 from a LoRA
-trained with the plain loss on the same data (the control for fine-tuning alone).
+"""Does a composition-aware explorer help? Every mixed arm (anchor + LoRA explorer candidates,
+tools/train_explorer.py) against anchor-only at the same K, and every explorer arm against the
+plain-loss LoRA at the same K (the control for fine-tuning alone).
 
 Same frozen composition pipeline and set-level cross-validation as tools/confirm_eval.py:
 train on shard 0 of the sets outside the fold, test on the fold's sets at --test_shard.
@@ -41,8 +41,8 @@ def main() -> int:
     a = ap.parse_args()
     recs = pickle.loads(Path(a.cand).read_bytes())
     ks = [int(x) for x in a.ks.split(",")]
-    arms = [f"{p}-k{k}" for k in ks for p in ("anchor", "mix-plain", "mix-expl")]
-    arms = [x for x in arms if any(r["arm"] == x for r in recs)]
+    present = sorted({r["arm"] for r in recs}, key=lambda x: (int(x.rsplit("-k", 1)[1]), x))
+    arms = [x for x in present if int(x.rsplit("-k", 1)[1]) in ks]
     B = {}
     for arm in arms:
         k = int(arm.rsplit("-k", 1)[1])
@@ -79,9 +79,9 @@ def main() -> int:
     rl = np.array([len(B[arms[0]][kk]["ref"]) for kk in keys], float)
 
     methods = [CE.UP, CE.MBR, CE.ROV, CE.IRO, CE.FIN, CE.ORA, "slot oracle"]
-    print(f"{'arm':<14}" + "".join(f"{m[:16]:>18}" for m in methods))
+    print(f"{'arm':<16}" + "".join(f"{m[:16]:>18}" for m in methods))
     for arm in arms:
-        print(f"{arm:<14}" + "".join(f"{np.mean([100 * E[(s, arm, m)].sum() / rl.sum() for s in seeds]):18.2f}"
+        print(f"{arm:<16}" + "".join(f"{np.mean([100 * E[(s, arm, m)].sum() / rl.sum() for s in seeds]):18.2f}"
                                      for m in methods))
 
     print("\nper-candidate WER by source (mean over candidates)")
@@ -91,18 +91,21 @@ def main() -> int:
             d = B[arm][kk]
             for t, s in zip(d["toks"], d["src"]):
                 by[s].append(F.edits_of(t, d["ref"]) / max(len(d["ref"]), 1))
-        print(f"  {arm:<14}" + "  ".join(f"{s} {100 * np.mean(v):.2f}" for s, v in by.items() if v))
+        print(f"  {arm:<16}" + "  ".join(f"{s} {100 * np.mean(v):.2f}" for s, v in by.items() if v))
 
     print("\npaired bootstrap, positive = second arm better")
+    pairs = []
     for k in ks:
-        for m in (CE.FIN, CE.ROV, "slot oracle"):
-            for base, arm in ((f"anchor-k{k}", f"mix-expl-k{k}"), (f"mix-plain-k{k}", f"mix-expl-k{k}"),
-                              (f"anchor-k{k}", f"mix-plain-k{k}")):
-                if base not in arms or arm not in arms:
-                    continue
-                for s in seeds[:1] if m == "slot oracle" else seeds:
-                    o, lo, hi = S.bootstrap(E[(s, base, m)], E[(s, arm, m)], rl, seed=s)
-                    print(f"  K={k:<2} {m:<12} {base:<13} -> {arm:<13} seed {s}: {o:+.2f} [{lo:+.2f}, {hi:+.2f}]")
+        same = [x for x in arms if x.endswith(f"-k{k}")]
+        base = f"anchor-k{k}"
+        pairs += [(base, x) for x in same if x != base and base in arms]
+        plain = [x for x in same if x.startswith("mix-plain")]
+        pairs += [(pl, x) for pl in plain for x in same if x.startswith("mix-") and x not in plain]
+    for m in (CE.FIN, CE.ROV, "slot oracle"):
+        for base, arm in pairs:
+            for s in seeds[:1] if m == "slot oracle" else seeds:
+                o, lo, hi = S.bootstrap(E[(s, base, m)], E[(s, arm, m)], rl, seed=s)
+                print(f"  {m:<12} {base:<15} -> {arm:<15} seed {s}: {o:+.2f} [{lo:+.2f}, {hi:+.2f}]")
     return 0
 
 
