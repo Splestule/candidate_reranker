@@ -73,3 +73,36 @@ some candidates):
 Arms: anchor-k4, mix-vote-k4 (2+2), anchor-k8, mix-plain-k8 (6+2), mix-vote-k8 (6+2),
 mix-vote44-k8 (4+4). Same data, composer and evaluation as run 1. A smoke test (step 0) runs
 first on Kaggle and stops the run if any new piece fails.
+
+## Run 2 result
+No gain. Final WER at K=8: anchor 24.30, anchor + plain (6+2) 24.32, anchor + vote (6+2)
+24.28, anchor + vote (4+4) 24.52; at K=4 the vote mix is worse, -0.40 to -0.49 with the CI
+below 0 on two seeds. The slot oracle did not move in any arm (17.62 anchor-k8). Explorer
+candidates were 3 WER worse than the anchor's (41.2 vs 38.4) without adding words. During
+training the hinge stayed at 0.32 and "would win" at 0.15 from step 50 to step 1000: with
+anchor shares in steps of 0.25 (K=4 labels), s = 0.25 and margin 0.1, a reference word one
+vote behind can reach at most +0.06, two or more votes behind cannot win at all, so the
+objective was satisfiable only on ties and scattered slots.
+
+## Is the explorer an error detector? (`tools/explorer_qf.py`, s01 test slots)
+Slot by slot, the explorer block's majority word e against the anchor block's majority a:
+q = P(e = ref | a wrong), f = P(e != a | a right). Taking e where it disagrees helps only if
+q/f > (1 - p)/p, about 3.5 at K=8. Control: the anchor-only arm with its last n candidates
+relabelled, i.e. what plain extra anchor samples do in the same place.
+
+| K=8 | q | f | q/f | best threshold rule* | AUC | hole fill |
+|---|---|---|---|---|---|---|
+| run 1 explorer 4+4 | 17.6 | 5.6 | 3.16 | -0.79 | 0.53 | 13.3 % |
+| run 2 vote 4+4 | 15.5 | 6.0 | 2.57 | -0.77 | 0.59 | 13.8 % |
+| run 1 plain 4+4 | 16.4 | 4.5 | 3.63 | -0.86 | 0.56 | 13.9 % |
+| control: 4 anchor samples | 16.0 | 4.5 | 3.60 | -0.81 | 0.55 | 14.0 % |
+| run 2 vote 6+2 | 11.8 | 14.5 | 0.81 | -0.06 | 0.66 | 5.4 % |
+| control: 2 anchor samples | 12.3 | 12.2 | 1.01 | -0.14 | 0.63 | 6.2 % |
+
+\* chosen on the test slots themselves, so optimistic; against the anchor block's majority.
+
+Neither explorer is a better detector than plain anchor samples in the same position: the
+vote loss raised false alarms without raising corrections, and the explorer's confidence does
+not separate its corrections from its false alarms better than the control's. A source-aware
+combiner over these candidates has nothing to find. The explorer line is closed in this form;
+the next step is tools/refine.py (docs/refine.md).
