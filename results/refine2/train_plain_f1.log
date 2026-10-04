@@ -1,0 +1,16 @@
+[wf_compat] shims active: rotary_emb, dropout_layer_norm, flash_attn, xformers.ops.SwiGLU, FusedRMSNorm
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[wf] device=cuda (Tesla T4) dtype=torch.float16
+[wf] base: 129 keys, 72 missing
+[wf] adapter: 201 keys, 0 missing, 0 unexpected
+[wf] decoder 261.5M · Whisper encoder 88.2M
+700 utterances on 7 sets; refine examples: 4988 train, 282 held out
+LoRA: 6.19M trainable parameters, mode plain
+held-out refine token accuracy: {"step": 0, "off": 0.5559131134352373, "on": 0.5559131134352373}
+step 100: {"step": 100, "loss": 0.21980652667582035, "off": 0.5559131134352373, "on": 0.38696701528559935}  1.18 s/step
+step 200: {"step": 200, "loss": 0.18402503684163093, "off": 0.5559131134352373, "on": 0.4883346741753821}  1.07 s/step
+step 300: {"step": 300, "loss": 0.1757306608185172, "off": 0.5559131134352373, "on": 0.5100563153660499}  1.03 s/step
+step 400: {"step": 400, "loss": 0.15470807880163193, "off": 0.5559131134352373, "on": 0.48753016894609813}  1.01 s/step
+step 500: {"step": 500, "loss": 0.1392027984932065, "off": 0.5559131134352373, "on": 0.5366049879324215}  1.00 s/step
+step 600: {"step": 600, "loss": 0.1394385463744402, "off": 0.5559131134352373, "on": 0.5349959774738536}  0.99 s/step
+saved results/refine2/plain_f1.pt

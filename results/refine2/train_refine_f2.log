@@ -1,0 +1,18 @@
+[wf_compat] shims active: rotary_emb, dropout_layer_norm, flash_attn, xformers.ops.SwiGLU, FusedRMSNorm
+[wf] device=cuda (Tesla T4) dtype=torch.float16
+[wf] base: 129 keys, 72 missing
+[wf] adapter: 201 keys, 0 missing, 0 unexpected
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[wf] decoder 261.5M · Whisper encoder 88.2M
+773 utterances on 8 sets; refine examples: 5506 train, 292 held out
+LoRA: 6.19M trainable parameters, mode refine
+held-out refine token accuracy: {"step": 0, "off": 0.5532879818594104, "on": 0.5532879818594104}
+/kaggle/working/cr/tools/train_refiner.py:223: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
+  sched.step()
+step 100: {"step": 100, "loss": 2.0649542012810707, "off": 0.5532879818594104, "on": 0.6432350718065004}  1.20 s/step
+step 200: {"step": 200, "loss": 1.3119614645838737, "off": 0.5532879818594104, "on": 0.6447467876039304}  1.09 s/step
+step 300: {"step": 300, "loss": 1.1479308056831359, "off": 0.5532879818594104, "on": 0.6530612244897959}  1.04 s/step
+step 400: {"step": 400, "loss": 0.9568248848617077, "off": 0.5532879818594104, "on": 0.653817082388511}  1.02 s/step
+step 500: {"step": 500, "loss": 0.9948134189844131, "off": 0.5532879818594104, "on": 0.6530612244897959}  1.00 s/step
+step 600: {"step": 600, "loss": 1.0228066882491111, "off": 0.5532879818594104, "on": 0.6500377928949358}  0.99 s/step
+saved results/refine2/refine_f2.pt

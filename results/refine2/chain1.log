@@ -1,0 +1,8 @@
+[12:16:13] GPU 1: joint / slot / single-context scoring of anchor-k8, anchor-k4
+[12:43:17] GPU 1: train plain adapter, fold 0
+[12:53:54] GPU 1: train plain adapter, fold 1
+[13:04:22] GPU 1: train plain adapter, fold 2
+[13:15:09] GPU 1: slot scoring with plain adapter, fold 0
+[13:26:23] GPU 1: slot scoring with plain adapter, fold 1
+[13:35:35] GPU 1: slot scoring with plain adapter, fold 2
+[13:43:18] GPU 1: chain done

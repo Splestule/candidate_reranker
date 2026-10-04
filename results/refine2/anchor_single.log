@@ -1,0 +1,56 @@
+[wf_compat] shims active: rotary_emb, dropout_layer_norm, flash_attn, xformers.ops.SwiGLU, FusedRMSNorm
+4694 records on arms ['anchor-k8', 'anchor-k4'], 0 already done
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[wf] device=cuda (Tesla T4) dtype=torch.float16
+[wf] base: 129 keys, 72 missing
+[wf] adapter: 201 keys, 0 missing, 0 unexpected
+[wf] decoder 261.5M · Whisper encoder 88.2M
+  100 records, 0.12 s each; per record: slots 10.5, contested 5.7, props 0.0, refined 0.0, seqs 5.7; tokeniser round trip 100.0%
+  200 records, 0.11 s each; per record: slots 9.9, contested 5.2, props 0.0, refined 0.0, seqs 5.2; tokeniser round trip 100.0%
+  300 records, 0.11 s each; per record: slots 10.1, contested 5.5, props 0.0, refined 0.0, seqs 5.5; tokeniser round trip 100.0%
+  400 records, 0.11 s each; per record: slots 10.0, contested 5.4, props 0.0, refined 0.0, seqs 5.4; tokeniser round trip 100.0%
+  500 records, 0.12 s each; per record: slots 10.4, contested 5.7, props 0.0, refined 0.0, seqs 5.7; tokeniser round trip 100.0%
+  600 records, 0.11 s each; per record: slots 10.4, contested 5.6, props 0.0, refined 0.0, seqs 5.6; tokeniser round trip 100.0%
+  700 records, 0.12 s each; per record: slots 10.8, contested 5.7, props 0.0, refined 0.0, seqs 5.7; tokeniser round trip 100.0%
+  800 records, 0.12 s each; per record: slots 11.7, contested 5.9, props 0.0, refined 0.0, seqs 5.9; tokeniser round trip 100.0%
+  900 records, 0.12 s each; per record: slots 12.6, contested 6.2, props 0.0, refined 0.0, seqs 6.2; tokeniser round trip 100.0%
+  1000 records, 0.13 s each; per record: slots 13.3, contested 6.4, props 0.0, refined 0.0, seqs 6.4; tokeniser round trip 100.0%
+  1100 records, 0.13 s each; per record: slots 13.9, contested 6.6, props 0.0, refined 0.0, seqs 6.6; tokeniser round trip 100.0%
+  1200 records, 0.13 s each; per record: slots 14.4, contested 6.6, props 0.0, refined 0.0, seqs 6.6; tokeniser round trip 100.0%
+  1300 records, 0.13 s each; per record: slots 15.0, contested 6.8, props 0.0, refined 0.0, seqs 6.8; tokeniser round trip 100.0%
+  1400 records, 0.13 s each; per record: slots 15.4, contested 6.8, props 0.0, refined 0.0, seqs 6.8; tokeniser round trip 100.0%
+  1500 records, 0.13 s each; per record: slots 15.8, contested 6.8, props 0.0, refined 0.0, seqs 6.8; tokeniser round trip 100.0%
+  1600 records, 0.13 s each; per record: slots 16.0, contested 6.6, props 0.0, refined 0.0, seqs 6.6; tokeniser round trip 100.0%
+  1700 records, 0.13 s each; per record: slots 16.1, contested 6.5, props 0.0, refined 0.0, seqs 6.5; tokeniser round trip 100.0%
+  1800 records, 0.13 s each; per record: slots 16.3, contested 6.5, props 0.0, refined 0.0, seqs 6.5; tokeniser round trip 100.0%
+  1900 records, 0.13 s each; per record: slots 16.6, contested 6.5, props 0.0, refined 0.0, seqs 6.5; tokeniser round trip 100.0%
+  2000 records, 0.13 s each; per record: slots 16.8, contested 6.6, props 0.0, refined 0.0, seqs 6.6; tokeniser round trip 100.0%
+  2100 records, 0.13 s each; per record: slots 17.4, contested 6.8, props 0.0, refined 0.0, seqs 6.8; tokeniser round trip 100.0%
+  2200 records, 0.13 s each; per record: slots 17.5, contested 6.9, props 0.0, refined 0.0, seqs 6.9; tokeniser round trip 100.0%
+  2300 records, 0.13 s each; per record: slots 17.8, contested 7.0, props 0.0, refined 0.0, seqs 7.0; tokeniser round trip 100.0%
+  2400 records, 0.13 s each; per record: slots 18.0, contested 7.0, props 0.0, refined 0.0, seqs 7.0; tokeniser round trip 100.0%
+  2500 records, 0.14 s each; per record: slots 18.3, contested 7.1, props 0.0, refined 0.0, seqs 7.1; tokeniser round trip 100.0%
+  2600 records, 0.14 s each; per record: slots 18.4, contested 7.1, props 0.0, refined 0.0, seqs 7.1; tokeniser round trip 100.0%
+  2700 records, 0.14 s each; per record: slots 18.5, contested 7.1, props 0.0, refined 0.0, seqs 7.1; tokeniser round trip 100.0%
+  2800 records, 0.14 s each; per record: slots 18.6, contested 7.1, props 0.0, refined 0.0, seqs 7.1; tokeniser round trip 100.0%
+  2900 records, 0.14 s each; per record: slots 18.9, contested 7.1, props 0.0, refined 0.0, seqs 7.1; tokeniser round trip 100.0%
+  3000 records, 0.14 s each; per record: slots 18.9, contested 7.1, props 0.0, refined 0.0, seqs 7.1; tokeniser round trip 100.0%
+  3100 records, 0.14 s each; per record: slots 18.9, contested 7.1, props 0.0, refined 0.0, seqs 7.1; tokeniser round trip 100.0%
+  3200 records, 0.14 s each; per record: slots 19.0, contested 7.0, props 0.0, refined 0.0, seqs 7.0; tokeniser round trip 100.0%
+  3300 records, 0.13 s each; per record: slots 19.1, contested 7.0, props 0.0, refined 0.0, seqs 7.0; tokeniser round trip 100.0%
+  3400 records, 0.13 s each; per record: slots 19.1, contested 6.9, props 0.0, refined 0.0, seqs 6.9; tokeniser round trip 100.0%
+  3500 records, 0.13 s each; per record: slots 19.1, contested 6.9, props 0.0, refined 0.0, seqs 6.9; tokeniser round trip 100.0%
+  3600 records, 0.13 s each; per record: slots 19.1, contested 6.9, props 0.0, refined 0.0, seqs 6.9; tokeniser round trip 100.0%
+  3700 records, 0.13 s each; per record: slots 19.1, contested 6.8, props 0.0, refined 0.0, seqs 6.8; tokeniser round trip 100.0%
+  3800 records, 0.13 s each; per record: slots 19.1, contested 6.8, props 0.0, refined 0.0, seqs 6.8; tokeniser round trip 100.0%
+  3900 records, 0.13 s each; per record: slots 19.3, contested 6.8, props 0.0, refined 0.0, seqs 6.8; tokeniser round trip 100.0%
+  4000 records, 0.13 s each; per record: slots 19.5, contested 6.9, props 0.0, refined 0.0, seqs 6.9; tokeniser round trip 100.0%
+  4100 records, 0.13 s each; per record: slots 19.7, contested 6.9, props 0.0, refined 0.0, seqs 6.9; tokeniser round trip 100.0%
+  4200 records, 0.14 s each; per record: slots 19.8, contested 7.0, props 0.0, refined 0.0, seqs 7.0; tokeniser round trip 100.0%
+  4300 records, 0.14 s each; per record: slots 20.0, contested 7.0, props 0.0, refined 0.0, seqs 7.0; tokeniser round trip 100.0%
+  4400 records, 0.14 s each; per record: slots 19.9, contested 7.0, props 0.0, refined 0.0, seqs 7.0; tokeniser round trip 100.0%
+  4500 records, 0.14 s each; per record: slots 20.0, contested 7.0, props 0.0, refined 0.0, seqs 7.0; tokeniser round trip 100.0%
+  4600 records, 0.14 s each; per record: slots 20.0, contested 7.0, props 0.0, refined 0.0, seqs 7.0; tokeniser round trip 100.0%
+timing: 96.8 ms of decoder passes per utterance, 7.0 passes
+failed: 0
+done: 4663 records in 10.5 min; slots 20.0, contested 7.0, props 0.0, refined 0.0, seqs 7.0; tokeniser round trip 100.0%

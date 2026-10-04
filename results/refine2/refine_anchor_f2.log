@@ -1,0 +1,22 @@
+[wf_compat] shims active: rotary_emb, dropout_layer_norm, flash_attn, xformers.ops.SwiGLU, FusedRMSNorm
+1200 records on arms ['anchor-k8', 'anchor-k4'], 0 already done
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[wf] device=cuda (Tesla T4) dtype=torch.float16
+[wf] base: 129 keys, 72 missing
+[wf] adapter: 201 keys, 0 missing, 0 unexpected
+[wf] decoder 261.5M · Whisper encoder 88.2M
+adapter results/refine2/refine_f2.pt on
+  100 records, 0.25 s each; per record: slots 21.9, contested 7.8, props 0.0, refined 0.0, seqs 7.8; tokeniser round trip 100.0%
+  200 records, 0.25 s each; per record: slots 21.3, contested 7.8, props 0.0, refined 0.0, seqs 7.8; tokeniser round trip 100.0%
+  300 records, 0.24 s each; per record: slots 21.2, contested 7.7, props 0.0, refined 0.0, seqs 7.7; tokeniser round trip 100.0%
+  400 records, 0.24 s each; per record: slots 20.9, contested 7.5, props 0.0, refined 0.0, seqs 7.5; tokeniser round trip 100.0%
+  500 records, 0.24 s each; per record: slots 21.3, contested 7.6, props 0.0, refined 0.0, seqs 7.6; tokeniser round trip 100.0%
+  600 records, 0.24 s each; per record: slots 21.9, contested 7.7, props 0.0, refined 0.0, seqs 7.7; tokeniser round trip 100.0%
+  700 records, 0.24 s each; per record: slots 22.2, contested 7.8, props 0.0, refined 0.0, seqs 7.8; tokeniser round trip 100.0%
+  800 records, 0.25 s each; per record: slots 22.1, contested 7.8, props 0.0, refined 0.0, seqs 7.8; tokeniser round trip 100.0%
+  900 records, 0.24 s each; per record: slots 21.7, contested 7.6, props 0.0, refined 0.0, seqs 7.6; tokeniser round trip 100.0%
+  1000 records, 0.24 s each; per record: slots 21.7, contested 7.6, props 0.0, refined 0.0, seqs 7.6; tokeniser round trip 100.0%
+  1100 records, 0.24 s each; per record: slots 21.5, contested 7.5, props 0.0, refined 0.0, seqs 7.5; tokeniser round trip 100.0%
+timing: 198.9 ms of decoder passes per utterance, 7.4 passes
+failed: 0
+done: 1198 records in 4.7 min; slots 21.5, contested 7.4, props 0.0, refined 0.0, seqs 7.4; tokeniser round trip 100.0%
