@@ -134,3 +134,39 @@ Reading:
   good a use of the compute. The scoring passes are most of it and can be cut.
 - Not yet measured: the single-hypothesis baseline and the trained refiner (the current
   run_refine.sh), and a matched-compute control.
+
+## Run 2: cheap, in-loop, trained, stacked (`tools/run_refine2.sh`)
+Written before the run. Nothing from run 1 is recomputed: its full scoring stands as the
+reference (final +score 24.01 / 25.18 at K=8 / K=4; the evaluation is deterministic on these
+candidates, folds and seeds, and run 2 reproduces final = 24.30 / 25.55 as a check).
+
+Decoder passes per utterance (one 256-token row through the decoder):
+
+| arm | candidates | composition | total |
+|---|---|---|---|
+| anchor-k8 (flat) | 32 | + full scoring ~61 (run 1) / slot ~7 / joint 1 | 33-93 |
+| tree-k8 (tree-early [1,2,8,8]) | 19 | + joint 1 | 20 |
+| loop-k8 (tree-early, rows after step 3) | 11 | + joint 1 | **12** |
+
+- **Cheap scoring.** joint: one pass, every contested slot masked at once, each alternative
+  scored by its tokens' log-probs at the span; slot: one pass per contested slot. Against run 1's
+  full scoring (24.01): how much of the gain survives at 1/60 and 1/9 of the passes.
+- **Single-hypothesis ablation** (`single`): slot scoring with the upstream pick as the context
+  instead of the consensus, same slots, same alternatives. The composition-is-the-lever test:
+  +score [slot] has to beat +score [single].
+- **In-loop composition.** loop-k8 spends the last step on the consensus (12 passes) instead of on
+  8 independent rows. Has to be compared with anchor-k8 final (32 passes) and tree-k8 final
+  (19 passes).
+- **Trained refiner vs plain control**, now in slot mode (as run 1's plan, cheaper inference),
+  applied to anchor-k8/k4 and to loop-k8.
+- **External LMs stacked**: GPT-2 (124M, +1.69 in development at K=32) and TinyLlama-1.1B, which
+  shares Whisfusion's tokenizer and would be the teacher for a distilled refiner. If TinyLlama's
+  slot scores add on top of the decoder's consensus scores, distilling it into the refiner (a KL
+  term on precomputed teacher predictions) is the next experiment; if they overlap, it is not.
+
+What counts:
+- In-loop: loop-k8 final +score [joint] not worse than anchor-k8 final (upper CI of the loss below
+  0.3) at 12 against 32 passes; better than tree-k8 final at 12 against 19.
+- Composition is the lever: +score [slot] beats +score [single] at K=8, CI above 0 on every seed.
+- Training: +score [refiner] beats +score [plain] and [slot] at K=8, CI above 0 on every seed.
+- Stacking: +score +LM beats +LM alone (the decoder adds to the LM), for either LM.

@@ -103,6 +103,14 @@ def main() -> int:
     ap.add_argument("--limit", type=int, default=0, help="first N records per arm (smoke test)")
     ap.add_argument("--sets", default="", help="comma separated; default every set in --cand")
     ap.add_argument("--lora", default="", help="adapter from tools/train_refiner.py, on for refill and scoring")
+    ap.add_argument("--mode", choices=["full", "joint", "slot"], default="full",
+                    help="full: refill + per-alternative scoring (about 60 passes per utterance); "
+                         "joint: ONE pass, every contested slot masked at once; slot: one pass per "
+                         "contested slot. The cheap modes score each alternative by its tokens' "
+                         "log-probs at the masked span and do not refill.")
+    ap.add_argument("--context", choices=["consensus", "single"], default="consensus",
+                    help="cheap modes: what the unmasked positions hold -- the consensus, or the "
+                         "upstream pick alone (the single-hypothesis ablation)")
     a = ap.parse_args()
 
     import numpy as np
@@ -186,6 +194,42 @@ def main() -> int:
     stats = dict(slots=0, contested=0, props=0, refined=0, seqs=0)
     failed = 0
 
+    def cheap(r, ok, cands, bb, slots, top, cons, cidx, cond):
+        """Score every alternative of the contested slots from one pass (joint) or one pass per
+        slot (slot), the span masked at the length of the context word's tokens."""
+        if a.context == "consensus":
+            ctx = list(top)
+        else:                           # the upstream pick's own word in every slot
+            u = max(range(len(ok)), key=lambda j: ok[j]["avg_conf"])
+            one_hot = [1.0 if j == u else 0.0 for j in range(len(ok))]
+            mine = compose.confusion_network(cands, bb, [c["conf"] for c in ok], one_hot)
+            ctx = [max(s_.items(), key=lambda kv: kv[1][0])[0] for s_ in mine]
+        span = {i: max(1, len(wtoks(ctx[i]))) for i in cidx}
+        sets_ = [dict(span)] if a.mode == "joint" else [{i: span[i]} for i in cidx]
+        seqs, meta = [], []
+        for ml in sets_:
+            ids, spans = build(ctx, mask_len=ml)
+            if ids is None:
+                continue
+            pos = [p for i in ml for p in range(*spans[i])]
+            seqs.append((ids, pos))
+            meta.append([(i, spans[i][1] - spans[i][0]) for i in ml])
+        feats = {}
+        for lst, lp in zip(meta, run(seqs, cond)):
+            at = 0
+            for i, m in lst:
+                rows = lp[at:at + m]
+                at += m
+                alts = sorted((w for w, v in slots[i].items() if w != EPS and v[0] > 0),
+                              key=lambda w: -slots[i][w][0])[:a.max_alts]
+                for w in alts:
+                    t = wtoks(w)[:m]
+                    v = float(sum(rows[j, t[j]] for j in range(len(t))))
+                    feats.setdefault(i, {})[w] = [v / max(len(t), 1), None, v]
+        stats["seqs"] += len(seqs)
+        return dict(n_slots=len(slots), contested=cidx, feats=feats, props={}, refined=[],
+                    consensus=cons, cons_refined=cons, single=None)
+
     def one(r):
         net = network(r, int(r["arm"].rsplit("-k", 1)[1]))
         if net is None:
@@ -200,6 +244,8 @@ def main() -> int:
         stats["slots"] += len(slots)
         stats["contested"] += len(cidx)
         cond = wf_model.encode_audio(wf, dataio.load_audio(audio[r["set"]][r["id"]]))
+        if a.mode != "full":
+            return cheap(r, ok, cands, bb, slots, top, cons, cidx, cond)
 
         # ---- pass 1: refill each contested group at the token lengths its readings have
         seqs, meta = [], []

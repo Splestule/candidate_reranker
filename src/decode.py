@@ -60,6 +60,7 @@ class DecodeResult:
     n_candidates_used: int = 0      # differs from the request only when adaptive is on
     uncertainty: float | None = None  # mean (1 - max prob) at the probe step, if measured
     branch_widths: list[int] | None = None   # rows actually decoded at each step
+    snapshot: list[Candidate] | None = None  # the rows as they stood after snapshot_step
 
 
 @torch.no_grad()
@@ -78,6 +79,7 @@ def pdd_decode(
     mask_mode: str = "uniform",
     mask_mix: float = 1.0,
     adaptive: dict | None = None,
+    snapshot_step: int | None = None,
 ) -> DecodeResult:
     """branch_schedule gives the number of distinct mask groups at each step.
 
@@ -94,6 +96,10 @@ def pdd_decode(
     adaptive sizes the whole tree per utterance: after probe_step the width is set from how
     uncertain the shared prefix is, so an easy utterance gets a small tree and a hard one a
     large tree. dict(base, u0, gamma, k_min, k_max, probe_step); K = base * (u/u0) ** gamma.
+
+    snapshot_step also returns the rows as they stood after that step, each a complete
+    sentence already (every step fills all masked positions), with confidences from that
+    step's logits: tools/loop_decode.py composes them before the last step.
     """
     schedule = mask_ratio_schedule or DEFAULT_SCHEDULE
     device = wf.device
@@ -221,8 +227,28 @@ def pdd_decode(
             after_step1 = bool((cur == cur[0:1]).all().item())
         if step == n_steps - 1:
             final_logits = logits
+        if snapshot_step is not None and step == snapshot_step:
+            snap = (cur.clone(), logits.clone())
 
+    cands = _candidates(wf, cur, final_logits, save_tokens)
+    del final_logits
+    snapshot = _candidates(wf, *snap, save_tokens) if snapshot_step is not None and snapshot_step < n_steps else None
+
+    return DecodeResult(
+        candidates=cands,
+        n_unique=len({c.text for c in cands}),
+        identical_after_step1=bool(after_step1),
+        n_candidates_used=len(cands),
+        uncertainty=uncertainty,
+        branch_widths=used,
+        snapshot=snapshot,
+    )
+
+
+def _candidates(wf, cur, final_logits, save_tokens=False) -> list[Candidate]:
+    """Candidates from token rows and the logits that produced them."""
     n_candidates = cur.size(0)
+    pad_id = wf.pad_token_id
 
     probs = torch.softmax(final_logits.float(), dim=-1)
     conf = probs.max(dim=-1).values
@@ -230,7 +256,7 @@ def pdd_decode(
         probs.gather(-1, cur.clamp(max=probs.size(-1) - 1).unsqueeze(-1)).squeeze(-1) + 1e-9
     )
     entropy = -(probs * torch.log(probs + 1e-9)).sum(-1)
-    del probs, final_logits
+    del probs
 
     toks = cur.cpu()
     conf, logprob, entropy = conf.cpu(), logprob.cpu(), entropy.cpu()
@@ -258,14 +284,7 @@ def pdd_decode(
             )
         )
 
-    return DecodeResult(
-        candidates=cands,
-        n_unique=len({c.text for c in cands}),
-        identical_after_step1=bool(after_step1),
-        n_candidates_used=len(cands),
-        uncertainty=uncertainty,
-        branch_widths=used,
-    )
+    return cands
 
 
 def candidate_to_dict(c: Candidate) -> dict:
