@@ -95,3 +95,42 @@ it, the consensus, and the refined consensus.
   refining four candidates beat decoding four more).
 - This is development data (s01). If the primary holds, a confirmation on untouched rows 600-799
   (s03) with everything frozen comes next.
+
+## Run 1 result: zero-shot (Kaggle, 4 Oct 2026)
+This run was the first version of the pipeline: zero-shot only, no single-hypothesis baseline,
+no training (those were pushed after the kernel started). 2332 / 2331 records refined at
+K=8 / K=4 in 37 / 34 min on one T4 each, no failures, tokeniser round trip 100 %. Test: 1067
+utterances, 11 sets, seeds 0-2.
+
+| | K=8 | K=4 |
+|---|---|---|
+| ROVER tuned | 24.73 | 26.03 |
+| final | 24.30 | 25.55 |
+| final +score | 24.01 | 25.18 |
+| final +words | 24.05 | 25.20 |
+| final +cands | 24.43 | 25.81 |
+| window argmax (no training) | 28.83 | 28.69 |
+| slot oracle | 17.48 | 19.82 |
+| slot oracle +words | 17.37 | 19.67 |
+
+Paired bootstrap against final, per seed:
+- K=8 +words +0.18 [0.03, 0.33], +0.32 [0.16, 0.48], +0.24 [0.08, 0.40]: **primary criterion
+  met** (CI above 0 on every seed). +score +0.19 / +0.36 / +0.31, all CI above 0.
+- K=4 +words +0.34 / +0.32 / +0.40, +score +0.41 / +0.32 / +0.39, all CI above 0.
+- +cands -0.09 to -0.33 (K=4 seed 1 CI below 0); ROVER +cands -0.65 at K=4.
+- anchor-k4 +words against anchor-k8 final: -0.84 to -1.01; refining does not replace four
+  more candidates.
+
+Reading:
+- The gain is the score, not new words. The refill proposes 1.5 new words per utterance at
+  K=8, 1.3 % of them right; it fills 21 of 2821 holes (0.7 %), and the slot oracle moves by
+  0.11. +words is no better than +score.
+- The decoder's reading of an alternative in the consensus context is a useful feature
+  (+0.2-0.4 on top of the frozen pipeline, which already has the step-zero acoustic reading and
+  the neighbour bigram) and a bad picker on its own (window argmax -4.5).
+- Cost: 61 decoder sequence passes per utterance at K=8 against 32 for decoding the candidates
+  (4 steps x 8), so about 1.9x the decode for +0.25. Between K=8 and K=15 the confirmation run
+  had final 23.33 -> 22.64 (tree-early K=8 vs flat K=15), so more candidates is at least as
+  good a use of the compute. The scoring passes are most of it and can be cut.
+- Not yet measured: the single-hypothesis baseline and the trained refiner (the current
+  run_refine.sh), and a matched-compute control.
