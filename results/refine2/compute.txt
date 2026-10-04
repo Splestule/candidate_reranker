@@ -1,0 +1,52 @@
+decoder pass = one 256-token row, ~134 GFLOP (2 x 262M x 256)
+
+| component | ms / utt | decoder passes |
+|---|---|---|
+| Whisper encoder (shared) | 35.1 | |
+| step-zero acoustic reading (shared feature) | 33.4 | 1 |
+| decode flat K=8 (anchor-k8) | 479.5 | 32 |
+| decode tree-early (tree-k8) | 312.1 | 19 |
+| (tree-early with the snapshot records built, all utterances) | 333.2 | |
+| decode tree to the snapshot (loop-k8) | 196.3 | 11 |
+| decoder scoring joint/consensus, anchor-k4 | 32.6 | 1.0 |
+| decoder scoring lora slot/consensus, anchor-k4 | 174.1 | 6.5 |
+| decoder scoring slot/consensus, anchor-k4 | 90.1 | 6.5 |
+| decoder scoring slot/single, anchor-k4 | 90.8 | 6.5 |
+| decoder scoring joint/consensus, anchor-k8 | 32.6 | 1.0 |
+| decoder scoring lora slot/consensus, anchor-k8 | 197.5 | 7.4 |
+| decoder scoring slot/consensus, anchor-k8 | 102.1 | 7.4 |
+| decoder scoring slot/single, anchor-k8 | 102.8 | 7.4 |
+| decoder scoring joint/consensus, loop-k8 | 32.9 | 1.0 |
+| decoder scoring lora slot/consensus, loop-k8 | 199.8 | 7.5 |
+| decoder scoring slot/consensus, loop-k8 | 105.7 | 7.5 |
+| decoder scoring joint/consensus, tree-k8 | 33.0 | 1.0 |
+| decoder scoring slot/consensus, tree-k8 | 103.4 | 7.4 |
+| LM TinyLlama-1.1B-intermediate-step-1431k-3T (1100M) on anchor-k4 | 96.1 | 383 LM tokens, ~842 GFLOP |
+| LM TinyLlama-1.1B-intermediate-step-1431k-3T (1100M) on anchor-k8 | 125.0 | 525 LM tokens, ~1154 GFLOP |
+| LM TinyLlama-1.1B-intermediate-step-1431k-3T (1100M) on loop-k8 | 134.9 | 559 LM tokens, ~1231 GFLOP |
+| LM TinyLlama-1.1B-intermediate-step-1431k-3T (1100M) on tree-k8 | 127.6 | 524 LM tokens, ~1153 GFLOP |
+| LM gpt2 (124M) on anchor-k4 | 30.5 | 367 LM tokens, ~91 GFLOP |
+| LM gpt2 (124M) on anchor-k8 | 38.7 | 502 LM tokens, ~125 GFLOP |
+| LM gpt2 (124M) on loop-k8 | 41.8 | 537 LM tokens, ~134 GFLOP |
+| LM gpt2 (124M) on tree-k8 | 39.0 | 502 LM tokens, ~125 GFLOP |
+
+per configuration (decode + composition; encoder and acoustic reading excluded, common to all)
+| configuration | ms / utt | x flat K=8 |
+|---|---|---|
+| anchor-k8 final | 479.5 | 1.00 |
+| tree-k8 final | 312.1 | 0.65 |
+| anchor-k8 final +score [joint/consensus] | 512.1 | 1.07 |
+| anchor-k8 final +score [lora slot/consensus] | 677.0 | 1.41 |
+| anchor-k8 final +score [slot/consensus] | 581.6 | 1.21 |
+| anchor-k8 final +score [slot/single] | 582.3 | 1.21 |
+| loop-k8 final +score [joint/consensus] | 229.2 | 0.48 |
+| loop-k8 final +score [lora slot/consensus] | 396.1 | 0.83 |
+| loop-k8 final +score [slot/consensus] | 302.0 | 0.63 |
+| tree-k8 final +score [joint/consensus] | 345.1 | 0.72 |
+| tree-k8 final +score [slot/consensus] | 415.5 | 0.87 |
+| anchor-k8 final +TinyLlama-1.1B-intermediate-step-1431k-3T | 604.5 | 1.26 |
+| loop-k8 final +TinyLlama-1.1B-intermediate-step-1431k-3T | 331.2 | 0.69 |
+| tree-k8 final +TinyLlama-1.1B-intermediate-step-1431k-3T | 439.7 | 0.92 |
+| anchor-k8 final +gpt2 | 518.2 | 1.08 |
+| loop-k8 final +gpt2 | 238.1 | 0.50 |
+| tree-k8 final +gpt2 | 351.1 | 0.73 |

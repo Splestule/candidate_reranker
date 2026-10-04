@@ -1,0 +1,20 @@
+[wf_compat] shims active: rotary_emb, dropout_layer_norm, flash_attn, xformers.ops.SwiGLU, FusedRMSNorm
+1000 records on arms ['loop-k8'], 0 already done
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[wf] device=cuda (Tesla T4) dtype=torch.float16
+[wf] base: 129 keys, 72 missing
+[wf] adapter: 201 keys, 0 missing, 0 unexpected
+[wf] decoder 261.5M · Whisper encoder 88.2M
+adapter results/refine2/refine_f0.pt on
+  100 records, 0.19 s each; per record: slots 10.2, contested 5.6, props 0.0, refined 0.0, seqs 5.6; tokeniser round trip 100.0%
+  200 records, 0.20 s each; per record: slots 10.8, contested 6.0, props 0.0, refined 0.0, seqs 6.0; tokeniser round trip 100.0%
+  300 records, 0.22 s each; per record: slots 14.0, contested 6.9, props 0.0, refined 0.0, seqs 6.9; tokeniser round trip 100.0%
+  400 records, 0.23 s each; per record: slots 15.5, contested 7.2, props 0.0, refined 0.0, seqs 7.2; tokeniser round trip 100.0%
+  500 records, 0.22 s each; per record: slots 16.2, contested 6.9, props 0.0, refined 0.0, seqs 6.9; tokeniser round trip 100.0%
+  600 records, 0.22 s each; per record: slots 17.1, contested 6.9, props 0.0, refined 0.0, seqs 6.9; tokeniser round trip 100.0%
+  700 records, 0.23 s each; per record: slots 18.3, contested 7.2, props 0.0, refined 0.0, seqs 7.2; tokeniser round trip 100.0%
+  800 records, 0.24 s each; per record: slots 19.0, contested 7.4, props 0.0, refined 0.0, seqs 7.4; tokeniser round trip 100.0%
+  900 records, 0.23 s each; per record: slots 19.3, contested 7.2, props 0.0, refined 0.0, seqs 7.2; tokeniser round trip 100.0%
+timing: 191.0 ms of decoder passes per utterance, 7.1 passes
+failed: 0
+done: 986 records in 3.8 min; slots 19.4, contested 7.1, props 0.0, refined 0.0, seqs 7.1; tokeniser round trip 100.0%

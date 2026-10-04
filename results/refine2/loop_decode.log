@@ -1,0 +1,32 @@
+[wf_compat] shims active: rotary_emb, dropout_layer_norm, flash_attn, xformers.ops.SwiGLU, FusedRMSNorm
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[wf] device=cuda (Tesla T4) dtype=torch.float16
+[wf] base: 129 keys, 72 missing
+[wf] adapter: 201 keys, 0 missing, 0 unexpected
+[wf] decoder 261.5M · Whisper encoder 88.2M
+2347 utterances, branch [1, 2, 8, 8], snapshot after step 2; 0 done
+  100 utterances, 1.40 s each
+  200 utterances, 1.41 s each
+  300 utterances, 1.41 s each
+  400 utterances, 1.16 s each
+  500 utterances, 1.01 s each
+  600 utterances, 0.92 s each
+  700 utterances, 0.85 s each
+  800 utterances, 0.79 s each
+  900 utterances, 0.75 s each
+  1000 utterances, 0.72 s each
+  1100 utterances, 0.69 s each
+  1200 utterances, 0.67 s each
+  1300 utterances, 0.65 s each
+  1400 utterances, 0.63 s each
+  1500 utterances, 0.62 s each
+  1600 utterances, 0.61 s each
+  1700 utterances, 0.59 s each
+  1800 utterances, 0.58 s each
+  1900 utterances, 0.58 s each
+  2000 utterances, 0.57 s each
+  2100 utterances, 0.56 s each
+  2200 utterances, 0.55 s each
+  2300 utterances, 0.55 s each
+timing (ms per utterance): encoder 35.1, step-zero acoustic reading 33.4, tree-early 333.2 (19 passes); on 300 utterances flat K=8 479.5 (32 passes), tree-early without snapshot 312.1, tree up to the snapshot 196.3 (11 passes)
+done: 2347 utterances in 21.3 min, 0 failed

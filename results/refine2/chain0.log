@@ -1,0 +1,9 @@
+[12:16:13] GPU 0: tree-early decode with snapshot
+[12:37:53] GPU 0: joint and slot scoring of tree-k8 / loop-k8
+[12:54:58] GPU 0: train refine adapter, fold 0
+[13:05:23] GPU 0: train refine adapter, fold 1
+[13:15:44] GPU 0: train refine adapter, fold 2
+[13:26:12] GPU 0: slot scoring with refine adapter, fold 0
+[13:37:36] GPU 0: slot scoring with refine adapter, fold 1
+[13:46:54] GPU 0: slot scoring with refine adapter, fold 2
+[13:54:40] GPU 0: chain done
