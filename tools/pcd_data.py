@@ -3,9 +3,12 @@
 
 For each Open ASR Leaderboard set, one shard the evaluation does NOT take (campaign/config.py
 spreads `take` of `n_shards` evenly; any other index is unseen by every run so far), built with
-the campaign's own prep code (same filtering and selection order). Utterances whose cluster
-(meeting, call, speaker) also occurs in that set's evaluation manifest are dropped, so no
-training speaker or recording is a test speaker or recording where the data says which is which.
+the campaign's own prep code (same filtering and selection order). No training utterance is an
+evaluation utterance. Recordings and speakers can be shared: AMI's 16 test meetings and
+Earnings22's 6 calls are all in the evaluation, so recording-disjoint data does not exist for
+those domains. How many utterances share a cluster is recorded per set; --strict drops them.
+Every variant trains on the same data, so this cannot favour one variant over another; it can
+make the trained variants better than the untrained base, which the plain control measures.
 Plus one LibriSpeech train-clean-100 shard (its speakers are disjoint from test by design).
 
     PYTHONPATH=src:tools python3 tools/pcd_data.py --data /tmp/campaign_data --out /tmp/pcd_data
@@ -28,6 +31,11 @@ def main() -> int:
     ap.add_argument("--out", required=True)
     ap.add_argument("--per_set", type=int, default=700)
     ap.add_argument("--sets", default="ami,earnings22,voxpopuli,gigaspeech,spgispeech,common_voice,ls-train")
+    ap.add_argument("--strict", action="store_true",
+                    help="also drop utterances whose meeting / call / speaker occurs in the evaluation. "
+                         "Off by default: AMI's 16 and Earnings22's 6 test recordings are all in the "
+                         "evaluation, so strict leaves those domains empty (first Kaggle attempt: 1669 "
+                         "utterances, almost all Common Voice and LibriSpeech)")
     a = ap.parse_args()
 
     from campaign import config as C
@@ -41,7 +49,7 @@ def main() -> int:
             if s == "ls-train":
                 f = P.hf_file(C.LS_REPO, "all/train.clean.100/0000.parquet", raw)
                 rows, _ = P.build_parquet("ls-train", dict(lang="en", n_max=a.per_set, repo=C.LS_REPO), [f], audio)
-                dropped, shard = 0, "train.clean.100/0000"
+                dropped, shared, shard = 0, 0, "train.clean.100/0000"
             else:
                 spec = C.SETS[s]
                 n, take = spec["n_shards"], spec["take"]
@@ -59,15 +67,17 @@ def main() -> int:
                         eval_ids.add(r["id"])
                         eval_clusters.add(r.get("cluster"))
                 keep = [r for r in rows if r["id"] not in eval_ids and
-                        (r["cluster"] == r["id"] or r["cluster"] not in eval_clusters)]
+                        (not a.strict or r["cluster"] == r["id"] or r["cluster"] not in eval_clusters)]
                 dropped = len(rows) - len(keep)
                 rows = keep[:a.per_set]
+                shared = sum(r["cluster"] != r["id"] and r["cluster"] in eval_clusters for r in rows)
             for r in rows:
                 r["set"] = s
             rows_all += rows
-            report[s] = dict(shard=shard, kept=len(rows), dropped_overlap=dropped)
-            print(f"[pcd_data] {s}: shard {shard}, {len(rows)} utterances, {dropped} dropped for "
-                  f"sharing a cluster with the evaluation", flush=True)
+            report[s] = dict(shard=shard, kept=len(rows), dropped=dropped, sharing_a_cluster=shared,
+                             strict=a.strict)
+            print(f"[pcd_data] {s}: shard {shard}, {len(rows)} utterances ({shared} share a meeting / "
+                  f"call / speaker with the evaluation; utterances never), {dropped} dropped", flush=True)
         except Exception as e:                 # a missing set costs data, not the run
             report[s] = dict(error=f"{type(e).__name__}: {e}")
             print(f"[pcd_data] {s} FAILED: {type(e).__name__}: {e}", flush=True)

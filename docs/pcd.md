@@ -20,10 +20,17 @@ find; the search was a handful of web queries without the full texts, so that cl
 literature review before it goes into a paper.
 
 ## Run (`tools/run_pcd.sh`)
-- Training audio disjoint from evaluation (`tools/pcd_data.py`): for each Open ASR Leaderboard
-  set one shard the evaluation never took, dropping utterances whose meeting / call / speaker
-  appears in that set's evaluation manifest; plus a LibriSpeech train-clean-100 shard. Up to 700
-  utterances per source.
+- Training audio disjoint from evaluation utterances (`tools/pcd_data.py`): for each Open ASR
+  Leaderboard set one shard the evaluation never took, plus a LibriSpeech train-clean-100 shard,
+  up to 700 utterances per source. Recordings and speakers can be shared with the evaluation
+  (counted per set in train_data.json).
+  *Amended before any result, after the first Kaggle attempt crashed in the smoke test:* the
+  original plan also dropped every utterance sharing a meeting / call / speaker with the
+  evaluation. That left 0 AMI, 0 Earnings22, 2 GigaSpeech, 89 VoxPopuli and 178 SPGISpeech
+  utterances (1669 in total, almost all Common Voice and LibriSpeech), because AMI's 16 test
+  meetings and Earnings22's 6 calls are all in the evaluation. All variants train on the same data,
+  so sharing cannot favour one variant over another (H1); it can make every trained variant better
+  than the untrained base, so H2 and H3 are read against the plain control as well.
 - States: tree-early [1, 2, 8], the 8 rows before the last step (`tools/pcd_states.py`).
 - Four variants, identical in data, rows, masks, steps (1200 x 16 rows), LoRA rank 16 and the
   two zero-initialised projections (`tools/pcd_train.py`):

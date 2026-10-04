@@ -128,7 +128,7 @@ def main() -> int:
         return {k: v / max(tot, 1) for k, v in hit.items()}
 
     with torch.no_grad():                     # the hook must reach the decoder, or every variant is plain
-        c0 = cond_of(tr[0])
+        c0 = cond_of(tr[0]).to(dev)
         x0 = torch.as_tensor(S[tr[0]]["cur"][:1], device=dev).long()
         base_logits = model(idx=x0, condition=c0).float()
         inj.add = torch.randn(1, x0.shape[1], inj.emb.embedding_dim, device=dev)
