@@ -178,3 +178,64 @@ What counts:
 - Composition is the lever: +score [slot] beats +score [single] at K=8, CI above 0 on every seed.
 - Training: +score [refiner] beats +score [plain] and [slot] at K=8, CI above 0 on every seed.
 - Stacking: +score +LM beats +LM alone (the decoder adds to the LM), for either LM.
+
+## Run 2 result (Kaggle, 4 Oct 2026)
+1067 test utterances, 11 sets, seeds 0-2; final reproduces run 1 (24.30 / 25.55). Timing on one
+T4 per chain (results/refine2/compute.txt). WER, mean over seeds; cost relative to flat K=8
+decoding (479 ms per utterance; encoder 35 ms and the step-zero reading 33 ms common to all).
+
+| configuration | WER | cost |
+|---|---|---|
+| anchor-k8 final | 24.30 | 1.00 |
+| anchor-k8 final +score, run 1 full scoring (61 passes) | 24.01 | ~2.9 |
+| anchor-k8 final +score [joint], 1 pass | 24.28 | 1.07 |
+| anchor-k8 final +score [slot], ~7 passes | 24.26 | 1.21 |
+| anchor-k8 final +score [single], ~7 passes | 24.22 | 1.21 |
+| anchor-k8 final +score [refiner] | 24.15 | 1.41 (adapter not merged; ~1.21 merged) |
+| anchor-k8 final +GPT-2 | **22.56** | **1.08** |
+| anchor-k8 final +TinyLlama | 22.55 | 1.26 |
+| anchor-k8 final +score +GPT-2 [refiner] | 22.48 | ~1.3 |
+| tree-k8 final | 24.69 | 0.65 |
+| tree-k8 final +GPT-2 | **22.87** | **0.73** |
+| loop-k8 final | 25.67 | 0.41 |
+| loop-k8 final +score [joint] | 25.54 | 0.48 |
+| loop-k8 final +score [refiner] | 25.39 | ~0.6 merged |
+| loop-k8 final +score +GPT-2 [joint] | 23.68 | 0.55 |
+
+Against the criteria written before the run:
+- **In-loop composition: FAIL.** loop-k8 +score [joint] is 1.20-1.34 worse than flat K=8 and
+  0.77-0.93 worse than tree-k8 (all CIs below 0). Spending the last step on the consensus does
+  not replace eight independent last steps; the fourth step is worth far more than the
+  consensus pass recovers (+0.09 to +0.18).
+- **Composition is the lever: FAIL in this form.** single-candidate context scores as well as
+  consensus context (+score [single] - [slot]: +0.02, +0.03, +0.06, CIs across 0). Caveat: the
+  cheap scorers barely work at all (below), so this is a weak test; the full 61-pass scoring of
+  run 1 (+0.29) was never run with single context.
+- **Cheap scoring keeps run 1's gain: NO.** joint -0.01 to +0.05, slot +0.00 to +0.06 against
+  final (CIs across 0), against +0.18 to +0.36 for run 1's full scoring. Whatever carried run 1
+  (the neighbour reading lp_nb, or scoring each alternative at its own token length) is not in a
+  span-truncated single reading.
+- **Training: PARTIAL.** Held-out token accuracy of the refill rises from 55-57 % to 65-71 % with
+  the refiner, not with the plain adapter (it falls or stays). In WER: +score [refiner] against
+  final +0.11, +0.20, +0.13 at K=8 (two CIs above 0), against plain +0.14, +0.14, +0.05 (two of
+  three); on loop-k8 +0.26 to +0.31 against final (all CIs above 0) and +0.09 to +0.21 against
+  plain. Real, small, not on every seed.
+- **Stacking: decoder adds little to an LM.** +score on top of +GPT-2 at K=8: -0.01 to +0.11 (one
+  CI above 0); refiner on top of TinyLlama on loop-k8 +0.11 to +0.19 (all above 0).
+
+The result of the run is the external LM, not the decoder's re-reading:
+- **GPT-2 slot features: +1.66, +1.79, +1.75 at K=8** (CIs about +-0.25), +1.49 to +1.57 at K=4,
+  +1.80 to +1.85 on tree-k8, for 39 ms (8 % of the decode). This reproduces development's +1.69
+  (K=32) on a different shard and K.
+- **TinyLlama-1.1B is not better**: equal at K=8 (+0.04, +0.02, -0.01 against GPT-2), worse at
+  K=4 (-0.24 to -0.31, CIs below 0) and on loop-k8 (-0.11 to -0.14), at 3.2x the time (125 ms,
+  9x the FLOPs).
+- **tree-k8 + GPT-2 (22.87 at 0.73x)** is 1.43 better than flat K=8 final at three quarters of the
+  cost, and 0.31 behind flat K=8 + GPT-2. Tree-early alone costs 0.34-0.43 at 0.65x, consistent
+  with the confirmation run's non-inferiority at K=8.
+
+What this changes: paper/SKELETON.md section 7 says one neighbouring word recovers 7 % of the
+slot headroom and that a full-sentence LM is "an untested lever". It is now tested: a 124M LM
+with 12 words of left context recovers 1.7 of the 6.8 points between final and the slot oracle,
+about 25 %, for 8 % of the decode. The missing score is mostly linguistic context, and the
+decoder's own consensus-context reading carries little of it beyond what GPT-2 does.
