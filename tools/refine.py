@@ -171,9 +171,18 @@ def main() -> int:
             return None, None
         return ids + [pad_id] * (L - len(ids)), spans
 
+    tm = dict(mode=a.mode, context=a.context, lora=bool(a.lora), ms=[], passes=[], arm=[])
+    clock = [0.0, 0]                    # decoder milliseconds and passes of the current record
+
+    def sync():
+        if dev == "cuda":
+            torch.cuda.synchronize()
+
     @torch.no_grad()
     def run(seqs, cond):
         """Log-probs at every position of each sequence, only the rows asked for kept."""
+        sync()
+        t1 = time.perf_counter()
         res = []
         for b in range(0, len(seqs), a.bs):
             chunk = seqs[b:b + a.bs]
@@ -183,6 +192,9 @@ def main() -> int:
                 p = torch.tensor(pos, device=dev, dtype=torch.long)
                 res.append(torch.log_softmax(logits[j, p].float(), -1).cpu())
             del logits
+        sync()
+        clock[0] += 1000 * (time.perf_counter() - t1)
+        clock[1] += len(seqs)
         return res
 
     audio = {}
@@ -385,6 +397,7 @@ def main() -> int:
         key = (r["arm"], r["set"], r["id"])
         if key in out or r["id"] not in audio.get(r["set"], {}):
             continue
+        clock[0], clock[1] = 0.0, 0
         try:
             res = one(r)
         except Exception as e:          # one bad utterance must not end an overnight run
@@ -395,6 +408,9 @@ def main() -> int:
             continue
         if res is None:
             continue
+        tm["ms"].append(clock[0])
+        tm["passes"].append(clock[1])
+        tm["arm"].append(r["arm"])
         out[key] = res
         n_done += 1
         if n_done % 100 == 0:
@@ -404,6 +420,11 @@ def main() -> int:
                   + ", ".join(f"{k_} {v / n_done:.1f}" for k_, v in stats.items())
                   + f"; tokeniser round trip {100 * rt[1] / max(rt[0], 1):.1f}%", flush=True)
     out_p.write_bytes(pickle.dumps(out))
+    import json
+    Path(str(out_p) + ".timing.json").write_text(json.dumps(tm))
+    if tm["ms"]:
+        print(f"timing: {sum(tm['ms']) / len(tm['ms']):.1f} ms of decoder passes per utterance, "
+              f"{sum(tm['passes']) / len(tm['passes']):.1f} passes", flush=True)
     print(f"failed: {failed}", flush=True)
     print(f"done: {n_done} records in {(time.time() - t0) / 60:.1f} min; "
           + ", ".join(f"{k_} {v / max(n_done, 1):.1f}" for k_, v in stats.items())

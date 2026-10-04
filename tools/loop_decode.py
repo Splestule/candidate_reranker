@@ -45,6 +45,9 @@ def main() -> int:
     ap.add_argument("--sets", default="")
     ap.add_argument("--limit", type=int, default=0)
     ap.add_argument("--window", type=int, default=2)
+    ap.add_argument("--time_check", type=int, default=300,
+                    help="on the first N utterances also time flat K and the tree up to the snapshot "
+                         "on their own, so every arm's decode cost is measured, not inferred")
     a = ap.parse_args()
 
     import data as dataio
@@ -85,16 +88,51 @@ def main() -> int:
         return dict(set=src["set"], id=src["id"], cluster=src.get("cluster"), lang=src.get("lang", "en"),
                     ref=src["ref"], ref_text=src.get("ref_text"), shard=src.get("shard"), arm=arm, cands=rows)
 
+    import json
+    import torch
+
+    def timed(fn):
+        if wf.device == "cuda":
+            torch.cuda.synchronize()
+        t1 = time.perf_counter()
+        r_ = fn()
+        if wf.device == "cuda":
+            torch.cuda.synchronize()
+        return r_, 1000 * (time.perf_counter() - t1)
+
+    tm = {"tree": [], "encode": [], "acoustic": [], "flat": [], "loop_only": [], "tree_plain": [],
+          "passes": {"tree": sum(branch), "loop_only": sum(branch[:a.snapshot_step + 1]), "flat": a.k * len(branch)}}
+    warm = next((x for x in like if x["id"] in audio.get(x["set"], {})), None)
+    if warm is not None:                 # first CUDA calls are slow; keep them out of the timings
+        c0 = wf_model.encode_audio(wf, dataio.load_audio(audio[warm["set"]][warm["id"]]))
+        for _ in range(2):
+            dec.pdd_decode(wf, c0, n_candidates=a.k, n_steps=len(branch), branch_schedule=branch, seed=0)
+            dec.pdd_decode(wf, c0, n_candidates=a.k, n_steps=len(branch), seed=0)
     t0, n, fails = time.time(), 0, 0
     for src in like:
         if (src["set"], src["id"]) in seen or src["id"] not in audio.get(src["set"], {}):
             continue
         try:
-            cond = wf_model.encode_audio(wf, dataio.load_audio(audio[src["set"]][src["id"]]))
+            wav = dataio.load_audio(audio[src["set"]][src["id"]])
+            cond, ms_enc = timed(lambda: wf_model.encode_audio(wf, wav))
             seed = zlib.crc32(f"{src['set']}/{src['id']}".encode()) % (2 ** 31)
-            r = dec.pdd_decode(wf, cond, n_candidates=a.k, n_steps=len(branch), branch_schedule=branch,
-                               seed=seed, snapshot_step=a.snapshot_step)
-            lp = acoustic_reading(wf, cond, 256)
+            r, ms = timed(lambda: dec.pdd_decode(wf, cond, n_candidates=a.k, n_steps=len(branch),
+                                                 branch_schedule=branch, seed=seed,
+                                                 snapshot_step=a.snapshot_step))
+            lp, ms_ac = timed(lambda: acoustic_reading(wf, cond, 256))
+            tm["tree"].append(ms)
+            tm["encode"].append(ms_enc)
+            tm["acoustic"].append(ms_ac)
+            if len(tm["flat"]) < a.time_check:
+                # the snapshot builds extra candidate records: analysis, not decoding, so the tree's
+                # cost is timed again without it
+                tm["tree_plain"].append(timed(lambda: dec.pdd_decode(wf, cond, n_candidates=a.k, n_steps=len(branch),
+                                                                     branch_schedule=branch, seed=seed))[1])
+                tm["flat"].append(timed(lambda: dec.pdd_decode(wf, cond, n_candidates=a.k, n_steps=len(branch),
+                                                               seed=seed))[1])
+                tm["loop_only"].append(timed(lambda: dec.pdd_decode(
+                    wf, cond, n_candidates=a.k, n_steps=a.snapshot_step + 1,
+                    branch_schedule=branch[:a.snapshot_step + 1], seed=seed))[1])
             out.append(record(src, r.candidates, f"tree-{tag}", lp))
             out.append(record(src, r.snapshot, f"loop-{tag}", lp))
         except Exception as e:          # one bad utterance must not end the run
@@ -108,6 +146,15 @@ def main() -> int:
             out_p.write_bytes(pickle.dumps(out))
             print(f"  {n} utterances, {(time.time() - t0) / n:.2f} s each", flush=True)
     out_p.write_bytes(pickle.dumps(out))
+    Path(str(out_p) + ".timing.json").write_text(json.dumps(tm))
+
+    def mean(v):
+        return sum(v) / max(len(v), 1)
+    print(f"timing (ms per utterance): encoder {mean(tm['encode']):.1f}, step-zero acoustic reading "
+          f"{mean(tm['acoustic']):.1f}, tree-early {mean(tm['tree']):.1f} ({tm['passes']['tree']} passes); on "
+          f"{len(tm['flat'])} utterances flat K={a.k} {mean(tm['flat']):.1f} ({tm['passes']['flat']} passes), "
+          f"tree-early without snapshot {mean(tm['tree_plain']):.1f}, "
+          f"tree up to the snapshot {mean(tm['loop_only']):.1f} ({tm['passes']['loop_only']} passes)", flush=True)
     print(f"done: {n} utterances in {(time.time() - t0) / 60:.1f} min, {fails} failed", flush=True)
     return 0 if n or seen else 1
 

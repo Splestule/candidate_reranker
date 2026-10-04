@@ -23,7 +23,8 @@
 #    test sets and applied only to its own fold's sets.
 # 2. external-LM slot scores for the four arms: GPT-2 (124M) and TinyLlama-1.1B (Whisfusion's
 #    tokenizer, the teacher if a refiner is distilled from an LM later)
-# 3. tools/refine_eval.py, 3 seeds
+# 3. tools/refine_eval.py, 3 seeds; tools/compute_report.py: ms per utterance of every
+#    component and configuration, from the timing files each step writes
 #
 # Packed into results/refine2_all.tar.gz every 10 minutes and after each step.
 set -uo pipefail
@@ -209,6 +210,7 @@ if want 3; then
       --refine "joint=$(j '*_joint.pkl');slot=$(j '*_slot.pkl');single=$(j 'anchor_single.pkl');refiner=$(j 'refine_*_f?.pkl');plain=$(j 'plain_*_f?.pkl')" \
       --lm "$(lmspec gpt2);$(lmspec tinyllama)" --lm_variants joint,slot,refiner \
       --pairs "$P" 2>&1 | tee "$R/eval.txt"
+  python3 tools/compute_report.py "$R" 2>&1 | tee "$R/compute.txt"
   pack
 fi
 log "done"

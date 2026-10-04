@@ -72,6 +72,13 @@ def main() -> int:
 
     print(f"{a.arm}: {len(data)} networks, LM {a.model} on {dev} ({'sentencepiece' if sp else 'bpe'}), "
           f"{len(out)} done", flush=True)
+    n_params = sum(p.numel() for p in lm.parameters())
+    tm = dict(model=a.model, arm=a.arm, params=n_params, device=dev, ms=[], tokens=[], seqs=[])
+
+    def sync():
+        if dev == "cuda":
+            torch.cuda.synchronize()
+
     t0, n = time.time(), 0
     for d in data:
         key = (d["set"], d["id"])
@@ -90,6 +97,8 @@ def main() -> int:
                     seqs.append((cids, wids))
                     where.append((i, w))
         per = [{} for _ in d["slots"]]
+        sync()
+        t1 = time.perf_counter()
         for b in range(0, len(seqs), a.bs):
             chunk = seqs[b:b + a.bs]
             L = max(len(c) + len(w) for c, w in chunk)
@@ -105,12 +114,23 @@ def main() -> int:
                     lp = torch.log_softmax(head(hid[j, pos]).float(), -1)
                     i, word = where[b + j]
                     per[i][word] = float(lp[torch.arange(len(w), device=dev), torch.tensor(w, device=dev)].sum())
+        sync()
+        tm["ms"].append(1000 * (time.perf_counter() - t1))
+        tm["tokens"].append(sum(len(c) + len(w) for c, w in seqs))
+        tm["seqs"].append(len(seqs))
         out[key] = per
         n += 1
         if n % 200 == 0:
             out_p.write_bytes(pickle.dumps(out))
             print(f"  {n} scored, {(time.time() - t0) / n:.2f} s each", flush=True)
     out_p.write_bytes(pickle.dumps(out))
+    import json
+    Path(str(out_p) + ".timing.json").write_text(json.dumps(tm))
+    if tm["ms"]:
+        ms = sorted(tm["ms"])
+        print(f"timing: {n_params / 1e6:.0f}M parameters, {sum(ms) / len(ms):.1f} ms per utterance "
+              f"(median {ms[len(ms) // 2]:.1f}), {sum(tm['tokens']) / len(ms):.0f} tokens in "
+              f"{sum(tm['seqs']) / len(ms):.1f} sequences per utterance", flush=True)
     print(f"done: {len(out)} scored in {(time.time() - t0) / 60:.1f} min", flush=True)
     return 0 if out else 1
 

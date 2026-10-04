@@ -164,6 +164,14 @@ Decoder passes per utterance (one 256-token row through the decoder):
   slot scores add on top of the decoder's consensus scores, distilling it into the refiner (a KL
   term on precomputed teacher predictions) is the next experiment; if they overlap, it is not.
 
+Compute is measured, not inferred: every model call is timed per utterance on the run's GPU,
+synchronised (decoding: flat K=8, tree-early and the tree up to the snapshot timed on the same
+300 utterances after a warm-up; the decoder's scoring passes; both external LMs, with their
+parameter counts and token counts). tools/compute_report.py turns the timing files into ms per
+utterance per component and per configuration, relative to flat K=8. Every WER claim below is
+read together with that column; an LM that adds 0.3 WER at the cost of the whole decode is a
+different result from one that adds 0.3 for 2 %.
+
 What counts:
 - In-loop: loop-k8 final +score [joint] not worse than anchor-k8 final (upper CI of the loss below
   0.3) at 12 against 32 passes; better than tree-k8 final at 12 against 19.
