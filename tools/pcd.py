@@ -66,11 +66,13 @@ class PeerInjector(nn.Module):
         if self.mode == "plain":
             return None
         E = self.emb.weight
+        d = E.shape[1]
         if self.mode == "self":
-            mean = E[own].float()
+            mean = torch.nn.functional.layer_norm(E[own].float(), (d,))
             ag = torch.zeros(own.shape + (2,), device=own.device)
         else:
-            mean = E[peers].float().mean(1)
+            # normalised: an unscaled mean embedding blew up the peer variant in run 1 (step 500)
+            mean = torch.nn.functional.layer_norm(E[peers].float().mean(1), (d,))
             same = (peers == own[:, None, :]).float().mean(1)
             allk = torch.cat([own[:, None, :], peers], 1)
             # share of the position's majority token among all K rows
@@ -122,6 +124,31 @@ def last_mask(cur, gen, step: int = 3):
     m = r < SCHEDULE[step]
     m[:, 0] = False
     return m
+
+
+def align_targets(hyp, ref, pad, ignore=-100):
+    """Reference tokens placed on the hypothesis' positions, where the two correspond one to one.
+
+    The last step keeps the row's unmasked tokens and predicts the masked ones in place, so a
+    target is only meaningful at a position whose hypothesis token has a reference counterpart:
+    equal tokens and same-length substitutions. Insertions, deletions and length-changing
+    substitutions get `ignore`. Run 1 used the reference unaligned and taught the step to write
+    the reference shifted against the kept tokens, which broke every word after the first shift.
+    hyp, ref: 1-D LongTensors of the full padded length L (position 0 = BOS)."""
+    from rapidfuzz.distance import Levenshtein
+    L = hyp.shape[0]
+    h = hyp.tolist()
+    r = ref.tolist()
+    nh = next((i for i in range(1, L) if h[i] == pad), L)
+    nr = next((i for i in range(1, L) if r[i] == pad), L)
+    out = [ignore] * L
+    for tag, i1, i2, j1, j2 in Levenshtein.opcodes(h[:nh], r[:nr]):
+        if tag in ("equal", "replace") and i2 - i1 == j2 - j1:
+            for d in range(i2 - i1):
+                out[i1 + d] = r[j1 + d]
+    for i in range(max(nh, nr), L):        # both already ended: the step must keep the length
+        out[i] = pad
+    return torch.tensor(out, dtype=torch.long, device=hyp.device)
 
 
 def peer_tokens(cur, other=None):

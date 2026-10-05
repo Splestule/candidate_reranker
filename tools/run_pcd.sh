@@ -13,7 +13,9 @@
 # 5. GPT-2 slot scores for four arms (stacking, reported separately from the method)
 # 6. tools/refine_eval.py (final pipeline, set-level CV, 3 seeds, bootstrap), tools/pcd_report.py
 #
-# Packed into results/pcd_all.tar.gz (without adapters) every 10 minutes and after each step.
+# Packed into results/<run>_all.tar.gz (without adapters) every 10 minutes and after each step.
+# Run 2 (results/pcd2): targets aligned to each row's own tokens, normalised peer input, and a
+# real last-step decode check after training that stops the run if every adapter breaks decoding.
 set -uo pipefail
 DATA="${1:?usage: bash tools/run_pcd.sh <data dir>}"
 UP="${UP:-$PWD/Whisfusion}"
@@ -25,13 +27,14 @@ TRAIN_STEPS="${TRAIN_STEPS:-1200}"
 POLL="${POLL:-600}"
 DEV="ls-dev-clean ls-dev-other"
 TEST="ls-test-clean ls-test-other ami earnings22 voxpopuli gigaspeech spgispeech common_voice ls-tc-babble5 ls-tc-babble0 ls-tc-white5"
-R=results/pcd
+R="${R:-results/pcd2}"
+NAME=$(basename "$R")
 mkdir -p "$R"
 log() { echo "[$(date +%H:%M:%S)] $*"; }
 want() { case " $STEPS " in *" $1 "*) return 0;; *) return 1;; esac; }
 pack() {
-  tar czf results/pcd_all.tar.gz $(ls "$R"/*.txt "$R"/*.log "$R"/*.json "$R"/dec_*.pkl "$R"/lm_*.pkl 2>/dev/null) 2>/dev/null || true
-  log "packed results/pcd_all.tar.gz"
+  tar czf results/${NAME}_all.tar.gz $(ls "$R"/*.txt "$R"/*.log "$R"/*.json "$R"/dec_*.pkl "$R"/lm_*.pkl 2>/dev/null) 2>/dev/null || true
+  log "packed results/${NAME}_all.tar.gz"
 }
 quiet() { grep --line-buffered -v "Loading weights"; }
 both() {   # run "$1" on GPU 0 and "$2" on GPU 1, wait, report
@@ -76,10 +79,10 @@ if want 0; then
   rm -f "$S"/*
   python3 -u tools/pcd_states.py --train "$TRAIN_DATA/train.jsonl" --limit 12 --out "$S/states.pkl" 2>&1 | quiet | tail -n 1
   for mode in peer self shuf plain; do
-    python3 -u tools/pcd_train.py --states "$S/states.pkl" --mode $mode --steps 3 --utts 4 \
-        --out "$S/$mode.pt" 2>&1 | quiet | grep -E "embedding|reaches|saved|Error"
+    python3 -u tools/pcd_train.py --states "$S/states.pkl" --mode $mode --steps 3 --utts 4 --check_utts 2 \
+        --out "$S/$mode.pt" 2>&1 | quiet | grep -E "embedding|reaches|decode check|saved|Error"
   done
-  python3 -u tools/pcd_train.py --states "$S/states.pkl" --mode peer --steps 0 --utts 4 --out "$S/zero.pt" 2>&1 | quiet | tail -n 1
+  python3 -u tools/pcd_train.py --states "$S/states.pkl" --mode peer --steps 0 --utts 4 --check_utts 0 --out "$S/zero.pt" 2>&1 | quiet | tail -n 1
   python3 -u tools/pcd_decode.py --like "$CAND" --data "$DATA" --limit 3 --check 3 \
       --adapters "peer=$S/peer.pt,self=$S/self.pt,shuf=$S/shuf.pt,plain=$S/plain.pt,zero=$S/zero.pt" \
       --out "$S/dec.pkl" 2>&1 | quiet | tee "$S/dec.log" | tail -n 3
@@ -119,8 +122,23 @@ if want 3; then
   ST="$R/states_0.pkl,$R/states_1.pkl"
   trainc() { echo "timeout 3600 python3 -u tools/pcd_train.py --states $ST --mode $1 --steps $TRAIN_STEPS --out $R/$1.pt 2>&1 | quiet > $R/train_$1.log"; }
   both "$(trainc peer); $(trainc self)" "$(trainc shuf); $(trainc plain)"
-  for m in peer self shuf plain; do echo "== $m"; grep -E "utterances|embedding|held-out|^step (300|600|900|1200):" "$R/train_$m.log"; done
+  for m in peer self shuf plain; do echo "== $m"; grep -E "utterances|embedding|held-out|^step (300|600|900|1200):|decode check" "$R/train_$m.log"; done
   pack
+  # run 1 broke every adapter and only the full evaluation showed it: stop here instead
+  python3 - "$R" <<'PY'
+import sys, torch
+R = sys.argv[1]
+bad = []
+for m in ("peer", "self", "shuf", "plain"):
+    c = torch.load(f"{R}/{m}.pt", map_location="cpu", weights_only=False).get("check") or {}
+    print(f"decode check {m}: base {c.get('base')} adapter {c.get('adapter')} WER on {c.get('utts')} held-out utterances")
+    if c and c["adapter"] > c["base"] + 1.0:
+        bad.append(m)
+if len(bad) == 4:
+    print("every adapter is worse than the base model by more than 1 point: training is broken, stopping")
+    sys.exit(1)
+PY
+  if [ $? -ne 0 ]; then log "stopped after step 3"; pack; exit 1; fi
 fi
 
 if want 4; then

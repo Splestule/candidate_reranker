@@ -60,3 +60,22 @@ conditioning adds a gather of sibling embeddings and two small projections to th
 
 Development data (s01). If H1 and H2 hold, a frozen confirmation on untouched rows 600-799 (s03)
 follows.
+
+## Run 1 result: invalid (training bug)
+Every trained variant broke decoding, the plain control included: final WER 61-64 against 24.67
+for the untrained base, candidate WER 71-81 against 36. The targets were the reference tokens
+on the hypothesis' positions without alignment, so after the first word shift the last step
+learned to write the reference shifted against the tokens it keeps ("walking past a pink hotel"
+-> "walingk pa thestinininotot"). Token accuracy on held-out rows, measured in the same unaligned
+setup, rose slightly and did not show it. The peer variant was also unstable (held-out accuracy
+fell to 0.02 at step 500 before recovering). H1-H3 were not tested.
+
+## Run 2 (results/pcd2), changes before any run-2 result
+- Targets aligned to each row's own tokens (`pcd.align_targets`): equal tokens and same-length
+  substitutions get the reference token, insertions / deletions / length-changing substitutions
+  are ignored, positions after both sequences end keep padding.
+- Peer and self inputs layer-normalised before the zero-initialised projection.
+- After training, each variant decodes 100 held-out training utterances with the real last step
+  (base vs adapter WER over all 8 rows); the run stops before the evaluation decodes if every
+  adapter is worse than the base by more than 1 point.
+Everything else (data, states, steps, arms, hypotheses H1-H3, evaluation) is unchanged.

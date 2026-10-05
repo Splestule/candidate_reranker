@@ -1,5 +1,5 @@
 # Kaggle: GPU T4 x2, internet ON, no input dataset needed -- everything comes from GitHub.
-# Runs peer-conditioned denoising (tools/run_pcd.sh); results in pcd_all.tar.gz (Output tab).
+# Runs peer-conditioned denoising (tools/run_pcd.sh); results in pcd2_all.tar.gz (Output tab).
 import os, subprocess
 
 BRANCH = "claude/busy-johnson-2cglu7"
@@ -14,4 +14,4 @@ for f in ("tools/run_pcd.sh", "tools/pcd.py", "tools/pcd_data.py", "tools/pcd_st
 print("repo OK, starting the run", flush=True)
 subprocess.run("bash tools/run_pcd.sh /tmp/campaign_data 2>&1 | tee results/run_pcd.log", shell=True)
 # the results Kaggle's Output tab shows; small enough to push (no adapters, no states)
-subprocess.run("cp results/pcd_all.tar.gz /kaggle/working/ 2>/dev/null; ls -la /kaggle/working", shell=True)
+subprocess.run("cp results/pcd2_all.tar.gz /kaggle/working/ 2>/dev/null; ls -la /kaggle/working", shell=True)

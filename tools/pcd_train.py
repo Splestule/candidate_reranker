@@ -9,8 +9,10 @@ length). Every variant gets the same utterances, the same rows and masks (same s
 steps and the same trainable parameters: LoRA rank 16 on every decoder linear plus the two
 zero-initialised projections, which the plain variant carries but never uses.
 
-Held out: 5 % of the utterances; every 100 steps, token accuracy on their non-padding targets
-with the adapter on against the base model.
+Targets are the reference aligned to the row's own tokens (pcd.align_targets): only positions
+with a one-to-one counterpart get a target. Held out: 5 % of the utterances; every 100 steps,
+token accuracy on their aligned non-padding targets with the adapter on against the base model,
+and after training a real last-step decode of --check_utts of them, base against adapter (WER).
 
     PYTHONPATH=src:Whisfusion/src:tools python3 tools/pcd_train.py --states results/pcd/states_0.pkl,... \\
         --mode peer --out results/pcd/peer.pt
@@ -41,6 +43,7 @@ def main() -> int:
     ap.add_argument("--lr", type=float, default=2e-4)
     ap.add_argument("--rank", type=int, default=16)
     ap.add_argument("--seed", type=int, default=0)
+    ap.add_argument("--check_utts", type=int, default=100, help="held-out utterances decoded after training")
     a = ap.parse_args()
 
     import torch
@@ -96,11 +99,12 @@ def main() -> int:
             t = torch.full((L,), pad, dtype=torch.long)
             t[:len(S[i]["tgt"])] = torch.tensor(S[i]["tgt"])
             c = cond_of(i)
+            t = t.to(dev)
             for k in rng.sample(range(cur.shape[0]), a.rows):
                 own.append(cur[k])
                 peers.append(pt[k])
                 cond.append(c)
-                tgt.append(t)
+                tgt.append(pcd.align_targets(cur[k], t, pad))
         own, peers = torch.stack(own), torch.stack(peers)
         cond, tgt = torch.cat(cond).to(dev), torch.stack(tgt).to(dev)
         m = torch.rand(own.shape, device=dev, generator=gen) < pcd.SCHEDULE[-1]
@@ -116,7 +120,7 @@ def main() -> int:
         tot = 0
         for b in range(0, len(val), a.utts):
             x, own, peers, cond, tgt, m = batch(val[b:b + a.utts], gen)
-            sel = m & (tgt != pad)
+            sel = m & (tgt != pad) & (tgt >= 0)
             for key, on in (("off", False), ("on", True)):
                 lora.set_enabled(model, on)
                 inj.add = inj.features(None, own, peers) if on else None
@@ -126,6 +130,38 @@ def main() -> int:
             tot += int(sel.sum())
         lora.set_enabled(model, True)
         return {k: v / max(tot, 1) for k, v in hit.items()}
+
+    @torch.no_grad()
+    def decode_check():
+        """The real last step on held-out utterances, base against adapter, as pcd_decode.py runs
+        it: word error rate over all 8 rows. Token accuracy alone missed run 1's breakage."""
+        import zlib
+        import decode as dec
+        from rapidfuzz.distance import Levenshtein
+        from scorers import normalize
+        model.eval()
+        err = {"base": 0, "adapter": 0}
+        nref, prev = 0, None
+        for i in val[:a.check_utts]:
+            c = cond_of(i).to(dev)
+            seed = zlib.crc32(f"{S[i]['set']}/{S[i]['id']}".encode()) % (2 ** 31)
+            cur, g = pcd.first_steps(wf, c, seed)
+            m = pcd.last_mask(cur, g)
+            x = torch.where(m, torch.full_like(cur, mask_id), cur)
+            ref = S[i]["ref"]
+            for key, on in (("base", False), ("adapter", True)):
+                lora.set_enabled(model, on)
+                other = prev if (a.mode == "shuf" and prev is not None) else None
+                inj.add = inj.features(None, cur, pcd.peer_tokens(cur, other)) if on else None
+                logits = model(idx=x, condition=c.expand(cur.shape[0], -1, -1))
+                inj.add = None
+                final = torch.where(m, logits.argmax(-1), x)
+                for cand in dec._candidates(wf, final, logits):
+                    err[key] += Levenshtein.distance(normalize(cand.text).split(), ref)
+            nref += cur.shape[0] * len(ref)
+            prev = cur
+        lora.set_enabled(model, True)
+        return {k: round(100 * v / max(nref, 1), 2) for k, v in err.items()} | {"utts": len(val[:a.check_utts])}
 
     with torch.no_grad():                     # the hook must reach the decoder, or every variant is plain
         c0 = cond_of(tr[0]).to(dev)
@@ -143,14 +179,14 @@ def main() -> int:
     gen.manual_seed(a.seed)
     model.train()
     lora.set_enabled(model, True)
-    t0, losses = time.time(), []
+    t0, losses, aligned = time.time(), [], []
     for step in range(1, a.steps + 1):
         x, own, peers, cond, tgt, m = batch(rng.sample(tr, a.utts), gen)
         with torch.autocast("cuda", dtype=torch.float16, enabled=dev == "cuda"):
             inj.add = inj.features(None, own, peers)
             logits = model(idx=x, condition=cond)
             inj.add = None
-            loss = Fn.cross_entropy(logits[m].float(), tgt[m])
+            loss = Fn.cross_entropy(logits[m].float(), tgt[m], ignore_index=-100)
         opt.zero_grad(set_to_none=True)
         scaler.scale(loss).backward()
         scaler.unscale_(opt)
@@ -159,16 +195,21 @@ def main() -> int:
         scaler.update()
         sched.step()
         losses.append(loss.item())
+        aligned.append(float(((tgt >= 0) & m).sum()) / max(float(m.sum()), 1.0))
         if step % 100 == 0 or step == a.steps:
             model.eval()
-            d = dict(step=step, loss=sum(losses[-100:]) / len(losses[-100:]), **val_acc())
+            d = dict(step=step, loss=sum(losses[-100:]) / len(losses[-100:]),
+                     aligned=sum(aligned[-100:]) / len(aligned[-100:]), **val_acc())
             model.train()
             log.append(d)
             print(f"step {step}: {json.dumps(d)}  {(time.time() - t0) / step:.2f} s/step", flush=True)
+    check = decode_check() if a.check_utts else None
+    if check:
+        print("decode check:", json.dumps(check), flush=True)
     out = Path(a.out)
     out.parent.mkdir(parents=True, exist_ok=True)
     torch.save(dict(state=lora.lora_state(model), r=a.rank, alpha=2.0 * a.rank, inj=inj.state(),
-                    mode=a.mode, emb=inj.emb_name, args=vars(a), log=log), out)
+                    mode=a.mode, emb=inj.emb_name, args=vars(a), log=log, check=check), out)
     print(f"saved {out}", flush=True)
     return 0
 
