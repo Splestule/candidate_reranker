@@ -60,7 +60,8 @@ class Whisfusion:
                            branch_schedule=arm.get("branch_schedule"),
                            mask_mode=arm.get("mask_mode", "uniform"),
                            mask_mix=arm.get("mask_mix", 1.0),
-                           adaptive=arm.get("adaptive"))
+                           adaptive=arm.get("adaptive"),
+                           track_topk=arm.get("track_topk", 0))
         return ([dec.candidate_to_dict(c) for c in r.candidates],
                 {"identical_after_step1": r.identical_after_step1,
                  "n_candidates_used": r.n_candidates_used,

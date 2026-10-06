@@ -39,6 +39,31 @@ def _word_confidences(tokenizer, ids, confs, text) -> list[float] | None:
     return out if len(out) == len(normalize(text).split()) else None
 
 
+def _word_dists(tokenizer, ids, top_ids, top_p, text) -> list | None:
+    """[first token id, top ids, top probs] per normalised word, grouped as _word_confidences."""
+    from scorers import normalize
+
+    special = set(tokenizer.all_special_ids)
+    keep = [j for j, i in enumerate(ids) if i not in special]
+    if not keep:
+        return None
+    pieces = tokenizer.convert_ids_to_tokens([ids[j] for j in keep])
+    words, buf, first = [], [], None
+    for j, piece in zip(keep, pieces):
+        if piece.startswith(WORD_START) and buf:
+            words.append(("".join(buf), first))
+            buf = []
+        if not buf:
+            first = j
+        buf.append(piece.lstrip(WORD_START))
+    if buf:
+        words.append(("".join(buf), first))
+    keep_p = [[(t, round(p, 4)) for t, p in zip(top_ids[j], top_p[j]) if p >= 1e-4] for _, j in words]
+    out = [[ids[j], [t for t, _ in kp], [p for _, p in kp]]
+           for (w, j), kp in zip(words, keep_p) if normalize(w)]
+    return out if len(out) == len(normalize(text).split()) else None
+
+
 @dataclass
 class Candidate:
     text: str
@@ -50,6 +75,9 @@ class Candidate:
     n_tokens: int
     word_conf: list[float] | None = field(default=None)
     tokens: list[int] | None = field(default=None)
+    # per normalised word: first token id and the top-k (ids, probs) of the distribution that
+    # token was last predicted from (track_topk > 0 only)
+    word_dist: list | None = field(default=None)
 
 
 @dataclass
@@ -78,6 +106,7 @@ def pdd_decode(
     mask_mode: str = "uniform",
     mask_mix: float = 1.0,
     adaptive: dict | None = None,
+    track_topk: int = 0,
 ) -> DecodeResult:
     """branch_schedule gives the number of distinct mask groups at each step.
 
@@ -90,6 +119,10 @@ def pdd_decode(
     mask_mode "uncertain" draws the mask with probability proportional to 1 - confidence
     from the previous step instead of uniformly, keeping the same expected mask ratio, so
     re-prediction is spent where the model is unsure rather than spread evenly.
+
+    track_topk keeps, for every position, the top-k of the distribution it was last predicted
+    from (the last step it was masked), so votes can be counted from distributions instead of
+    from the argmax tokens. Bookkeeping only: tokens and random draws are unchanged.
 
     adaptive sizes the whole tree per utterance: after probe_step the width is set from how
     uncertain the shared prefix is, so an easy utterance gets a small tree and a hard one a
@@ -116,6 +149,10 @@ def pdd_decode(
     rows = widths[0]
     cur = torch.full((rows, seq_len), mask_id, dtype=torch.long, device=device)
     cur[:, 0] = bos
+    tk_ids = tk_p = None
+    if track_topk:
+        tk_ids = torch.zeros((rows, seq_len, track_topk), dtype=torch.long, device=device)
+        tk_p = torch.zeros((rows, seq_len, track_topk), dtype=torch.float32, device=device)
 
     final_logits = None
     after_step1 = None
@@ -134,10 +171,15 @@ def pdd_decode(
             if conf_prev is not None:
                 conf_prev = conf_prev[idx] if idx is not None else \
                     conf_prev.repeat_interleave(want // rows, dim=0)
+            if tk_ids is not None:
+                tk_ids = tk_ids[idx] if idx is not None else tk_ids.repeat_interleave(want // rows, dim=0)
+                tk_p = tk_p[idx] if idx is not None else tk_p.repeat_interleave(want // rows, dim=0)
         elif want < rows:                     # prune, which is how adaptive width shrinks
             cur = cur[:want]                  # rows are interchangeable at the probe step
             if conf_prev is not None:
                 conf_prev = conf_prev[:want]
+            if tk_ids is not None:
+                tk_ids, tk_p = tk_ids[:want], tk_p[:want]
         rows = want
         used.append(rows)
         cond = condition.expand(rows, -1, -1)
@@ -187,6 +229,14 @@ def pdd_decode(
 
         prev_tokens = cur
         cur = torch.where(mask_idx, pred, masked)
+        if tk_ids is not None:
+            lf = logits.float()
+            tv, ti = lf.topk(track_topk, dim=-1)
+            tv = torch.exp(tv - torch.logsumexp(lf, dim=-1, keepdim=True))
+            m3 = mask_idx.unsqueeze(-1)
+            tk_ids = torch.where(m3, ti, tk_ids)
+            tk_p = torch.where(m3, tv, tk_p)
+            del lf, tv, ti
         if mask_mode != "uniform" or adaptive is not None:
             probs_p = torch.softmax(logits.float(), dim=-1)
             top2 = probs_p.topk(2, dim=-1).values
@@ -236,6 +286,8 @@ def pdd_decode(
     conf, logprob, entropy = conf.cpu(), logprob.cpu(), entropy.cpu()
     texts = wf.tokenizer.batch_decode(toks, skip_special_tokens=True)
     valid = toks != pad_id
+    if tk_ids is not None:
+        tk_ids, tk_p = tk_ids.cpu(), tk_p.cpu()
 
     cands = []
     for i in range(n_candidates):
@@ -255,6 +307,8 @@ def pdd_decode(
                 n_tokens=int(v.sum()),
                 word_conf=_word_confidences(wf.tokenizer, ids, c.tolist(), texts[i]),
                 tokens=ids if save_tokens else None,
+                word_dist=(_word_dists(wf.tokenizer, ids, tk_ids[i][v].tolist(), tk_p[i][v].tolist(),
+                                       texts[i]) if tk_ids is not None else None),
             )
         )
 
@@ -270,7 +324,7 @@ def pdd_decode(
 
 def candidate_to_dict(c: Candidate) -> dict:
     d = asdict(c)
-    for key in ("tokens", "word_conf"):
+    for key in ("tokens", "word_conf", "word_dist"):
         if d[key] is None:
             d.pop(key)
     return d
